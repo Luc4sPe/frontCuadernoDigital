@@ -22,4 +22,13 @@ export class AuthService {
   public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
     return this.httpCliente.post<JwtDto>(this.authURL+'login',loginUsuario);
   }
+
+  getUsuarios(){
+    return this.httpCliente.get<Response>(this.authURL + 'lista');
+  }
+
+  getUsuarioId(id:number){
+    return this.httpCliente.get<Response>(this.authURL + "/"+ id);
+  }
+
 }
