@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 
 import{HttpClientModule} from '@angular/common/http';
-import{FormsModule} from '@angular/forms';
+import{FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 // external
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +28,8 @@ import { IndexComponent } from './index/index.component';
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
