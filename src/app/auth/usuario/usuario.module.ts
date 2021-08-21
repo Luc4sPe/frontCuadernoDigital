@@ -5,6 +5,7 @@ import{FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { NuevoUsuarioComponent } from './nuevo/nuevo-usuario.component';
+import { ListaComponent } from './listar/lista.component';
 
 
 
@@ -12,7 +13,8 @@ import { NuevoUsuarioComponent } from './nuevo/nuevo-usuario.component';
 @NgModule({
   declarations: [
   
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+       ListaComponent
   ],
   imports: [
     CommonModule,
