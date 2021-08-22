@@ -4,6 +4,7 @@ import { NuevoUsuario } from '../modelo/nuevo-usuario';
 import { Observable } from 'rxjs';
 import { LoginUsuario } from '../modelo/login-usuario';
 import { JwtDto } from '../modelo/jwt-dto';
+import { Usuario } from '../modelo/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,14 @@ export class AuthService {
   }
   public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
     return this.httpCliente.post<JwtDto>(this.authURL+'login',loginUsuario);
+  }
+
+  public listar(): Observable<Usuario[]>{
+    return this.httpCliente.get<Usuario[]>(this.authURL + 'list');
+  }
+
+  public datail(id: number): Observable<Usuario>{
+    return this.httpCliente.get<Usuario>(this.authURL + `detalle/${id}`);
   }
 
   getUsuarios(){

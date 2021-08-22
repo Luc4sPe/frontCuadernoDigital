@@ -14,7 +14,7 @@ import { ListaComponent } from './listar/lista.component';
   declarations: [
   
     NuevoUsuarioComponent,
-       ListaComponent
+    ListaComponent
   ],
   imports: [
     CommonModule,
