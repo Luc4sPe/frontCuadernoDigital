@@ -32,12 +32,12 @@ export class AuthService {
     return this.httpCliente.get<Usuario>(this.authURL + `detalle/${id}`);
   }
 
-  getUsuarios(){
+  /* getUsuarios(){
     return this.httpCliente.get<Response>(this.authURL + 'lista');
   }
 
   getUsuarioId(id:number){
     return this.httpCliente.get<Response>(this.authURL + "/"+ id);
-  }
+  } */
 
 }
