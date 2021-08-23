@@ -1,7 +1,8 @@
 <div class="fondo">
+  
   <div *ngIf="!isLogged">
       <app-login (pressLogin)="validateLogin($event)"></app-login>
-
+      
   </div>
   <div *ngIf="isLogged">
        <app-menu></app-menu> 
