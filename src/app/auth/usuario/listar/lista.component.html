@@ -26,8 +26,8 @@
           <td>{{usuario.password}}</td>
           <td>{{usuario.roles[0].rolNombre}}</td>
 
-          <td *ngIf="isAdmin"><button class="btn btn-outline-primary" routerLink="/detalle/{{usuario.id}}"><i class="far fa-eye"></i> Ver</button></td>
-          <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/editar/{{usuario.id}}"><i class="far fa-edit"></i> Editar</button></td>
+          <td *ngIf="isAdmin"><button class="btn btn-outline-primary" routerLink="/usuario/obtner/{{usuario.id}}"><i class="far fa-eye"></i> Ver</button></td>
+          <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/usuario/actualizar/{{usuario.id}}"><i class="far fa-edit"></i> Editar</button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-danger" ><i class="far fa-trash-alt"></i> Eliminar</button></td> 
         </tr>
       </tbody>
