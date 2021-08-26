@@ -11,7 +11,7 @@ import{FormsModule,ReactiveFormsModule } from '@angular/forms';
 // external
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { LoginComponent } from './auth/login.component';
+import { LoginComponent } from './auth/Login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
 
