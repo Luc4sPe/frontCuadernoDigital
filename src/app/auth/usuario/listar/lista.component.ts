@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/modelo/usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-lista',
@@ -18,7 +19,7 @@ export class ListaComponent implements OnInit {
   isAdmin = false;
 
 
-  constructor(private authUsuario: AuthService,
+  constructor(private usuarioServ: UsuarioService,
     private toastr: ToastrService,
     private tokenService: TokenService,
     private router: Router) { }
@@ -36,7 +37,8 @@ export class ListaComponent implements OnInit {
   }
 
   cargaUsuario(): void{
-    this.authUsuario.listar().subscribe(
+  
+      this.usuarioServ.listar().subscribe(
       data =>{
         this.usuarios=data;
       },

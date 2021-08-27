@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/modelo/usuario';
 import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-obtner',
@@ -14,7 +15,7 @@ export class ObtnerComponent implements OnInit {
   usuario!: any;
   
   constructor(
-    private usuarioService: AuthService ,
+    private usuarioService: UsuarioService ,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router

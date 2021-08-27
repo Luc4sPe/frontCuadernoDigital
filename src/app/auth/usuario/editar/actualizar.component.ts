@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/modelo/usuario';
 import { AuthService } from 'src/app/service/auth.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-actualizar',
@@ -19,7 +20,7 @@ export class ActualizarComponent implements OnInit {
   
 
   constructor(
-    private usuarioService: AuthService ,
+    private usuarioService: UsuarioService ,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router
@@ -48,7 +49,7 @@ export class ActualizarComponent implements OnInit {
       const id = this.activatedRoute.snapshot.params.id;
       alert(id);
       
-      this.usuarioService.actu(id,this.usuario).subscribe(
+      this.usuarioService.update(id,this.usuario).subscribe(
         data =>  {
           this.usuario=data;
           this.toastr.success('Usuario Actualizado', 'OK', {

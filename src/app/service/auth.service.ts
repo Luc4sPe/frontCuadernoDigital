@@ -24,20 +24,11 @@ export class AuthService {
     return this.httpCliente.post<JwtDto>(this.authURL+'login',loginUsuario);
   }
 
-  public listar(): Observable<Usuario[]>{
-    return this.httpCliente.get<Usuario[]>(this.authURL + 'list');
-  }
+  
 
-  public datail(id: number): Observable<Usuario>{
-    return this.httpCliente.get<Usuario>(this.authURL + `detail/${id}`);
-  }
+ 
 
-  public update(id: number, usuario: Usuario): Observable<any> {
-    return this.httpCliente.put(this.authURL + `update/${id}`, usuario);
-  }
-  public actu(id: number, usuario: Usuario): Observable<any>{
-    return this.httpCliente.put(this.authURL + `update/${id}`, usuario )
-  }
+
 
   /* getUsuarios(){
     return this.httpCliente.get<Response>(this.authURL + 'lista');
