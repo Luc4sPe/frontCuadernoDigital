@@ -4,6 +4,8 @@ import { ObtnerComponent } from './detalle/obtner.component';
 import { ActualizarComponent } from './editar/actualizar.component';
 import { ListaComponent } from './listar/lista.component';
 import { NuevoUsuarioComponent } from './nuevo/nuevo-usuario.component';
+import { CambioPasswordComponent } from './restablecerPassword/cambio-password/cambio-password.component';
+import { EnviarEmailComponent } from './restablecerPassword/enviar-email/enviar-email.component';
 
 const routes: Routes = [
 
@@ -15,6 +17,8 @@ const routes: Routes = [
       {path: 'nuevo',component: NuevoUsuarioComponent},
       {path: 'obtner/:id', component: ObtnerComponent},
       {path: 'actualizar/:id', component:ActualizarComponent},
+      {path: 'restablecerPassword/enviaremail',component: EnviarEmailComponent},
+      {path: 'restablecerPassword/cambiopassword/:tokenPassword',component: CambioPasswordComponent},
       {path: '**', redirectTo: '',pathMatch: 'full'}
     ]
   }

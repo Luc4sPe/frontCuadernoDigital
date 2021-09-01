@@ -8,6 +8,8 @@ import { NuevoUsuarioComponent } from './nuevo/nuevo-usuario.component';
 import { ListaComponent } from './listar/lista.component';
 import { ObtnerComponent } from './detalle/obtner.component';
 import { ActualizarComponent } from './editar/actualizar.component';
+import { EnviarEmailComponent } from './restablecerPassword/enviar-email/enviar-email.component';
+import { CambioPasswordComponent } from './restablecerPassword/cambio-password/cambio-password.component';
 
 
 
@@ -18,7 +20,10 @@ import { ActualizarComponent } from './editar/actualizar.component';
     NuevoUsuarioComponent,
     ListaComponent,
     ObtnerComponent,
-    ActualizarComponent
+    ActualizarComponent,
+    EnviarEmailComponent,
+    CambioPasswordComponent,
+    
   ],
   imports: [
     CommonModule,
