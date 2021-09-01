@@ -16,7 +16,7 @@ import { TokenService } from 'src/app/service/token.service';
 export class NuevoUsuarioComponent implements OnInit {
   
 
-  usuario: NuevoUsuario | any;
+  usuario= new NuevoUsuario('','','','','','');
   formUsuario!: FormGroup;
   rol!:string ;
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -87,7 +87,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
 
     
-
+    
 
 
     

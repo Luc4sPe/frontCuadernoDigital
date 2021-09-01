@@ -45,9 +45,9 @@ export class ActualizarComponent implements OnInit {
 
   onActualizar(): void {
 
-    
+     // const NuevoUsuario = new Usuario (this.usuario.)
       const id = this.activatedRoute.snapshot.params.id;
-      alert(id);
+      //alert(id);
       
       this.usuarioService.update(id,this.usuario).subscribe(
         data =>  {
