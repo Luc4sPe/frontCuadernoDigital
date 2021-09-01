@@ -16,7 +16,7 @@ import { TokenService } from 'src/app/service/token.service';
 export class NuevoUsuarioComponent implements OnInit {
   
 
-  usuario = new NuevoUsuario('','','','','');
+  usuario: NuevoUsuario | any;
   formUsuario!: FormGroup;
   rol!:string ;
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,9 +31,19 @@ export class NuevoUsuarioComponent implements OnInit {
   }
   async Guardar(){   
     
-    if(this.rol === "admin"){
+    if(this.rol === "Admin"){
       
-      this.usuario.roles.push('admin');
+      this.usuario.roles.push('Admin');
+      
+    }
+    if(this.rol === "Encargado Agricola"){
+      
+      this.usuario.roles.push('Encargado Agricola');
+      
+    }
+    if(this.rol === "Productor"){
+      
+      this.usuario.roles.push('Productor');
       
     }
       await console.log(this.usuario.roles);
@@ -57,6 +67,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
     get nombre(){return this.formUsuario.get('nombre');}
     get apellido(){return this.formUsuario.get('apellido');}
+    get dni(){return this.formUsuario.get('dni');}
     get nombreUsuario(){return this.formUsuario.get('nombreUsuario');}
     get email(){return this.formUsuario.get('email');}
     get password(){return this.formUsuario.get('password');}
@@ -66,12 +77,16 @@ export class NuevoUsuarioComponent implements OnInit {
       this.formUsuario = new FormGroup({
         nombre: new FormControl('',[Validators.required]),
         apellido: new FormControl('',[Validators.required]),
+        dni: new FormControl('',[Validators.required]),
         nombreUsuario: new FormControl('',[Validators.required]),
         email: new FormControl('',[Validators.required, Validators.pattern(this.emailPattern)]),
         password: new FormControl('',[Validators.required]),
         roles: new FormControl('',[Validators.required]),
       });
     }
+
+
+    
 
 
 

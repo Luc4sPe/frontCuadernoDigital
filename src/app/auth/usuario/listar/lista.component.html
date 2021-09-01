@@ -1,18 +1,39 @@
 
 <div class="container">
-    <table class="table table-dark">
+  <div class="row justify-content-center mt-4">
+    <div>
+        <div class="card shadow">
+            <div class="card-header ">
+                <i class="bi bi-table me-1"></i>
+                <h2>Listado de Usuarios</h2>
+            </div>
+           
+                 <table class="table table-bordered table-dark">
       <thead>
         <tr>
           <th scope="col">Id</th>
+
           <th scope="col">Apellido</th>
+
           <th scope="col">Nombre</th>
+
+          <th scope="col">DNI</th>
+
           <th scope="col">Nombre Usuario</th>
+
           <th scope="col">Email</th>
-          <th scope="col">Password</th>
-          <th scope="col">Roles<th>
-          <th scope="col" *ngIf="isAdmin">Ver</th>
+
+          <th scope="col">Roles</th>
+          <th scope="col">Modificar Estado</th>
+          <th scope="col">Fecha de Creación</th>
+          <th scope="col">Fecha de Modificación</th>
+
+          
+
+           <th scope="col" *ngIf="isAdmin">Ver</th>
           <th scope="col" *ngIf="isAdmin">Editar</th>
-          <th scope="col" *ngIf="isAdmin">Borrar</th>
+          <th scope="col" *ngIf="isAdmin">Alta/Baja</th>  
+          
           
         </tr>
       </thead>
@@ -21,14 +42,29 @@
           <td>{{usuario.id}}</td>
           <td>{{usuario.apellido}}</td>
           <td>{{usuario.nombre}}</td>
+          <td>{{usuario.dni}}</td>
           <td>{{usuario.nombreUsuario}}</td>
           <td>{{usuario.email}}</td>
-          <td>{{usuario.password}}</td>
           <td>{{usuario.roles[0].rolNombre}}</td>
 
+            <td>
+            <span [ngClass] = "usuario.estadoActivo? 'badge rounded-pill bg-success':'badge rounded-pill bg-danger'">
+              {{usuario.estadoActivo? "Activo": "Inactivo" }}
+          </span>
+          </td> 
+         
+          <td>{{usuario.fechaDeAlta | date:"short" }}</td>
+
+          <td>{{usuario.fechaModificacion | date:"short"}}</td>
+
+       
+
+          
           <td *ngIf="isAdmin"><button class="btn btn-outline-primary" routerLink="/usuario/obtner/{{usuario.id}}"><i class="far fa-eye"></i> Ver</button></td>
-          <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/usuario/actualizar/{{usuario.id}}"><i class="far fa-edit"></i> Editar</button></td>
-          <td *ngIf="isAdmin"><button class="btn btn-outline-danger" ><i class="far fa-trash-alt"></i> Eliminar</button></td> 
+          <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/usuario/actualizar/{{usuario.id}}"><i class="far fa-edit"></i> Editar</button></td> 
+           <td *ngIf="isAdmin && usuario.estadoActivo == true"><button class="btn btn-outline-danger"   (click) ="bajaUsuario(usuario.id)"  ><i class="far fa-trash-alt"></i> Baja</button></td>  
+           <td *ngIf="isAdmin && usuario.estadoActivo == false"><button class="btn btn-outline-success"   (click) ="altaUsuario(usuario.id)"  ><i class="fas fa-user-plus"></i> Alta</button></td> 
+           
         </tr>
       </tbody>
     </table>
@@ -37,4 +73,13 @@
         <i class="fas fa-plus-circle"></i> Nuevo Usuaio</button>
     </div>
   
+
+
+
+
+            
+        </div>
+    </div>
+
   </div>
+</div>

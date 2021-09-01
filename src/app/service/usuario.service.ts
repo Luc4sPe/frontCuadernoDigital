@@ -25,5 +25,12 @@ export class UsuarioService {
     return this.httpCliente.put(this.usuarioURL + `update/${id}`, usuario);
   }
 
+  public altaUsuario(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.usuarioURL+ `alta/${id}`,id);
+  }
+
+  public bajaUsuario(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.usuarioURL + `baja/${id}`,id);
+  }
 
 }
