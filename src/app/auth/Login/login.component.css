@@ -1,6 +1,6 @@
 
 body {
-    background: url(/../../assets/imagen/fondo1.jpg ) no-repeat center center fixed;
+    background: url(/../../assets/imagen/tomate.jpg ) no-repeat center center fixed;
     background-size: "cover";
 
 }
@@ -85,7 +85,7 @@ button{
 .login_btn {
     width: 100%;
     font-family: sans-serif;
-    background: #0CD2A8;
+    background: #0c3ad2;
     font-size: 16px;
     border: none;
     color: black;
@@ -98,7 +98,7 @@ button{
     background: rgba(0, 0, 0, .7);
     border: none;
     outline: none;
-    border-bottom: 2px solid#0CD2A8;
+    border-bottom: 2px solid#0f0cd2;
     width: 60%;
     padding: 12px;
     margin-bottom: 20px;

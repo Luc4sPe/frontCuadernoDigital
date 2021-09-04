@@ -45,10 +45,8 @@ export class ActualizarComponent implements OnInit {
 
   onActualizar(): void {
 
-     // const NuevoUsuario = new Usuario (this.usuario.)
-      const id = this.activatedRoute.snapshot.params.id;
-      //alert(id);
-      
+     
+      const id = this.activatedRoute.snapshot.params.id; 
       this.usuarioService.update(id,this.usuario).subscribe(
         data =>  {
           this.usuario=data;
@@ -61,7 +59,7 @@ export class ActualizarComponent implements OnInit {
           this.toastr.error(err.error.mensaje, 'Fail esta es la falla ', {
             timeOut: 3000,  positionClass: 'toast-top-center',
           });
-          this.router.navigate(['/']);
+          
         }
       );
   }
