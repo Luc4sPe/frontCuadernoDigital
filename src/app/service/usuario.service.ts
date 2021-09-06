@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EditarUsuariosDto } from '../modelo/editar-usuarios-dto';
 import { Usuario } from '../modelo/usuario';
 
 @Injectable({
@@ -21,8 +22,8 @@ export class UsuarioService {
 
   }
 
-  public update(id: number, usuario: Usuario): Observable<any> {
-    return this.httpCliente.put(this.usuarioURL + `update/${id}`, usuario);
+  public update(id: number, editarUsuario: EditarUsuariosDto): Observable<any> {
+    return this.httpCliente.put(this.usuarioURL + `update/${id}`, editarUsuario);
   }
 
   public altaUsuario(id:number):Observable<any>{

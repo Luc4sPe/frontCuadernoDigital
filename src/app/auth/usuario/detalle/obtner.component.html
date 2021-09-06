@@ -5,15 +5,23 @@
               <div class="card-header text-center">
                 Detalle
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush  ">
                 <li class="list-group-item"><b>ID: </b>{{usuario.id}}</li>
                 <li class="list-group-item"><b>Apellido: </b>{{usuario.apellido}}</li>
                 <li class="list-group-item"><b>Nombre: </b>{{usuario.nombre}}</li>
                 <li class="list-group-item"><b>Nombre de Usuario: </b>{{usuario.nombreUsuario}}</li>
                 <li class="list-group-item"><b>Email: </b>{{usuario.email}}</li>
-                <li class="list-group-item"><b>Rolel: </b>{{usuario.roles[0].rolNombre}}</li>
-                <li class="list-group-item"><b>Password: </b>{{usuario.password}}</li>
+               
+                <ul class="list-group list-group-flush  " *ngFor="let roles of usuario.roles; let i = index; ">
+               
+                  <li class="list-group-item"><b>Rol: </b>{{usuario.roles[i].rolNombre}}</li>
+                
+                </ul>
+  
               </ul>
+
+
+              
               <div class="card-footer">
                   <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
               </div>

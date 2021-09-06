@@ -45,7 +45,11 @@
           <td>{{usuario.dni}}</td>
           <td>{{usuario.nombreUsuario}}</td>
           <td>{{usuario.email}}</td>
-          <td>{{usuario.roles[0].rolNombre}}</td>
+          <td><ul *ngFor="let roles of usuario.roles; let i = index; ">
+               
+            <td ><b></b>{{usuario.roles[i].rolNombre}}</td>
+          
+          </ul></td>
           
 
             <td>

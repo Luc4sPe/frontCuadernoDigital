@@ -13,6 +13,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class ObtnerComponent implements OnInit {
 
   usuario!: any;
+  roles:string[]=[];
+  
   
   constructor(
     private usuarioService: UsuarioService ,
@@ -22,12 +24,13 @@ export class ObtnerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    var document: any;
     const id = this.activatedRoute.snapshot.params.id;
-  
+    
     this.usuarioService.datail(id).subscribe(
       data => {
         this.usuario = data;
+       
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -42,6 +45,6 @@ export class ObtnerComponent implements OnInit {
   }
 
   volver(): void {
-    this.router.navigate(['/lista']);
+    this.router.navigate(['/usuario']);
   }
 }

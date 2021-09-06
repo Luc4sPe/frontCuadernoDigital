@@ -27,7 +27,8 @@
                         <input [(ngModel)]="usuario.nombre" name="usuario.nombre" formControlName="nombre" type="text" class="form-input" placeholder="Nombre">
                         <div class="row" class="alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
                              <div class="container-error-message" *ngIf="nombre?.errors?.required">
-                                 Nombre es requerido
+                                <i class="ms-1 bi-x-circle-fill"></i>
+                                  Nombre es requerido
                             </div>
                          </div>    
 
