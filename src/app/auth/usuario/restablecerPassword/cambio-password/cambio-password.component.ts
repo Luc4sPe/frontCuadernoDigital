@@ -30,13 +30,6 @@ export class CambioPasswordComponent implements OnInit {
 
 
   cambiarPassword():void{
-
-    if(this.password !== this.confirmPassword){
-      this.toastrService.error('Las contraseñas No coinciden lucas', 'Fail', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-      return;
-    }   
     this.tokenPassword = this.activatedRoute.snapshot.params.tokenPassword;
     this.dto = new ChangePasswordDTO(this.password, this.confirmPassword, this.tokenPassword);
     this.emailPasswordService.changePassword(this.dto).subscribe(
