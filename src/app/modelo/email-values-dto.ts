@@ -1,12 +1,10 @@
 export class EmailValuesDTO {
 
     mailTo: string;
-    userName: string;
-    token: string;
+    
 
-    constructor(mailTo: string,userName: string,token: string){
+    constructor(mailTo: string){
         this.mailTo=mailTo; 
-        this.userName=userName;
-        this.token=token;
+        
     }
 }

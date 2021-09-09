@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChangePasswordDTO } from 'src/app/modelo/change-password-dto';
@@ -28,13 +29,14 @@ export class CambioPasswordComponent implements OnInit {
   }
 
 
-  onEnviarEmail():void{
-    if(this.password !== this.confirmPassword) {
-      this.toastrService.error('Las contraseñas no coinciden', 'FAIL', {
+  cambiarPassword():void{
+
+    if(this.password !== this.confirmPassword){
+      this.toastrService.error('Las contraseñas No coinciden lucas', 'Fail', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
       return;
-    }
+    }   
     this.tokenPassword = this.activatedRoute.snapshot.params.tokenPassword;
     this.dto = new ChangePasswordDTO(this.password, this.confirmPassword, this.tokenPassword);
     this.emailPasswordService.changePassword(this.dto).subscribe(
@@ -43,13 +45,13 @@ export class CambioPasswordComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['/login']);
-    },
-    err => {
-      this.toastrService.error(err.error.mensaje, 'FAIL', {
+      },
+      err => {
+        this.toastrService.error(err.error.mensaje, 'FAIL', {
         timeOut: 3000, positionClass: 'toast-top-center'
+        });
       });
-    }
-    );
+    
   }
 
 }

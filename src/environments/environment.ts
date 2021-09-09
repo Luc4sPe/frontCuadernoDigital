@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   authURL: 'http://localhost:8080/auth/',
-  changePasswordURL: 'http://localhost:8080/email-password',
+  changePasswordURL: 'http://localhost:8080/email-password'
 
 };
 

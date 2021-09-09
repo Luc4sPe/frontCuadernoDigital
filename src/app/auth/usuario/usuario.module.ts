@@ -18,13 +18,14 @@ import { CambioPasswordComponent } from './restablecerPassword/cambio-password/c
   declarations: [
   
     NuevoUsuarioComponent,
-    ListaComponent,
+   
     ObtnerComponent,
     ActualizarComponent,
     EnviarEmailComponent,
     CambioPasswordComponent,
     
   ],
+  
   imports: [
     CommonModule,
     UsuarioRoutingModule,

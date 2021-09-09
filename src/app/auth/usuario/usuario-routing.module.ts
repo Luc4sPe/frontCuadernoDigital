@@ -18,7 +18,7 @@ const routes: Routes = [
       {path: 'obtner/:id', component: ObtnerComponent},
       {path: 'actualizar/:id', component:ActualizarComponent},
       {path: 'restablecerPassword/enviaremail',component: EnviarEmailComponent},
-      {path: 'restablecerPassword/cambiopassword/:tokenPassword',component: CambioPasswordComponent},
+      {path: 'restablecer/cambioPassword/:tokenPassword',component: CambioPasswordComponent},
       {path: '**', redirectTo: '',pathMatch: 'full'}
     ]
   }

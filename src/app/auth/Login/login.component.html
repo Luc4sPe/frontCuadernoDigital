@@ -14,7 +14,7 @@
 
               <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
                 <div class="form-group" id="user-group">
-                  <label for="nombreUsuario">Nombre de Usuario</label>
+                  <label for="nombreUsuario">Nombre de Usuario</label>   
                   <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
                   placeholder="Usuario o Email" [(ngModel)]="nombreUsuario" required>
 
@@ -31,12 +31,16 @@
                     <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-sign-in-alt"></i> Iniciar Sesioń</button>
                 </div>
 
-                <div class="forgot text-center mt-2">
-                  <a routerLink="/usuario/restablecerPassword/enviaremail" class="link-primary text-center" > ¿Olvidaste tu contraseña?</a>
-                </div>
-
+                
+        
+              
+                
 
             </form>  
+            <div class="forgot text-center mt-2" *ngIf=!isLogged>
+              <a routerLink="/usuario/restablecerPassword/enviaremail" class="link-primary text-center" > ¿Olvidaste tu contraseña?</a>
+            </div>
+
 
           <!-- <div *ngIf="f.submitted && isLoginFail"   class="alert alert-danger mt-3">Error en el login: {{errMsj}}</div> -->
           </div>

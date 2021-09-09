@@ -1,12 +1,12 @@
 export class ChangePasswordDTO {
 
     password: string;
-    condfirmPassword: string;
+    confirmPassword: string;
     tokenPassword: string;
 
-    constructor(password: string, condfirmPassword: string, tokenPassword: string ){
+    constructor(password: string, confirmPassword: string, tokenPassword: string ){
         this.password=password;
-        this.condfirmPassword=condfirmPassword;
+        this.confirmPassword=confirmPassword;
         this.tokenPassword=tokenPassword;
     }
 }

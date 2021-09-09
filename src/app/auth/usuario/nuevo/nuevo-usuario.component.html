@@ -75,16 +75,19 @@
 
                     </div>
 
-                      <div class="form group">
+                        <div class="form group">
 
-                        <label class="form-label"> ROL  Administrador: </label>
-                        <select [(ngModel)]="rol" formControlName="roles">
-                                <option value = "Admin">
-                                    Administrador
-                                </option>
-                              
-                            </select>
-                    </div>
+                           <label class="form-label"> ROL  Administrador: </label>
+
+
+                           <div class="form-check">
+                            <input class="form-check-input" type="radio" name="usuario.roles" id="usuario.roles" value="" checked>
+                            <label class="form-check-label" for="admin">
+                              Administrador
+                            </label>
+                          </div>
+                        
+                        </div>
 
                     <div class="form group">
 

@@ -13,9 +13,8 @@ import { EmailPasswordService } from 'src/app/service/email-password.service';
 export class EnviarEmailComponent implements OnInit {
 
   mailTo: string='';
-  nombreUsuario:string='';
-  token:string='';
-  // dto: EmailValuesDTO | undefined; 
+  
+   dto: EmailValuesDTO | undefined; 
 
   constructor(
     private emailPasswordService: EmailPasswordService,
@@ -26,19 +25,21 @@ export class EnviarEmailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onEnviarEmail(form: NgForm): void{
-    const dto= new EmailValuesDTO(this.mailTo,this.nombreUsuario,this.token); 
-    
-    this.emailPasswordService.sendEmail(dto).subscribe(
+  enviarEmail(): void{
+    //const dto= new EmailValuesDTO(this.mailTo); 
+    this.dto = new EmailValuesDTO(this.mailTo);
+    //alert(this.dto.mailTo);
+    this.emailPasswordService.sendEmail(this.dto).subscribe(
       data =>{
-        this.toasterService.success(data.mesaje,'ok',{
+       
+        
+        this.toasterService.success(data.mensaje,'ok',{
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         
       },
       err =>{
-
-        this.toasterService.error(err.error.mesaje,'Fail',{
+        this.toasterService.error(err.error.mensaje,'Fail este es el error',{
           timeOut: 3000, positionClass: 'toast-top-center'
         });
 

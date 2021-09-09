@@ -22,6 +22,7 @@ export class NuevoUsuarioComponent implements OnInit {
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
   
+  
   constructor( private service: AuthService, private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {

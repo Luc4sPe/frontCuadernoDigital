@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       data => {
 
         this.isLogged=true;  
+        this.isLoginFail = false;
 
          //almacenamos en sessionStorage
         this.tokenService.setToken(data.token);
@@ -62,7 +63,8 @@ export class LoginComponent implements OnInit {
       },
       err =>{
         this.isLogged=false;
-        this.errMsj= err.error.message;
+        
+        this.errMsj= err.error.mensaje;
         this.toastr.error(this.errMsj, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });

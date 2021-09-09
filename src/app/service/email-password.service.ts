@@ -11,15 +11,17 @@ import { EmailValuesDTO } from '../modelo/email-values-dto';
 export class EmailPasswordService {
 
   changePasswordURL = environment.changePasswordURL;
-  //changePasswordURL: 'http://localhost:8080/email-password';
+  //changePasswordURL = 'http://localhost:8080/email-password';
+  
   constructor( private httpCliente: HttpClient) { }
 
 
   public sendEmail(dto: EmailValuesDTO): Observable<any> {
-    return this.httpCliente.post<any>(this.changePasswordURL + 'send-email', dto);
+    return this.httpCliente.post<any>(this.changePasswordURL + '/send-email', dto);
   }
 
   public changePassword(dto: ChangePasswordDTO): Observable<any> {
-    return this.httpCliente.post<any>(this.changePasswordURL + 'change-password', dto);
+    return this.httpCliente.post<any>(this.changePasswordURL + '/change-Password', dto);
   }
 }
+

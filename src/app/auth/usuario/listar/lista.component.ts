@@ -18,6 +18,7 @@ export class ListaComponent implements OnInit {
   roles: string[]=[];
   anuncio : string = '';
   isAdmin = false;
+  isLoged=false;
 
 
   constructor(private usuarioServ: UsuarioService,
@@ -29,6 +30,7 @@ export class ListaComponent implements OnInit {
     
     this.cargaUsuario();
     this.roles=this.tokenService.getAuthorities();
+    this.isLoged=true;
     this.roles.forEach(rol =>{
       if(rol === 'ROLE_ADMIN'){
         this.isAdmin=true;
