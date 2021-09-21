@@ -48,11 +48,11 @@ body {
 }
 
 .form-group#user-group::before{
-    content: "\f007";
+    content: "";
 }
 
 .form-group#contrasena-group::before{
-    content: "\f023";
+    content: "\f008";
 }
 
 button{

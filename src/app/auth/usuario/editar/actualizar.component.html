@@ -1,69 +1,96 @@
 <div class="container" *ngIf="usuario">
     <div class="row mt-5">
         <div class="col-md-4 mx-auto">
-            <form (ngSubmit)="onActualizar()" novalidate #f="ngForm">
-                
-                <div class="form-group">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido"
-                    [(ngModel)]="usuario.apellido" required>
-                </div>
 
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre"
-                    [(ngModel)]="usuario.nombre" required>
-                </div>
+            <div class="row" > 
 
-                <div class="form-group">
-                    <label for="nombreUsuario">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
-                    [(ngModel)]="usuario.nombreUsuario" required>
-                </div>
+                <div class="col-md-39">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card shadow mb-lg-10">
+                                <div class="card-header bg-primary text-white">
+                                    <i class="bi bi-card-text me-1"></i>
+                                    Actualizar Usuario
+                                </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email"
-                    [(ngModel)]="usuario.email" required>
-                </div>
 
-                <div class="form-group">
+                                        <div class="card-body">
+                                            <form (ngSubmit)="onActualizar()" novalidate #f="ngForm">
+                                                
+                                                <div class="form-group">
+                                                    <label for="apellido">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellido" name="apellido"
+                                                    [(ngModel)]="usuario.apellido" required>
+                                                </div>
 
-                    <div class="card shadow">
-                        <div class="card-header bg-secondary text-white"> 
-                            <i class="bi bi-toggle-on me-1"></i>
-                            Editar Roles </div>
-                        <div class="card-body">
-                            <!-- roles -->
-                        <!-- group roles-->
-                        <div class="form-group mt-2">
-                            <div class="form-check form-switch mt-2" *ngFor="let rol of roles; let i = index; ">
-                                <input class="form-check-input" type="checkbox" id={{roles[i].name}} [(ngModel)] = "roles[i].active"  [disabled]="roles[i].name=='User'">
-                                <label class="form-check-label fw-bold" for={{roles[i].name}} id={{roles[i].name}}>{{rol.name}}</label>
-                                <p>{{rol.description}}</p>
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                                    [(ngModel)]="usuario.nombre" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="dni">DNI</label>
+                                                    <input type="text" class="form-control" id="dni" name="dni"
+                                                    [(ngModel)]="usuario.dni" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="nombreUsuario">Nombre de Usuario</label>
+                                                    <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
+                                                    [(ngModel)]="usuario.nombreUsuario" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" class="form-control" id="email" name="email"
+                                                    [(ngModel)]="usuario.email" required>
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <div class="card shadow">
+                                                        <div class="card-header bg-secondary text-white"> 
+                                                            <i class="bi bi-toggle-on me-1"></i>
+                                                            Editar Roles </div>
+                                                        <div class="card-body">
+                                                            <!-- roles -->
+                                                        <!-- group roles-->
+                                                        <div class="form-group mt-2">
+                                                            <div class="form-check form-switch mt-2" *ngFor="let rol of roles; let i = index; ">
+                                                                <input class="form-check-input" type="checkbox" id={{roles[i].name}} [(ngModel)] = "roles[i].active"  [disabled]="roles[i].name=='User'">
+                                                                <label class="form-check-label fw-bold" for={{roles[i].name}} id={{roles[i].name}}>{{rol.name}}</label>
+                                                                <p>{{rol.description}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- fin roles-->
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-5 ">
+                                                    <div class="row ">
+                                                        <div class="col-12">
+                                                            
+
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                
+                                                <button class=" btn btn-outline-success btn-block" [disabled]="!f.valid"> Alcualizar</button>
+                                                <button class="btn btn-outline-primary btn-block" routerLink="/usuario">
+                                                    <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- fin roles-->
-                        </div>
                     </div>
-                </div>
-
-
-                <div class="col-md-5 ">
-                    <div class="row ">
-                        <div class="col-12">
-                            
-
-                        </div>
-                    </div>
-                    
-				</div>
-
-                
-                <button class=" btn btn-outline-success btn-block" [disabled]="!f.valid"> Alcualizar</button>
-                <button class="btn btn-outline-primary btn-block" routerLink="/usuario">
-                    <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
-            </form>
         </div>
     </div>
 </div>

@@ -3,13 +3,14 @@
     
     <div *ngIf="isLogged; else loggedOut"><h2>Bienvenido</h2>
 
-        <h1 *ngIf="nombreUsuario" class="display-4">Hello, {{nombreUsuario}}</h1>
-        <img src="https://agroandina.com.ar/sitiowp/wp-content/uploads/2017/04/logo.png" alt="">
+        <!-- <h1 *ngIf="nombreUsuario" class="display-4">Hello, {{nombreUsuario}}</h1> -->
+        <img src="assets/imagen/agroandina.png"  alt="...">
+        
 
 
     </div>
     <ng-template #loggedOut><h2> No has iniciado sesión</h2>
-        <img src="https://agroandina.com.ar/sitiowp/wp-content/uploads/2017/04/logo.png" alt="">
+        <img src="assets/imagen/agroandina.png"  alt="...">
     </ng-template>
     
     

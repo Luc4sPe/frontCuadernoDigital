@@ -68,7 +68,7 @@
        
 
           
-          <td *ngIf="isAdmin"><button class="btn btn-outline-primary" routerLink="/usuario/obtner/{{usuario.id}}"><i class="far fa-eye"></i> Ver</button></td>
+          <td *ngIf="isAdmin"><button class="btn btn-outline-primary" routerLink="/usuario/obtner/{{usuario.id}}"><i class="fas fa-eye"></i> Ver</button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/usuario/actualizar/{{usuario.id}}"><i class="far fa-edit"></i> Editar</button></td> 
            <td *ngIf="isAdmin && usuario.estadoActivo == true"><button class="btn btn-outline-danger"   (click) ="bajaUsuario(usuario.id)"  ><i class="far fa-trash-alt"></i> Baja</button></td>  
            <td *ngIf="isAdmin && usuario.estadoActivo == false"><button class="btn btn-outline-success"   (click) ="altaUsuario(usuario.id)"  ><i class="fas fa-user-plus"></i> Alta</button></td> 

@@ -14,7 +14,8 @@
 
               <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
                 <div class="form-group" id="user-group">
-                  <label for="nombreUsuario">Nombre de Usuario</label>   
+                  <label for="nombreUsuario">Nombre de Usuario</label>
+                     
                   <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
                   placeholder="Usuario o Email" [(ngModel)]="nombreUsuario" required>
 

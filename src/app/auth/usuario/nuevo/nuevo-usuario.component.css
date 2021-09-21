@@ -1,0 +1,44 @@
+/* form {
+	width: 25em;
+}
+
+div {
+	margin: .25em;
+}
+
+label {
+	display: inline-block;
+	width: 6em;
+}
+
+input {
+	width: 12em;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+} */
+
+
+
+
+
+
+/* 
+input:valid {
+    background-color: #BBFFF0;
+  } */
+  
+  .check-ok {
+    color: lime;
+  }
+  
+  input:invalid ~ .check-ok {
+    display: none;
+  }
+  
+  input:valid ~ .check-ok {
+    display: inline;
+  }
+  
