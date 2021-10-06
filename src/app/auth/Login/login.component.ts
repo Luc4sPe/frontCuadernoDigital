@@ -2,7 +2,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoginUsuario } from '../../modelo/login-usuario';
+import { LoginUsuario } from '../../dto/login-usuario';
 import { AuthService } from '../../service/auth.service';
 import { TokenService } from '../../service/token.service';
 

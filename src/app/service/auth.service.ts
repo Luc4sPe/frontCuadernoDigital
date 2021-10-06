@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NuevoUsuario } from '../modelo/nuevo-usuario';
+import { NuevoUsuario } from '../dto/nuevo-usuario';
 import { Observable } from 'rxjs';
-import { LoginUsuario } from '../modelo/login-usuario';
-import { JwtDto } from '../modelo/jwt-dto';
-import { Usuario } from '../modelo/usuario';
+import { LoginUsuario } from '../dto/login-usuario';
+import { JwtDto } from '../dto/jwt-dto';
+import { Usuario } from '../dto/usuario';
 
 @Injectable({
   providedIn: 'root'

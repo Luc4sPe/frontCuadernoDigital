@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ChangePasswordDTO } from '../modelo/change-password-dto';
-import { EmailValuesDTO } from '../modelo/email-values-dto';
+import { ChangePasswordDTO } from '../dto/change-password-dto';
+import { EmailValuesDTO } from '../dto/email-values-dto';
 
 @Injectable({
   providedIn: 'root'

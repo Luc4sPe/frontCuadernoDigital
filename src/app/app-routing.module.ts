@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'usuario', 
     loadChildren: () => import('./auth/usuario/usuario.module').then(m => m.UsuarioModule)
   },
-  {path: '**', redirectTo: '', pathMatch: 'full'}
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({

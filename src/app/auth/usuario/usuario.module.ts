@@ -25,7 +25,7 @@ import { CambioPasswordComponent } from './restablecerPassword/cambio-password/c
     CambioPasswordComponent,
     
   ],
-  
+   
   imports: [
     CommonModule,
     UsuarioRoutingModule,

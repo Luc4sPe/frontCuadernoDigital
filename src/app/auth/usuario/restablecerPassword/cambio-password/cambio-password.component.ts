@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ChangePasswordDTO } from 'src/app/modelo/change-password-dto';
+import { ChangePasswordDTO } from 'src/app/dto/change-password-dto';
 import { EmailPasswordService } from 'src/app/service/email-password.service';
 
 @Component({
