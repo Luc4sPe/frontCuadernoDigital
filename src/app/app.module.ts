@@ -23,6 +23,7 @@ import { ListaComponent } from './auth/usuario/listar/lista.component';
     MenuComponent,
     IndexComponent,
     ListaComponent
+   
   ],
   imports: [
     BrowserModule,
