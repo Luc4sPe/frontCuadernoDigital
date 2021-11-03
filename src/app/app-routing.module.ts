@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'usuario', 
     loadChildren: () => import('./auth/usuario/usuario.module').then(m => m.UsuarioModule)
   },
+  {
+    path: 'riego',
+    loadChildren:() => import('./ABM/riego/riego.module').then(m => m.RiegoModule)
+  },
   {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 

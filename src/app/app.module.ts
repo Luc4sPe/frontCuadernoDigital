@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { interceptorProvider } from './interceptors/cul-interceptor.service';
 
 import{HttpClientModule} from '@angular/common/http';
 import{FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,10 @@ import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
 import { ListaComponent } from './auth/usuario/listar/lista.component';
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +27,7 @@ import { ListaComponent } from './auth/usuario/listar/lista.component';
     MenuComponent,
     IndexComponent,
     ListaComponent
+    
    
   ],
   imports: [
@@ -35,7 +40,7 @@ import { ListaComponent } from './auth/usuario/listar/lista.component';
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

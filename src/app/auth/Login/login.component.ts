@@ -2,6 +2,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 import { LoginUsuario } from '../../dto/login-usuario';
 import { AuthService } from '../../service/auth.service';
 import { TokenService } from '../../service/token.service';
@@ -54,11 +55,21 @@ export class LoginComponent implements OnInit {
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
 
-        this.roles=data.authorities;
+        //this.roles=data.authorities;
+        this.roles=this.tokenService.getAuthorities();
         this.pressLogin.emit(true);
-        this.toastr.success('Bienvenido ' , '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        // this.toastr.success('Bienvenido '+data.nombreUsuario , 'ok', {
+        //   timeOut: 3000, positionClass: 'toast-top-center'
+        // });
+
+        
+        Swal.fire({
+          icon : 'success',
+          title : 'Bienvenido',
+          text : 'Iniciaste sesion correctamente'
+
+        })
+
         this.router.navigate(['/']);
       },
       err =>{

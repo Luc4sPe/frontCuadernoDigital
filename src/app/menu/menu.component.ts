@@ -11,6 +11,8 @@ export class MenuComponent implements OnInit {
   roles: string[]=[];
   isAdmin = false;
   isLogged = false;
+  isEncargadoAgri = false;
+  isProductor = false;
 
   constructor(private tokenService: TokenService) { }
 
@@ -21,6 +23,16 @@ export class MenuComponent implements OnInit {
       if(rol === 'ROLE_ADMIN'){
         this.isAdmin=true;
       } 
+
+      if(rol=== 'ROLE_ENCARGADO_AGRICOLA'){
+        this.isEncargadoAgri=true;
+      }
+
+      if(rol=== 'PRODUCTOR'){
+
+          this.isProductor=true;
+
+      }
     });
 
     if (this.tokenService.getToken()) {

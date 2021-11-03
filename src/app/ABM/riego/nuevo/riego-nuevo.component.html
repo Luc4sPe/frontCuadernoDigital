@@ -1,0 +1,209 @@
+
+<body style="background-color:gray;">
+    
+ <div class="container">
+    
+    <div class="row ">
+		<div class="col-md-12 mt-2">
+
+              <div class="container d-flex justify-content-center ">  
+                
+                     <div class="card-header">  
+                            <h3 class="text-center">Formulario</h3>
+
+                              <!-- <img src="assets/imagen/nuevo.png" class="card-img-top" alt="...">   -->
+
+                            <div class="row" > 
+
+                                <div class="col-md-125">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card shadow mb-lg-4">
+                                                <div class="card-header bg-primary text-white">
+                                                    <i class="bi bi-card-text me-1"></i>
+                                                    Nuevo Riego
+                                                </div>
+
+
+        
+                                                <div class="card-body">
+        
+                                                    <form #formRiego = "ngForm" (ngSubmit)= "nuevoRiego(formRiego)" novalidate> 
+        
+                                                                 <!--group duracionEnHoras -->
+                                                        <div class="form-group">
+                                                            <label for="form-label">Duracion en Horas</label> 
+                                                            <input type="text" class="form-control mt-2" name ="duracionEnHoras"id="duracionEnHoras" placeholder="Horas" 
+                                                            [(ngModel)]="duracionEnHoras" #dura = "ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required>  
+                                                             <i class="fa fa-check check-ok"></i>
+                                                            
+                                                            <div class="alert-danger rounded mt-2" *ngIf="dura.invalid && (dura.dirty || dura.touched)">
+                                                                <div *ngIf="dura.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    Horario es requerido
+                                                                </div>
+                                                                <div *ngIf="dura.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        formato requerido HH:MM 24h los segundos son opcionales 
+                                                                </div>
+                                                            </div>                                                             
+                                                        </div>
+
+                                                           <!--group MilimetrosAplicados -->
+                                                           <div class="form-group">
+                                                            <label for="form-label">Milimetros Aplicados</label>
+                                                            <input type="text" class="form-control mt-2" name ="milimetrosAplicados"id="milimetrosAplicados" placeholder="Milimetros" 
+                                                            [(ngModel)]="milimetrosAplicados" #mili = "ngModel" pattern="^[0-9 .]{2,15}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                                                                <div *ngIf="mili.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    Los Milimetros Aplicados son requeridos
+                                                                </div>
+                                                                 <div *ngIf="mili.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten números
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+
+                                                        <!--group  NumeroDeCuadro -->
+                                                        <div class="form-group">
+                                                            <label for="form-label"> Número de Cuadro</label>
+                                                            <input type="text" class="form-control mt-2" name =" numeroDeCuadro"id=" numeroDeCuadro" placeholder=" Número" 
+                                                            [(ngModel)]=" numeroDeCuadro" #num = "ngModel" pattern="^[0-9 .]{1,15}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="num.invalid && (num.dirty || num.touched)">
+                                                                <div *ngIf="num.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    El Número de Cuadro es requeridos
+                                                                </div>
+                                                                 <div *ngIf="num.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten números
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+
+                                                         <!--group Observacion del Productor -->
+                                                         <div class="form-group">
+                                                            <label for="form-label">Observacion del Productor</label>
+                                                            <input type="text" class="form-control mt-2" name ="observacionProductor"id="observacionProductor" placeholder="Observación" 
+                                                            [(ngModel)]="observacionProductor" #obs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="obs.invalid && (obs.dirty || obs.touched)">
+                                                                <div *ngIf="obs.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    La Observacion es requerida
+                                                                </div>
+                                                                <div *ngIf="obs.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten letras
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                         <!--group  Semana Aplicada -->
+                                                         <div class="form-group">
+                                                            <label for="form-label"> Semana Aplicada</label>
+                                                            <input type="text" class="form-control mt-2" name =" semanaAplicada"id=" semanaAplicada" placeholder=" Número" 
+                                                            [(ngModel)]=" semanaAplicada" #sem = "ngModel" pattern="^[0-9 .]{1,15}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="sem.invalid && (sem.dirty || sem.touched)">
+                                                                <div *ngIf="sem.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    El N° de la semana es requerida
+                                                                </div>
+                                                                 <div *ngIf="sem.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten números
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+
+                                                         <!--group  semana de Transplante -->
+                                                         <div class="form-group">
+                                                            <label for="form-label"> Semana de Transplante</label>
+                                                            <input type="text" class="form-control mt-2" name =" semanaTransplante"id=" semanaTransplante" placeholder=" Número" 
+                                                            [(ngModel)]=" semanaTransplante" #semTra = "ngModel" pattern="^[0-9 .]{1,15}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="semTra.invalid && (semTra.dirty || semTra.touched)">
+                                                                <div *ngIf="semTra.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    El N° de la semana es requerida
+                                                                </div>
+                                                                 <div *ngIf="semTra.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten números
+                                                                </div> 
+                                                            </div>
+                                                        </div>
+
+                                                         <!--group Nombre de Usuario -->
+                                                         <div class="form-group">
+                                                            <label for="form-label">Nombre de Usuario</label>
+                                                            <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" placeholder="Nombre de Usuario" 
+                                                            [(ngModel)]="nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
+                                                            <i class="fa fa-check check-ok"></i>
+                                                            <div class="alert-danger rounded mt-2" *ngIf="NomUs.invalid && (NomUs.dirty || NomUs.touched)">
+                                                                <div *ngIf="NomUs.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    El Nombre de Usuario es requerido
+                                                                </div>
+                                                                <div *ngIf="NomUs.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten letras
+                                                                </div>
+                                                            </div>
+                                                        </div>
+       
+                                                        <div class="card-footer text-center mt-3">
+                                                            <button class="btn btn-outline-success btn-block" [disabled]="!formRiego.valid" style="margin-left: 10px"  ><i class="far fa-save"></i> Guardar</button>
+                                                            <button routerLink="/riego" class="btn btn-outline-info" style="margin-left: 10px"><i class="fas fa-undo-alt"></i> Volver</button>
+                                                          
+                                                
+                                                        </div>                                                               
+                                                        
+                                                        
+                                                    </form>
+
+                                                    
+        
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                               
+        
+                            </div>
+
+                    </div>  
+
+                
+
+               
+                
+             </div>   
+        </div>
+    </div>  
+
+        
+       
+   
+    
+ </div>
+
+    
+</body>    
+
+       
+
+    
