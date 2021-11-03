@@ -85,10 +85,10 @@
                                                            </div>
    
                                                             <!--group Observacion del Productor -->
-                                                            <div class="form-group">
-                                                               <label for="form-label">Observacion del Productor</label>
-                                                               <input type="text" class="form-control mt-2" value="riego.observacionProductor" name ="observacionProductor"id="observacionProductor" placeholder="Observación" 
-                                                               [(ngModel)]="riego.observacionProductor" #obs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
+                                                             <div class="form-group">
+                                                               <label for="form-label">Observacion </label>
+                                                               <input type="text" class="form-control mt-2" value="riego.observacionAsesor" name ="observacionAsesor"id="observacionAsesor" placeholder="Observación" 
+                                                               [(ngModel)]="riego.observacionAsesor" #obs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
                                                                
                                                                <div class="alert-danger rounded mt-2" *ngIf="obs.invalid && (obs.dirty || obs.touched)">
                                                                    <div *ngIf="obs.errors?.required">
@@ -100,7 +100,7 @@
                                                                            Solo se permiten letras
                                                                    </div>
                                                                </div>
-                                                           </div>
+                                                           </div> 
    
                                                             <!--group  Semana Aplicada -->
                                                             <div class="form-group">

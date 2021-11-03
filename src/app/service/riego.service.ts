@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { EditarRiego } from '../dto/editar-riego';
 import { RiegoDto } from '../dto/riego-dto';
 import { Riego } from '../modelo/riego';
 
@@ -29,7 +30,7 @@ export class RiegoService {
 
   }
 
-  public actualizarRiego(id: number, editarRiego: RiegoDto ): Observable<any> {
+  public actualizarRiego(id: number, editarRiego: EditarRiego ): Observable<any> {
     return this.httpCliente.put<any>(this.riegoURL + `update/${id}`, editarRiego);
   }
 

@@ -28,7 +28,7 @@ export class RiegoNuevoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nuevoRiego(form: NgForm){
+  nuevoRiego(form: NgForm): void{
 
     this.nuevoRiegoDto = new RiegoDto(
       this.duracionEnHoras, this.milimetrosAplicados,

@@ -16,15 +16,15 @@
             <a class="nav-link" routerLink="/"><i class="fas fa-home"></i> Inicio</a>
             </li>
             <li class="nav-item" *ngIf="isLogged && isAdmin">
-                <a class="nav-link" routerLink="/usuario/nuevo"><i class="fas fa-plus-circle"></i> Nuevo Usuario</a>
+                <a class="nav-link" routerLink=""><i class="far fa-list-alt"></i> Agroquímicos</a>
             </li>
 
             <li class="nav-item" *ngIf="isLogged && isAdmin">
-            <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Lista</a>
+            <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Usuarios</a>
             </li>
 
             <li class="nav-item" *ngIf="isLogged && isAdmin || isProductor || isEncargadoAgri">
-                <a class="nav-link" routerLink="/riego"><i class="far fa-list-alt"></i> Lista Riego</a>
+                <a class="nav-link" routerLink="/riego"><i class="far fa-list-alt"></i>Riegos</a>
                 </li>
 
             <li class="nav-item" *ngIf="!isLogged">

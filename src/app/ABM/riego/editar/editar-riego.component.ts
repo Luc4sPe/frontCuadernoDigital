@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { EditarRiego } from 'src/app/dto/editar-riego';
 import { RiegoDto } from 'src/app/dto/riego-dto';
+
 import { Riego } from 'src/app/modelo/riego';
 import { RiegoService } from 'src/app/service/riego.service';
 import Swal from 'sweetalert2';
@@ -65,11 +66,11 @@ export class EditarRiegoComponent implements OnInit {
 
      const id= this.rutaActiva.snapshot.params.id;
 
-      const editarRiego = new RiegoDto(this.riego.duracionEnHoras,this.riego.milimetrosAplicados,
-      this.riego.numeroDeCuadro,this.riego.observacionProductor,this.riego.semanaAplicada,this.riego.semanaTransplante,
-      this.riego.nombreUsuario.nombreUsuario);
+      const editar = new EditarRiego (this.riego.duracionEnHoras,this.riego.milimetrosAplicados,
+        this.riego.numeroDeCuadro,this.riego.observacionProductor,this.riego.semanaAplicada,this.riego.semanaTransplante,
+        this.riego.nombreUsuario.nombreUsuario);
 
-       this.riegoService.actualizarRiego(id,editarRiego).subscribe(
+       this.riegoService.actualizarRiego(id,editar).subscribe(
         data =>{
           this.riego=data;
           //Swal.fire('Riego actualizado correctamente', '', 'success'); 
