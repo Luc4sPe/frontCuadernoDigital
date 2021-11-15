@@ -14,12 +14,12 @@ import { TokenService } from '../../service/token.service';
 })
 export class LoginComponent implements OnInit {
   
-  @Output() pressLogin = new EventEmitter<boolean>();
+  //@Output() pressLogin = new EventEmitter<boolean>();
 
 
   isLogged = false;
   isLoginFail = false;
-  loginUsuario = new LoginUsuario('','');
+  loginUsuario: LoginUsuario | any;
   nombreUsuario: string='';
   password: string='';
   roles: string[]=[];
@@ -52,20 +52,20 @@ export class LoginComponent implements OnInit {
 
          //almacenamos en sessionStorage
         this.tokenService.setToken(data.token);
-        this.tokenService.setUserName(data.nombreUsuario);
+        this.tokenService.setUserName(this.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
 
-        //this.roles=data.authorities;
-        this.roles=this.tokenService.getAuthorities();
-        this.pressLogin.emit(true);
-        // this.toastr.success('Bienvenido '+data.nombreUsuario , 'ok', {
-        //   timeOut: 3000, positionClass: 'toast-top-center'
+        this.roles=data.authorities;
+        //this.roles=this.tokenService.getAuthorities();
+       // this.pressLogin.emit(true);
+       // this.toastr.success('Bienvenido '+this.nombreUsuario , 'ok', {
+         //  timeOut: 3000, positionClass: 'toast-top-center'
         // });
 
         
         Swal.fire({
           icon : 'success',
-          title : 'Bienvenido',
+          title : 'Bienvenido ' + this.nombreUsuario,
           text : 'Iniciaste sesion correctamente'
 
         })

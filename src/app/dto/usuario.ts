@@ -6,7 +6,8 @@ export class Usuario {
     nombreUsuario: string;
     email: string;
     password: string;
-    roles: string[]=[];
+   // roles: string[]=[];
+    authorities:string[] = [];
     estadoActivo: boolean = false;
     fechaDeAlta:Date = new Date();
     fechaModificacion:Date = new Date();

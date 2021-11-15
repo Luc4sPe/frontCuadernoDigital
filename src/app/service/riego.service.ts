@@ -21,6 +21,14 @@ export class RiegoService {
     return this.httpCliente.get<Riego[]>(this.riegoURL + 'lista');
   }
 
+   public listarRiegoPorUsuario(nombreUsuario: string): Observable<Riego[]>{
+    return this.httpCliente.get<Riego[]>(this.riegoURL +  `riegoPorNombreUsuario/${nombreUsuario}`);
+  } 
+
+   public listadoRiegoDeUnUsuarioID(idUsuario: number): Observable<Riego[]>{
+    return this.httpCliente.get<Riego[]>(this.riegoURL +  `riegoPorUsuario/${idUsuario}`);
+  } 
+
   public nuevo(nuevoRiego: RiegoDto): Observable<any>{
     return this.httpCliente.post<any>(this.riegoURL+'nuevoRiego',nuevoRiego);
   }

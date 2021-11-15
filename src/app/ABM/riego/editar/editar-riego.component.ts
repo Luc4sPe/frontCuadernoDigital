@@ -28,6 +28,7 @@ export class EditarRiegoComponent implements OnInit {
 
   ngOnInit(): void {
      const id= this.rutaActiva.snapshot.params.id;
+     
     this.obtenerRiego(id);
   }
  

@@ -5,19 +5,22 @@ import { RiegoRoutingModule } from './riego-routing.module';
 import { RiegoNuevoComponent } from './nuevo/riego-nuevo.component';
 import { EditarRiegoComponent } from './editar/editar-riego.component';
 import { ListarRiegoComponent } from './listar/listar-riego.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarRiegosComponent } from './listarRiegoXUsuarios/listar-riegos.component';
 
 
 @NgModule({
   declarations: [
     RiegoNuevoComponent,
     EditarRiegoComponent,
-    ListarRiegoComponent
+    ListarRiegoComponent,
+    ListarRiegosComponent
   ],
   imports: [
     CommonModule,
     RiegoRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
   ]
 })

@@ -60,4 +60,8 @@ export class ListarRiegoComponent implements OnInit {
     )
   }
 
+  volver(): void {
+    this.router.navigate(['/']);
+  }
+
 }
