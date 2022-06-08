@@ -19,12 +19,12 @@
                 <a class="nav-link" routerLink=""><i class="far fa-list-alt"></i> Agroquímicos</a>
             </li>
 
-          <!--   <li class="nav-item" *ngIf="isLogged && isAdmin">
+             <li class="nav-item" *ngIf="isLogged && isAdmin">
             <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Usuarios</a>
-            </li> -->
+            </li> 
 
              <!-- menu usuarios -->
-             <li class="nav-item dropdown" *ngIf="isAdmin">
+            <!--  <li class="nav-item dropdown" *ngIf="isAdmin">
                 <a class="nav-link dropdown-toggle" id="menuDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Usuarios
@@ -33,7 +33,7 @@
                     <li><a class="dropdown-item" routerLink="/usuario">Nuevo usuario</a></li>
                     <li><a class="dropdown-item" routerLink="/usuarios/lista">Listado Usuarios</a></li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="nav-item" *ngIf="isLogged && isAdmin || isProductor || isEncargadoAgri">
                 <a class="nav-link" routerLink="/riego"><i class="far fa-list-alt"></i>Riegos</a>

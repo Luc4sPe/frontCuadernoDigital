@@ -41,6 +41,13 @@ export class ActualizarComponent implements OnInit {
     active: false,
     description:'A de definir',
   },
+
+  {
+    name:'Gerente',
+    active: false,
+    description:'',
+    
+  },
 ]
 
   

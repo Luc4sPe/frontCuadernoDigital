@@ -9,7 +9,7 @@ import { Usuario } from '../dto/usuario';
 })
 export class UsuarioService {
 
-  usuarioURL = 'http://localhost:8080/auth/';
+  usuarioURL = 'http://localhost:8080/usuario/';
 
   constructor(private httpCliente: HttpClient) { }
 

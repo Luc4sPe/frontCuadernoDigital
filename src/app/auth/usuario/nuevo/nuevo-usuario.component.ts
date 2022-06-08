@@ -39,7 +39,7 @@ export class NuevoUsuarioComponent implements OnInit {
   {
     name:'User',
     active: false,
-    description:'Rol por defecto',
+    description:'',
   },
 
   {
@@ -52,6 +52,15 @@ export class NuevoUsuarioComponent implements OnInit {
     name:'Productor',
     active: false,
     description:'',
+
+    
+  },
+  {
+    name:'Gerente',
+    active: false,
+    description:'',
+
+    
   },
 ]
   
