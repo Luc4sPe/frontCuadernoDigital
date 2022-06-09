@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   authURL: 'http://localhost:8080/auth/',
   changePasswordURL: 'http://localhost:8080/email-password',
-  riegoURL: 'http://localhost:8080/riego/'
+  riegoURL: 'http://localhost:8080/riego/',
+  logsURL: 'http://localhost:8080/logs/'
 
 };
 
