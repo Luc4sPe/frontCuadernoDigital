@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { interceptorProvider } from './interceptors/cul-interceptor.service';
+import { interceptorProvider } from './Core/interceptors/cul-interceptor.service';
 
 import{HttpClientModule} from '@angular/common/http';
 import{FormsModule,ReactiveFormsModule } from '@angular/forms';

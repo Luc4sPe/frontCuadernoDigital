@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditarRiego } from 'src/app/dto/editar-riego';
-import { RiegoDto } from 'src/app/dto/riego-dto';
+import { EditarRiego } from 'src/app/Core/dto/editar-riego';
+import { RiegoDto } from 'src/app/Core/dto/riego-dto';
 
-import { Riego } from 'src/app/modelo/riego';
+import { Riego } from 'src/app/Core/modelo/riego';
 import { RiegoService } from 'src/app/service/riego.service';
 import Swal from 'sweetalert2';
 

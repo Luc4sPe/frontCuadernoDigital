@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RiegoDto } from 'src/app/dto/riego-dto';
+import { RiegoDto } from 'src/app/Core/dto/riego-dto';
 import { RiegoService } from 'src/app/service/riego.service';
 import Swal from 'sweetalert2';
 

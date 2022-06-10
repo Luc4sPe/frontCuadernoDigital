@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EditarUsuariosDto } from '../dto/editar-usuarios-dto';
-import { NuevoUsuario } from '../dto/nuevo-usuario';
-import { Usuario } from '../dto/usuario';
+import { EditarUsuariosDto } from '../Core/dto/editar-usuarios-dto';
+import { NuevoUsuario } from '../Core/dto/nuevo-usuario';
+import { Usuario } from '../Core/dto/usuario';
 
 @Injectable({
   providedIn: 'root'

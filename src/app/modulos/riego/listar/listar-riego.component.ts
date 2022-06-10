@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/dto/usuario';
-import { Riego } from 'src/app/modelo/riego';
+import { Usuario } from 'src/app/Core/dto/usuario';
+import { Riego } from 'src/app/Core/modelo/riego';
 import { RiegoService } from 'src/app/service/riego.service';
 import { TokenService } from 'src/app/service/token.service';
 

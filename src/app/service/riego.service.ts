@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { EditarRiego } from '../dto/editar-riego';
-import { RiegoDto } from '../dto/riego-dto';
-import { Riego } from '../modelo/riego';
+import { EditarRiego } from '../Core/dto/editar-riego';
+import { RiegoDto } from '../Core/dto/riego-dto';
+import { Riego } from '../Core/modelo/riego';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EmailValuesDTO } from 'src/app/dto/email-values-dto';
+import { EmailValuesDTO } from 'src/app/Core/dto/email-values-dto';
 import { EmailPasswordService } from 'src/app/service/email-password.service';
 
 @Component({
