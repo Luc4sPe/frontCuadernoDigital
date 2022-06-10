@@ -14,7 +14,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './auth/Login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
-import { ListaComponent } from './auth/usuario/listar/lista.component';
+//import { ListaComponent } from './modulos/usuario/listar/lista.component';
+import { ListaComponent } from './modulos/usuario/listar/lista.component';
+
 
 
 

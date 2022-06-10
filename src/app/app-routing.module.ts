@@ -8,11 +8,11 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {
     path: 'usuario', 
-    loadChildren: () => import('./auth/usuario/usuario.module').then(m => m.UsuarioModule)
+    loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
   },
   {
     path: 'riego',
-    loadChildren:() => import('./ABM/riego/riego.module').then(m => m.RiegoModule)
+    loadChildren:() => import('./modulos/riego/riego.module').then(m => m.RiegoModule)
   },
   {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
