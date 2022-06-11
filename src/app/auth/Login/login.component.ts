@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       this.isLogged=true;
       this.isLoginFail=false;
       this.roles=this.tokenService.getAuthorities();
+     // this.router.navigate(['/']);
     }
   }
 
@@ -46,23 +47,15 @@ export class LoginComponent implements OnInit {
     this.loginUsuario= new LoginUsuario(this.nombreUsuario,this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
+        
+         //almacenamos en sessionStorage
+        this.tokenService.setToken(data.token);
 
         this.isLogged=true;  
         this.isLoginFail = false;
 
-         //almacenamos en sessionStorage
-        this.tokenService.setToken(data.token);
-        this.tokenService.setUserName(this.nombreUsuario);
-        this.tokenService.setAuthorities(data.authorities);
-
-        this.roles=data.authorities;
-        //this.roles=this.tokenService.getAuthorities();
-       // this.pressLogin.emit(true);
-       // this.toastr.success('Bienvenido '+this.nombreUsuario , 'ok', {
-         //  timeOut: 3000, positionClass: 'toast-top-center'
-        // });
-
-        
+       // this.roles=data.authorities;
+               
         Swal.fire({
           icon : 'success',
           title : 'Bienvenido ' + this.nombreUsuario,
@@ -70,6 +63,7 @@ export class LoginComponent implements OnInit {
 
         })
 
+        this.roles = this.tokenService.getAuthorities();
         this.router.navigate(['/']);
       },
       err =>{

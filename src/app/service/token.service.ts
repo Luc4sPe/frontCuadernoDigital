@@ -1,9 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
+//Constantes almacenada en el navegador, en session storage.
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUserName';
-const AUTHORITIES_KEY = 'AuthAuthorities';
+
+//Se corrigio problema de vulnerabilidad 
+//const USERNAME_KEY = 'AuthUserName';
+//const AUTHORITIES_KEY = 'AuthAuthorities';
 
 
 @Injectable({
@@ -13,7 +18,7 @@ export class TokenService {
 
   roles: Array<string> = [];
 
-  constructor() { }
+  constructor(private router: Router, private httpCliente: HttpClient) { }
 
   public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -23,11 +28,134 @@ export class TokenService {
   public getToken(): string{
     return sessionStorage.getItem(TOKEN_KEY)!;       
   }
+/*
+  public getToken():string | null {
+    return window.localStorage.getItem(TOKEN_KEY);
+  }
+*/
+  public isTokenExpired():boolean {
+    const token = this.getToken();
+    const payload: any = token?.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const expiracion = values.exp;
+    let fechaActual = new Date().getTime() / 1000;
+    if(expiracion < fechaActual){
+      return true
+    }
+    return false;
+  }
 
+  public isLogged():boolean{
+    if(this.getToken()){
+      return true
+    }
+    return false;
+  }
+
+  public getUserName():string | null {
+    if(!this.isLogged()){
+      return null;
+    }
+    const token = this.getToken();
+    const payload: any = token?.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const userName = values.sub;
+    
+    return userName;
+  }
+
+  public getAuthorities():string[]{
+    if(!this.isLogged()){
+      return [];
+    }
+    const token = this.getToken();
+    const payload: any = token?.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    
+    return roles;
+
+  }
+
+  public isAdmin(): boolean{
+    if(!this.isLogged()){
+      return false;
+    }
+    const roles = this.getAuthorities();
+    
+    if(!roles.includes('ROLE_ADMIN')){
+      return false;
+    }
+    return true;
+  }
+
+  public isUser(): boolean{
+    if(!this.isLogged()){
+      return false;
+    }
+    const roles = this.getAuthorities();
+    
+    if(!roles.includes('ROLE_USER')){
+      return false;
+    }
+    return true
+  }
+
+
+  public isEncargadoAgricola(): boolean{
+    if(!this.isLogged()){
+      return false;
+    }
+    const roles = this.getAuthorities();
+
+    if(!roles.includes('ROLE_ENCARGADO_AGRICOLA')){
+      return false;
+    }
+    return true;
+  }
+
+  public isProductor(): boolean{
+    if(!this.isLogged()){
+      return false;
+    }
+    const roles = this.getAuthorities();
+
+    if(!roles.includes('ROLE_PRODUCTOR')){
+      return false;
+    }
+    return true;
+  }
+
+  public isGerente(): boolean{
+    if(!this.isLogged()){
+      return false;
+    }
+    const roles = this.getAuthorities();
+
+    if(!roles.includes('ROLE_GENRENTE')){
+      return false;
+    }
+    return true;
+  }
+
+
+
+
+
+
+
+
+
+
+  /* Se mejoro la seguridad 
   public setUserName(userName: string): void {
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, userName);
   }
+
 
   public getUserName(): string  {
     return sessionStorage.getItem(USERNAME_KEY)!;
@@ -49,6 +177,8 @@ export class TokenService {
     }
     return this.roles;
   }
+
+  */
 
   public logOut(): void {
     window.sessionStorage.clear();

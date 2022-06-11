@@ -12,10 +12,10 @@ import{FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './auth/Login/login.component';
-import { MenuComponent } from './menu/menu.component';
+
 import { IndexComponent } from './index/index.component';
-//import { ListaComponent } from './modulos/usuario/listar/lista.component';
 import { ListaComponent } from './modulos/usuario/listar/lista.component';
+
 
 
 
@@ -26,9 +26,9 @@ import { ListaComponent } from './modulos/usuario/listar/lista.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent,
+    
     IndexComponent,
-    ListaComponent
+    
     
    
   ],

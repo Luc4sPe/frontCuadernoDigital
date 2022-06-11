@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/router';
+import Swal from 'sweetalert2';
+import { Usuario } from '../Core/dto/usuario';
 import { TokenService } from '../service/token.service';
+import { UsuarioService } from '../service/usuario.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,17 +12,32 @@ import { TokenService } from '../service/token.service';
 })
 export class MenuComponent implements OnInit {
 
-  roles: string[]=[];
+  //roles: string[]=[];
+  nombreUsuario: any;
+  usuario: Usuario | any;
   isAdmin = false;
-  isLogged = false;
-  isEncargadoAgri = false;
-  isProductor = false;
+  isUser = true;
+ // isLogged = false;
 
-  constructor(private tokenService: TokenService) { }
+  isEncargadoAgricola = false;
+  isProductor = false;
+  isGerente = false;
+
+  constructor(private tokenService: TokenService, private route: Route, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
 
+  this.nombreUsuario =  this.tokenService.getUserName();
+  this.isAdmin = this.tokenService.isAdmin();
+  this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
+  this.isProductor = this.tokenService.isProductor();
+  this.isGerente = this.tokenService.isGerente();
+
+    
+    /*
+   
     this.roles=this.tokenService.getAuthorities();
+
     this.roles.forEach(rol =>{
       if(rol === 'ROLE_ADMIN'){
         this.isAdmin=true;
@@ -39,12 +58,18 @@ export class MenuComponent implements OnInit {
       this.isLogged = true;
     } else {
       this.isLogged = false;
-    }
+    }*/
   }
+  
 
   onLogOut(): void {
     this.tokenService.logOut();
-    window.location.reload();
+   // window.location.reload();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Cerraste sesion correctamente!'
+    })
   }
 
 }
