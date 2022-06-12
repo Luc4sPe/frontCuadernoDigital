@@ -17,9 +17,9 @@ export class AuthService {
 
   constructor(private httpCliente: HttpClient) { }
 
-  public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{
+ /*  public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{
     return this.httpCliente.post<any>(this.authURL+'nuevo',nuevoUsuario);
-  }
+  } */
   public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
     return this.httpCliente.post<JwtDto>(this.authURL+'login',loginUsuario);
   }
