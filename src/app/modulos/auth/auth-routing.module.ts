@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from 'src/app/Core/guards/login-guard';
+import { LoginComponent } from './auth/login.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: '', redirectTo: 'login' },
+      { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+      { path: '**', redirectTo: 'login' },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class AuthRoutingModule { }

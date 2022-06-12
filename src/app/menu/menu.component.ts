@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import { Route } from '@angular/router';
+=======
+
+>>>>>>> Stashed changes
 import Swal from 'sweetalert2';
 import { Usuario } from '../Core/dto/usuario';
 import { TokenService } from '../service/token.service';
@@ -12,6 +16,7 @@ import { UsuarioService } from '../service/usuario.service';
 })
 export class MenuComponent implements OnInit {
 
+<<<<<<< Updated upstream
   //roles: string[]=[];
   nombreUsuario: any;
   usuario: Usuario | any;
@@ -24,17 +29,42 @@ export class MenuComponent implements OnInit {
   isGerente = false;
 
   constructor(private tokenService: TokenService, private route: Route, private usuarioService: UsuarioService) { }
+=======
+  roles: string[]=[];
+  isLogged = false;
+  isEncargadoAgri = false;
+
+
+  nombreUsuario: any;
+  usuario: Usuario | any;
+  isAdmin = false;
+  isUser = false;
+  isEncargadoAgricola = false;
+  isProductor = false;
+  isGerente = false;
+  
+
+  constructor(private tokenService: TokenService, private usuarioService: UsuarioService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
 
   this.nombreUsuario =  this.tokenService.getUserName();
   this.isAdmin = this.tokenService.isAdmin();
+<<<<<<< Updated upstream
+=======
+  this.isUser = this.tokenService.isUser();
+>>>>>>> Stashed changes
   this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
   this.isProductor = this.tokenService.isProductor();
   this.isGerente = this.tokenService.isGerente();
 
     
+<<<<<<< Updated upstream
     /*
+=======
+    
+>>>>>>> Stashed changes
    
     this.roles=this.tokenService.getAuthorities();
 

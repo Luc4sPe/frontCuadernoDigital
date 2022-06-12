@@ -1,11 +1,11 @@
-
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginUsuario } from 'src/app/Core/dto/login-usuario';
+import { AuthService } from 'src/app/service/auth.service';
+import { TokenService } from 'src/app/service/token.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-import { LoginUsuario } from '../../Core/dto/login-usuario';
-import { AuthService } from '../../service/auth.service';
-import { TokenService } from '../../service/token.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,9 +13,6 @@ import { TokenService } from '../../service/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  //@Output() pressLogin = new EventEmitter<boolean>();
-
 
   isLogged = false;
   isLoginFail = false;
@@ -26,6 +23,7 @@ export class LoginComponent implements OnInit {
   errMsj: string='';
   hide:boolean = true;
 
+
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
@@ -34,27 +32,38 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     if(this.tokenService.getToken()){
       this.isLogged=true;
       this.isLoginFail=false;
       this.roles=this.tokenService.getAuthorities();
+<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
      // this.router.navigate(['/']);
+=======
+      this.router.navigate(['/index']);
+>>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
     }
   }
-
 
   onLogin(): void{
     this.loginUsuario= new LoginUsuario(this.nombreUsuario,this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         
+<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
          //almacenamos en sessionStorage
+=======
+         //almacenamos en localStorage
+>>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
         this.tokenService.setToken(data.token);
 
         this.isLogged=true;  
         this.isLoginFail = false;
+<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
 
        // this.roles=data.authorities;
+=======
+>>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
                
         Swal.fire({
           icon : 'success',
@@ -64,15 +73,22 @@ export class LoginComponent implements OnInit {
         })
 
         this.roles = this.tokenService.getAuthorities();
+<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
         this.router.navigate(['/']);
+=======
+        this.router.navigate(['/index']);
+>>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
       },
       err =>{
         this.isLogged=false;
-        
+        this.isLoginFail = true;
         this.errMsj= err.error.mensaje;
-        this.toastr.error(this.errMsj, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
-        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al iniciar sesion',
+          text: err.error.message
+        })
+        
         console.log(err.error.message);
         
       }

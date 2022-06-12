@@ -10,7 +10,7 @@ import { ObtnerComponent } from './detalle/obtner.component';
 import { ActualizarComponent } from './editar/actualizar.component';
 import { EnviarEmailComponent } from './restablecerPassword/enviar-email/enviar-email.component';
 import { CambioPasswordComponent } from './restablecerPassword/cambio-password/cambio-password.component';
-
+import { MenuModule } from 'src/app/menu/menu.module';
 
 
 
@@ -23,6 +23,7 @@ import { CambioPasswordComponent } from './restablecerPassword/cambio-password/c
     ActualizarComponent,
     EnviarEmailComponent,
     CambioPasswordComponent,
+    ListaComponent
     
   ],
    
@@ -30,7 +31,9 @@ import { CambioPasswordComponent } from './restablecerPassword/cambio-password/c
     CommonModule,
     UsuarioRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenuModule
+   
   ]
 })
 export class UsuarioModule { }
