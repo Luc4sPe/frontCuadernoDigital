@@ -21,59 +21,12 @@ export class TokenService {
   constructor(private router: Router, private httpCliente: HttpClient) { }
 
   public setToken(token: string): void {
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string{
-    return localStorage.getItem(TOKEN_KEY)!;       
-  }
-
-  public isTokenExpired():boolean {
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const expiracion = values.exp;
-    let fechaActual = new Date().getTime() / 1000;
-    if(expiracion < fechaActual){
-      return true
-    }
-    return false;
-  }
-
-  public isLogged():boolean{
-    if(this.getToken()){
-      return true
-    }
-    return false;
-  }
-
-  public getUserName():string | null {
-    if(!this.isLogged()){
-      return null;
-    }
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const userName = values.sub;
-    
-    return userName;
-  }
-
-  public getAuthorities():string[]{
-    if(!this.isLogged()){
-      return [];
-    }
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const roles = values.roles;
-    
-    return roles;
-
+    return sessionStorage.getItem(TOKEN_KEY)!;       
   }
 /*
   public getToken():string | null {
@@ -158,7 +111,6 @@ export class TokenService {
     }
     const roles = this.getAuthorities();
 
-<<<<<<< Updated upstream
     if(!roles.includes('ROLE_ENCARGADO_AGRICOLA')){
       return false;
     }
@@ -178,14 +130,10 @@ export class TokenService {
   }
 
   public isGerente(): boolean{
-=======
-  public isAdmin(): boolean{
->>>>>>> Stashed changes
     if(!this.isLogged()){
       return false;
     }
     const roles = this.getAuthorities();
-<<<<<<< Updated upstream
 
     if(!roles.includes('ROLE_GENRENTE')){
       return false;
@@ -211,70 +159,28 @@ export class TokenService {
 
   public getUserName(): string  {
     return sessionStorage.getItem(USERNAME_KEY)!;
-=======
-    
-    if(!roles.includes('ROLE_ADMIN')){
-      return false;
-    }
-    return true;
   }
 
-  public isUser(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-    
-    if(!roles.includes('ROLE_USER')){
-      return false;
-    }
-    return true
->>>>>>> Stashed changes
+  public setAuthorities(authorities: string[]): void {
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-
-  public isEncargadoAgricola(): boolean{
-    if(!this.isLogged()){
-      return false;
+  public getAuthorities(): string[]  {
+    this.roles = [];
+    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach(
+        (authority: { authority: string; }) => {
+          this.roles.push(authority.authority);
+        }
+      );
     }
-    const roles = this.getAuthorities();
-
-    if(!roles.includes('ROLE_ENCARGADO_AGRICOLA')){
-      return false;
-    }
-    return true;
+    return this.roles;
   }
 
-  public isProductor(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-
-    if(!roles.includes('ROLE_PRODUCTOR')){
-      return false;
-    }
-    return true;
-  }
-
-<<<<<<< Updated upstream
   */
-=======
-  public isGerente(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-
-    if(!roles.includes('ROLE_GENRENTE')){
-      return false;
-    }
-    return true;
-  } 
->>>>>>> Stashed changes
 
   public logOut(): void {
-    window.localStorage.clear();
-    this.router.navigate(['/auth']);
+    window.sessionStorage.clear();
   }
 }
