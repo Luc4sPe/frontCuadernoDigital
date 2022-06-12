@@ -1,0 +1,17 @@
+<app-menu></app-menu> 
+<div class="container text-center">
+    
+    <div *ngIf="isLogged; else loggedOut"><h2>Bienvenido lu {{nombreUsuario}}</h2>
+
+        <h1 *ngIf="nombreUsuario" class="display-4"></h1> 
+        <img src="assets/imagen/agroandina.png"  alt="...">
+        
+
+
+    </div>
+    <ng-template #loggedOut><h2> No has iniciado sesión</h2>
+        <img src="assets/imagen/agroandina.png"  alt="...">
+    </ng-template>
+    
+    
+</div>
