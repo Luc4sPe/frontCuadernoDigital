@@ -41,11 +41,7 @@ export class CulGuardService implements CanActivate {
     });
 
     if (!permitido) {
-<<<<<<< Updated upstream
-      this.router.navigate(['/inicio']);
-=======
       this.router.navigate(['/index']);
->>>>>>> Stashed changes
       Swal.fire('Acceso denegado','No tienes los permisos necesarios para acceder','error');
       return false;
     }

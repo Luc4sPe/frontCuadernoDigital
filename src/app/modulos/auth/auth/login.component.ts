@@ -37,11 +37,7 @@ export class LoginComponent implements OnInit {
       this.isLogged=true;
       this.isLoginFail=false;
       this.roles=this.tokenService.getAuthorities();
-<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
-     // this.router.navigate(['/']);
-=======
       this.router.navigate(['/index']);
->>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
     }
   }
 
@@ -50,20 +46,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         
-<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
-         //almacenamos en sessionStorage
-=======
          //almacenamos en localStorage
->>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
         this.tokenService.setToken(data.token);
 
         this.isLogged=true;  
         this.isLoginFail = false;
-<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
-
-       // this.roles=data.authorities;
-=======
->>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
                
         Swal.fire({
           icon : 'success',
@@ -73,11 +60,7 @@ export class LoginComponent implements OnInit {
         })
 
         this.roles = this.tokenService.getAuthorities();
-<<<<<<< Updated upstream:src/app/auth/Login/login.component.ts
-        this.router.navigate(['/']);
-=======
         this.router.navigate(['/index']);
->>>>>>> Stashed changes:src/app/modulos/auth/auth/login.component.ts
       },
       err =>{
         this.isLogged=false;

@@ -29,52 +29,9 @@ export class TokenService {
     return localStorage.getItem(TOKEN_KEY)!;       
   }
 
-  public isTokenExpired():boolean {
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const expiracion = values.exp;
-    let fechaActual = new Date().getTime() / 1000;
-    if(expiracion < fechaActual){
-      return true
-    }
-    return false;
-  }
+ 
 
-  public isLogged():boolean{
-    if(this.getToken()){
-      return true
-    }
-    return false;
-  }
-
-  public getUserName():string | null {
-    if(!this.isLogged()){
-      return null;
-    }
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const userName = values.sub;
-    
-    return userName;
-  }
-
-  public getAuthorities():string[]{
-    if(!this.isLogged()){
-      return [];
-    }
-    const token = this.getToken();
-    const payload: any = token?.split('.')[1];
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const roles = values.roles;
-    
-    return roles;
-
-  }
+  
 /*
   public getToken():string | null {
     return window.localStorage.getItem(TOKEN_KEY);
@@ -127,6 +84,8 @@ export class TokenService {
 
   }
 
+  
+
   public isAdmin(): boolean{
     if(!this.isLogged()){
       return false;
@@ -158,7 +117,6 @@ export class TokenService {
     }
     const roles = this.getAuthorities();
 
-<<<<<<< Updated upstream
     if(!roles.includes('ROLE_ENCARGADO_AGRICOLA')){
       return false;
     }
@@ -177,89 +135,6 @@ export class TokenService {
     return true;
   }
 
-  public isGerente(): boolean{
-=======
-  public isAdmin(): boolean{
->>>>>>> Stashed changes
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-<<<<<<< Updated upstream
-
-    if(!roles.includes('ROLE_GENRENTE')){
-      return false;
-    }
-    return true;
-  }
-
-
-
-
-
-
-
-
-
-
-  /* Se mejoro la seguridad 
-  public setUserName(userName: string): void {
-    window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, userName);
-  }
-
-
-  public getUserName(): string  {
-    return sessionStorage.getItem(USERNAME_KEY)!;
-=======
-    
-    if(!roles.includes('ROLE_ADMIN')){
-      return false;
-    }
-    return true;
-  }
-
-  public isUser(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-    
-    if(!roles.includes('ROLE_USER')){
-      return false;
-    }
-    return true
->>>>>>> Stashed changes
-  }
-
-
-  public isEncargadoAgricola(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-
-    if(!roles.includes('ROLE_ENCARGADO_AGRICOLA')){
-      return false;
-    }
-    return true;
-  }
-
-  public isProductor(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    const roles = this.getAuthorities();
-
-    if(!roles.includes('ROLE_PRODUCTOR')){
-      return false;
-    }
-    return true;
-  }
-
-<<<<<<< Updated upstream
-  */
-=======
   public isGerente(): boolean{
     if(!this.isLogged()){
       return false;
@@ -271,7 +146,6 @@ export class TokenService {
     }
     return true;
   } 
->>>>>>> Stashed changes
 
   public logOut(): void {
     window.localStorage.clear();
