@@ -3,8 +3,9 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NuevoUsuario } from 'src/app/Core/dto/nuevo-usuario';
-import { AuthService } from 'src/app/service/auth.service';
+
 import { TokenService } from 'src/app/service/token.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 
 
@@ -64,7 +65,7 @@ export class NuevoUsuarioComponent implements OnInit {
   },
 ]
   
-  constructor( private service: AuthService, private router: Router) { }
+  constructor( private service: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
     //this.buildFrom();
@@ -95,11 +96,11 @@ export class NuevoUsuarioComponent implements OnInit {
         form.resetForm();
       },
       err =>{
-        this.msj = err.error.mensaje;
+        this.msj = err.error.mesaje;
         Swal.fire({
           icon: 'error',
-          title: '',
-          text: this.msj,
+          title:'Error al crear el Usuario',
+          text:  err.error.mesaje,
         });        
       }
     )
