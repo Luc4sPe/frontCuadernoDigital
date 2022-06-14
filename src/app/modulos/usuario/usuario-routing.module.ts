@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: 'actualizar/:id', component:ActualizarComponent},
       {path: 'restablecerPassword/enviaremail',component: EnviarEmailComponent},
       {path: 'restablecer/cambioPassword/:tokenPassword',component: CambioPasswordComponent},
-      {path: '**', redirectTo: '',pathMatch: 'list'}
+      {path: '**', redirectTo: 'list',pathMatch: 'full'}
     ]
   }
 ];
