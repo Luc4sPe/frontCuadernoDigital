@@ -14,11 +14,11 @@ export class LogService {
   constructor(private httpCliente: HttpClient) { }
 
   public listadoLogs():Observable<Log[]>{
-    return this.httpCliente.get<Log[]>(`${this.logsURL}/listado`);
+    return this.httpCliente.get<Log[]>(`${this.logsURL}listado`);
   }
 
   public listadoLogsPorUsuarios(idUsuario: Number):Observable<Log[]>{
-    return this.httpCliente.get<Log[]>(`${this.logsURL}/actividadUsuario/${idUsuario}`);
+    return this.httpCliente.get<Log[]>(`${this.logsURL}actividadUsuario/${idUsuario}`);
   }
 
   public ListadoLogsPorNombreUsuario(nombreUsuario: string):Observable<Log[]>{

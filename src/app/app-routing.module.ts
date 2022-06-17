@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   {
-    path: '', redirectTo:'auth', pathMatch:'full'
+    path: '', redirectTo:'login', pathMatch:'full'
   },
 
   {path: 'login',
@@ -20,13 +20,16 @@ const routes: Routes = [
     loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
   },
   
-  
+   {
+    path: 'logs',
+    loadChildren: () => import('./modulos/logs/logs.module').then(m => m.LogsModule)
+  }, 
 
   {
     path: 'riego',
     loadChildren:() => import('./modulos/riego/riego.module').then(m => m.RiegoModule)
   },
-  {path: '**', redirectTo: 'login', pathMatch: 'full'}
+  {path: '**', redirectTo: 'index', pathMatch: 'full'}
 ];
 
 @NgModule({

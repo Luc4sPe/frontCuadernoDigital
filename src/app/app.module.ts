@@ -13,6 +13,10 @@ import{FormsModule,ReactiveFormsModule } from '@angular/forms';
 // external
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MenuModule } from 'primeng/menu';
+import { TooltipModule } from 'primeng/tooltip';
+import { RippleModule } from 'primeng/ripple';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -32,7 +36,12 @@ registerLocaleData(localEs, "es-AR");
     ToastrModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenuModule,
+    TooltipModule,
+    RippleModule,
+    InputTextModule
+
 
   ],
   providers: [interceptorProvider, {provide: LOCALE_ID, useValue: 'es-AR'}],

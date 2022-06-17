@@ -7,6 +7,7 @@ import { EditarRiegoComponent } from './editar/editar-riego.component';
 import { ListarRiegoComponent } from './listar/listar-riego.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarRiegosComponent } from './listarRiegoXUsuarios/listar-riegos.component';
+import { MenuModule } from 'src/app/menu/menu.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ListarRiegosComponent } from './listarRiegoXUsuarios/listar-riegos.comp
     CommonModule,
     RiegoRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenuModule
     
   ]
 })

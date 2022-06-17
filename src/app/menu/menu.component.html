@@ -3,7 +3,7 @@
    
     <div class="container-fluid">
         
-        <a class="navbar-brand" href="#">Agro Andina</a>
+        <a class="navbar-brand" href="#">  Agro Andina</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,30 +13,39 @@
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-            <a class="nav-link" routerLink="/"><i class="fas fa-home"></i> Inicio</a>
-            </li>
-            <li class="nav-item" *ngIf="isLogged && isAdmin">
-                <a class="nav-link" routerLink=""><i class="far fa-list-alt"></i> Agroquímicos</a>
+            <a class="nav-link" routerLink="/index"><i class="fas fa-home"></i> Inicio</a>
             </li>
 
-             <li class="nav-item" *ngIf="isLogged && isAdmin">
-            <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Usuarios</a>
-            </li> 
-
-             <!-- menu usuarios -->
-            <!--  <li class="nav-item dropdown" *ngIf="isAdmin">
-                <a class="nav-link dropdown-toggle" id="menuDropdownMenuLink" role="button"
+            <li class="nav-item dropdown" *ngIf="isAdmin">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user-tie"></i>
                     Usuarios
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="menuDropdownMenuLink">
-                    <li><a class="dropdown-item" routerLink="/usuario">Nuevo usuario</a></li>
-                    <li><a class="dropdown-item" routerLink="/usuarios/lista">Listado Usuarios</a></li>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" routerLink="/usuario/nuevo">Nuevo usuario</a></li>
+                    <li><a class="dropdown-item" routerLink="/usuario">Lista Usuarios</a></li>
+                    <li><a class="dropdown-item" routerLink="/logs">Logs de usuarios</a></li>
                 </ul>
-            </li> -->
+            </li>
+
+
+            <li class="nav-item" *ngIf="isLogged && isAdmin">
+                <a class="nav-link" routerLink=""><i class="fa-solid fa-wine-bottle"></i> Agroquímicos</a>
+            </li>
+
+            <!--  <li class="nav-item" *ngIf="isLogged && isAdmin">
+            <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Usuarios</a>
+            </li>  -->
+
+<!--             <li class="nav-item" *ngIf=" isAdmin">
+                <a class="nav-link" routerLink="/logs"><i class="far fa-list-alt"></i> Logs</a>
+                </li>   -->
+
+           
 
             <li class="nav-item" *ngIf="isLogged && isAdmin || isProductor || isEncargadoAgri">
-                <a class="nav-link" routerLink="/riego"><i class="far fa-list-alt"></i>Riegos</a>
+                <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
                 </li>
 
             <li class="nav-item" *ngIf="!isLogged">

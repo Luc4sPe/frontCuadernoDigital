@@ -58,7 +58,7 @@ export class AppComponent implements OnInit{
 
 
 
-    /*
+    
     if (this.tokenService.getToken()) {
       console.log(this.tokenService.getToken());
       this.isLogged = true;
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit{
   validateLogin($event: boolean): void {
     this.isLogged = $event;
 
-    */
+    
 
     
   }

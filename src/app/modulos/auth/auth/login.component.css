@@ -51,7 +51,7 @@ body {
 }
 
 .form-group#contrasena-group::before{
-    content: "\f008";
+    content: "";
 }
 
 button{

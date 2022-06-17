@@ -7,20 +7,20 @@ import { Roles } from 'src/app/Core/enmus/roles';
 const ADMIN = Roles.ADMIN;
 const routes: Routes = [
   {
-    {
+    
       path: '',
       children: [
-        {path: '', redirectTo:'lista'},
+       // {path: '', redirectTo:'listado'},
         {
-          path: 'lista',
+          path: 'listado',
           component: ListaComponent,
           canActivate: [guardUsuario],
           data: { rolesEsperados: [ADMIN] },
         },
-        { path: '**', redirectTo: 'lista' },
+        { path: '**', redirectTo: 'listado' },
       ],
     },
-  }
+  
 ];
 
 @NgModule({

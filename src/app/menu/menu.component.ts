@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit {
 
   onLogOut(): void {
     this.tokenService.logOut();
-   // window.location.reload();
+    window.location.reload();
 
     Swal.fire({
       icon: 'success',
