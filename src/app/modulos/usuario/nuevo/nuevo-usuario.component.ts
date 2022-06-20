@@ -29,6 +29,7 @@ export class NuevoUsuarioComponent implements OnInit {
   nombreUsuario: string='';
   email: string='';
   password: string='';
+  telefono: string='';
   msj: string='';
   nuevoUsuario: NuevoUsuario | any;
   roles=[
@@ -79,7 +80,7 @@ export class NuevoUsuarioComponent implements OnInit {
     this.nuevoUsuario = new NuevoUsuario(
       this.nombre, this.apellido,
       this.dni, this.nombreUsuario,
-      this.email, this.password,
+      this.email, this.telefono,this.password,
       rolUsuarios
     );
 

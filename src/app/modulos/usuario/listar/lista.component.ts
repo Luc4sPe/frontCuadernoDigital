@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Usuario } from 'src/app/Core/modelo/usuario';
 
 import { TokenService } from 'src/app/service/token.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import Swal from 'sweetalert2';
+
+import { MenuItem } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-lista',
@@ -13,11 +17,17 @@ import Swal from 'sweetalert2';
 })
 export class ListaComponent implements OnInit {
 
-  usuarios: any[]=[];
+  usuarios: Usuario[]=[];
+  msj: string='';
+  loading : boolean = true;
   roles: string[]=[];
   anuncio : string = '';
   isAdmin = false;
   isLoged=false;
+
+  usuariosFiltrados: Usuario[] = [];
+  home : MenuItem = {}
+  items : MenuItem[] = [];
 
 
   constructor(private usuarioServ: UsuarioService,
@@ -28,6 +38,7 @@ export class ListaComponent implements OnInit {
   ngOnInit(): void {
     
     this.cargaUsuario();
+    this.cargarItems();
     this.roles=this.tokenService.getAuthorities();
     this.isLoged=true;
     this.roles.forEach(rol =>{
@@ -36,13 +47,16 @@ export class ListaComponent implements OnInit {
       } 
     });
 
+    
+
   }
 
   cargaUsuario(): void{
   
       this.usuarioServ.listar().subscribe(
       data =>{
-        this.usuarios=data;
+        this.usuarios = data;
+        this.loading=false;
       },
 
       err => {
@@ -50,6 +64,45 @@ export class ListaComponent implements OnInit {
       }
     );
 
+    // this.usuarioServ.listar().toPromise().then(
+    //   data => {
+    //     this.usuarios = data.filter(u => u.nombreUsuario != 'admin');
+    //     this.loading = false;
+    //     this.usuarios.forEach(usuario => {usuario.fechaDeAlta = new Date(usuario.fechaDeAlta)});
+    //   },
+    //   err => {
+    //     console.log(err.error);
+        
+    //   }
+    // )
+    /*   this.usuarioServ.listar().subscribe(
+      data =>{
+        this.usuarios=data;
+        this.loading=false;
+      },
+
+      err => {
+        console.log(err);
+      }
+    );
+
+  }*/
+}
+
+  cargarItems(): void {
+    this.items = [
+      {label:'Usuarios', routerLink:'/usuario'},
+      {label:'Listado', disabled:true}
+    ]
+    this.home = {icon: 'pi pi-home', routerLink:'/index'};
+  }
+
+  getSeverityByEstado(usuario : Usuario): string {
+    const serverityByEstado : {[key: string]: string} = {
+      true : 'success',
+      false: 'danger'
+    };
+    return serverityByEstado[`${usuario.estadoActivo}`];
   }
 
 
@@ -87,6 +140,39 @@ export class ListaComponent implements OnInit {
         Swal.fire('Error al dar de baja', this.anuncio, 'error')
 
       })
+
+  }
+
+  clear(table : Table){
+    table.clear();
+  }
+
+  exportarPdf(table : Table){
+    this.obtenerUsuariosFiltrados(table);
+    this.usuariosFiltrados = this.usuarios;
+    this.obtenerFiltros(table);
+
+  }
+
+  exportarExcel(table: Table){
+    this.obtenerUsuariosFiltrados(table);
+    this.obtenerFiltros(table);
+  }
+
+  obtenerUsuariosFiltrados(table: Table): void {
+    this.usuariosFiltrados = table.filteredValue != null ? table.filteredValue : this.usuarios;
+  }
+
+  obtenerFiltros(table: Table): void {
+    let filtros : any = [];
+    filtros =  table.filters
+    filtros.id.forEach((f: { "value": any, "matchMode":any; }) =>{
+      console.log(f.value);
+      console.log(f.matchMode);
+      
+    })
+    
+    
 
   }
 

@@ -1,4 +1,4 @@
-import { Usuario } from "../dto/usuario";
+import { Usuario } from "./usuario";
 
 export class Riego {
     id?: number;

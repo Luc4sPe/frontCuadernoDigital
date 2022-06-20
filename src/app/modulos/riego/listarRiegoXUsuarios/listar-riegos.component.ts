@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Usuario } from 'src/app/Core/dto/usuario';
+import { Usuario } from 'src/app/Core/modelo/usuario';
 import { Riego } from 'src/app/Core/modelo/riego';
 import { RiegoService } from 'src/app/service/riego.service';
 import { TokenService } from 'src/app/service/token.service';

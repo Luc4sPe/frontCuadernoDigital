@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EditarUsuariosDto } from '../Core/dto/editar-usuarios-dto';
 import { NuevoUsuario } from '../Core/dto/nuevo-usuario';
-import { Usuario } from '../Core/dto/usuario';
+import { Usuario } from '../Core/modelo/usuario';
 
 @Injectable({
   providedIn: 'root'

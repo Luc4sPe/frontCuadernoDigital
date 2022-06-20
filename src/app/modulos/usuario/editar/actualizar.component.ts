@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EditarUsuariosDto } from 'src/app/Core/dto/editar-usuarios-dto';
-import { Usuario } from 'src/app/Core/dto/usuario';
+import { Usuario } from 'src/app/Core/modelo/usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import Swal from 'sweetalert2';
@@ -112,7 +112,7 @@ export class ActualizarComponent implements OnInit {
       const id = this.activatedRoute.snapshot.params.id;
       let rolesActualizar = this.crearRolesEnviarBack();
       const editarUsuario = new EditarUsuariosDto(this.usuario.nombre,this.usuario.apellido,this.usuario.dni,this.usuario.nombreUsuario,
-        this.usuario.email,rolesActualizar); 
+        this.usuario.email,this.usuario.telefono,rolesActualizar); 
       this.usuarioService.update(id,editarUsuario).subscribe(
         data =>  {
           this.usuario=data;  
