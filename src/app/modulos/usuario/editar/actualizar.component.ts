@@ -22,24 +22,24 @@ export class ActualizarComponent implements OnInit {
     {
     name:'Admin',
     active: false,
-    description:'Tiene acceso a todos los permisos',
+    description:'',
   },
   {
     name:'User',
     active: false,
-    description:'Rol por defecto',
+    description:'',
   },
 
   {
     name:'Encargado Agricola',
     active: false,
-    description:'A de definir',
+    description:'',
   },
 
   {
     name:'Productor',
     active: false,
-    description:'A de definir',
+    description:'',
   },
 
   {

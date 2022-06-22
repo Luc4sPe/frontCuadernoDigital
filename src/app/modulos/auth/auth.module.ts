@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './auth/login.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {PasswordModule} from 'primeng/password';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     AuthRoutingModule,
     FormsModule,
     RouterModule,
+    PasswordModule
   ]
 })
 export class AuthModule { }
