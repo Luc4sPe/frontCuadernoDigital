@@ -90,18 +90,19 @@ export class NuevoUsuarioComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: this.msj,
-          text: '',
+          text: 'Usuario Creado con Exito ',
         });
         
         this.resetiarRoles();
         form.resetForm();
       },
       err =>{
-        this.msj = err.error.mesaje;
+        this.msj = err.error.mensaje;
         Swal.fire({
           icon: 'error',
           title:'Error al crear el Usuario',
-          text:  err.error.mesaje,
+          text: this.msj,
+          
         });        
       }
     )

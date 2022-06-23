@@ -19,7 +19,7 @@ export class ActualizarComponent implements OnInit {
   rolUsuario: string []=[];
   mensaje:string='';
   roles=[
-    {
+  {
     name:'Admin',
     active: false,
     description:'',
@@ -68,7 +68,7 @@ export class ActualizarComponent implements OnInit {
         this.usuario = data
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        this.toastr.error(err.error.message, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         this.router.navigate(['/']);
@@ -119,7 +119,7 @@ export class ActualizarComponent implements OnInit {
          Swal.fire('Usuario actualizado correctamente', '', 'success'); 
         },
         err => {
-          this.mensaje = err.error.message;
+          this.mensaje = err.error.mensaje;
           Swal.fire('Error al Actualizar el Usuario', this.mensaje, 'error');
         }
       );
