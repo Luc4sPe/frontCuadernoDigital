@@ -14,16 +14,16 @@
                 <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
 
                   <div class="form-group" id="user-group">
-                    <label for="nombreUsuario">Nombre de Usuario</label>    
-                    <p-password type="text"  name="nombreUsuario" id="nombreUsuario" class="form-control"
+                    <label class="text" for="nombreUsuario">Nombre de Usuario</label>    
+                    <p-password type="text" name="nombreUsuario" id="nombreUsuario" 
                     placeholder="Usuario o Email" [(ngModel)]="nombreUsuario" required [feedback]="false" [toggleMask]="true"> </p-password>
   
                   </div>
   
   
                   <div class="form-group" id="contrasena-group">
-                    <label for="password">Possword</label>
-                    <p-password type="password" name="password" id="password" class="form-control"
+                    <label class="text" for="password">Possword</label>
+                    <p-password type="password"  name="password" id="password"
                     placeholder="Password" [(ngModel)]="password" required [feedback]="false" [toggleMask]="true" > </p-password>
   
                   </div>
