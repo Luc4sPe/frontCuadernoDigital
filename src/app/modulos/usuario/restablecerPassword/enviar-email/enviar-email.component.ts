@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmailValuesDTO } from 'src/app/Core/dto/email-values-dto';
 import { EmailPasswordService } from 'src/app/service/email-password.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-enviar-email',
@@ -13,6 +14,7 @@ import { EmailPasswordService } from 'src/app/service/email-password.service';
 export class EnviarEmailComponent implements OnInit {
 
   mailTo: string='';
+  msj: string='';
   
    dto: EmailValuesDTO | undefined; 
 
@@ -32,16 +34,31 @@ export class EnviarEmailComponent implements OnInit {
     this.emailPasswordService.sendEmail(this.dto).subscribe(
       data =>{
        
-        
-        this.toasterService.success(data.mensaje,'ok',{
-          timeOut: 3000, positionClass: 'toast-top-center'
+        this.msj = data.mensaje;
+        Swal.fire({
+          icon: 'success',
+          title:'Correo enviado ' ,
+          text: this.msj ,
         });
+        
+       /*  this.toasterService.success(data.mensaje,'ok',{
+          timeOut: 3000, positionClass: 'toast-top-center'
+        }); */
         
       },
       err =>{
-        this.toasterService.error(err.error.mensaje,'Fail este es el error',{
+
+        this.msj = err.error.mensaje;
+        Swal.fire({
+          icon: 'error',
+          title:'Correo no enviado',
+          text: this.msj,
+          
+        });        
+
+        /* this.toasterService.error(err.error.mensaje,'Fail este es el error',{
           timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        }); */
 
       });
       
