@@ -21,6 +21,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
+import {PasswordModule} from 'primeng/password';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TagModule } from 'primeng/tag';
     TabViewModule,
     ScrollTopModule,
     CardModule,
-    TagModule
+    TagModule,
+    PasswordModule
    
   ]
 })
