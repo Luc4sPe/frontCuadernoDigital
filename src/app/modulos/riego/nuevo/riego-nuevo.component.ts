@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RiegoDto } from 'src/app/Core/dto/riego-dto';
 import { RiegoService } from 'src/app/service/riego.service';
+import { TokenService } from 'src/app/service/token.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,17 +19,19 @@ export class RiegoNuevoComponent implements OnInit {
     observacionProductor: string="";
     semanaAplicada!: number;
     semanaTransplante!: number;
-    nombreUsuario: string="";
+    nombreUsuario: any;
     msj: string="";
     nuevoRiegoDto: RiegoDto | any ;
 
 
-  constructor(private router: Router, private riegoservice: RiegoService) { }
+  constructor(private tokenService: TokenService, private router: Router, private riegoservice: RiegoService) { }
 
   ngOnInit(): void {
   }
 
   nuevoRiego(form: NgForm): void{
+
+    this.nombreUsuario =  this.tokenService.getUserName();
 
     this.nuevoRiegoDto = new RiegoDto(
       this.duracionEnHoras, this.milimetrosAplicados,
@@ -58,10 +61,14 @@ export class RiegoNuevoComponent implements OnInit {
         form.resetForm();
       },
       err => {
-        this.msj = err.error.message;
+        this.msj = err.error.mensaje;
         Swal.fire("Error al generar el nuevo Riego",this.msj, 'error');
       }
     )
+  }
+
+  volver(): void {
+    this.router.navigate(['/']);
   }
 
 

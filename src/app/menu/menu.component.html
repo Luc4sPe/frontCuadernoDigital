@@ -58,9 +58,13 @@
 
            
 
-            <li class="nav-item" *ngIf="isLogged && isAdmin || isProductor || isEncargadoAgri">
+            <li class="nav-item" *ngIf="isLogged && isAdmin || isEncargadoAgri">
                 <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
-                </li>
+             </li>
+
+             <li class="nav-item" *ngIf="isLogged && isProductor">
+                <a class="nav-link" routerLink="/riego/riegoPorNombreUsuario/{{nombreUsuario}}"><i class="bi bi-droplet-half"></i>Riegos</a>
+             </li>
 
             <li class="nav-item" *ngIf="!isLogged">
                 <a class="nav-link"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>

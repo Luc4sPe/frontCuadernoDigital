@@ -140,7 +140,7 @@
                                                         </div>
 
                                                          <!--group Nombre de Usuario -->
-                                                         <div class="form-group">
+                                                         <!-- <div class="form-group">
                                                             <label for="form-label">Nombre de Usuario</label>
                                                             <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" placeholder="Nombre de Usuario" 
                                                             [(ngModel)]="nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
@@ -155,11 +155,11 @@
                                                                         Solo se permiten letras
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
        
                                                         <div class="card-footer text-center mt-3">
                                                             <button class="btn btn-outline-success btn-block" [disabled]="!formRiego.valid" style="margin-left: 10px"  ><i class="far fa-save"></i> Guardar</button>
-                                                            <button routerLink="/riego" class="btn btn-outline-info" style="margin-left: 10px"><i class="fas fa-undo-alt"></i> Volver</button>
+                                                            <button (click)="volver()" class="btn btn-outline-info" style="margin-left: 10px"><i class="fas fa-undo-alt"></i> Volver</button>
                                                           
                                                 
                                                         </div>                                                               

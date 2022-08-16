@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Riego } from '../Core/modelo/riego';
 import { Usuario } from '../Core/modelo/usuario';
+import { RiegoService } from '../service/riego.service';
 import { TokenService } from '../service/token.service';
 import { UsuarioService } from '../service/usuario.service';
 
@@ -15,7 +18,7 @@ export class MenuComponent implements OnInit {
   isLogged = false;
   isEncargadoAgri = false;
 
-
+  riegos: Riego []=[];
   nombreUsuario: any;
   usuario: Usuario | any;
   isAdmin = false;
@@ -25,7 +28,7 @@ export class MenuComponent implements OnInit {
   isGerente = false;
   
 
-  constructor(private tokenService: TokenService, private usuarioService: UsuarioService) { }
+  constructor(private route: ActivatedRoute, private tokenService: TokenService, private usuarioService: UsuarioService,private riegoService: RiegoService ) { }
 
   ngOnInit(): void {
 
@@ -38,7 +41,9 @@ export class MenuComponent implements OnInit {
 
     
     
-   
+  const nombreUsuairo = this.route.snapshot.params['nombreUsuario'];
+       
+  this.listar(nombreUsuairo);
     this.roles=this.tokenService.getAuthorities();
 
     this.roles.forEach(rol =>{
@@ -73,6 +78,18 @@ export class MenuComponent implements OnInit {
       icon: 'success',
       title: 'Cerraste sesion correctamente!'
     })
+  }
+
+  async listar(nombreUsuairo: string): Promise<void>{
+    await  this.riegoService.listarRiegoPorUsuario(nombreUsuairo).subscribe(
+      data => {
+        this.riegos=data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   }
 
 }

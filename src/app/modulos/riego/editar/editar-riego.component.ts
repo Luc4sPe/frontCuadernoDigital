@@ -85,4 +85,8 @@ export class EditarRiegoComponent implements OnInit {
        
     }
 
+    volver(): void {
+      this.router.navigate(['/']);
+    }
+
 }

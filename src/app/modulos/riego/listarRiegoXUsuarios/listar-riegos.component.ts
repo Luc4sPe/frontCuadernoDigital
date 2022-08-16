@@ -70,7 +70,7 @@ export class ListarRiegosComponent implements OnInit {
   }
 
   volver(): void {
-    this.router.navigate(['/riego']);
+    this.router.navigate(['/']);
   }
 
 }

@@ -5,10 +5,10 @@
     <div>
         <div class="card shadow">
 
-            <div class="mt-3" *ngIf="isAdmin || isProductor">
+           <!--  <div class="mt-3" *ngIf="isAdmin || isProductor">
                 <button class="btn btn-outline-success btn-lg" routerLink="/riego/nuevoRiego">
                     <i class="fas fa-plus-circle"></i> Nuevo Riego</button>
-            </div>
+            </div> -->
             <div class="mt-3">
                 <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
             </div>
@@ -33,7 +33,7 @@
 
                         <th scope="col">NúmeroDeCuadro</th>
                         
-                        <th scope="col">ObservacionEncargadoAgricola</th>
+                        
                         
                         <th scope="col">ObservacionProductor</th>
 
@@ -58,7 +58,7 @@
                         <td>{{riego.fechaAplicacion | date:"short"}}</td>
                         <td>{{riego.milimetrosAplicados}}</td>
                         <td>{{riego.numeroDeCuadro}}</td>
-                        <td>{{riego.observacionAsesor}}</td>
+                       
                         <td>{{riego.observacionProductor}}</td>
                         <td>{{riego.semanaAplicada}}</td>
                         <td>{{riego.semanaTransplante}}</td>
