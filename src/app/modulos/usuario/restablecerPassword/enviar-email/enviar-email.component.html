@@ -1,3 +1,4 @@
+<body class="image-fondo ">
 <div class="container">
    <!-- <h3 class="mt-2">Restablecer Password</h3>  -->
       
@@ -6,19 +7,19 @@
               <!-- card-->
               <div class="card shadow mt-4" >
                 
-                    <div class="card-header bg-dark text-white text-center">
+                    <div class="card-header bg-dark text-white text-center mt-1">
                       <i class="bi bi-shield-lock-fill"></i>
-                        Restablecer Password
+                        Restablecer contraseña
                       
                     </div>
 
-                    <div class="card-body bg-success text-white text-center">
+                    <div class="card-body bg-success text-white text-center mt-1">
                       
                       <i class="bi bi-envelope-check-fill"></i>
-                            Enviar email
+                            Enviar E-mail
                     </div>
 
-                  <img src="assets/imagen/email.png.crdownload" class="card-img-top" alt="...">
+                  <img src="assets/imagen/enviar.jpg" class="card-img-top mb-4" alt="...">
                   <!-- /.card-header -->
                   <!-- form start -->
                   
@@ -26,12 +27,12 @@
                             <form #form = "ngForm" (ngSubmit) = "enviarEmail()" novalidate>
                                 <!--group email o usuario-->
                                 <div class="form-group">
-                                    <label class="text" for="mailTo">Email o Usuario</label>
-                                    <input type="text" class="form-control mt-2" name ="mailTo"id="mailTo"  placeholder="Ingrese su correo o su usuario" [(ngModel)]="mailTo" #emailUsuario = "ngModel" required>
+                                    <label class="text" for="mailTo">Ingrese usuario o E-mail</label>
+                                    <input type="text" class="form-control mt-2" name ="mailTo"id="mailTo"  placeholder="Usuario o E-mail" [(ngModel)]="mailTo" #emailUsuario = "ngModel" required>
                                     <div class="alert-danger rounded mt-2" *ngIf="emailUsuario.invalid && (emailUsuario.dirty || emailUsuario.touched)">
                                         <div *ngIf="emailUsuario.errors?.required">
                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                            El campo es requerido
+                                            El campo es obligatorio
                                         </div>
                                     </div>
                                 </div>
@@ -55,3 +56,4 @@
   
 
 </div>
+</body>
