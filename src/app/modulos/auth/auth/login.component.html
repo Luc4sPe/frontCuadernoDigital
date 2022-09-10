@@ -8,13 +8,13 @@
                 </div>
                 
                 <div class=" shadow-lg border-0 mt-2">
-                  <h3 class="text-center mt-1">Login</h3>           
+                  <h3 class="text-center mt-1">Acceso</h3>           
                </div>
   
                 <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
 
                   <div class="form-group" id="user-group">
-                    <label class="text" for="nombreUsuario">Nombre de Usuario</label>    
+                    <label class="text" for="nombreUsuario">Nombre de usuario</label>    
                     <p-password type="text" name="nombreUsuario" id="nombreUsuario" 
                     placeholder="Usuario o Email" [(ngModel)]="nombreUsuario" required [feedback]="false" [toggleMask]="true"> </p-password>
   
@@ -22,9 +22,9 @@
   
   
                   <div class="form-group" id="contrasena-group">
-                    <label class="text" for="password">Possword</label>
+                    <label class="text" for="password">Contraseña</label>
                     <p-password type="password"  name="password" id="password"
-                    placeholder="Password" [(ngModel)]="password" required [feedback]="false" [toggleMask]="true" > </p-password>
+                    placeholder="Contraseña" [(ngModel)]="password" required [feedback]="false" [toggleMask]="true" > </p-password>
   
                   </div>
 
