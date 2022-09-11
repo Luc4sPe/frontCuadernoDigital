@@ -1,5 +1,7 @@
 
 <app-menu></app-menu> 
+<body class="image-fondo ">
+    
 
 <div class="container">
     
@@ -21,7 +23,7 @@
                                             <div class="card shadow mb-lg-4">
                                                 <div class="card-header bg-primary text-white text-center">
                                                     <i class="bi bi-person-plus"></i>
-                                                    Nuevo Usuario 
+                                                    Nuevo usuario 
                                                 </div>
 
 
@@ -40,7 +42,7 @@
                                                             <div class="alert-danger rounded mt-2" *ngIf="ape.invalid && (ape.dirty || ape.touched)">
                                                                 <div *ngIf="ape.errors?.required">
                                                                     <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    El Apellido es requerido
+                                                                    El apellido es requerido
                                                                 </div>
                                                                 <div *ngIf="ape.errors?.pattern">
                                                                     <i class="ms-1 bi-x-circle-fill"></i>
@@ -62,7 +64,7 @@
                                                                     <div class="alert-danger rounded mt-2" *ngIf="nom.invalid && (nom.dirty || nom.touched)">
                                                                         <div *ngIf="nom.errors?.required">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                            El Nombre es requerido
+                                                                            El nombre es requerido
                                                                         </div>
                                                                         <div *ngIf="nom.errors?.pattern">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
@@ -85,7 +87,7 @@
                                                                         </div>
                                                                          <div *ngIf="docu.errors?.pattern">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                                Solo se permiten numeros
+                                                                                Solo se permiten números
                                                                         </div> 
                                                                     </div>
                                                                 </div>
@@ -94,14 +96,14 @@
 
                                                                  <!--group Nombre de Usuario -->
                                                                  <div class="form-group">
-                                                                    <label for="form-label">Nombre de Usuario</label>
-                                                                    <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" placeholder="Nombre de Usuario" 
+                                                                    <label for="form-label">Nombre de usuario</label>
+                                                                    <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" placeholder="Nombre de usuario" 
                                                                     [(ngModel)]="nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
                                                                     <i class="fa fa-check check-ok"></i>
                                                                     <div class="alert-danger rounded mt-2" *ngIf="NomUs.invalid && (NomUs.dirty || NomUs.touched)">
                                                                         <div *ngIf="NomUs.errors?.required">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                            El Nombre de Usuario es requerido
+                                                                            El nombre de usuario es requerido
                                                                         </div>
                                                                         <div *ngIf="NomUs.errors?.pattern">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
@@ -113,8 +115,8 @@
 
                                                                  <!--group Nombre de Email -->
                                                                  <div class="form-group">
-                                                                    <label for="form-label">Email</label>
-                                                                    <input type="email" class="form-control mt-2" name ="email"id="email" placeholder="Email" 
+                                                                    <label for="form-label">E-mail</label>
+                                                                    <input type="email" class="form-control mt-2" name ="email"id="email" placeholder="E-mail" 
                                                                     [(ngModel)]="email" #corre = "ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required email>
                                                                     <i class="fa fa-check check-ok"></i>
                                                                     <div class="alert-danger rounded mt-2" *ngIf="corre.invalid && (corre.dirty || corre.touched)">
@@ -124,7 +126,7 @@
                                                                         </div>
                                                                         <div *ngIf="corre.errors?.email">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                            Ingrese una direccion de Email Valida: ejemplo@ejemplo.com
+                                                                            Ingrese una direccion de E-mail valida: ejemplo@ejemplo.com
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -132,18 +134,18 @@
 
                                                                  <!--group telefono -->
                                                                  <div class="form-group">
-                                                                    <label for="form-label">Telefono</label>
-                                                                    <input type="text" class="form-control mt-2" name ="telefono"id="telefono" placeholder="Telefono" 
+                                                                    <label for="form-label">Teléfono</label>
+                                                                    <input type="text" class="form-control mt-2" name ="telefono"id="telefono" placeholder="Teléfono" 
                                                                     [(ngModel)]="telefono" #tele = "ngModel" pattern="^[0-9 -]{2,15}" required>
                                                                     <i class="fa fa-check check-ok"></i>
                                                                     <div class="alert-danger rounded mt-2" *ngIf="tele.invalid && (tele.dirty || tele.touched)">
                                                                         <div *ngIf="tele.errors?.required">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                            El Telefono es requerido
+                                                                            El teléfono es requerido
                                                                         </div>
                                                                          <div *ngIf="tele.errors?.pattern">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
-                                                                                Solo se permiten numeros
+                                                                                Solo se permiten números
                                                                         </div> 
                                                                     </div>
                                                                 </div>
@@ -154,14 +156,14 @@
 
                                                                     <!--group password-->
                                                                 <div class="form-group mt-2">
-                                                                    <label for="form-label">Password</label>
-                                                                    <input type="password" class="form-control mt-2" name ="password"id="password"  placeholder="Password" 
+                                                                    <label for="form-label">Contraseña</label>
+                                                                    <input type="password" class="form-control mt-2" name ="password"id="password"  placeholder="Contraseña" 
                                                                     [(ngModel)]="password" #pass = "ngModel" required minlength="8">
                                                                    <i class="fa fa-check check-ok"></i>
                                                                     <div class="alert-danger rounded mt-2" *ngIf="pass.invalid && (pass.dirty || pass.touched)">
                                                                         <div *ngIf="pass.errors?.required">
                                                                         <i class="ms-1 bi-x-circle-fill"></i>
-                                                                            El password es requerido
+                                                                            La contraseña es requerido
                                                                         </div>
                                                                         <div *ngIf="pass.errors?.minlength">
                                                                             <i class="ms-1 bi-x-circle-fill"></i>
@@ -246,6 +248,8 @@
    
     
 </div>
+
+</body>
 
         
 

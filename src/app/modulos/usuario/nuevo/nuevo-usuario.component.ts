@@ -38,12 +38,7 @@ export class NuevoUsuarioComponent implements OnInit {
     active: false,
     description:'',
   },
-  {
-    name:'User',
-    active: false,
-    description:'',
-  },
-
+  
   {
     name:'Encargado Agricola',
     active: false,
