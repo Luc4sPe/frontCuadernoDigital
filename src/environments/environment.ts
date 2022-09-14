@@ -7,7 +7,8 @@ export const environment = {
   authURL: 'http://localhost:8080/auth/',
   changePasswordURL: 'http://localhost:8080/email-password',
   riegoURL: 'http://localhost:8080/riego/',
-  logsURL: 'http://localhost:8080/logs/'
+  logsURL: 'http://localhost:8080/logs/',
+  cultivoURL: 'http://localhost:8080/cultivo/',
 
 };
 

@@ -6,6 +6,7 @@ import { NuevoUsuario } from 'src/app/Core/dto/nuevo-usuario';
 
 import { TokenService } from 'src/app/service/token.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { ProductorDto } from 'src/app/Core/dto/productor-dto';
 
 
 
@@ -31,7 +32,7 @@ export class NuevoUsuarioComponent implements OnInit {
   password: string='';
   telefono: string='';
   msj: string='';
-  nuevoUsuario: NuevoUsuario | any;
+  nuevoUsuario: ProductorDto | any;
   roles=[
     {
     name:'Admin',
@@ -65,8 +66,7 @@ export class NuevoUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     //this.buildFrom();
-  
-    
+
   }
 
 

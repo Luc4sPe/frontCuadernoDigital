@@ -1,0 +1,145 @@
+
+
+<body class>
+    <app-menu></app-menu> 
+<div class="container-xl fadein animation-iteration-1 animation-duration-400">
+
+    <div class="row">
+		<div class="col-md-18 mt-4">
+         
+			<div class="container d-flex justify-content-center " >
+               
+             
+               
+
+                <!-- div parte izquierda de pantalla-->
+				<div class="col-md-10">
+                    <div class="row">
+                        <div class="container d-flex justify-content-center col-8">
+                            <div class="card shadow-sm mb-lg-4">
+                                <div class="card-header bg-primary text-white">
+                                    <i class="bi bi-card-text me-1"></i>
+                                     Formulario nuevo productor 
+                                </div>
+                                <!--form nuevo usuario-->
+                                <form #formUsuario = ngForm (ngSubmit)= "registrarProductor(formUsuario)" novalidate>
+                                    <div class="card-body">
+
+                                                <!--group apellido-->
+                                        <div class="form-group mt-2">
+                                            <label for="labelApellido">Apellidos</label>
+                                            <input type="text" class="p-inputtext form-control mt-2" name ="apellido"id="apellido"  placeholder="Ingrese el apellido" 
+                                            [(ngModel)]="apellido" #apellidoUs = "ngModel" pattern={{patronLetras}} minlength="3" required>
+                                            <div *ngIf="apellidoUs.invalid && (apellidoUs.dirty || apellidoUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.required"  severity="error" text="El apellido es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group apellido-->
+
+                                          <!--group nombre -->
+                                          <div class="form-group">
+                                            <label for="labelNombre">Nombre</label>
+                                            <input type="text"  class="p-inputtext form-control mt-2" name ="nombre"id="nombre"  placeholder="Ingrese el nombre" 
+                                            [(ngModel)]="nombre" #nombreUs = "ngModel" pattern={{patronLetras}} minlength="3" required>
+                                            <div *ngIf="nombreUs.invalid && (nombreUs.dirty || nombreUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group nombre-->
+
+                                         <!--group DNI -->
+                                         <div class="form-group">
+                                            <label for="labelDNI">DNI</label>
+                                            <input type="text"  class="p-inputtext form-control mt-2" name ="dni"id="dni"  placeholder="Ingrese el DNI" 
+                                            [(ngModel)]="dni" #docu = "ngModel" pattern="^[0-9 .]{2,15}" required>
+                                            <div *ngIf="docu.invalid && (docu.dirty || docu.touched)">
+                                                <p-message styleClass="m-1" *ngIf="docu.errors?.required"  severity="error" text="El DNI es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="docu.errors?.pattern"   severity="error" text="Solo se permiten números"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group DNI-->
+
+                                           <!--group username-->
+                                           <div class="form-group mt-2">
+                                            <label for="labelNombreUsuario">Nombre de usuario</label>
+                                            <input type="text" class="p-inputtext form-control mt-2" name ="nombreUsuario"id="nombreUsuario"  placeholder="Ingrese el nombre de usuario"
+                                             [(ngModel)]="nombreUsuario" #userNameUs = "ngModel" required minlength="4">
+                                            <div *ngIf="userNameUs.invalid && (userNameUs.dirty || userNameUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="userNameUs.errors?.required"      severity="error" text="El nombre de usuario es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="userNameUs.errors?.minlength"     severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group username-->
+
+                                        <!--group email-->
+                                        <div class="form-group mt-2">
+                                            <label for="labelEmail">E-mail</label>
+                                            <input type="email" pKeyFilter= "email" class="p-inputtext form-control mt-2" name ="email"id="email"  placeholder="Ingrese el E-mail" 
+                                            [(ngModel)]="email" #emailUs = "ngModel" required email>
+                                            <div *ngIf="emailUs.invalid && (emailUs.dirty || emailUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="emailUs.errors?.required"  severity="error" text="El email es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="emailUs.errors?.email"     severity="error" text="Debe tener el formato ejemplo@ejemplo.com"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group email-->
+
+                                          <!--group Teléfono-->
+                                          <div class="form-group mt-2">
+                                            <label for="labelTelefono">Teléfono</label>
+                                            <input type="telefono" class="p-inputtext form-control mt-2" name ="telefono"id="telefono"  placeholder="Ingrese el N° de Teléfono" 
+                                            [(ngModel)]="telefono" #teleUs = "ngModel" pattern="^[0-9 -]{2,15}" required >
+                                            <div *ngIf="teleUs.invalid && (teleUs.dirty || teleUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="teleUs.errors?.required"  severity="error" text="El teléfono es requerido"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="teleUs.errors?.pattern"     severity="error" text="Solo se permiten números"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group Teléfono-->
+
+                                        <!--group password-->
+                                        <div class="form-group mt-2">
+                                            <label for="labelPassword">Contraseña</label>
+                                            <input type="password" class="p-inputtext form-control mt-2" name ="password"id="password"  placeholder="Ingrese la contraseña" 
+                                            [(ngModel)]="password" #passUs = "ngModel" required minlength="8">
+                                            <div *ngIf="passUs.invalid && (passUs.dirty || passUs.touched)">
+                                                <p-message styleClass="m-1" *ngIf="passUs.errors?.required"  severity="error" text="La contraseña es requerida"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="passUs.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                            </div>
+                                        </div>
+                                        <!--fin group password -->
+
+
+                                                <div class="card-footer text-center mt-3">
+                                                    <button class="btn btn-outline-success btn-block" [disabled]="!formUsuario.valid" style="margin-left: 10px"  ><i class="far fa-save"></i> Guardar</button>
+                                                    <button routerLink="/index" class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                                                  
+                                        
+                                                </div>
+
+
+                                    </div>
+
+
+                                </form>
+
+                                
+
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+				</div>
+               
+                   
+			
+			</div>
+		</div>
+	</div>
+    
+</div>
+</body>

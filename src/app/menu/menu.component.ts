@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
     
   const nombreUsuairo = this.route.snapshot.params['nombreUsuario'];
        
-  this.listar(nombreUsuairo);
+  // this.listar(nombreUsuairo);
     this.roles=this.tokenService.getAuthorities();
 
     this.roles.forEach(rol =>{
@@ -80,7 +80,7 @@ export class MenuComponent implements OnInit {
     })
   }
 
-  async listar(nombreUsuairo: string): Promise<void>{
+  /* async listar(nombreUsuairo: string): Promise<void>{
     await  this.riegoService.listarRiegoPorUsuario(nombreUsuairo).subscribe(
       data => {
         this.riegos=data;
@@ -90,6 +90,6 @@ export class MenuComponent implements OnInit {
       }
     );
 
-  }
+  } */
 
 }

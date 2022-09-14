@@ -29,6 +29,12 @@ const routes: Routes = [
     path: 'riego',
     loadChildren:() => import('./modulos/riego/riego.module').then(m => m.RiegoModule)
   },
+
+  {
+    path: 'cultivo',
+    loadChildren:() => import('./modulos/cultivo/cultivo.module').then(m => m.CultivoModule)
+  },
+
   {path: '**', redirectTo: 'index', pathMatch: 'full'}
 ];
 

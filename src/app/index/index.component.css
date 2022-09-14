@@ -1,0 +1,9 @@
+.image-fondo{
+    background-image: url("/../../assets/imagen/tomate.jpg" );
+    position:fixed;
+    height:100%;
+    min-width:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
