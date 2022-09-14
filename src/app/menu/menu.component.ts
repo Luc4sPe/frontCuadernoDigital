@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import Swal from 'sweetalert2';
 import { Riego } from '../Core/modelo/riego';
 import { Usuario } from '../Core/modelo/usuario';
@@ -27,6 +28,7 @@ export class MenuComponent implements OnInit {
   isProductor = false;
   isGerente = false;
   
+  items: MenuItem[]=[];
 
   constructor(private route: ActivatedRoute, private tokenService: TokenService, private usuarioService: UsuarioService,private riegoService: RiegoService ) { }
 
@@ -79,6 +81,27 @@ export class MenuComponent implements OnInit {
       title: 'Cerraste sesion correctamente!'
     })
   }
+
+  cargarItems():void{
+    this.items=[
+
+      {
+        label:'Productor',
+        icon:'pi pi-fw pi-user',
+        items:[
+           {
+              label:'Nuevo',routerLink:'/usuario/nuevo',
+              icon:'pi pi-fw pi-user-plus',
+
+           },
+           {
+              label:'Listar',
+              icon:'pi pi-fw pi-file',
+
+           },
+              ]
+  } ]
+}
 
   /* async listar(nombreUsuairo: string): Promise<void>{
     await  this.riegoService.listarRiegoPorUsuario(nombreUsuairo).subscribe(
