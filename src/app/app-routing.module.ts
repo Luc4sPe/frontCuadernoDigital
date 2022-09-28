@@ -35,6 +35,12 @@ const routes: Routes = [
     loadChildren:() => import('./modulos/cultivo/cultivo.module').then(m => m.CultivoModule)
   },
 
+  {
+    path: 'finca',
+    loadChildren:() => import('./modulos/finca/finca.module').then(m => m.FincaModule)
+  },
+
+
   {path: '**', redirectTo: 'index', pathMatch: 'full'}
 ];
 

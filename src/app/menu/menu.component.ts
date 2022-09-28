@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit {
   isGerente = false;
   
   items: MenuItem[]=[];
+  nombre:String = 'ROLE_PRODUCTOR';
 
   constructor(private route: ActivatedRoute, private tokenService: TokenService, private usuarioService: UsuarioService,private riegoService: RiegoService ) { }
 
@@ -41,9 +42,9 @@ export class MenuComponent implements OnInit {
   this.isProductor = this.tokenService.isProductor();
   this.isGerente = this.tokenService.isGerente();
 
+  //const nombre = this.route.snapshot.params['ROLE_PRODUCTOR'];
     
-    
-  const nombreUsuairo = this.route.snapshot.params['nombreUsuario'];
+  //const nombreUsuairo = this.route.snapshot.params['nombreUsuario'];
        
   // this.listar(nombreUsuairo);
     this.roles=this.tokenService.getAuthorities();

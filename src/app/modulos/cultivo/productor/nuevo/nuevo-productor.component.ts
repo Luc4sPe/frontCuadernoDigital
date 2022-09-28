@@ -6,6 +6,7 @@ import { ProductorDto } from 'src/app/Core/dto/productor-dto';
 import { CultivoService } from 'src/app/service/cultivo.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-nuevo-productor',
   templateUrl: './nuevo-productor.component.html',
@@ -58,8 +59,13 @@ export class NuevoProductorComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: this.msj,
-          text: 'Productor Creado con Exito, para terminar debe asignar una finca ',
-        });
+          text: 'Para terminar debe asignar una finca',
+        }).then((result) =>{
+          if(result.isConfirmed){
+            this.router.navigate([`/finca/crearFinca`]);
+          }
+        }
+        )
 
         form.resetForm();
       },

@@ -9,6 +9,7 @@ export const environment = {
   riegoURL: 'http://localhost:8080/riego/',
   logsURL: 'http://localhost:8080/logs/',
   cultivoURL: 'http://localhost:8080/cultivo/',
+  fincaURL: 'http://localhost:8080/finca/',
 
 };
 

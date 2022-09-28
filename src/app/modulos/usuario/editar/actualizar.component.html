@@ -88,44 +88,53 @@
                                                         
                                                         <!--group NombreUsuario -->
 
-                                                       <div class="form-group">
-                                                           <label for="nombreUsuario">Nombre de usuario</label>
-                                                           <input type="text" class="form-control m-2" id="nombreUsuario" name="nombreUsuario"
-                                                           [(ngModel)]="usuario.nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
-                                                       
-                                                           <div class="alert-danger rounded mt-2" *ngIf="NomUs.invalid && (NomUs.dirty || NomUs.touched)">
-                                                            <div *ngIf="NomUs.errors?.required">
-                                                                <i class="ms-1 bi-x-circle-fill"></i>
-                                                                El nombre de usuario es requerido
+                                                      
+
+                                                             <div class="form-group">
+                                                                <label for="nombreUsuario">Nombre de usuario</label>
+                                                                <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" 
+                                                                [(ngModel)]="usuario.nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
+    
+                                                    
+                                                                <div class="alert-danger rounded mt-2" *ngIf="NomUs.invalid && (NomUs.dirty || NomUs.touched)">
+                                                                    <div *ngIf="NomUs.errors?.required">
+                                                                        <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        El nombre de usuario es requerido
+                                                                    </div>
+                                                                     <div *ngIf="NomUs.errors?.pattern">
+                                                                        <i class="ms-1 bi-x-circle-fill"></i>
+                                                                        Solo se permiten letras
+                                                                    </div> 
+                                                                </div>
                                                             </div>
-                                                            <div *ngIf="NomUs.errors?.pattern">
-                                                                <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    Solo se permiten letras
-                                                                 </div>
-                                                             </div>
+           
+
                                                        
-                                                        </div>
+                                                     
 
                                                        <!--group Email -->
- 
+                                                        
+                                                     
+                                                        <div class="form-group">
+                                                            <label for="email">E-mail</label>
+                                                            <input type="text" class="form-control mt-2" name ="email"id="email" placeholder="E-mail" 
+                                                            [(ngModel)]="usuario.email" #corre = "ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required>
+
+                                                
+                                                            <div class="alert-danger rounded mt-2" *ngIf="corre.invalid && (corre.dirty || corre.touched)">
+                                                                <div *ngIf="corre.errors?.required">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    El E-mail es requerido
+                                                                </div>
+                                                                 <div *ngIf="corre.errors?.pattern">
+                                                                    <i class="ms-1 bi-x-circle-fill"></i>
+                                                                    Ingrese una direccion de E-mail valida: ejemplo@ejemplo.com
+                                                                </div> 
+                                                            </div>
+                                                        </div>
        
-                                                       <div class="form-group">
-                                                           <label for="email">E-mail</label>
-                                                           <input type="text" class="form-control m-2" id="email" name="email"
-                                                           [(ngModel)]="usuario.email" #corre = "ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required>
-
-                                                           <div class="alert-danger rounded mt-2" *ngIf="corre.invalid && (corre.dirty || corre.touched)">
-                                                            <div *ngIf="corre.errors?.required">
-                                                                <i class="ms-1 bi-x-circle-fill"></i>
-                                                                El E-mail es requerido
-                                                            </div>
-                                                            <div *ngIf="corre.errors?.email">
-                                                                <i class="ms-1 bi-x-circle-fill"></i>
-                                                                Ingrese una direccion de E-mail valida: ejemplo@ejemplo.com
-                                                            </div>
-                                                        </div>
-
-                                                        </div>
+                                                    
+                                                        
 
                                                          <!--group telefono -->
                                                          <div class="form-group">

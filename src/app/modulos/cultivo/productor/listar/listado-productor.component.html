@@ -1,0 +1,215 @@
+<app-menu></app-menu> 
+<div class="container-lg fadein animation-iteration-1 animation-duration-500">
+ <!--  <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb> -->
+  <div class="row justify-content-center">
+    <p-card styleClass="shadow-1 mb-4" header="Usuarios del sistema">
+      <p-table #dt [value]="usuarios" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0">
+        <ng-template pTemplate="caption">
+          <div class="d-flex justify-content-between">
+
+           </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+
+          <tr>
+            <!--column Id-->
+            <th class="text-center" pSortableColumn="id">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Id
+                <p-sortIcon field="id"></p-sortIcon>
+                <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <!-- columna apellido-->
+            <th class="text-center" pSortableColumn="apellido">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Apellido
+                <p-sortIcon field="apellido"></p-sortIcon>
+                <p-columnFilter type="text" field="apellido" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+             <!-- columna nombre-->
+             <th class="text-center" pSortableColumn="nombre">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Nombre
+                <p-sortIcon field="nombre"></p-sortIcon>
+                <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <!-- columna DNI-->
+            <th class="text-center" pSortableColumn="dni">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                DNI
+                <p-sortIcon field="dni"></p-sortIcon>
+                <p-columnFilter type="text" field="dni" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <!-- columna nombreUsuario-->
+            <th class="text-center" pSortableColumn="nombreUsuario">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Nombre Usuario
+                <p-sortIcon field="nombreUsuario"></p-sortIcon>
+                <p-columnFilter type="text" field="nombreUsuario" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+               <!-- columna email-->
+              <!--  <th class="text-center" pSortableColumn="email">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                  Email
+                  <p-sortIcon field="email"></p-sortIcon>
+                  <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto"></p-columnFilter>
+                </div>
+              </th> -->
+
+             <!-- columna Roles-->
+             <th class="text-center" pSortableColumn="roles" scope="col">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                Roles
+                <p-sortIcon field="roles"></p-sortIcon>
+                <p-columnFilter type="text" field="roles" display="menu" class="p-ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <!-- columna estado-->
+            <th class="text-center" pSortableColumn="estadoActivo">
+              Estado
+              <p-columnFilter type="boolean" field="estadoActivo" class="p-ml-auto"></p-columnFilter>
+            </th>
+
+              <!-- columna fecha cracion-->
+              <th class="text-center" pSortableColumn="fechaDeAlta">
+                Creado
+                <p-sortIcon field="fechaDeAlta"></p-sortIcon>
+                <p-columnFilter type="date" field="fechaDeAlta" display="menu" class="p-ml-auto"></p-columnFilter>
+              </th>
+              <!-- -- columna fecha actualizacion-->
+                  <th class="text-center" pSortableColumn="fechaModificacion">
+                      <div class="p-d-flex p-jc-between p-ai-center">
+                          Modificado                                
+                        <p-sortIcon field="fechaModificacion"></p-sortIcon>
+                        <p-columnFilter type="date" field="fechaModificacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                      </div>
+                  </th> 
+
+                   <th class="text-center" pSortableColumn="ver"> 
+                    <div class="p-d-flex p-jc-between p-ai-center"></div>
+                  </th>
+                  <th class="text-center" pSortableColumn="ver"> 
+                    <div class="p-d-flex p-jc-between p-ai-center"></div>
+                  </th>
+
+                  <th class="text-center"  scope="col" >Acciones</th>
+                  <th class="text-center"  scope="col" ></th> 
+
+
+                
+         </ng-template>
+
+
+         <ng-template pTemplate="body" let-usuario>
+          <tr>
+            <td><span class="p-column-title">Id</span>{{usuario.id}}</td>
+            <td><span class="p-column-title">Apellido</span>{{usuario.apellido}}</td>
+            <td><span class="p-column-title">Nombre</span>{{usuario.nombre}}</td>
+            <td><span class="p-column-title">DNI</span>{{usuario.dni}}</td>
+            <td><span class="p-column-title">Nombre USuario</span>{{usuario.nombreUsuario}}</td>
+            <!-- td><span class="p-column-title">Email</span>{{usuario.email}}</td> -->
+            <td><span class="p-column-title">Roles</span><ul *ngFor="let roles of usuario.roles; let i = index; ">
+               
+              <td >{{usuario.roles[i].rolNombre}}</td>
+            
+            </ul></td>
+            <td class="text-center">
+              <!-- <span [ngClass]="usuario.activo? 'badge rounded-pill bg-success':'badge rounded-pill bg-danger'">
+                {{usuario.activo? "Activo": "Inactivo" }}
+              </span> -->
+              <p-tag [severity]="getSeverityByEstado(usuario)" styleClass="uppercase" [rounded]="true">{{usuario.estadoActivo? "Activo": "Inactivo" }}</p-tag>
+            </td>
+
+            <td><span class="p-column-title">Creado</span>{{usuario.fechaDeAlta | date:"short" }}</td>
+            
+            <td><span class="p-column-title">Modificado</span>{{usuario.fechaModificacion | date:"short"}}</td>
+           
+            <td><span class="p-column-title">Creado</span>{{usuario.fechaCreacion | date:'short' }}</td>
+            
+           <!--  <td> <span class="p-column-title">Ver</span> <button *ngIf="isAdmin" class="btn btn-outline-primary" routerLink="/usuario/obtner/{{usuario.id}}"  pTooltip="ver"
+              tooltipPosition="ver detalle"><i class="fas fa-eye"></i></button></td>
+              <td class="text-center"> -->
+                
+
+              <!--Boton Detalle -->
+              <td class="text-center">
+                <button pRipple  class="btn btn-outline-info" routerLink="/usuario/obtner/{{usuario.id}}" pTooltip="Detalle" tooltipPosition="top"
+                icon="" >
+                <i class="fas fa-eye"></i>
+              </button>
+               </td> 
+
+                <!--Boton Editar -->
+            <td class="text-center">
+             <!--  <button pRipple pButton class="p-button-rounded me-1 p-button-text p-button-raised" icon="pi pi-user-edit"
+                routerLink="/usuario/actualizar/{{usuario.id}}" pTooltip="Editar" tooltipPosition="top"
+                *ngIf="usuario.nombreUsuario!='admin'">
+               </button> -->
+
+               <button pRipple  *ngIf="usuario.nombreUsuario!='admin'" class="btn btn-outline-warning" 
+                routerLink="/usuario/actualizar/{{usuario.id}}" pTooltip="Editar" tooltipPosition="top">
+                <i class="fa-solid fa-user-pen"></i></button> 
+            </td>
+            
+               <!--Boton Alta/Baja -->
+            <td class="text-center">   
+               <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
+                icon="pi pi-user-plus" (click)="altaUsuario(usuario.id)"
+                *ngIf="usuario.estadoActivo == false && usuario.nombreUsuario!='admin'" pTooltip="Dar de Alta"
+                tooltipPosition="top">
+                  
+                 <!-- <i class="fas fa-user-plus"></i> -->
+              
+              </button> 
+
+               <button pRipple pButton class="p-button-danger p-button-rounded p-button-text p-button-raised"
+                icon="pi pi-trash" (click)="bajaUsuario(usuario.id)"
+                *ngIf="usuario.estadoActivo == true && usuario.nombreUsuario!='admin'" pTooltip="Dar de Baja"
+                tooltipPosition="top">
+                
+              </button> 
+               <button pRipple pButton class="p-button-warning p-button-rounded p-button-text p-button-raised"
+                icon="pi pi-lock" *ngIf="usuario.nombreUsuario == 'admin'" pTooltip="Admin no se puede dar de baja"
+                tooltipPosition="top">
+                <!-- <i class="fas fa-exclamation-triangle"></i> -->
+              </button> 
+            </td>
+
+           
+        
+         <!--  <td>
+          <button *ngIf="isAdmin && usuario.estadoActivo == true && usuario.nombreUsuario == 'Admin'"  class="btn btn-outline-danger"    ><i class="bi bi-file-earmark-lock2"></i></button>  
+          <button *ngIf="isAdmin && usuario.estadoActivo == true" class="btn btn-outline-danger"   (click) ="bajaUsuario(usuario.id)"  ><i class="far fa-trash-alt"></i></button>  
+           <button *ngIf="isAdmin && usuario.estadoActivo == false" class="btn btn-outline-success"   (click) ="altaUsuario(usuario.id)"  ><i class="fas fa-user-plus"></i></button></td>  -->
+          </tr>
+        </ng-template>
+
+
+         <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="text-center" colspan="8">No se encontraron registros.</td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </p-card>
+    <p-scrollTop></p-scrollTop>
+            
+  </div>
+</div>

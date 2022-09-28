@@ -42,5 +42,18 @@ input:valid {
     display: inline;
   }
 
+
+  .image-fondo{
+    background-image: url("/../../assets/imagen/productor.jpg" );
+    position:fixed;
+    height:100%;
+    min-width:100%;
+    background-repeat: no-repeat;
+    background-position: absolute;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
   
   
