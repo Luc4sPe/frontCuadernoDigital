@@ -5,6 +5,7 @@ import { ProductorDto } from '../Core/dto/productor-dto';
 import { Observable } from 'rxjs';
 import { Usuario } from '../Core/modelo/usuario';
 import { FincaDto } from '../Core/dto/finca-dto';
+import { CultivoDto } from '../Core/dto/cultivo-dto';
 
 
 
@@ -20,6 +21,10 @@ export class CultivoService {
 
   public crearProductor(nuevProductor: ProductorDto): Observable<any>{
     return this.httpCliente.post<any>(this.cultivoURL+'nuevo',nuevProductor);
+  }
+
+  public crearCultivo(nuevCultivo: CultivoDto): Observable<any>{
+    return this.httpCliente.post<any>(this.cultivoURL+'crearCultivo',nuevCultivo);
   }
 
   public listarUsuarioPorRol(nombreRol: string): Observable<Usuario[]>{

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FincaDto } from '../Core/dto/finca-dto';
 import { Cuadro } from '../Core/modelo/cuadro';
+import { Finca } from '../Core/modelo/finca';
 import { Usuario } from '../Core/modelo/usuario';
 
 @Injectable({
@@ -18,8 +19,8 @@ export class FincaService {
     return this.httpCliente.post<any>(this.fincaURL+'crearFinca',finca);
   }
 
-  public listar(): Observable<Cuadro[]>{
-    return this.httpCliente.get<Cuadro[]>(this.fincaURL + 'listadoCuadro');
+  public listar(): Observable<Finca[]>{
+    return this.httpCliente.get<Finca[]>(this.fincaURL + 'listadoFinca');
   }
 
   

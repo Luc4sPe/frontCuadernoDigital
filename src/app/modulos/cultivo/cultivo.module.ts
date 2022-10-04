@@ -15,12 +15,15 @@ import { TagModule } from 'primeng/tag';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import {TabViewModule} from 'primeng/tabview';
 import { ListadoProductorComponent } from './productor/listar/listado-productor.component';
+import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
   declarations: [
   NuevoProductorComponent,
   ListadoProductorComponent,
+  NuevoCultivoComponent,
   
 
   
@@ -41,7 +44,8 @@ import { ListadoProductorComponent } from './productor/listar/listado-productor.
     TableModule,
     TagModule,
     BreadcrumbModule,
-    TabViewModule
+    TabViewModule,
+    DropdownModule
 
     
 

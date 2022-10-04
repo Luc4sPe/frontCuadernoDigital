@@ -1,0 +1,125 @@
+<app-menu></app-menu> 
+<div class="card">
+    <div class="container fadein animation-iteration-1 animation-duration-500">
+        <div class="row d-flex justify-content-center">
+            <p-card styleClass="shadow-1 mb-4" header="Fincas">
+
+                <p-table #dt [value]="fincas" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                    dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                    [rowHover]="true" [paginator]="true"
+                    currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                    [filterDelay]="0">
+
+                    <ng-template pTemplate="caption">
+                        <div class="d-flex justify-content-between">
+              
+                         </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="header">
+
+                        <tr>
+                            <!--column Id-->
+                            <th class="text-center" pSortableColumn="id">
+                              <div class="p-d-flex p-jc-between p-ai-center">
+                                Id
+                                <p-sortIcon field="id"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                              </div>
+                            </th>
+
+                                  <!-- columna nombre finca-->
+                            <th class="text-center" pSortableColumn="nombre">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Nombre Finca
+                                <p-sortIcon field="nombre"></p-sortIcon>
+                                <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+
+
+                             <!-- columna dirección-->
+                            <th class="text-center" pSortableColumn="direccion">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Dirección
+                                <p-sortIcon field="direccion"></p-sortIcon>
+                                <p-columnFilter type="text" field="direccion" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+  
+
+
+                             <!-- columna nombreUsuario-->
+                            <th class="text-center" pSortableColumn="nombreUsuario">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Nombre Productor
+                                <p-sortIcon field="nombreUsuario"></p-sortIcon>
+                                <p-columnFilter type="text" field="nombreUsuario" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+
+
+                             <!-- columna Numero de cuadros-->
+                            <th class="text-center" pSortableColumn="numeros" scope="col">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Numero de cuadros
+                                <p-sortIcon field="fincas"></p-sortIcon>
+                                <p-columnFilter type="text" field="numeros" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+                             <!-- columna Superficie de cuadros-->
+                             <th class="text-center" pSortableColumn="superficie" scope="col">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Superficie cuadros
+                                <p-sortIcon field="fincas"></p-sortIcon>
+                                <p-columnFilter type="text" field="superficie" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+
+                             <!-- columna fecha cracion-->
+                            <th class="text-center" pSortableColumn="fechaCreacionFinca">
+                                Creada
+                                <p-sortIcon field="fechaCreacionFinca"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaCreacionFinca" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </th>
+                            <!-- -- columna fecha actualizacion-->
+                                <th class="text-center" pSortableColumn="fechaModificacionFinca">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Modificado                                
+                                        <p-sortIcon field="fechaModificacionFinca"></p-sortIcon>
+                                        <p-columnFilter type="date" field="fechaModificacionFinca" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th> 
+
+                    </ng-template>
+                    <ng-template pTemplate="body" let-finca>
+                        <tr>
+                            <td><span class="p-column-title">Id</span>{{finca.id}}</td>
+                            <td><span class="p-column-title">Nombre Finca</span>{{finca.nombre}}</td>
+                            <td><span class="p-column-title">Dirección</span>{{finca.direccion}}</td>
+                            <td><span class="p-column-title">Nombre Productor</span>{{finca.productor.nombreUsuario}}</td>
+                            <td><span class="p-column-title">Cuadros</span><ul *ngFor="let roles of finca.cuadros; let i = index; ">
+               
+                                <td>{{finca.cuadros[i].numeroCuadro}}</td>
+                              
+                              </ul></td>
+                              <td><span class="p-column-title">Cuadros</span><ul *ngFor="let roles of finca.cuadros; let i = index; ">
+               
+                                <td>{{finca.cuadros[i].superficieHectarea}}</td>
+                              
+                              </ul></td>
+
+                              <td><span class="p-column-title">Creada</span>{{finca.fechaCreacionFinca | date:"short" }}</td>
+
+                              <td><span class="p-column-title">Modificado</span>{{finca.fechaModificacionFinca | date:"short"}}</td>
+                        </tr>
+                    </ng-template>
+
+
+                </p-table>
+            </p-card>
+        </div>
+
+    </div>
+    
+</div>

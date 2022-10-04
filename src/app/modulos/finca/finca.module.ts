@@ -31,6 +31,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import {InputTextModule} from 'primeng/inputtext';
 import { EditarFincaComponent } from './editar/editar-finca.component';
+import { ListarFincaComponent } from './Listado/listar-finca.component';
+
 
 
 
@@ -39,7 +41,8 @@ import { EditarFincaComponent } from './editar/editar-finca.component';
 @NgModule({
   declarations: [
     FincaNuevaComponent,
-    EditarFincaComponent
+    EditarFincaComponent,
+    ListarFincaComponent
   ],
   imports: [
     CommonModule,

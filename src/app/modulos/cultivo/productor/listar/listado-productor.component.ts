@@ -39,7 +39,7 @@ export class ListadoProductorComponent implements OnInit {
     private usuarioServ: UsuarioService,) { }
 
   ngOnInit(): void {
-    //const nombreUsuairo = this.route.snapshot.params['ROLE_PRODUCTOR'];
+    
     this.cargarUsuario("ROLE_PRODUCTOR");
   }
 

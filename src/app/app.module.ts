@@ -17,6 +17,7 @@ import { MenuModule } from 'primeng/menu';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
+import {CardModule} from 'primeng/card';
 
 
 
@@ -41,7 +42,8 @@ registerLocaleData(localEs, "es-AR");
     MenuModule,
     TooltipModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    CardModule
 
 
   ],

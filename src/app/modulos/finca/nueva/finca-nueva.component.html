@@ -44,13 +44,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="p-2">
+                                         <div class="p-2">
                                             <label for="labelLongitud" class="form-label">Longitud</label>
 
                                             <input type="number" class="form-control p-inputtext"  name="nuevaFinca.longitud" id="nuevaFinca.longitud" placeholder="Ingrese la longitud" 
                                             [(ngModel)]="nuevaFinca.longitud" #long="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2"> 
-                                            <!-- <p-inputNumber [(ngModel)]="nuevaFinca.longitud" #long="ngModel" pattern="^[0-9 -]{2,15}"   [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" decrementButtonClass="p-button-danger" 
-                                            incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="longitud" currency="LONGITUD"></p-inputNumber> -->
     
                                             <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                                                 <p-message styleClass="m-1" *ngIf="long.errors?.required"  severity="error" text="La longitud es requerida"></p-message>
@@ -73,7 +71,7 @@
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                             </div>
                                         </div>
-
+ 
                                         <div class="p-2">
                                           
                                             <label for="labelNombreUsuario  form-select-lg mb-3" class="form-label">Dueño de la finca</label>
@@ -137,7 +135,7 @@
 
 
                                         <div class="container py-2">
-                                            <label for="labelLatitud" class="form-label">Superficie</label>
+                                            <label for="labelLatitud" class="form-label">Superficie ha</label>
                                             <input type="number" class="form-control p-inputtext"     name="superficie" id="superficie" >
                                         
                                         
@@ -150,10 +148,13 @@
                                         </div>
                                         <div class="card-footer d-flex justify-content-between">
                                             
-                                          <!--  <button id="boton" pRipple pButton type="submit" (click)="prueba()" class="btn btn-outline-secondary" icon="pi pi-check" label="Cargar datos"  value="Cargar datos" [disabled]="!forms"></button>  -->
+                                           
                                            <input class="button-primary" type="submit" value="Agregar">
+                                           <input class="button-primary" type="reset" value="Limpiar">
+
                                             
                                         </div>
+                                        
 
                                          
                                         
@@ -164,6 +165,7 @@
                                                 <tr>
                                                     <th> Nombre </th>
                                                     <th> Superficie </th>
+                                                
                                                 </tr>
                                             </thead>
                                             

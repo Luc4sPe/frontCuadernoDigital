@@ -10,8 +10,13 @@ import { Usuario } from 'src/app/Core/modelo/usuario';
 import { CultivoService } from 'src/app/service/cultivo.service';
 import { CuadroDto } from 'src/app/Core/dto/cuadro-dto';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { elementAt, NEVER } from 'rxjs';
+import { elementAt, from, NEVER } from 'rxjs';
 import { __values } from 'tslib';
+import { Button } from 'primeng/button';
+import { TableBody } from 'primeng/table';
+import { bottom } from '@popperjs/core';
+
+
 
 
 @Component({
@@ -82,38 +87,55 @@ export class FincaNuevaComponent implements OnInit {
    const numeroCap = document.querySelector('#num') as HTMLInputElement ;
    const superCap = document.querySelector('#superficie') as HTMLInputElement;
    const form = document.querySelector('#estoy') as HTMLFormElement;
-   
-   //const numeroCap = document.getElementById('num') as HTMLInputElement;
-   //const superCap = document.getElementById('superficie') as HTMLInputElement;
-   //const form = document.querySelector('#estoy') as HTMLFormElement;
-  
+    /* const table = document.querySelector("#tabla") as HTMLTableElement;
+    console.log(table)
+   const borrarBoron = document.createElement('button') as HTMLButtonElement;
+    borrarBoron.textContent='Eliminar'; 
+    borrarBoron.type='click';
+    table.appendChild(borrarBoron);  */
+    
+    form.addEventListener ('reset', event => {
+      event.preventDefault;
+      eliminar();
+    
+    }); 
+    
 
    form.addEventListener('submit', event =>{
-     event.preventDefault()
+     event.preventDefault();
      const cuadroNuevo :CuadroInterfaz={
       numeroCuadro :numeroCap.value,
       superficieHectarea :superCap.valueAsNumber
       }
       cargar(cuadroNuevo);
-
+      
    });
-   
 
+  
+ 
    const cuad:any = [];
    this.nuevaFinca.cuadros=cuad;
-    //console.log(this.nuevaFinca.cuadros);
+    console.log(cuad);
+
    function cargar(cuadroNuevo:CuadroInterfaz){
-     cuad.push(cuadroNuevo);
-     document.querySelector("#tabla")!.innerHTML +='<tbody><td>'+cuadroNuevo.numeroCuadro+'</td> <td>'+cuadroNuevo.superficieHectarea+'</td></tbody>';
-    
+      cuad.push(cuadroNuevo);   
+      document.querySelector("#tabla")!.innerHTML +='<tbody><td>'+cuadroNuevo.numeroCuadro+'</td> <td>'+cuadroNuevo.superficieHectarea+'</td></tbody>';
+          
     }
+
+   
+
+     function eliminar(){
+      cuad.pop();
+      document.querySelector('tbody')!.remove();
     
+    } 
    
     
  }
- 
 
   solicitudCrearFinca(form: NgForm):void{
+  
   console.log(this.nuevaFinca.cuadros);
     console.log(this.nuevaFinca.cuadros);
     this.fincaServi.crearFinca(this.nuevaFinca).subscribe(

@@ -10,6 +10,11 @@ const routes: Routes = [
 
   {path: 'login',
   loadChildren: () => import('./modulos/auth/auth.module').then(m => m.AuthModule)},
+
+  {
+    path:'inicio',
+    loadChildren:() => import('./modulos/paginaInicio/inicio.module').then(m => m.InicioModule)
+  },
   
   {path: 'index',
     loadChildren: () => import('./modulos/index/index.module').then(m => m.IndexModule) 
@@ -38,6 +43,11 @@ const routes: Routes = [
   {
     path: 'finca',
     loadChildren:() => import('./modulos/finca/finca.module').then(m => m.FincaModule)
+  },
+
+  {
+    path: 'plantacion',
+    loadChildren:() => import('./modulos/plantacion/plantacion.module').then(m => m.PlantacionModule)
   },
 
 
