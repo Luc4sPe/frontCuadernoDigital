@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MenuModule } from 'src/app/menu/menu.module';
 import { PlantacionRoutingModule } from './plantacion-routing.module';
 import { PlantacionNuevaComponent } from './nueva/plantacion-nueva.component';
+
+
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { PlantacionNuevaComponent } from './nueva/plantacion-nueva.component';
   ],
   imports: [
     CommonModule,
-    PlantacionRoutingModule
+    PlantacionRoutingModule,
+    MenuModule,
+    
   ]
 })
 export class PlantacionModule { }

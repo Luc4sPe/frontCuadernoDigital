@@ -1,0 +1,14 @@
+img {
+    margin-top: -23px;
+    margin-left: -125px;
+    left: 50%;
+    top: 30%;
+    position: absolute;
+    }
+
+    #Bienvenido {
+        position: relative;
+        top: 80px;
+        left: 10px;
+        /* background: blue; */
+      }
