@@ -3,13 +3,11 @@
     
     <div *ngIf="isLogged; else loggedOut">
         
-        <div id="Bienvenido"><h2>Bienvenido {{nombreUsuario}}</h2></div>
+        <div id="Bienvenido"><b><h2>"Bienvenido {{conversion}}"</h2></b></div>
 
         <h1 *ngIf="nombreUsuario" class="display-4"></h1> 
          <img  src="assets/imagen/agroandina.png"  alt="...">
         
-
-
     </div>
     <ng-template #loggedOut><h2> No has iniciado sesión</h2>
          <img  src="assets/imagen/agroandina.png"  alt="...">

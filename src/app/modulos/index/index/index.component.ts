@@ -21,6 +21,9 @@ export class IndexComponent implements OnInit {
   isProctor = false;
   isGerente = false;
   isEncargadoAgricola = false;
+  nombre:string;
+  minuscula:any;
+  conversion:any;
 
   
 
@@ -29,11 +32,14 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.nombreUsuario = this.tokenService.getUserName();
+    //obtengo la primera letra del nombre en mayuscula
+    this.nombreUsuario = this.tokenService.getUserName()!.charAt(0).toLocaleUpperCase();
+    //obtengo el nombre completo  variable minuscula
+    this.minuscula=this.tokenService.getUserName();
+    //concateno la primera letra en mayuscula, y con slice se toma el nombre apartir del segundo caracter en minuscula para formar el nombre
+    this.conversion= this.nombreUsuario+this.minuscula.slice(1)
+ 
     this.obtenerRolesDelUsuario();
-
-
-
 
     if (this.tokenService.getToken()) {
         this.isLogged = true;
