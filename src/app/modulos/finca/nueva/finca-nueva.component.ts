@@ -10,6 +10,7 @@ import { CultivoService } from 'src/app/service/cultivo.service';
 import { CuadroDto } from 'src/app/Core/dto/cuadro-dto';
 import { __values } from 'tslib';
 import { CuadroService } from 'src/app/service/cuadro.service';
+import { Router } from '@angular/router';
 
 
 
@@ -42,6 +43,7 @@ export class FincaNuevaComponent implements OnInit {
     private fincaServi: FincaService,
     private cultivoServi: CultivoService,
     private cuadroServi: CuadroService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -78,8 +80,13 @@ export class FincaNuevaComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: this.msj,
-          text: '',
-        });
+          text: 'Para terminar debe cargar los cuadros',
+        }).then((result) =>{
+          if(result.isConfirmed){
+            this.router.navigate([`/cuadro/crearcuadro`]);
+          }
+        }
+        );
 
         form.resetForm();
         
