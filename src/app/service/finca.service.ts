@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FincaDto } from '../Core/dto/finca-dto';
-import { Cuadro } from '../Core/modelo/cuadro';
 import { Finca } from '../Core/modelo/finca';
-import { Usuario } from '../Core/modelo/usuario';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +22,13 @@ export class FincaService {
     return this.httpCliente.get<Finca[]>(this.fincaURL + 'listadoFinca');
   }
 
+  public listarFincaPorUsuario(nombreUsuario: string): Observable<Finca[]>{
+    return this.httpCliente.get<Finca[]>(this.fincaURL +  `fincaPorNombreUsuario/${nombreUsuario}`);
+  } 
+
+  public datalle(id: number): Observable<Finca>{
+    return this.httpCliente.get<Finca>(this.fincaURL + `detalle/${id}`);
+
+  }
   
 }

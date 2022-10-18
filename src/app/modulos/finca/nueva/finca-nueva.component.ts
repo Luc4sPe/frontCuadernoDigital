@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MenuItem } from 'primeng/api/menuitem';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FincaDto } from 'src/app/Core/dto/finca-dto';
 import { Cuadro } from 'src/app/Core/modelo/cuadro';
 import { FincaService } from 'src/app/service/finca.service';
@@ -9,12 +8,9 @@ import Swal from 'sweetalert2';
 import { Usuario } from 'src/app/Core/modelo/usuario';
 import { CultivoService } from 'src/app/service/cultivo.service';
 import { CuadroDto } from 'src/app/Core/dto/cuadro-dto';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { elementAt, from, NEVER } from 'rxjs';
 import { __values } from 'tslib';
-import { Button } from 'primeng/button';
-import { TableBody } from 'primeng/table';
-import { bottom } from '@popperjs/core';
+import { CuadroService } from 'src/app/service/cuadro.service';
+
 
 
 
@@ -33,6 +29,7 @@ export class FincaNuevaComponent implements OnInit {
   usuarios: Usuario[]=[];
   usuariosAsignado:Usuario[]=[];
   nuevaFinca: FincaDto = new FincaDto();
+ 
   cuadros: any []=[];
   asignarCuadro: Cuadro[]=[];
   loading : boolean = true;
@@ -42,18 +39,16 @@ export class FincaNuevaComponent implements OnInit {
   
 
   constructor(
-    private router: Router, 
     private fincaServi: FincaService,
     private cultivoServi: CultivoService,
-    private activatedRoute: ActivatedRoute,
-    private route: ActivatedRoute
+    private cuadroServi: CuadroService,
     ) { }
 
   ngOnInit(): void {
     this.cargarItems();
-    this.obtenerCuadros();
     this.cargarUsuario("ROLE_PRODUCTOR");
-    this.agregarCuadro();
+    //this.agregarCuadro();
+    
     
   }
 
@@ -75,69 +70,8 @@ export class FincaNuevaComponent implements OnInit {
     });
 
   }
-
-  // carga los cuadros solo en el navegador 
-  agregarCuadro() {
-
-    interface CuadroInterfaz{
-      numeroCuadro :string,
-      superficieHectarea :number,
-
-   } 
-   const numeroCap = document.querySelector('#num') as HTMLInputElement ;
-   const superCap = document.querySelector('#superficie') as HTMLInputElement;
-   const form = document.querySelector('#estoy') as HTMLFormElement;
-    /* const table = document.querySelector("#tabla") as HTMLTableElement;
-    console.log(table)
-   const borrarBoron = document.createElement('button') as HTMLButtonElement;
-    borrarBoron.textContent='Eliminar'; 
-    borrarBoron.type='click';
-    table.appendChild(borrarBoron);  */
-    
-    form.addEventListener ('reset', event => {
-      event.preventDefault;
-      eliminar();
-    
-    }); 
-    
-
-   form.addEventListener('submit', event =>{
-     event.preventDefault();
-     const cuadroNuevo :CuadroInterfaz={
-      numeroCuadro :numeroCap.value,
-      superficieHectarea :superCap.valueAsNumber
-      }
-      cargar(cuadroNuevo);
-      
-   });
-
-  
- 
-   const cuad:any = [];
-   this.nuevaFinca.cuadros=cuad;
-    console.log(cuad);
-
-   function cargar(cuadroNuevo:CuadroInterfaz){
-      cuad.push(cuadroNuevo);   
-      document.querySelector("#tabla")!.innerHTML +='<tbody><td>'+cuadroNuevo.numeroCuadro+'</td> <td>'+cuadroNuevo.superficieHectarea+'</td></tbody>';
-          
-    }
-
-   
-
-     function eliminar(){
-      cuad.pop();
-      document.querySelector('tbody')!.remove();
-    
-    } 
-   
-    
- }
-
   solicitudCrearFinca(form: NgForm):void{
   
-  console.log(this.nuevaFinca.cuadros);
-    console.log(this.nuevaFinca.cuadros);
     this.fincaServi.crearFinca(this.nuevaFinca).subscribe(
       data => {
         this.msj = data.mensaje;
@@ -165,39 +99,73 @@ export class FincaNuevaComponent implements OnInit {
 
   }
 
-
+  
+  
 
   
 
+   // carga los cuadros solo en el navegador 
+  /*  agregarCuadro() {
 
-  /* cuadroAsignar(cuadro: Cuadro): void {
+    interface CuadroInterfaz{
+      numeroCuadro :string,
+      superficieHectarea :number,
+      idFinca:number
 
-    if(this.asignarCuadro.length >0){
-      let localizado = false;
-      this.asignarCuadro.forEach(
-        a => {
-          if(a.idCuadro == cuadro.idCuadro){
-            this.asignarCuadro = this.asignarCuadro.filter(
-              r => r.idCuadro != cuadro.idCuadro
-            );
-            localizado = true;
-          }
-        }
-      )
-      if(!localizado){
-        this.asignarCuadro.push(cuadro);
+   } 
+   const numeroCap = document.querySelector('#num') as HTMLInputElement ;
+   const superCap = document.querySelector('#superficie') as HTMLInputElement;
+   const form = document.querySelector('#estoy') as HTMLFormElement;
+   
+    
+    form.addEventListener ('reset', event => {
+      event.preventDefault;
+      eliminar();
+    
+    }); 
+    
+   form.addEventListener('submit', event =>{
+     event.preventDefault();
+     const cuadroNuevo :CuadroInterfaz={
+      numeroCuadro :numeroCap.value,
+      superficieHectarea :superCap.valueAsNumber,
+      idFinca:this.nuevaFinca.idFinca
       }
-      
-    }else {
-      this.asignarCuadro.push(cuadro);
+      cargar(cuadroNuevo);  
+   });
+
+  
+ 
+   const cuad:any = [];
+   
+   this.nuevoCuadro=cuad;
+   this.nuevaFinca.cuadros=cuad;
+    console.log(cuad);
+
+   function cargar(cuadroNuevo:CuadroInterfaz){
+      cuad.push(cuadroNuevo); 
+        
+      document.querySelector("#tabla")!.innerHTML +='<tbody><td>'+cuadroNuevo.numeroCuadro+'</td> <td>'+cuadroNuevo.superficieHectarea+'</td></tbody>';
+          
     }
 
-  }
+   
+
+     function eliminar(){
+      cuad.pop();
+      document.querySelector('tbody')!.remove();
+    
+    } 
+   
+    
+ }
  */
+
+  
   cargarItems(): void {
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label: 'Finca', routerLink:'/finca'},
+      {label: 'Finca', routerLink:'/index'},
       {label: 'Nueva Finca', disabled:true}
     ];
   }
@@ -210,14 +178,7 @@ export class FincaNuevaComponent implements OnInit {
     return `${this.usuariosAsignado.length} Productor seleccionados`;
   }
 
-  obtenerCuadros():void{
-    this.fincaServi.listar().subscribe( 
-      data => {
-        this.cuadros = data;
-      }
-    )
-   
-  }
+  
 
   async cargarUsuario(nombreUsuario: string): Promise<void>{
     await  this.cultivoServi.listarUsuarioPorRol(nombreUsuario).subscribe(

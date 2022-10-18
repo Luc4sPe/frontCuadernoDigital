@@ -10,7 +10,8 @@ export const environment = {
   logsURL: 'http://localhost:8080/logs/',
   cultivoURL: 'http://localhost:8080/cultivo/',
   fincaURL: 'http://localhost:8080/finca/',
-  plantacionURL:'http://localhost:8080/plantacion/'
+  plantacionURL:'http://localhost:8080/plantacion/',
+  cuadroURL:'http://localhost:8080/cuadro/'
 
 };
 

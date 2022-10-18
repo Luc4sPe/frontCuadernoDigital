@@ -3,11 +3,10 @@ import { Cuadro } from "../modelo/cuadro";
 export class PlantacionDto {
     entreIleras: number;
     entrePlantas: number;
-    numerosDeCuadros: Cuadro []=[];
+    numerosDeCuadros: Cuadro [];
     observacion: string;
-    justificacion: string;
     sistemaRiego: string;
     sistemaTrasplante: string;
-    tipoCultivo: string;
+    tipoCultivo: number;
     cantidadPlantines: number;
 }

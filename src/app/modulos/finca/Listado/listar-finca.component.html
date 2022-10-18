@@ -94,16 +94,16 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-finca>
                         <tr>
-                            <td><span class="p-column-title">Id</span>{{finca.id}}</td>
+                            <td><span class="p-column-title">Id</span>{{finca.idFinca}}</td>
                             <td><span class="p-column-title">Nombre Finca</span>{{finca.nombre}}</td>
                             <td><span class="p-column-title">Dirección</span>{{finca.direccion}}</td>
                             <td><span class="p-column-title">Nombre Productor</span>{{finca.productor.nombreUsuario}}</td>
-                            <td><span class="p-column-title">Cuadros</span><ul *ngFor="let roles of finca.cuadros; let i = index; ">
+                            <td><span class="p-column-title">Cuadros</span><ul *ngFor="let cuadros of finca.cuadros; let i = index; ">
                
                                 <td>{{finca.cuadros[i].numeroCuadro}}</td>
                               
                               </ul></td>
-                              <td><span class="p-column-title">Cuadros</span><ul *ngFor="let roles of finca.cuadros; let i = index; ">
+                              <td><span class="p-column-title">Cuadros</span><ul *ngFor="let cuadros of finca.cuadros; let i = index; ">
                
                                 <td>{{finca.cuadros[i].superficieHectarea}}</td>
                               

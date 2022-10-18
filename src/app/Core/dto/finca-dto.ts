@@ -1,7 +1,8 @@
 import { Usuario } from "../modelo/usuario";
 
 export class FincaDto {
-    nombre!: string;
+    idFinca:number;
+    nombre: string;
     direccion!: string;
     longitud!: number;
     latitud!: number;

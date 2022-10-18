@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Usuario } from '../Core/modelo/usuario';
 import { FincaDto } from '../Core/dto/finca-dto';
 import { CultivoDto } from '../Core/dto/cultivo-dto';
+import { Cultivo } from '../Core/modelo/cultivo';
 
 
 
@@ -30,6 +31,10 @@ export class CultivoService {
   public listarUsuarioPorRol(nombreRol: string): Observable<Usuario[]>{
     return this.httpCliente.get<Usuario[]>(this.cultivoURL +  `usuariosPorNombreRol/${nombreRol}`);
   } 
+
+  public listarCultivo(): Observable<Cultivo[]>{
+    return this.httpCliente.get<Cultivo[]>(this.cultivoURL +'listado');
+  }
 
   
 }

@@ -28,7 +28,6 @@ const routes: Routes = [
        component: NuevoCultivoComponent,
        canActivate:[guarProductor],
        data:{rolesEsperados: [Encargado_Agricola]} },
-      
 
       /* 
        */

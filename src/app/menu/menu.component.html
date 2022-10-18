@@ -37,8 +37,7 @@
 
 
             <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
-               
-                    
+                     
                     <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user-tie"></i>
@@ -53,25 +52,64 @@
             </li>
 
            
+            <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
+                     
+                <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-table"></i>
+                   Finca
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" routerLink="/finca/crearFinca">Nueva Finca</a></li>
+                    <li><a class="dropdown-item" routerLink="/cuadro/crearcuadro">Nuevo Cuadro</a></li>
+                    <li><a class="dropdown-item" routerLink="/finca/listadoFinca">Listado</a></li>
                 
+                </ul>
+          
+             </li>
+
+             <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
+                     
+                <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-seedling"></i>
+                   Cultivo
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" routerLink="/cultivo/crearCultivo">Nuevo Cultivo</a></li>
+                    <li><a class="dropdown-item" routerLink="/finca/listadoFinca">Listado</a></li>
+                
+                </ul>
+          
+             </li>
+            
            
 
 
-            <li class="nav-item" *ngIf="isLogged && isAdmin">
+            <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
                 <a class="nav-link" routerLink=""><i class="fa-solid fa-wine-bottle"></i> Agroquímicos</a>
             </li>
 
-            <!--  <li class="nav-item" *ngIf="isLogged && isAdmin">
-            <a class="nav-link" routerLink="/usuario"><i class="far fa-list-alt"></i> Usuarios</a>
-            </li>  -->
 
-<!--             <li class="nav-item" *ngIf=" isAdmin">
-                <a class="nav-link" routerLink="/logs"><i class="far fa-list-alt"></i> Logs</a>
-                </li>   -->
 
-           
+                <li class="nav-item dropdown" *ngIf="isProductor">
+               
+                    
+                    <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        <i class="fa-solid fa-spa"></i>
+                        Plantación
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/plantacion/crearPlantacion">Nueva plantación</a></li>
+                        <li><a class="dropdown-item" routerLink="/plantacion/listadoPlantacionPorCultivo">Listado</a></li>
+                    
+                    </ul>
+              
+                </li>
 
-            <li class="nav-item" *ngIf="isLogged && isAdmin || isEncargadoAgricola">
+            <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
                 <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
              </li>
 
@@ -86,9 +124,9 @@
                 <a class="nav-link" routerLink="/login" style="cursor: pointer;"><i class="fas fa-times-circle"></i> Cerrar Sesión</a>
             </li>
 
-            <li>
+          <!--   <li>
                 <p-avatar pTooltip="{{nombreUsuario}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle" routerLink="/inicio"></p-avatar>
-            </li>
+            </li> -->
 
             
             

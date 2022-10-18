@@ -9,13 +9,13 @@
             <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
             <div class="row"> 
                 <!-- parte derecha -->
-                <div class="col-md-7">
+                <div class="col-10-md-7">
                     <div class="row"> 
                         <div class="col-12"> 
                             <div class="card shadow-sm mb-4" >
                                 <div class="card-header bg-primary text-white">
                                     <i class=" bi bi-card-text me-1"></i>
-                                    Crear nueva Finca
+                                    Crear nueva finca
                                 </div>
                                 <form #form = "ngForm" (ngSubmit)="crearFinca(form)" novalidate>
                                     <div class="card-body ">
@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
 
-                                         <div class="p-2">
+                                        <!--  <div class="p-2">
                                             <label for="labelLongitud" class="form-label">Longitud</label>
 
                                             <input type="number" class="form-control p-inputtext"  name="nuevaFinca.longitud" id="nuevaFinca.longitud" placeholder="Ingrese la longitud" 
@@ -70,7 +70,7 @@
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                             </div>
-                                        </div>
+                                        </div> -->
  
                                         <div class="p-2">
                                           
@@ -86,7 +86,7 @@
                                         
 
                                         <div class="card-footer d-flex justify-content-between">
-                                            <button routerLink="/index" class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                                            <button routerLink="/index" type="button" class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
                                             <button pRipple pButton type="submit" class="p-button-rounded p-button-raised" icon="pi pi-check" label="Cargar datos" [disabled]="!form.valid"></button>
                                         </div>
                                              
@@ -107,82 +107,6 @@
                     </div>
                 </div>
 
-
-               <!--  parte izquierda -->
-
-                <div class="col-md-5">
-                    <div class="row ">
-                        <div class="col-12"> 
-
-                            <div class="card shadow">
-                                
-                                   <div class="card-header bg-primary text-white">
-                                        <i class=" bi bi-card-text me-1"></i>
-                                        Generar los cuadros
-                                    </div>  
-                                    <form id="estoy" #forms = "ngForm">
-                                        <div class="container py-2">
-                                            <label  for="labelNombre" class="form-label">Numero de cuadro</label>
-                                            <input type="text" id="num" name="numero"  class="form-control my-2" placeholder="Ingrese el nombre" pInputText required> 
-                                            
-                                             <!-- <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                                                [(ngModel)]="numero"  #numero="ngModel" pattern={{patronLetras}}  required minlength="3" 
-                                                <p-message styleClass="m-1" *ngIf="numero.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
-                                                <p-message styleClass="m-1" *ngIf="numero.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
-                                                <p-message styleClass="m-1" *ngIf="numero.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
-                                            </div>  -->
-                                        </div>
-
-
-                                        <div class="container py-2">
-                                            <label for="labelLatitud" class="form-label">Superficie ha</label>
-                                            <input type="number" class="form-control p-inputtext"     name="superficie" id="superficie" >
-                                        
-                                        
-                                        <!--  <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                                            [(ngModel)]="nuevaFinca.latitud" #latitud="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2"
-                                                <p-message styleClass="m-1" *ngIf="latitud.errors?.required"  severity="error" text="La latitud es requerida"></p-message>
-                                                <p-message styleClass="m-1" *ngIf="latitud.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
-                                                <p-message styleClass="m-1" *ngIf="latitud.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
-                                            </div> -->
-                                        </div>
-                                        <div class="card-footer d-flex justify-content-between">
-                                            
-                                           
-                                           <input class="button-primary" type="submit" value="Agregar">
-                                           <input class="button-primary" type="reset" value="Limpiar">
-
-                                            
-                                        </div>
-                                        
-
-                                         
-                                        
-                                    </form>
-                                    <div class="container py-2">
-                                        <table class="table table-success table-striped" id="tabla">
-                                            <thead class="thead-inverse">
-                                                <tr>
-                                                    <th> Nombre </th>
-                                                    <th> Superficie </th>
-                                                
-                                                </tr>
-                                            </thead>
-                                            
-                                          </table>
-                                    </div>
-
-                                    
-
-                                   
-                                
-                            </div>
-                        </div>
-                
-                        </div>
-                    </div>
-                    
-                </div>
 
         </div>
 
