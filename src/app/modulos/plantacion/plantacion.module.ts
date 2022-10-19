@@ -13,6 +13,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import { TableModule } from 'primeng/table';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { ListadoPlantacionComponent } from './listado/listado-plantacion.component';
 
 
@@ -36,7 +37,8 @@ import { ListadoPlantacionComponent } from './listado/listado-plantacion.compone
     MultiSelectModule,
     TableModule,
     ScrollTopModule,
-    ButtonModule
+    ButtonModule,
+    CardModule
     
   ]
 })

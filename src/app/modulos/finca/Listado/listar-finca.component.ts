@@ -53,8 +53,7 @@ export class ListarFincaComponent implements OnInit {
       console.log(f.matchMode);
       
     })
-    
-    
-
   }
+
+  
 }

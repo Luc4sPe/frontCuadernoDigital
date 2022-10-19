@@ -5,6 +5,7 @@ import { NuevoProductorComponent } from './productor/nuevo/nuevo-productor.compo
 import { CulGuardService as guarProductor } from 'src/app/Core/guards/cul-guard.service';
 import { ListadoProductorComponent } from './productor/listar/listado-productor.component';
 import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
+import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component';
 
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
@@ -29,8 +30,11 @@ const routes: Routes = [
        canActivate:[guarProductor],
        data:{rolesEsperados: [Encargado_Agricola]} },
 
-      /* 
-       */
+       { path: 'listado',
+       component: ListaCultivoComponent,
+       canActivate:[guarProductor],
+       data:{rolesEsperados: [Encargado_Agricola]} },
+
   
       
   

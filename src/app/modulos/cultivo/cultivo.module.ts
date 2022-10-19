@@ -17,6 +17,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { ListadoProductorComponent } from './productor/listar/listado-productor.component';
 import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DropdownModule } from 'primeng/dropdown';
   NuevoProductorComponent,
   ListadoProductorComponent,
   NuevoCultivoComponent,
+  ListaCultivoComponent,
   
 
   

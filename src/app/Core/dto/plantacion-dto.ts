@@ -9,4 +9,5 @@ export class PlantacionDto {
     sistemaTrasplante: string;
     tipoCultivo: number;
     cantidadPlantines: number;
+    idFinca:number;
 }

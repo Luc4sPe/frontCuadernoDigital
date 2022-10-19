@@ -21,4 +21,8 @@ export class PlantacionService {
     return this.httpCliente.get<Plantacion[]>(this.plantacionURL +  `listadoPlantacionPorCultivo/${id}`);
   } 
 
+  public listarPlantacionPorFinca(idFinca: number): Observable<Plantacion[]>{
+    return this.httpCliente.get<Plantacion[]>(this.plantacionURL +  `listadoPlantacionDeUnaFinca/${idFinca}`);
+  } 
+
 }

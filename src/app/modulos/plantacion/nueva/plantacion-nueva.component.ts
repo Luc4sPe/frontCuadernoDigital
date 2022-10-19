@@ -115,6 +115,8 @@ export class PlantacionNuevaComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
+      console.log(valor.value);
+      this.plantacion.idFinca=<number><unknown>valor.value;
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.cuadros=data;
