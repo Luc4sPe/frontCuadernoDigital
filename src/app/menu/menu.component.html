@@ -46,6 +46,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" routerLink="/cultivo/nuevo">Nuevo Productor</a></li>
                         <li><a class="dropdown-item" routerLink="/cultivo/usuariosPorNombreRol/{{nombre}}">Listado</a></li>
+                        
                     
                     </ul>
               
@@ -62,13 +63,13 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" routerLink="/finca/crearFinca">Nueva Finca</a></li>
                     <li><a class="dropdown-item" routerLink="/cuadro/crearcuadro">Nuevo Cuadro</a></li>
-                    <li><a class="dropdown-item" routerLink="/finca/listadoFinca">Listado</a></li>
+                    <li><a class="dropdown-item" routerLink="/finca/listadoFinca">Listado finca</a></li>
                 
                 </ul>
           
              </li>
 
-             <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
+             <li class="nav-item dropdown" *ngIf="isEncargadoAgricola ">
                      
                 <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,8 +77,11 @@
                    Cultivo
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   
                     <li><a class="dropdown-item" routerLink="/cultivo/crearCultivo">Nuevo Cultivo</a></li>
-                    <li><a class="dropdown-item" routerLink="/cultivo/listado">Listado</a></li>
+                    <li><a class="dropdown-item" routerLink="/cultivo/listado">Listado cultivo</a></li>
+                    
+                    
                 
                 </ul>
           
@@ -109,9 +113,26 @@
               
                 </li>
 
-            <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
+                <li class="nav-item dropdown" *ngIf="isProductor">
+               
+                    
+                    <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        <i class="fa-solid fa-person-digging"></i>
+                        Labor de suelo
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/laborSuelo/crearLabor">Nueva labor</a></li>
+                        <li><a class="dropdown-item" routerLink="">Listado</a></li>
+                    
+                    </ul>
+              
+                </li>
+
+            <!-- <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
                 <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
-             </li>
+             </li> -->
 
              <li class="nav-item" *ngIf="isLogged && isProductor">
                 <a class="nav-link" routerLink="/riego/riegoPorNombreUsuario/{{nombreUsuario}}"><i class="bi bi-droplet-half"></i>Riegos</a>
@@ -121,12 +142,12 @@
                 <a class="nav-link"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             </li>
             <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-                <a class="nav-link" routerLink="/login" style="cursor: pointer;"><i class="fas fa-times-circle"></i> Cerrar Sesión</a>
+                <a class="nav-link" style="cursor: pointer;"><i class="fas fa-times-circle"></i> Cerrar Sesión</a>
             </li>
 
-          <!--   <li>
+             <li>
                 <p-avatar pTooltip="{{nombreUsuario}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle" routerLink="/inicio"></p-avatar>
-            </li> -->
+            </li> 
 
             
             

@@ -7,9 +7,10 @@ const routes: Routes = [
   {
     path: '',
     children: [
-    
-      { path: '', component: LoginComponent, canActivate: [LoginGuard] },
-      // { path: '**', redirectTo: 'login',pathMatch: 'full' },
+      
+    //  { path: '', redirectTo: 'login' },
+      { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+       { path: '**', redirectTo: 'login',pathMatch: 'full' },
 
       
     ],

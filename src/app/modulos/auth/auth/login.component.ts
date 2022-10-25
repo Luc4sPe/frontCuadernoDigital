@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   nombreUsuario: string='';
   password: string='';
   roles: string[]=[];
-  errMsj: string='';
+  msj: string='';
   hide:boolean = true;
 
 
@@ -65,14 +65,13 @@ export class LoginComponent implements OnInit {
       err =>{
         this.isLogged=false;
         this.isLoginFail = true;
-        this.errMsj= err.error.mensaje;
+        this.msj = err.error.mensaje;
         Swal.fire({
           icon: 'error',
           title: 'Error al iniciar sesión',
-          text: err.error.message
+          text: this.msj
         })
         
-        console.log(err.error.message);
         
       }
     );

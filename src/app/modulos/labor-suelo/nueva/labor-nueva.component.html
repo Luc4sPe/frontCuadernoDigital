@@ -1,0 +1,168 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-500">
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-2">
+
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+
+            <div class="row"> 
+                <!-- parte derecha -->
+                <div class="col-10-md-7">
+                      <div class="row"> 
+                          <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" > 
+                                <div class="card-header bg-primary text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Crear labor de suelo
+                                </div>
+
+                                 <!-- Cualtivo anterior -->
+                                 <div class="p-2">
+                                    <label for="cultivoAnterior" class="form-label">Cultivo anterior se carga una vez por cuadro</label>
+                                    <input type="text" class="form-control p-inputtext"  name="cultivo" id="cultivoAnterior" placeholder="Ingrese el cultivo anterior" 
+                                    [(ngModel)]="laborSuelo.cultivoAnterior" #cultivo="ngModel" pattern={{patronLetras}}  required minlength="4">
+                                
+                                    <div *ngIf="cultivo.invalid && (cultivo.dirty || cultivo.touched)">
+                                        <!-- <p-message styleClass="m-1" *ngIf="cultivo.errors?.required"  severity="error" text="La descripción es requerida"></p-message> -->
+                                        <p-message styleClass="m-1" *ngIf="cultivo.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="cultivo.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                    </div>
+                                </div>
+
+                                 <!-- fin -->
+                                <form #form = "ngForm" (ngSubmit)="crearLaborSuelo(form)" novalidate> 
+                                    <div class="card-body ">
+                                         <!-- Selector Finca -->
+                                         <div class="p-2">
+                                          
+                                            <label for="nomreFinca" class="form-label">Seleccione la finca</label>
+                                            <select class="form-select" name="finca" id="nomreFinca"
+                                            [(ngModel)]="laborSuelo.idFinca" aria-label=".form-select-lg example" required>
+                                            <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                                            
+                                                {{ finca.nombre }}
+                                                
+                                            </option>
+                                            
+                                            </select>
+                                         </div>
+                                          <!-- fin -->
+
+                                           <!-- Listado de los Cuadros -->
+                                           <div class="p-2">
+                                                <!-- <label for="form-select-lg mb-3" class="form-label">Seleccione el o los cuadros</label>
+                                                <p-listbox  [options]="cuadros" [(ngModel)]="laborSuelo.idCuadro" name="labor" [metaKeySelection]="false"
+                                                [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="laborSuelo.idCuadro" 
+                                                [listStyle]="{'max-height':'250px'}" [style]="{'width':'50rem'}">
+                                                    <ng-template let-cuadros pTemplate="item">
+                                                        <div class="cuadros-item">
+                                                        
+                                                            <div>{{cuadros.numeroCuadro}}</div>
+                                                            
+
+                                                        </div>
+                                                    </ng-template>
+                                                </p-listbox>  -->
+                                                
+                                                <label class="form-check-label" for="labor" > Seleccione el cuadro </label>
+                                               
+                                                    <!-- <div class="form-check" *ngFor="let cuadro of cuadros">
+                                                       
+                                                        <input class="form-check-input" [(ngModel)]="laborSuelo.idCuadro" type="checkbox" id="labor"  [checked]="laborSuelo.idCuadro">
+                    
+                                                            <div>{{cuadro.numeroCuadro}}</div>
+                                                      
+                                                    </div> -->
+
+                                                    <!-- <div class="form-check" *ngFor="let cuadro of cuadros">
+                                                        <input class="form-check-input" type="checkbox" name="cuadro" id="labor" [(ngModel)]="laborSuelo.idCuadro"  value="laborSuelo.idCuadro">
+                                                        <label class="form-check-label" for="labor">
+                                                            {{cuadro.numeroCuadro}}
+                                                        </label>
+                                                      </div> -->
+
+                                                      <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                        <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="laborSuelo.idCuadro" inputId="labor"> 
+                                                        </p-radioButton>
+                                                        <label for="labor"> 
+                                                            {{cuadro.numeroCuadro}} -
+                                                           Cultivo anterior: {{cuadro.cultivoAnterior}}
+
+                                                        </label>
+                                                       
+                                                    </div>
+                                               
+
+                                           </div>
+
+                                          <!-- fin -->
+
+                                            <!-- Labor cultural -->
+                                            <div class="p-2">
+                                                <label for="labor" class="form-label">Labor cultural</label>
+                                                <input type="text" class="form-control p-inputtext"  name="laborSuelo" id="labor" placeholder="Ingrese la labor" 
+                                                [(ngModel)]="laborSuelo.labor" #lab="ngModel" pattern={{patronLetras}}  required minlength="4">
+                                            
+                                                <div *ngIf="lab.invalid && (lab.dirty || lab.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.required"  severity="error" text="La labor es requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                </div>
+                                            </div>
+
+                                             <!-- fin -->
+
+                                              <!-- Herramientas implementadas -->
+                                            <div class="p-2">
+                                                <label for="herramienta" class="form-label">Herramienta implementada</label>
+                                                <input type="text" class="form-control p-inputtext"  name="herramientasUtilizadas" id="herramienta" placeholder="Ingrese la herramienta implementada" 
+                                                [(ngModel)]="laborSuelo.herramientasUtilizadas" #lab="ngModel" pattern={{patronLetras}}  required minlength="3">
+                                            
+                                                <div *ngIf="lab.invalid && (lab.dirty || lab.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.required"  severity="error" text="La labor es requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="lab.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                </div>
+                                            </div>
+
+                                             <!-- fin -->
+
+                                             <!-- Observación -->
+                                            <div class="p-2">
+                                                <label for="descripcion" class="form-label">Descripción</label>
+                                                <input type="text" class="form-control p-inputtext"  name="observacion" id="descripcion" placeholder="Ingrese la descripción" 
+                                                [(ngModel)]="laborSuelo.observacion" #obser="ngModel" pattern={{patronLetras}}  required minlength="8">
+                                            
+                                                <div *ngIf="obser.invalid && (obser.dirty || obser.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="obser.errors?.required"  severity="error" text="La descripción es requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="obser.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="obser.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                </div>
+                                            </div>
+
+                                             <!-- fin -->
+
+                                              
+                                            <!-- botones -->
+                                             <div class="card-footer d-flex justify-content-between">
+                                                <button routerLink="/index" type="button" class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-arrow-alt-circle-left"></i> Cancelar</button>
+                                                <button pRipple pButton type="submit" class="p-button-rounded p-button-raised" icon="pi pi-check" label="Cargar Labor" [disabled]="!form.valid"></button>
+                                            </div>
+                                            <!-- fin -->
+                                    </div>
+                                </form>
+                                
+                                
+                            </div>
+
+
+                          </div>
+                      </div>
+                </div>
+            </div>   
+
+        </div>
+    </div>
+</div>

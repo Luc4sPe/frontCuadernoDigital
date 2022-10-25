@@ -45,6 +45,6 @@ export class ObtnerComponent implements OnInit {
   }
 
   volver(): void {
-    this.router.navigate(['/usuario']);
+    this.router.navigate(['/index']);
   }
 }

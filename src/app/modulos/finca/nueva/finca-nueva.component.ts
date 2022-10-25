@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MenuItem } from 'primeng/api/menuitem';
+import {StepsModule} from 'primeng/steps';
 import { FincaDto } from 'src/app/Core/dto/finca-dto';
 import { Cuadro } from 'src/app/Core/modelo/cuadro';
 import { FincaService } from 'src/app/service/finca.service';

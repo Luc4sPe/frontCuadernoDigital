@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+
   production: false,
+  
   authURL: 'http://localhost:8080/auth/',
   changePasswordURL: 'http://localhost:8080/email-password',
   riegoURL: 'http://localhost:8080/riego/',
@@ -11,7 +13,8 @@ export const environment = {
   cultivoURL: 'http://localhost:8080/cultivo/',
   fincaURL: 'http://localhost:8080/finca/',
   plantacionURL:'http://localhost:8080/plantacion/',
-  cuadroURL:'http://localhost:8080/cuadro/'
+  cuadroURL:'http://localhost:8080/cuadro/',
+  laborSueloURL:'http://localhost:8080/laborSuelo/'
 
 };
 

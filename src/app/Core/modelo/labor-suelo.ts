@@ -1,4 +1,5 @@
 import { Cuadro } from "./cuadro";
+import { Finca } from "./finca";
 
 export class LaborSuelo {
     id?: number;
@@ -10,9 +11,10 @@ export class LaborSuelo {
     labor: string;
     observacion: string;
     justificacion: string;
+    finca:Finca;
 
     constructor(cultivoAnterior: string, herramientasUtilizadas: string, idCuadro: Cuadro, labor: string,
-        observacion: string,justificacion: string){
+        observacion: string,justificacion: string, finca:Finca){
 
             this.cultivoAnterior=cultivoAnterior;
             this.herramientasUtilizadas=herramientasUtilizadas;
@@ -20,6 +22,7 @@ export class LaborSuelo {
             this.labor=labor;
             this.observacion=observacion;
             this.justificacion=justificacion;
+            this.finca=finca;
 
     }
 

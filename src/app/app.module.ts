@@ -22,6 +22,8 @@ import {CardModule} from 'primeng/card';
 
 
 
+
+
 registerLocaleData(localEs, "es-AR");
 
 
@@ -43,7 +45,9 @@ registerLocaleData(localEs, "es-AR");
     TooltipModule,
     RippleModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    
+    
 
 
   ],

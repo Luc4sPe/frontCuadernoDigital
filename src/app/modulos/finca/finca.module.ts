@@ -32,6 +32,7 @@ import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import {InputTextModule} from 'primeng/inputtext';
 import { EditarFincaComponent } from './editar/editar-finca.component';
 import { ListarFincaComponent } from './Listado/listar-finca.component';
+import {StepsModule} from 'primeng/steps';
 
 
 
@@ -74,7 +75,8 @@ import { ListarFincaComponent } from './Listado/listar-finca.component';
     TooltipModule,
     InputNumberModule,
     TriStateCheckboxModule,
-    InputTextModule
+    InputTextModule,
+    StepsModule
   ]
 })
 export class FincaModule { }

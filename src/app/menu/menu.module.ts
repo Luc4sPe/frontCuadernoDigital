@@ -8,6 +8,7 @@ import {DockModule} from 'primeng/dock';
 import {ToastModule} from 'primeng/toast';
 
 import {AvatarModule} from 'primeng/avatar';
+import {MenubarModule} from 'primeng/menubar';
 
 
 
@@ -25,7 +26,8 @@ import {AvatarModule} from 'primeng/avatar';
         MegaMenuModule,
         DockModule,
         ToastModule,
-        AvatarModule
+        AvatarModule,
+        MenubarModule
         
         
         
