@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   roles: string[]=[];
   msj: string='';
   hide:boolean = true;
+  minuscula:any;
+  conversion:any;
 
 
   constructor(
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+   
+
     if(this.tokenService.getToken()){
       this.isLogged=true;
       this.isLoginFail=false;
@@ -42,6 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void{
+
+   
+
     this.loginUsuario= new LoginUsuario(this.nombreUsuario,this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
@@ -52,9 +59,17 @@ export class LoginComponent implements OnInit {
         this.isLogged=true;  
         this.isLoginFail = false;
                
+
+    //obtengo la primera letra del nombre en mayuscula
+    this.nombreUsuario = this.tokenService.getUserName()!.charAt(0).toLocaleUpperCase();
+    //obtengo el nombre completo  variable minuscula
+    this.minuscula=this.tokenService.getUserName();
+    //concateno la primera letra en mayuscula, y con slice se toma el nombre apartir del segundo caracter en minuscula para formar el nombre
+    this.conversion= this.nombreUsuario+this.minuscula.slice(1)
         Swal.fire({
+          
           icon : 'success',
-          title : 'Bienvenido ' + this.nombreUsuario,
+          title : 'Bienvenido ' + this.conversion,
           text : 'Iniciaste sesion correctamente'
 
         })

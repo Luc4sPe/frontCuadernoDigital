@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { CambioPasswordDto } from '../Core/dto/cambio-password-dto';
 import { EditarUsuariosDto } from '../Core/dto/editar-usuarios-dto';
 import { NuevoUsuario } from '../Core/dto/nuevo-usuario';
 import { Usuario } from '../Core/modelo/usuario';
@@ -10,7 +12,7 @@ import { Usuario } from '../Core/modelo/usuario';
 })
 export class UsuarioService {
 
-  usuarioURL = 'http://localhost:8080/usuario/';
+  usuarioURL = environment.usuarioURL;
 
   constructor(private httpCliente: HttpClient) { }
 
@@ -28,6 +30,10 @@ export class UsuarioService {
 
   }
 
+  public usuarioPorNombreUsuario(nombreUsuario: string):Observable<Usuario>{
+    return this.httpCliente.get<Usuario>(`${this.usuarioURL}detalleNombreUsuario/${nombreUsuario}`);
+  }
+
   public update(id: number, editarUsuario: EditarUsuariosDto): Observable<any> {
     return this.httpCliente.put(this.usuarioURL + `update/${id}`, editarUsuario);
   }
@@ -38,6 +44,10 @@ export class UsuarioService {
 
   public bajaUsuario(id:number):Observable<any>{
     return this.httpCliente.put<any>(this.usuarioURL + `baja/${id}`,id);
+  }
+
+  public cambiarPassword(id:number,cambiorPassword: CambioPasswordDto):Observable<any>{
+    return this.httpCliente.put<any>(`${this.usuarioURL}cambioContrasenia/${id}`, cambiorPassword );
   }
 
 }

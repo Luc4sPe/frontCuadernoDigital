@@ -1,0 +1,64 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+                <div class="card-header bg-secondary text-white" >
+                    <i class=" bi bi-card-text me-1"></i>
+                    Cambiar Contraseña
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "cambioPassword(form)" novalidate>
+                    <div class="card-body">
+                        <!--Password actual-->
+                        <div class="form-group">
+                            <label for="passwordActual">Contraseña actual</label>
+                            <input type="password" class="form-control mt-2" name ="passwordActua"id="passwordActual"  placeholder="Ingrese su contraseña actual"
+                             [(ngModel)]="cambiarPasswordDto.passwordActual" #passActual = "ngModel" required>
+                            <div *ngIf="passActual.invalid && (passActual.dirty || passActual.touched)">
+                                <p-message styleClass="m-1" *ngIf="passActual.errors?.required" severity="error" text="La contraseña actual es requerida"></p-message> 
+                            </div>
+                        </div>
+                         <!--fin-->
+                        <!-- Password nueva-->
+                        <div class="form-group mt-2">
+                            <label for="passwordNuevo">Contraseña nueva</label>
+                            <input type="password" class="form-control mt-2" name="passwordNuevo" id="passwordNuevo" placeholder="Ingrese su contraseña nueva" 
+                            [(ngModel)]="cambiarPasswordDto.passwordNuevo" #passNuevo = "ngModel" required minlength="8">
+                            <div *ngIf="passNuevo.invalid && (passNuevo.dirty || passNuevo.touched)">
+                                <p-message styleClass="m-1" *ngIf="passNuevo.errors?.required"  severity="error" text="La contraseña nueva es requerida"></p-message> 
+                                <p-message styleClass="m-1" *ngIf="passNuevo.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                            </div>
+                        </div>
+                        <!--fin -->
+
+                         <!--group repetirPassword-->
+                         <div class="form-group mt-2">
+                            <label for="confirmarPassword">Repetir Contraseña</label>
+                            <input type="password" class="form-control mt-2" name="repetirPassword" id="confirmarPassword" placeholder="Repita su contraseña" ngValidateEqual ="passwordNuevo" 
+                            [(ngModel)]="cambiarPasswordDto.confirmarPassword" #repetirPass ="ngModel" required minlength="8">
+                            <div *ngIf="repetirPass.invalid && (repetirPass.dirty || repetirPass.touched)">
+                                <p-message styleClass="m-1" *ngIf="repetirPass.errors?.required"  severity="error" text="Debes confirmar tu nueva contraseña"></p-message>
+                                <p-message styleClass="m-1" *ngIf="repetirPass.errors?.notEqual"  severity="error" text="Debe coincidir con la contraseña ingresada"></p-message>
+                            </div>
+                        </div>
+                        <!--fin group repetirPassword-->
+
+                        
+                    </div>
+
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="goBack()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Guardar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,6 +22,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import {PasswordModule} from 'primeng/password';
+import { CambioContraseniaComponent } from './cambioPassword/cambio-contrasenia.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {PasswordModule} from 'primeng/password';
     ActualizarComponent,
     EnviarEmailComponent,
     CambioPasswordComponent,
-    ListaComponent
+    ListaComponent,
+    CambioContraseniaComponent
     
   ],
    
@@ -54,7 +56,10 @@ import {PasswordModule} from 'primeng/password';
     ScrollTopModule,
     CardModule,
     TagModule,
-    PasswordModule
+    PasswordModule,
+    
+     
+    
    
   ]
 })

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<nav class="navbar navbar-expand-lg navbar-dark bg-bluegray-800">
+
+   
+<nav class="navbar navbar-expand-lg navbar-dark bg-bluegray-800" style="font-size: 1px">
         
-    <div class="container-fluid">
-        
-        
-        
+    <div class="container-fluid" style="font-size: 8px">
+         
         <a class="navbar-brand"  routerLink="/inicio" >  Agro Andina</a>
 
         
@@ -121,6 +119,7 @@
                         
                         <i class="fa-solid fa-person-digging"></i>
                         Labor de suelo
+                       
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" routerLink="/laborSuelo/crearLabor">Nueva labor</a></li>
@@ -134,29 +133,56 @@
                 <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
              </li> -->
 
-             <li class="nav-item" *ngIf="isLogged && isProductor">
+             <!-- <li class="nav-item" *ngIf="isLogged && isProductor">
+                <p-avatar pTooltip="{{nombreUsuario}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle" routerLink="/inicio"></p-avatar>
                 <a class="nav-link" routerLink="/riego/riegoPorNombreUsuario/{{nombreUsuario}}"><i class="bi bi-droplet-half"></i>Riegos</a>
              </li>
+             
 
             <li class="nav-item" *ngIf="!isLogged">
                 <a class="nav-link"  routerLink="/login" ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             </li>
             <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
                 <a class="nav-link" style="cursor: pointer;"><i class="fas fa-times-circle"></i> Cerrar Sesión</a>
+                
+            </li> -->
+
+           <!-- <li class="nav-item"> -->
+                 <!-- <p-avatar pTooltip="{{nombreUsuario}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle" routerLink="/inicio"></p-avatar>  -->
+                <!-- <p-splitButton  label="{{nombreUsuario}}" icon="pi pi-user"  [model]="items" styleClass=" p-button-rounded p-button-info  p-button-sm "   ></p-splitButton> -->
+            <!-- </li> -->
+          
+            
+            
+
+           <!-- menu del usuario logueado -->
+           <ul class="navbar-nav ms-auto d-flex">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" class="text-primary"><p-avatar pTooltip="{{conversion}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle"></p-avatar></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" routerLink="/usuarios/perfil/actualizarDatos"> <i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" routerLink="/usuario/perfil/cambioContrasenia"> 
+                        <i class="fas fa-key"></i> Cambiar Contraseña</a></li>
+                    <li>
+                        <hr class="dropdown-divider"/>
+                    </li>
+                    <li><a class="dropdown-item" (click)="onLogOut()"> <i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
+                </ul>
             </li>
-
-             <li>
-                <p-avatar pTooltip="{{nombreUsuario}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle" routerLink="/inicio"></p-avatar>
-            </li> 
-
-            
-            
+        </ul>
+        <!-- fin menu usuario-->            
+           
         </ul>
         </div>
-   
+        
+       
     </div>
+   
     
   </nav>
+  
+
 
 
 
@@ -188,6 +214,9 @@
         </p-dock>
 
     </div> -->
+    <!-- <div style="height: 500px; position: relative;" class="speeddial-circle-demo">
+        <p-speedDial pTooltip="{{nombreUsuario}}"  [model]="items" showIcon="pi pi-user" hideIcon="pi pi-times" direction="down-left" type="quarter-circle" buttonClassName="p-button-outlined" class="p-button-rounded"></p-speedDial>
+    </div>   -->
 
-  </html>
+ 
   

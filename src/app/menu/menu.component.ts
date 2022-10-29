@@ -7,7 +7,7 @@ import { Usuario } from '../Core/modelo/usuario';
 import { RiegoService } from '../service/riego.service';
 import { TokenService } from '../service/token.service';
 import { UsuarioService } from '../service/usuario.service';
-import {MegaMenuItem,MenuItem} from 'primeng/api';
+import {PrimeIcons,MenuItem} from 'primeng/api';
 import {MessageService} from 'primeng/api';
 
 
@@ -32,9 +32,11 @@ export class MenuComponent implements OnInit {
   isEncargadoAgricola = false;
   isProductor = false;
   isGerente = false;
+  minuscula:any;
+  conversion:any;
 
   nombre:String = 'ROLE_PRODUCTOR';
-  itemsMenuBar: MenuItem[];
+  items: MenuItem[];
 
 
   
@@ -43,11 +45,22 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+ //obtengo la primera letra del nombre en mayuscula
+ this.nombreUsuario = this.tokenService.getUserName()!.charAt(0).toLocaleUpperCase();
+ //obtengo el nombre completo  variable minuscula
+ this.minuscula=this.tokenService.getUserName();
+ //concateno la primera letra en mayuscula, y con slice se toma el nombre apartir del segundo caracter en minuscula para formar el nombre
+ this.conversion= this.nombreUsuario+this.minuscula.slice(1)   
+
+
+
   this.nombreUsuario =  this.tokenService.getUserName();
   this.isAdmin = this.tokenService.isAdmin();
   this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
   this.isProductor = this.tokenService.isProductor();
   this.isGerente = this.tokenService.isGerente();
+  this.cargarItems();
   
     //  this.roles=this.tokenService.getAuthorities();
 
@@ -93,24 +106,15 @@ export class MenuComponent implements OnInit {
  
  
   cargarItems():void{
-    this.itemsMenuBar=[
+    this.items=[
+    {label: 'Perfil', icon: 'pi pi-times'},
+    {separator: true},
+   
+    {label: 'Contraseña', icon:"pi-key", routerLink: ['/usuario/perfil/cambioContrasenia']},
+    {separator: true}
 
-      {
-        label:'Productor',
-        icon:'pi pi-fw pi-user',
-        items:[
-           {
-              label:'Nuevo',routerLink:'/usuario/nuevo',
-              icon:'pi pi-fw pi-user-plus',
-
-           },
-           {
-              label:'Listar',
-              icon:'pi pi-fw pi-file',
-
-           },
-              ]
-  } ]
+  
+    ];
 } 
 
 

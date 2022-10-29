@@ -9,6 +9,9 @@ import {ToastModule} from 'primeng/toast';
 
 import {AvatarModule} from 'primeng/avatar';
 import {MenubarModule} from 'primeng/menubar';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {SpeedDialModule} from 'primeng/speeddial';
+import {ButtonModule} from 'primeng/button';
 
 
 
@@ -27,7 +30,10 @@ import {MenubarModule} from 'primeng/menubar';
         DockModule,
         ToastModule,
         AvatarModule,
-        MenubarModule
+        MenubarModule,
+        SplitButtonModule,
+        SpeedDialModule,
+        ButtonModule
         
         
         
