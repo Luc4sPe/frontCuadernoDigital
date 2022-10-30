@@ -23,6 +23,7 @@ import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import {PasswordModule} from 'primeng/password';
 import { CambioContraseniaComponent } from './cambioPassword/cambio-contrasenia.component';
+import { ActualizarPerfilComponent } from './perfil/actualizar-perfil.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CambioContraseniaComponent } from './cambioPassword/cambio-contrasenia.
     EnviarEmailComponent,
     CambioPasswordComponent,
     ListaComponent,
-    CambioContraseniaComponent
+    CambioContraseniaComponent,
+    ActualizarPerfilComponent
     
   ],
    

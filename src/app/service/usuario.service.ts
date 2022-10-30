@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CambioPasswordDto } from '../Core/dto/cambio-password-dto';
 import { EditarUsuariosDto } from '../Core/dto/editar-usuarios-dto';
 import { NuevoUsuario } from '../Core/dto/nuevo-usuario';
+import { PerfilUsuarioDto } from '../Core/dto/perfil-usuario-dto';
 import { Usuario } from '../Core/modelo/usuario';
 
 @Injectable({
@@ -49,5 +50,10 @@ export class UsuarioService {
   public cambiarPassword(id:number,cambiorPassword: CambioPasswordDto):Observable<any>{
     return this.httpCliente.put<any>(`${this.usuarioURL}cambioContrasenia/${id}`, cambiorPassword );
   }
+
+  public actualizarPerfil(id:number, perfilUsuarioDto : PerfilUsuarioDto):Observable<any>{
+    return this.httpCliente.put<any>(`${this.usuarioURL}actualizarPerfil/${id}`, perfilUsuarioDto);
+  }
+
 
 }

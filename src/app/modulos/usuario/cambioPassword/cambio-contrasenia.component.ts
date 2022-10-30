@@ -53,7 +53,7 @@ export class CambioContraseniaComponent implements OnInit {
 
  
 
-  goBack(){
+  volver(){
     this.location.back();
   }
   
@@ -82,7 +82,6 @@ export class CambioContraseniaComponent implements OnInit {
 
   solicitarCambioPassword(form : NgForm):void{
   
-    console.log(this.usuario.id);
     this.usuarioService.cambiarPassword(this.usuario.id, this.cambiarPasswordDto).subscribe(
       data => {
         this.msj = data.mensaje;

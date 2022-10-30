@@ -1,0 +1,109 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos de perfil
+                </div>
+                <form #form = "ngForm" (ngSubmit) = "actualizarPerfil(form)" novalidate>
+
+                    <div class="card-body">
+                        <!--Apellido-->
+                        <div class="form-group mt-2">
+                            <label for="ape">Apellido</label>
+                            <input type="text" class="p-inputtext form-control mt-2" id="ape" name ="apellido" value = {{usuario.apellido}} placeholder="Apellido" 
+                            [(ngModel)]="usuario.apellido" #apellidoUs= "ngModel" pattern={{patronLetras}} minlength="3" required [disabled]="usuario.nombreUsuario == 'admin'">
+                            <div *ngIf="apellidoUs.invalid && (apellidoUs.dirty || apellidoUs.touched)">
+                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.required"  severity="error" text="El apellido es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                <p-message styleClass="m-1" *ngIf="apellidoUs.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            </div>
+                        </div>
+                        <!--fin apellido-->
+
+                         <!--Nombre-->
+                         <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="p-inputtext form-control mt-2" name ="nombreUsuario" id = "nombre" value = {{usuario.nombre}} placeholder="Nombre" 
+                            [(ngModel)] = "usuario.nombre" #nombreUs = "ngModel" pattern={{patronLetras}} minlength="3" required [disabled]="usuario.nombreUsuario == 'admin'">
+                            <div *ngIf="nombreUs.invalid && (nombreUs.dirty || nombreUs.touched)">
+                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                <p-message styleClass="m-1" *ngIf="nombreUs.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            </div>
+                        </div>
+                        <!--fin nombre-->
+
+                         <!--DNI-->
+                         <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input type="text" class="p-inputtext form-control mt-2" name ="documento" id = "dni" value = {{usuario.dni}} placeholder="DNI" 
+                            [(ngModel)] = "usuario.dni" #docu = "ngModel" pattern="^[0-9 .]{2,15}" minlength="6" required [disabled]="usuario.nombreUsuario == 'admin'">
+                            <div *ngIf="docu.invalid && (docu.dirty || docu.touched)">
+                                <p-message styleClass="m-1" *ngIf="docu.errors?.required"  severity="error" text="El DNI es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="docu.errors?.pattern"   severity="error" text="Solo se permiten números"></p-message>
+                                <p-message styleClass="m-1" *ngIf="docu.errors?.minlength" severity="error" text="Debe tener al menos 6 caracteres"></p-message>
+                            </div>
+                        </div>
+                        <!--fin dni-->
+
+                         <!--group nombre usuario-->
+                         <div class="form-group mt-2">
+                            <label for="nomUsu">Nombre de usuario</label>
+                            <input type="text" class="p-inputtext form-control mt-2" id="nomUsu" name ="NombreUsuario" value = {{usuario.nombreUsuario}} placeholder= "Nombre de usuario" 
+                            [(ngModel)]="usuario.nombreUsuario" #userName = "ngModel" required minlength="4" [disabled]="usuario.nombreUsuario == 'admin'">
+                            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+                                <p-message styleClass="m-1" *ngIf="userName.errors?.required" severity="error" text="El nombre de usuario es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="userName.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                            </div>
+                        </div>
+                        <!--fin nombre usuario-->
+
+                                 <!--E-mail-->
+                                 <div class="form-group mt-2">
+                                    <label for="e-mail">Correo</label>
+                                    <input type="email" class="p-inputtext form-control mt-2" id="e-mail" name="correo" value= {{usuario.email}} placeholder="E-mail"
+                                     [(ngModel)]="usuario.email" #emailUs = "ngModel" required email [disabled]="usuario.nombreUsuario == 'admin'">
+                                    <div *ngIf="emailUs.invalid && (emailUs.dirty || emailUs.touched)">
+                                        <p-message styleClass="m-1" *ngIf="emailUs.errors?.required" severity="error" text="El email es requerido"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="emailUs.errors?.email" severity="error" text="Debe tener el formato ejemplo@ejemplo.com"></p-message>
+                                    </div>
+                                    
+                                </div>
+                                <!--fin E-mail-->
+
+                                <!--Telefono-->
+                                <div class="form-group mt-2">
+                                    <label for="tele">Teléfono</label>
+                                    <input type="text" class="p-inputtext form-control mt-2" id="tele" name ="telefono" value = {{usuario.telefono}} placeholder= "Teléfono" 
+                                    [(ngModel)]="usuario.telefono" #useTele = "ngModel" pattern="^[0-9 -]{2,15}" required minlength="6" [disabled]="usuario.nombreUsuario == 'admin'">
+                                    <div *ngIf="useTele.invalid && (useTele.dirty || useTele.touched)">
+                                        <p-message styleClass="m-1" *ngIf="useTele.errors?.required"  severity="error" text="El teléfono requerido"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="useTele.errors?.pattern"   severity="error" text="Solo se permiten números"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="useTele.errors?.minlength" severity="error" text="Debe tener al menos 6 números"></p-message>
+                                    </div>
+                                </div>
+                                <!--Fin telefono-->
+
+                    </div>
+                    <!-- botones -->
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="volver()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Guardar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 

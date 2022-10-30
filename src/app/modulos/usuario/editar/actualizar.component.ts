@@ -17,7 +17,7 @@ export class ActualizarComponent implements OnInit {
 
   usuario: any;
   rolUsuario: string []=[];
-  mensaje:string='';
+  mensaje:string;
   roles=[
   {
     name:'Admin',
@@ -115,7 +115,7 @@ export class ActualizarComponent implements OnInit {
          Swal.fire('Usuario actualizado correctamente', '', 'success'); 
         },
         err => {
-          this.mensaje = err.error.mensaje;
+          this.mensaje = err.error.message;
           Swal.fire('Error al Actualizar el Usuario', this.mensaje, 'error');
         }
       );
