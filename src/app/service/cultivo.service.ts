@@ -36,5 +36,10 @@ export class CultivoService {
     return this.httpCliente.get<Cultivo[]>(this.cultivoURL +'listado');
   }
 
+  public datalle(id: number): Observable<Cultivo>{
+    return this.httpCliente.get<Cultivo>(this.cultivoURL + `detalle/${id}`);
+
+  }
+
   
 }

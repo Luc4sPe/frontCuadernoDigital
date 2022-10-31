@@ -20,6 +20,7 @@ export class ListaCultivoComponent implements OnInit {
   cultivosFiltrados:Cultivo[];
   isEncargadoAgricola: boolean = false;
   isProductor: boolean = false;
+  isAdmin: boolean = false;
   constructor(
     private cultivoServi:CultivoService,
     private tokenService:TokenService) { }
@@ -32,6 +33,7 @@ export class ListaCultivoComponent implements OnInit {
   cargarItems(): void {
     this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
     this.isProductor = this.tokenService.isProductor();
+    this.isAdmin = this.tokenService.isAdmin();
 
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [

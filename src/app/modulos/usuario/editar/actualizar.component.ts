@@ -21,6 +21,7 @@ export class ActualizarComponent implements OnInit {
   home : MenuItem = {}
   items : MenuItem[] = [];
   roles=[
+
   {
     name:'Admin',
     active: false,
@@ -108,8 +109,8 @@ export class ActualizarComponent implements OnInit {
     this.roles.forEach(rol =>{
       rol.active = this.rolUsuario.filter(
         role =>{
-          let nombre = rol.name.toUpperCase().split('')
-          return role.includes(nombre[nombre.length -1])
+          let nombre = rol.name.toUpperCase().split('');
+          return role.includes(nombre[nombre.length-1]);
         }).length > 0 ? true : false;
     })
 

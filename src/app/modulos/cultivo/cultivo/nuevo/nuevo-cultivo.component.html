@@ -16,7 +16,7 @@
 
                             <div class="card shadow-sm mb-4" >
 
-                                <div class="card-header bg-primary text-white">
+                                <div class="card-header bg-secondary  text-white">
                                     <i class=" bi bi-card-text me-1"></i>
                                     Crear nuevo Cultivo
                                 </div>
@@ -90,12 +90,16 @@
                                         </div>
 
 
-                                        <div class="card-footer d-flex justify-content-between">
-                                            <button routerLink="/index" class="btn btn-outline-danger" style="margin-left: 10px"><i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
-                                            <button pRipple pButton type="submit" class="p-button-rounded p-button-raised" icon="pi pi-check" label="Cargar datos" [disabled]="!form.valid"></button>
+                                        <!-- botones -->
+
+                                        <div class="card-footer mb-2">
+                                            <div class="d-flex justify-content-between">
+                                              <button pRipple pButton type="button" routerLink="/index" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" ></button>
+                                              <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Guardar" [disabled]="!form.valid"></button>
+                                              
+                                            </div>
                                         </div>
-
-
+                                        <!-- fin -->
 
                                     </div>
                                 

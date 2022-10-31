@@ -18,6 +18,7 @@ import { ListadoProductorComponent } from './productor/listar/listado-productor.
 import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component';
+import { ObtenerCultivoComponent } from './cultivo/detalle/obtener-cultivo.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component
   ListadoProductorComponent,
   NuevoCultivoComponent,
   ListaCultivoComponent,
+  ObtenerCultivoComponent,
   
 
   

@@ -67,7 +67,7 @@ export class NuevoCultivoComponent implements OnInit {
   cargarItems(): void {
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label: 'Cultivo', routerLink:'/idex'},
+      {label: 'Cultivo'},
       {label: 'Nuevo Cultivo', disabled:true}
     ];
   }
