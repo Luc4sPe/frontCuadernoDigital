@@ -45,7 +45,9 @@ export class ActualizarComponent implements OnInit {
     active: false,
     description:'',
     
-  },
+  }
+ 
+
 ]
 
   
