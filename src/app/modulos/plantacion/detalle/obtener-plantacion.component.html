@@ -1,0 +1,47 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center" *ngIf="plantacion">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+
+                <div class="card-header bg-secondary text-white" >
+                    <i class=" bi bi-card-text me-1"></i>
+                    Detalle plantación
+                </div>
+
+                <form>
+                    <ul class="list-group list-group-flush  ">
+                        <li class="list-group-item"><b>ID: </b>{{plantacion.idPlantacion}}</li>
+                        <li class="list-group-item"><b>Nombre de cultivo: </b>{{plantacion.nombreTipoCultivo.nombre}}</li>
+                        <li class="list-group-item"><b>Marco plantación entre/hielras : </b>{{plantacion.entreIleras}}</li>
+                        <li class="list-group-item"><b>Marco plantación entre/plantas: </b>{{plantacion.entrePlantas}}</li>
+                        <li class="list-group-item"><b>Sistema de riego: </b>{{plantacion.sistemaRiego}}</li>
+                        <li class="list-group-item"><b>Sistema de trasplante: </b>{{plantacion.sistemaTrasplante}}</li>
+                        <li class="list-group-item"><b>Cantidad de plantines: </b>{{plantacion.cantidadPlantines}}</li>
+                        <li class="list-group-item"><b>Observación: </b>{{plantacion.observacion}}</li>
+                        <li class="list-group-item"><b>Fecha creación: </b>{{plantacion.fechaCreacionPlantacion}}</li>
+                        <li class="list-group-item"><b>Fecha Modificación: </b>{{plantacion.fechaModificacionPlantacion}}</li>
+
+                        <ul class="list-group list-group-flush  " *ngFor="let numerosDeCuadros of plantacion.numerosDeCuadros; let i = index; ">
+               
+                            <li class="list-group-item"><b>Número de cuadro: </b>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</li>
+                          
+                          </ul>
+                       
+                    </ul>
+
+
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-undo" style="margin-left: 10px" label="Regresar" (click)="volver()"></button>
+                          
+                          
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

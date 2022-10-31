@@ -15,6 +15,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ListadoPlantacionComponent } from './listado/listado-plantacion.component';
+import { ObtenerPlantacionComponent } from './detalle/obtener-plantacion.component';
 
 
 
@@ -22,7 +23,8 @@ import { ListadoPlantacionComponent } from './listado/listado-plantacion.compone
 @NgModule({
   declarations: [
     PlantacionNuevaComponent,
-    ListadoPlantacionComponent
+    ListadoPlantacionComponent,
+    ObtenerPlantacionComponent
   ],
   imports: [
     CommonModule,
