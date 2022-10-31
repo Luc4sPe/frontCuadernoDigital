@@ -3,10 +3,10 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NuevoUsuario } from 'src/app/Core/dto/nuevo-usuario';
-
-import { TokenService } from 'src/app/service/token.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { ProductorDto } from 'src/app/Core/dto/productor-dto';
+import { MenuItem } from 'primeng/api';
+
 
 
 
@@ -33,6 +33,9 @@ export class NuevoUsuarioComponent implements OnInit {
   telefono: string='';
   msj: string='';
   nuevoUsuario: ProductorDto | any;
+
+  home : MenuItem = {}
+  items : MenuItem[] = [];
   roles=[
     {
     name:'Admin',
@@ -66,7 +69,17 @@ export class NuevoUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     //this.buildFrom();
+    this.cargarItems();
 
+  }
+
+  cargarItems(): void {
+    this.home = {icon: 'pi pi-home', routerLink:'/index'}
+    this.items = [
+      {label:'Usuario'},
+      {label:'Nuevo', disabled:true}
+    ];
+    
   }
 
 

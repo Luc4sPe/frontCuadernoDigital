@@ -88,8 +88,12 @@ export class CambioContraseniaComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title:this.msj,
-          text:'Recuerda tu nueva contraseña para tu próximo inicio de sesión'
-        })
+          text:'Recuerda tu nueva contraseña para tu próximo inicio de sesión, la sesion se cerrara'
+        }).then((result) => {
+          if(result.isConfirmed || result.dismiss === Swal.DismissReason.esc){
+            this.tokenServoce.logOut();
+          }
+        });
         form.resetForm();
       }, 
       err => {

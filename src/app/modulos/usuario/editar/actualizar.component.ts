@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EditarUsuariosDto } from 'src/app/Core/dto/editar-usuarios-dto';
 import { Usuario } from 'src/app/Core/modelo/usuario';
-import { AuthService } from 'src/app/service/auth.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-actualizar',
@@ -17,7 +17,9 @@ export class ActualizarComponent implements OnInit {
 
   usuario: any;
   rolUsuario: string []=[];
-  mensaje:string;
+  msj:string;
+  home : MenuItem = {}
+  items : MenuItem[] = [];
   roles=[
   {
     name:'Admin',
@@ -51,28 +53,48 @@ export class ActualizarComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService ,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private location : Location
+
   ) { }
 
   ngOnInit(): void {
     
+    this.cargarItems();
     const id = this.activatedRoute.snapshot.params.id;
+    this.obtenerUsuario(id);
+   
+  }
+
+  cargarItems(): void {
+    this.home = {icon: 'pi pi-home', routerLink:'/index'}
+    this.items = [
+      {label:'Usuario'},
+      {label:'Modificar datos', disabled:true}
+    ];
     
-    this.usuarioService.datail(id).subscribe(
-      data => {
-        this.usuario = data
-      },
-      err => {
-        this.toastr.error(err.error.message, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
-        });
-        this.router.navigate(['/']);
-      }
-    );
   }
 
 
+  obtenerUsuario(id: number){
+    this.usuarioService.datail(id).toPromise().then(
+      data =>{
+        this.usuario=data;
+        if(this.usuario.nombreUsuario == 'admin'){
+          Swal.fire('No se puede ver o editar el usuario admin del sistema', 'Selecciona otro usuario a editar', 'error')
+            .then( (result) => {this.location.back()}); 
+        }
+        this.resconstruirRoles();
+      },
+      err => {
+        this.msj = err.error.mensaje;
+        this.router.navigate(['/usuario/lista']);
+        Swal.fire('Error',this.msj,'error');
+  
+      })
+    
+
+  }
 
   /* Se obtiene los roles solo los nombres que tiene el usuario y 
      luego al array de roles[nombre, activo y descripcion]
@@ -86,8 +108,7 @@ export class ActualizarComponent implements OnInit {
         role =>{
           let nombre = rol.name.toUpperCase().split('')
           return role.includes(nombre[nombre.length -1])
-        }
-      ).length > 0 ? true : false;
+        }).length > 0 ? true : false;
     })
 
   }
@@ -115,12 +136,14 @@ export class ActualizarComponent implements OnInit {
          Swal.fire('Usuario actualizado correctamente', '', 'success'); 
         },
         err => {
-          this.mensaje = err.error.message;
-          Swal.fire('Error al Actualizar el Usuario', this.mensaje, 'error');
+          this.msj = err.error.message;
+          Swal.fire('Error al Actualizar el Usuario', this.msj, 'error');
         }
       );
   }
 
-  
+  cerrar(): void {
+    this.location.back();
+  }
   
 }
