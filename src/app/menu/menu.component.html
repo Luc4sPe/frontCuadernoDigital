@@ -4,7 +4,7 @@
         
     <div class="container-fluid" style="font-size: 8px">
          
-        <a class="navbar-brand"  routerLink="/inicio" >  Agro Andina</a>
+        <a class="navbar-brand"  routerLink="/inicio" >Agro Andina</a>
 
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
@@ -19,10 +19,11 @@
             <a class="nav-link" routerLink="/index"><i class="fas fa-home"></i> Inicio</a>
             </li>
 
+            <!-- menu usuario -->
             <li class="nav-item dropdown" *ngIf="isAdmin">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user-tie"></i>
+                    <i class="fa-solid fa-users"></i>
                     Usuarios
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -32,9 +33,10 @@
                    
                 </ul>
             </li>
+            <!-- fin -->
 
-
-            <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
+            <!-- Menu encargado agricula -->
+            <li class="nav-item dropdown" *ngIf="isAdmin || isEncargadoAgricola">
                      
                     <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,9 +51,9 @@
                     </ul>
               
             </li>
-
+            
            
-            <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
+            <li class="nav-item dropdown" *ngIf="isAdmin || isEncargadoAgricola">
                      
                 <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,7 +69,7 @@
           
              </li>
 
-             <li class="nav-item dropdown" *ngIf=" isAdmin ||isEncargadoAgricola ">
+             <li class="nav-item dropdown" *ngIf=" isAdmin || isEncargadoAgricola ">
                      
                 <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,16 +87,17 @@
           
              </li>
             
-           
+             <!-- fin grupo menu encargado agricola -->
 
-
-            <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
+             <!-- Verificar este menu -->
+            <li class="nav-item" *ngIf="isLogged && isAdmin || isEncargadoAgricola">
                 <a class="nav-link" routerLink=""><i class="fa-solid fa-wine-bottle"></i> Agroquímicos</a>
             </li>
+            <!-- fin -->
 
+            <!-- Gurpo menu productor -->
 
-
-                <li class="nav-item dropdown" *ngIf="isProductor">
+                <li class="nav-item dropdown" *ngIf="isAdmin || isProductor">
                
                     
                     <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -111,7 +114,7 @@
               
                 </li>
 
-                <li class="nav-item dropdown" *ngIf="isProductor">
+                <li class="nav-item dropdown" *ngIf="isAdmin || isProductor">
                
                     
                     <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -128,6 +131,7 @@
                     </ul>
               
                 </li>
+                <!-- Fin grupo menu productor -->
 
             <!-- <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">
                 <a class="nav-link" routerLink="/riego"><i class="bi bi-droplet-half"></i>Riegos</a>
@@ -161,7 +165,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false" class="text-primary"><p-avatar pTooltip="{{conversion}}"  icon="pi pi-user" styleClass="mr-2"[style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle"></p-avatar></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" routerLink="/usuario/perfil/actualizar"> <i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" routerLink="/usuario/perfil/actualizar"> <i class="fa-solid fa-address-card"></i> Perfil</a></li>
                     <li><a class="dropdown-item" routerLink="/usuario/perfil/cambioContrasenia"> 
                         <i class="fas fa-key"></i> Cambiar Contraseña</a></li>
                     <li>
@@ -171,7 +175,7 @@
                 </ul>
             </li>
         </ul>
-        <!-- fin menu usuario-->            
+        <!-- fin menu del usuario logueado-->            
            
         </ul>
         </div>
