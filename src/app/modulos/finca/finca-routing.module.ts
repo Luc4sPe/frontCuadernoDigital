@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarEncargadoAgricola } from 'src/app/Core/guards/cul-guard.service';
-import { EditarFincaComponent } from './editar/editar-finca.component';
+import { EditarFincaComponent } from './editarCuadro/editar-finca.component';
 import { ListarFincaComponent } from './Listado/listar-finca.component';
 import { FincaNuevaComponent } from './nueva/finca-nueva.component';
 

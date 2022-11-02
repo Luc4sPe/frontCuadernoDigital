@@ -94,16 +94,17 @@ export class ActualizarPerfilComponent implements OnInit {
 
   obtenerUsuario():void{
     let nombreUsuario : any = this.tokenService.getUserName();
-    console.log(nombreUsuario);
     this.usuarioService.usuarioPorNombreUsuario(nombreUsuario).subscribe(
       data => {
         this.usuario = data;        
       },
+     
       err => {
-        this.msj = err.error.mensaje;
-        
+        Swal.fire('Error', err.error.mensaje, 'error');
+        this.router.navigate(["index"]);
       }
-    )
+    
+    );
   }
 
 

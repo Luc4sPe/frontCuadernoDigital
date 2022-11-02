@@ -26,7 +26,7 @@
                                     <div class="card-body "> 
 
                                         <div class="p-2">
-                                            <label for="labelNombre" class="form-label">Nombre de cultivo </label>
+                                            <label for="nombreCultivo" class="form-label">Nombre de cultivo </label>
                                             <input type="text" class="form-control p-inputtext"  name="nombreCultivo" id="nombreCultivo" placeholder="Ingrese el nombre del cultivo" 
                                             [(ngModel)]="nuevoCultivo.nombre" #nombre="ngModel" pattern={{patronLetras}}  required minlength="3">
                                         
@@ -39,24 +39,24 @@
 
 
                                         <div class="p-2">
-                                            <label for="labelRemito" class="form-label">Remito </label>
+                                            <label for="remito" class="form-label">Remito </label>
                                             <input type="text" class="form-control p-inputtext"  name="remito" id="remito" placeholder="Ingrese el remito" 
-                                            [(ngModel)]="nuevoCultivo.remito" #remito="ngModel"   required minlength="3">
+                                            [(ngModel)]="nuevoCultivo.remito" #remito="ngModel"   required minlength="2">
                                         
                                             <div *ngIf="remito.invalid && (remito.dirty || remito.touched)">
                                                 <p-message styleClass="m-1" *ngIf="remito.errors?.required"  severity="error" text="El remito es requerido"></p-message>
-                                                <p-message styleClass="m-1" *ngIf="remito.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                                <p-message styleClass="m-1" *ngIf="remito.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                                 <!-- <p-message styleClass="m-1" *ngIf="remito.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
                                             </div>
                                         </div>
 
 
                                         <div class="p-2">
-                                            <label for="labelLatitud" class="form-label">Tiempo de carencia en dias</label>
+                                            <label for="timpoCarencia" class="form-label">Tiempo de carencia en dias</label>
                                             <input type="number" class="form-control p-inputtext"  name="timpoCarencia" id="timpoCarencia" placeholder="Ingrese el tiempo de carencia" 
                                             [(ngModel)]="nuevoCultivo.timpoCarencia" #latitud="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2">
                                         
-                                            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                                            <div *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.required"  severity="error" text="La latitud es requerida"></p-message>
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
@@ -65,7 +65,7 @@
 
 
                                         <div class="p-2">
-                                            <label for="labelVariedad" class="form-label">Variedad de cultivo </label>
+                                            <label for="variedadCultivo" class="form-label">Variedad de cultivo </label>
                                             <input type="text" class="form-control p-inputtext"  name="variedadCultivo" id="variedadCultivo" placeholder="Ingrese la variedad del cultivo" 
                                             [(ngModel)]="nuevoCultivo.variedadCultivo" #variedad="ngModel" pattern={{patronLetras}}  required minlength="3">
                                         
@@ -78,7 +78,7 @@
 
 
                                         <div class="p-2">
-                                            <label for="labelVariedad" class="form-label">Vivero proveedor </label>
+                                            <label for="viveroProveedor" class="form-label">Vivero proveedor </label>
                                             <input type="text" class="form-control p-inputtext"  name="viveroProveedor" id="viveroProveedor" placeholder="Ingrese el vivero proveedor" 
                                             [(ngModel)]="nuevoCultivo.viveroProvedor" #vivero="ngModel" pattern={{patronLetras}}  required minlength="3">
                                         

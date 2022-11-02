@@ -30,7 +30,7 @@ const routes: Routes = [
 
       {path: 'obtner/:id', component: ObtnerComponent,
         canActivate: [guarUsuarios],
-        data: { rolesEsperados: [ADMIN] },},
+        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
 
       {
         path:'perfil/cambioContrasenia',component: CambioContraseniaComponent,
@@ -46,7 +46,7 @@ const routes: Routes = [
 
       {path: 'actualizar/:id', component:ActualizarComponent,
         canActivate: [guarUsuarios],
-        data: { rolesEsperados: [ADMIN] },},
+        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
 
       {path: 'restablecerPassword/enviaremail',component: EnviarEmailComponent},
       {path: 'restablecer/cambioPassword/:tokenPassword',component: CambioPasswordComponent},

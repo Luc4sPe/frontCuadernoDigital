@@ -41,5 +41,9 @@ export class CultivoService {
 
   }
 
+  public actualizarCultivo(id: number, editarCultivo: CultivoDto): Observable<any> {
+    return this.httpCliente.put(this.cultivoURL + `modificar/${id}`, editarCultivo);
+  }
+
   
 }

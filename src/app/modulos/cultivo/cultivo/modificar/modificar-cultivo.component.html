@@ -1,0 +1,95 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos de cultivo
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionCultivo(form)" novalidate>
+
+                     <!--Nombre-->
+                     <div class="form-group">
+                        <label for="nombre">Nombre de cultivo</label>
+                        <input type="text" class="p-inputtext form-control mt-2" name ="nombreCultivo" id = "nombre" value = {{cultivo.nombre}} placeholder="Ingrese el nombre de cultivo" 
+                        [(ngModel)] = "cultivo.nombre" #nombreCul = "ngModel" pattern={{patronLetras}} minlength="3" required>
+                        <div *ngIf="nombreCul.invalid && (nombreCul.dirty || nombreCul.touched)">
+                            <p-message styleClass="m-1" *ngIf="nombreCul.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="nombreCul.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            <p-message styleClass="m-1" *ngIf="nombreCul.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                        </div>
+                    </div>
+                    <!--fin nombre-->
+                      <!--Remito-->
+                      <div class="form-group">
+                        <label for="remito">Remito</label>
+                        <input type="text" class="p-inputtext form-control mt-2" name ="cultivoRemito" id = "remito" value = {{cultivo.remito}} placeholder="Ingrese el remito" 
+                        [(ngModel)] = "cultivo.remito" #remi = "ngModel"  minlength="2" required>
+                        <div *ngIf="remi.invalid && (nombreCul.dirty || remi.touched)">
+                            <p-message styleClass="m-1" *ngIf="remi.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="remi.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            <!-- <p-message styleClass="m-1" *ngIf="remi.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message> -->
+                        </div>
+                    </div>
+                    <!--fin remito-->
+                    <!-- grupo tiempo de carencia -->
+                    <div class="form-group">
+                        <label for="timpoCarencia">Tiempo de carencia en dias</label>
+                        <input type="number" class="p-inputtext form-control  mt-2 "  name="timpoCarencia" id="timpoCarencia" value = {{cultivo.timpoCarencia}} placeholder="Ingrese el tiempo de carencia" 
+                        [(ngModel)]="cultivo.timpoCarencia" #latitud="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2">
+                    
+                        <div *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
+                            <p-message styleClass="m-1" *ngIf="latitud.errors?.required"  severity="error" text="La latitud es requerida"></p-message>
+                            <p-message styleClass="m-1" *ngIf="latitud.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="latitud.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                        </div>
+                    </div>
+                    <!-- fin tiempo de carencia -->
+
+                    <!-- Grupo variedad de cultivo -->
+                    <div class="form-group">
+                        <label for="variedadCultivo">Variedad de cultivo </label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="variedadCultivo" id="variedadCultivo" value = {{cultivo.variedadCultivo}} placeholder="Ingrese la variedad del cultivo" 
+                        [(ngModel)]="cultivo.variedadCultivo" #variedad="ngModel" pattern={{patronLetras}}  required minlength="3">
+                    
+                        <div *ngIf="variedad.invalid && (variedad.dirty || variedad.touched)">
+                            <p-message styleClass="m-1" *ngIf="variedad.errors?.required"  severity="error" text="La variedad del cultivo es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="variedad.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="variedad.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                    <!-- fin variedad de cultivo -->
+
+                    <!-- grupo vivero proveedor -->
+                    <div class="form-group">
+                        <label for="viveroProveedor">Vivero proveedor </label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="viveroProveedor" id="viveroProveedor" value = {{cultivo.viveroProvedor}} placeholder="Ingrese el vivero proveedor" 
+                        [(ngModel)]="cultivo.viveroProvedor" #vivero="ngModel" pattern={{patronLetras}}  required minlength="3">
+                    
+                        <div *ngIf="vivero.invalid && (vivero.dirty || vivero.touched)">
+                            <p-message styleClass="m-1" *ngIf="vivero.errors?.required"  severity="error" text="El vivero proveedor es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="vivero.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="vivero.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                    <!-- fin grupo vivero proveedor -->
+
+                    <!-- botones -->
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

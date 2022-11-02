@@ -19,6 +19,7 @@ import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component';
 import { ObtenerCultivoComponent } from './cultivo/detalle/obtener-cultivo.component';
+import { ModificarCultivoComponent } from './cultivo/modificar/modificar-cultivo.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ObtenerCultivoComponent } from './cultivo/detalle/obtener-cultivo.compo
   NuevoCultivoComponent,
   ListaCultivoComponent,
   ObtenerCultivoComponent,
+  ModificarCultivoComponent,
   
 
   

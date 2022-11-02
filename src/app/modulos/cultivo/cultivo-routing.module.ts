@@ -7,6 +7,8 @@ import { ListadoProductorComponent } from './productor/listar/listado-productor.
 import { NuevoCultivoComponent } from './cultivo/nuevo/nuevo-cultivo.component';
 import { ListaCultivoComponent } from './cultivo/listado/lista-cultivo.component';
 import { ObtenerCultivoComponent } from './cultivo/detalle/obtener-cultivo.component';
+import { ModificarCultivoComponent } from './cultivo/modificar/modificar-cultivo.component';
+
 
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
@@ -41,7 +43,9 @@ const routes: Routes = [
        canActivate: [guarEncargadoAgri],
        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
 
-
+       {path: 'modificarCultivo/:id', component: ModificarCultivoComponent, 
+       canActivate: [guarEncargadoAgri],
+       data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
   
       
   

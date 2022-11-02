@@ -30,7 +30,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import {InputTextModule} from 'primeng/inputtext';
-import { EditarFincaComponent } from './editar/editar-finca.component';
+import { EditarFincaComponent } from './editarCuadro/editar-finca.component';
 import { ListarFincaComponent } from './Listado/listar-finca.component';
 import {StepsModule} from 'primeng/steps';
 
