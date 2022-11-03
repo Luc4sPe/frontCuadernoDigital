@@ -40,26 +40,26 @@ export class NuevoUsuarioComponent implements OnInit {
     {
     name:'Admin',
     active: false,
-    description:'',
+    description:'El administrador tiene acceso a todo los permisos ',
   },
   
   {
     name:'Encargado Agricola',
     active: false,
-    description:'',
+    description:'Tiene permitido gestionar productores, cultivos, agroquímicos',
   },
 
   {
     name:'Productor',
     active: false,
-    description:'',
+    description:'Tienen permitido gestionar plantación, labores de suelo, riego, aplicaciones de fertilizantes ',
 
     
   },
   {
     name:'Gerente',
     active: false,
-    description:'',
+    description:'Tiene permitido gestionar los reportes',
 
     
   },

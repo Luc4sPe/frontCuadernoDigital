@@ -50,7 +50,7 @@ export class ActualizarPerfilComponent implements OnInit {
   actualizarPerfil(form: NgForm):void{
     Swal.fire({
       title: '¿Deseas editar tus datos?',
-      text:' Deberás iniciar sesión nuevamente luego de actualizar tu información',
+      // text:' Deberás iniciar sesión nuevamente luego de actualizar tu información',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: `Guardar`,
@@ -71,13 +71,11 @@ export class ActualizarPerfilComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title:this.msj,
-          text:'Datos actualizados correctamente, debes iniciar sesion nuevamente'
-        }).then((result) => {
-          if(result.isConfirmed || result.dismiss === Swal.DismissReason.esc){
-            this.tokenService.logOut();
-          }
+          text:'Datos actualizados correctamente'
         });
         form.resetForm();
+        this.router.navigate(['/index']);
+        
       }, 
       err => {
         this.msj = err.error.mensaje;

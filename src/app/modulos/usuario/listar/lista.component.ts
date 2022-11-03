@@ -90,11 +90,12 @@ export class ListaComponent implements OnInit {
 }
 
   cargarItems(): void {
+    this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label:'Usuarios', routerLink:'/usuario'},
+      {label:'Usuarios'},
       {label:'Listado', disabled:true}
     ]
-    this.home = {icon: 'pi pi-home', routerLink:'/index'};
+    
   }
 
   getSeverityByEstado(usuario : Usuario): string {

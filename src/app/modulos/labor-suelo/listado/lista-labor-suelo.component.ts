@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Table } from 'primeng/table';
-import { MenuItem } from 'primeng/api/menuitem';
+import { MenuItem } from 'primeng/api';
 import { Finca } from 'src/app/Core/modelo/finca';
+import { LaborSuelo } from 'src/app/Core/modelo/labor-suelo';
 import { FincaService } from 'src/app/service/finca.service';
+import { LaborSueloService } from 'src/app/service/labor-suelo.service';
 import { TokenService } from 'src/app/service/token.service';
-import { Plantacion } from 'src/app/Core/modelo/plantacion';
-import { PlantacionService } from 'src/app/service/plantacion.service';
+import { Table } from 'primeng/table';
 
 @Component({
-  selector: 'app-listado-plantacion',
-  templateUrl: './listado-plantacion.component.html',
-  styleUrls: ['./listado-plantacion.component.css']
+  selector: 'app-lista-labor-suelo',
+  templateUrl: './lista-labor-suelo.component.html',
+  styleUrls: ['./lista-labor-suelo.component.css']
 })
-export class ListadoPlantacionComponent implements OnInit {
+export class ListaLaborSueloComponent implements OnInit {
 
   home : MenuItem = {}
   items : MenuItem[] = [];
   fincas: Finca[];
-  listadoPlantacion: Plantacion[];
-  plantacionFiltrada:Plantacion[];
   usuarioProductor:any;
   loading : boolean = false;
   isProductor: boolean = false;
+  listadoLabor: LaborSuelo[];
+  laborFiltrada:LaborSuelo[];
 
   constructor(
     private fincaService:FincaService,
     private tokenService:TokenService,
-    private plantacionServi:PlantacionService
-    ) { }
+    private laborService:LaborSueloService,
+  ) { }
 
   ngOnInit(): void {
     this.cargarItems();
@@ -40,7 +40,7 @@ export class ListadoPlantacionComponent implements OnInit {
   cargarItems(): void {
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label: 'Plantacion', routerLink:'/index'},
+      {label: 'Labor Suelo', routerLink:'/index'},
       {label: 'Listado', disabled:true}
     ];
   }
@@ -58,14 +58,17 @@ export class ListadoPlantacionComponent implements OnInit {
     
   }
 
+
   listadoPlantacionDeUnaFinca(): void{
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      this.plantacionServi.listarPlantacionPorFinca(<number><unknown>valor.value).subscribe(
+      console.log('este es el valor'+valor.value);
+
+      this,this.laborService.listarLaborSueloPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
-          this.listadoPlantacion = data;
-          console.log(this.listadoPlantacion);
+          this.listadoLabor = data;
+          console.log(this.listadoLabor);
         },
         err =>{
 
@@ -82,7 +85,6 @@ export class ListadoPlantacionComponent implements OnInit {
   }
 
   obtenerPlantacionFiltrados(table: Table): void {
-    this.plantacionFiltrada = table.filteredValue != null ? table.filteredValue : this.listadoPlantacion;
+    this.laborFiltrada = table.filteredValue != null ? table.filteredValue : this.listadoLabor;
   }
-
 }

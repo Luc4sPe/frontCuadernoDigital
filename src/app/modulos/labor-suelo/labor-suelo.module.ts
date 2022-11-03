@@ -16,12 +16,14 @@ import { LaborSueloRoutingModule } from './labor-suelo-routing.module';
 import { LaborNuevaComponent } from './nueva/labor-nueva.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { ListaLaborSueloComponent } from './listado/lista-labor-suelo.component';
 
 
 @NgModule({
   declarations: [
   
-    LaborNuevaComponent
+    LaborNuevaComponent,
+       ListaLaborSueloComponent
   ],
   imports: [
     CommonModule,
