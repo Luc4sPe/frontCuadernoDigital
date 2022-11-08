@@ -24,4 +24,9 @@ export class LaborSueloService {
     return this.httpCliente.get<LaborSuelo>(this.laborSueloURL + `detalle/${id}`);
 
   }
+
+  public actualizarLabor(id: number, editarLabor: LaborSueloDto): Observable<any> {
+    return this.httpCliente.put(this.laborSueloURL + `modificarLabor/${id}`, editarLabor);
+  }
+
 }

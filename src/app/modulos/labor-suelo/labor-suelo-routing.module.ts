@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarProductor } from 'src/app/Core/guards/cul-guard.service';
 import { ListaLaborSueloComponent } from './listado/lista-labor-suelo.component';
+import { ActualizarLaborComponent } from './modificar/actualizar-labor.component';
 import { LaborNuevaComponent } from './nueva/labor-nueva.component';
 
 const Productor = Roles.PRODUCTOR;
@@ -24,6 +25,14 @@ const routes: Routes = [
       canActivate:[guarProductor],
       data:{rolesEsperados: [ADMIN,Productor]} 
       },
+      
+      {path: 'modificarLabor/:id', component: ActualizarLaborComponent, 
+      canActivate: [guarProductor],
+      data: { rolesEsperados: [ADMIN,Productor] },
+    },
+ 
+
+      
 
      
     

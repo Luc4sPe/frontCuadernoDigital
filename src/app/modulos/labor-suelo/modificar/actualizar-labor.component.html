@@ -1,0 +1,117 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos de cultivo
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionLaborSuelo(form)" novalidate>
+                    
+                      <!-- Cualtivo anterior -->
+                      <div class="form-group p-2">
+                        <label for="cultivoAnterior" class="form-label">Cultivo anterior</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="cultivo" id="cultivoAnterior" value = {{laborSuelo.idCuadro.cultivoAnterior}} placeholder="Ingrese el cultivo anterior" 
+                        [(ngModel)]="laborSuelo.idCuadro.cultivoAnterior" #cultivo="ngModel" pattern={{patronLetras}}  required minlength="4">
+                    
+                        <div *ngIf="cultivo.invalid && (cultivo.dirty || cultivo.touched)">
+                          <p-message styleClass="m-1" *ngIf="cultivo.errors?.required"  severity="error" text="El nombre del cultivo requerido"></p-message> 
+                            <p-message styleClass="m-1" *ngIf="cultivo.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="cultivo.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+
+                     <!-- fin -->
+
+                      <!-- Labor cultural -->
+                      <div class="p-2">
+                        <label for="labor">Labor cultural</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="laborSuelo" id="labor" value = {{laborSuelo.labor}} placeholder="Ingrese la labor" 
+                        [(ngModel)]="laborSuelo.labor" #lab="ngModel" pattern={{patronLetras}}  required minlength="4">
+                    
+                        <div *ngIf="lab.invalid && (lab.dirty || lab.touched)">
+                            <p-message styleClass="m-1" *ngIf="lab.errors?.required"  severity="error" text="La labor es requerida"></p-message>
+                            <p-message styleClass="m-1" *ngIf="lab.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="lab.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+
+                     <!-- fin -->
+                         <!-- Herramientas implementadas -->
+                         <div class="p-2">
+                            <label for="herramienta" class="form-label">Herramienta implementada</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="herramientasUtilizadas" id="herramienta" value = {{laborSuelo.herramientasUtilizadas}}  placeholder="Ingrese la herramienta implementada" 
+                            [(ngModel)]="laborSuelo.herramientasUtilizadas" #lab="ngModel" pattern={{patronLetras}}  required minlength="3">
+                        
+                            <div *ngIf="lab.invalid && (lab.dirty || lab.touched)">
+                                <p-message styleClass="m-1" *ngIf="lab.errors?.required"  severity="error" text="La labor es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="lab.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="lab.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+                          <!-- Observación -->
+                          <div class="p-2">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="observacion" id="descripcion"  value = {{laborSuelo.observacion}} placeholder="Ingrese la descripción" 
+                            [(ngModel)]="laborSuelo.observacion" #obser="ngModel" pattern={{patronLetras}}  required minlength="8">
+                        
+                            <div *ngIf="obser.invalid && (obser.dirty || obser.touched)">
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.required"  severity="error" text="La descripción es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                           <!-- Observación -->
+                           <div class="p-2">
+                            <label for="justificacion" class="form-label">Justificación</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="justificacionn" id="justificacion"  value = {{laborSuelo.justificacion}} placeholder="Ingrese la justificación" 
+                            [(ngModel)]="laborSuelo.justificacion" #justi="ngModel" pattern={{patronLetras}}  required minlength="8">
+                        
+                            <div *ngIf="justi.invalid && (justi.dirty || justi.touched)">
+                                <p-message styleClass="m-1" *ngIf="justi.errors?.required"  severity="error" text="La descripción es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="justi.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="justi.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                          <!-- Cuadro -->
+                          <div class="p-2">
+                            <label for="laborCuadro" class="form-label">Cuadro</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="cuadro" id="laborCuadro"  value = {{laborSuelo.idCuadro.idCuadro}} placeholder="Ingrese la descripción" 
+                            [(ngModel)]="laborSuelo.idCuadro.numeroCuadro" #obser="ngModel"   required minlength="1">
+                        
+                            <div *ngIf="obser.invalid && (obser.dirty || obser.touched)">
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.required"  severity="error" text="La descripción es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message> 
+                                <!-- <p-message styleClass="m-1" *ngIf="obser.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
+                            </div>
+                        </div>
+
+                         <!-- fin-->
+
+                          <!-- botones -->
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>

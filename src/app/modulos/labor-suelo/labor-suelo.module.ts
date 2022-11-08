@@ -17,13 +17,15 @@ import { LaborNuevaComponent } from './nueva/labor-nueva.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { ListaLaborSueloComponent } from './listado/lista-labor-suelo.component';
+import { ActualizarLaborComponent } from './modificar/actualizar-labor.component';
 
 
 @NgModule({
   declarations: [
   
     LaborNuevaComponent,
-       ListaLaborSueloComponent
+       ListaLaborSueloComponent,
+       ActualizarLaborComponent
   ],
   imports: [
     CommonModule,

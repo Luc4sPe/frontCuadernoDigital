@@ -95,6 +95,28 @@
                             <p-columnFilter type="date" field="fechaLabor" display="menu" class="p-ml-auto"></p-columnFilter>
                         </th>
                         <!-- fin -->
+
+                         <!-- -- columna fecha actualizacion-->
+                         <th class="text-center" pSortableColumn="fechaModificacionLabor">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Modificación                               
+                                <p-sortIcon field="fechaModificacionLabor"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaModificacionLabor" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                        <!-- fin -->
+
+                           <!-- Acciones -->
+                                  
+                           <th class="text-center" pSortableColumn="ver"> 
+                            <div class="p-d-flex p-jc-between p-ai-center"></div>
+                            Acciones
+                        </th>
+
+                        <th class="text-center" pSortableColumn="ver"> 
+                            <div class="p-d-flex p-jc-between p-ai-center"></div>
+                        </th>
+                      <!-- fin -->
                     </tr>
 
                 </ng-template>
@@ -106,11 +128,17 @@
                         <td>{{laborSuelo.idCuadro.cultivoAnterior}}</td>
                         <td>{{laborSuelo.labor}}</td>
                         <td>{{laborSuelo.herramientasUtilizadas}}</td>
-
-                       
                         <td> {{laborSuelo.idCuadro.numeroCuadro}}</td>
+                        <td>{{laborSuelo.fechaLabor | date:"short" }}</td>
+                        <td>{{laborSuelo.fechaModificacionLabor | date:"short" }}</td>
 
-                          <td>{{laborSuelo.fechaLabor | date:"short" }}</td>
+                        <!--Boton Editar -->
+                        <td class="text-center">
+                            <button pRipple class="btn btn-outline-warning" 
+                            routerLink="/laborSuelo/modificarLabor/{{laborSuelo.id}}" pTooltip="Editar" tooltipPosition="top">
+                            <i class="fa-solid fa-pen-clip"></i></button> 
+                        </td>
+                        <!-- fin -->
                     </tr>
 
                 </ng-template>
