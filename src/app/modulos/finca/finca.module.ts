@@ -30,12 +30,11 @@ import { TooltipModule } from 'primeng/tooltip';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import {InputTextModule} from 'primeng/inputtext';
-import { EditarFincaComponent } from './editarCuadro/editar-finca.component';
-import { ListarFincaComponent } from './Listado/listar-finca.component';
+import { EditarFincaComponent } from './editarFinca/editar-finca.component';
 import {StepsModule} from 'primeng/steps';
-
-
-
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import { ListaFincaComponent } from './listado/lista-finca.component';
 
 
 
@@ -43,7 +42,9 @@ import {StepsModule} from 'primeng/steps';
   declarations: [
     FincaNuevaComponent,
     EditarFincaComponent,
-    ListarFincaComponent
+    ListaFincaComponent,
+    
+    
   ],
   imports: [
     CommonModule,
@@ -76,7 +77,9 @@ import {StepsModule} from 'primeng/steps';
     InputNumberModule,
     TriStateCheckboxModule,
     InputTextModule,
-    StepsModule
+    StepsModule,
+    RadioButtonModule,
+    InputSwitchModule
   ]
 })
 export class FincaModule { }

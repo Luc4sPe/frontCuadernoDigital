@@ -1,0 +1,63 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos del cuadro de la finca
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionCuadro(form)" novalidate>
+
+                      <!--  Número de cuadro -->
+                      <div class="p-2">
+                        <label for="labelCuadro" class="form-label">Número de cuadro</label>
+
+                        <input type="text" class="p-inputtext form-control mt-2"  name="cuadro" id="labelCuadro" value = {{cuadro.numeroCuadro}} placeholder="Ingrese el número o nombre" 
+                        [(ngModel)]="cuadro.numeroCuadro" #cua="ngModel"    required minlength="1"> 
+
+                        <div *ngIf="cua.invalid && (cua.dirty || cua.touched)">
+                            <p-message styleClass="m-1" *ngIf="cua.errors?.required"  severity="error" text="El número  es requerida"></p-message>
+                            <p-message styleClass="m-1" *ngIf="cua.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                            
+                        </div>
+                    </div>
+                      <!-- Fin Número de cuadro -->
+                    
+                      <!--  Superficie por Hectareas -->
+                      <div class="p-2">
+                        <label for="labelSuperficie" class="form-label">Superficie (ha)</label>
+
+                        <input type="number" class="p-inputtext form-control mt-2"  name="superficie" id="labelSuperficie" value = {{cuadro.superficieHectarea}} placeholder="Ingrese la suprficie (ha)" 
+                        [(ngModel)]="cuadro.superficieHectarea" #super="ngModel" pattern="^[0-9 . -]{1,15}"    required minlength="1"> 
+
+                        <div *ngIf="super.invalid && (super.dirty || super.touched)">
+                            <p-message styleClass="m-1" *ngIf="super.errors?.required"  severity="error" text="La superficie es requerida"></p-message>
+                            <p-message styleClass="m-1" *ngIf="super.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="super.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                      <!-- Fin superficie por hectarias -->
+
+                     <!-- botones -->
+                     <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+
+                      
+
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>

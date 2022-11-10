@@ -24,7 +24,7 @@
 
                                         <div class="p-2">
                                             <label for="labelNombre" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control p-inputtext"  name="nuevaFinca.nombre" id="nuevaFinca.nombre" placeholder="Ingrese el nombre" 
+                                            <input type="text" class="form-control p-inputtext"  name="nuevaFinca.nombre" id="labelNombre" placeholder="Ingrese el nombre" 
                                             [(ngModel)]="nuevaFinca.nombre" #nombre="ngModel" pattern={{patronLetras}}  required minlength="3">
                                         
                                             <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">

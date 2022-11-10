@@ -1,0 +1,89 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos de la finca
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionFinca(form)" novalidate>
+                    
+                    <!-- nombre finca -->
+                    <div class="p-2">
+                        <label for="labelNombre" class="form-label">Nombre</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="finca.nombre" id="labelNombre" value = {{finca.nombre}} placeholder="Ingrese el nombre" 
+                        [(ngModel)]="finca.nombre" #nombre="ngModel" pattern={{patronLetras}}  required minlength="3">
+                    
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <p-message styleClass="m-1" *ngIf="nombre.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="nombre.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="nombre.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                    <!-- fin -->
+
+                    <!-- dirección -->
+                    <div class="p-2">
+                        <label for="labelDireccion" class="form-label">Dirección</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="finca.direccion" id="labelDireccion" value = {{finca.direccion}} placeholder="Ingrese la dirección" 
+                        [(ngModel)]="finca.direccion" #dereccion="ngModel" pattern={{patronLetras}}  required minlength="3">
+                    
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.required"  severity="error" text="La dirección es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                    <!-- fin -->
+
+                    <!-- producor -->
+                    <div class="p-2">
+<!--                                          
+                         <label for="labelNombreUsuario  form-select-lg mb-3" class="form-label"> Se leccione el prodcutor a modifocar</label>
+                        <select class="form-select" name="productorNombreProductor" 
+                        [(ngModel)]="finca.productor.nombre" aria-label=".form-select-lg example" required>
+                        <option [value]="finca.productor.nombre" *ngFor="let productor of usuarios">
+                            {{ productor.nombre }} - {{ productor.apellido }} 
+                        </option>
+                        
+                    </select>  -->
+
+                    <div class="p-2">
+                        <label for="labelproductor" class="form-label">Productor</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="finca.nombreProductor" id="labelproductor" value = {{finca.productor.nombreUsuario}} placeholder="Ingrese la dirección" 
+                        [(ngModel)]="finca.productor.nombre" #dereccion="ngModel" pattern={{patronLetras}}  required minlength="3" >
+                    
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.required"  severity="error" text="La dirección es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="dereccion.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- fin -->
+
+
+                     <!-- botones -->
+                     <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+
+                      
+
+                </form>
+                    
+            </div>
+        </div>
+    </div>
+</div>

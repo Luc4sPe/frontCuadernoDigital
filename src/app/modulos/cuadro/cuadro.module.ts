@@ -20,11 +20,13 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 
 import { CuadroRoutingModule } from './cuadro-routing.module';
 import { NuevoCuadroComponent } from './nuevo/nuevo-cuadro.component';
+import { ModificarCuadroComponent } from './editarCuadro/modificar-cuadro.component';
 
 
 @NgModule({
   declarations: [
-    NuevoCuadroComponent
+    NuevoCuadroComponent,
+    ModificarCuadroComponent
   ],
   imports: [
     CommonModule,
