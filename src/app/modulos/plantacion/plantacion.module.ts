@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ListadoPlantacionComponent } from './listado/listado-plantacion.component';
 import { ObtenerPlantacionComponent } from './detalle/obtener-plantacion.component';
+import { ActualizarPlantacionComponent } from './modificar/actualizar-plantacion.component';
 
 
 
@@ -24,7 +25,8 @@ import { ObtenerPlantacionComponent } from './detalle/obtener-plantacion.compone
   declarations: [
     PlantacionNuevaComponent,
     ListadoPlantacionComponent,
-    ObtenerPlantacionComponent
+    ObtenerPlantacionComponent,
+    ActualizarPlantacionComponent
   ],
   imports: [
     CommonModule,

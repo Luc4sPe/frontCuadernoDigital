@@ -26,10 +26,11 @@ const routes: Routes = [
       data:{rolesEsperados: [ADMIN,Productor]} 
       },
       
-      {path: 'modificarLabor/:id', component: ActualizarLaborComponent, 
+      { path: 'modificarLabor/:id', 
+      component: ActualizarLaborComponent, 
       canActivate: [guarProductor],
       data: { rolesEsperados: [ADMIN,Productor] },
-    },
+      },
  
 
       

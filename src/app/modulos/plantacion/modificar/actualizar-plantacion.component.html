@@ -1,0 +1,186 @@
+<app-menu></app-menu>
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos de plantación
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionLaborPlantacion(form)" novalidate>
+
+                       <!-- Listado de los Cuadros -->
+                       <!-- <div class="p-2">
+                        <label for="form-select-lg mb-3" class="form-label">cuadros</label>
+                        <p-listbox  [options]="plantacion.numerosDeCuadros" value [(ngModel)]="plantacion.numerosDeCuadros" name="plantacion" [metaKeySelection]="false"
+                        [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="numeroCuadro" 
+                        [listStyle]="{'max-height':'250px'}" [style]="{'width':'25rem'}">
+                            <ng-template let-cuadros pTemplate="item">
+                                <div class="cuadros-item">
+                                  
+                                    <div>{{cuadros.numeroCuadro}}</div>
+                                    
+
+                                </div>
+                            </ng-template>
+                        </p-listbox> 
+                      </div> -->
+
+                      <!-- fin -->
+
+                    
+                       <!-- Marco Plantación e/Hileras -->
+                       <div class="p-2">
+                        <label for="entreIleras" class="form-label">Marco plantación entre/hielras</label>
+                        <input type="number" class="p-inputtext form-control mt-2"  name="entreIleras" id="entreIleras" value={{plantacion.entreIleras}} placeholder="Ingrese el valor en (cm)" 
+                        [(ngModel)]="plantacion.entreIleras" #plaEntreHi ="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="1">
+                    
+                        <div *ngIf="plaEntreHi.invalid && (plaEntreHi.dirty || plaEntreHi.touched)">
+                            <p-message styleClass="m-1" *ngIf="plaEntreHi.errors?.required"  severity="error" text="El marco de plantacion e/hileras es requerida"></p-message>
+                            <p-message styleClass="m-1" *ngIf="plaEntreHi.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="plaEntreHi.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                        </div>
+                        
+                    </div>
+
+                     <!-- fin -->
+
+                         <!-- Marco Plantación e/Plantas -->
+
+                         <div class="p-2">
+                            <label for="entrePlantas" class="form-label">Marco plantación entre/plantas</label>
+                            <input type="number" class="p-inputtext form-control mt-2"  name="entrePlantas" id="entrePlantas" value={{plantacion.entrePlantas}} placeholder="Ingrese el valor en (cm)" 
+                            [(ngModel)]="plantacion.entrePlantas" #plaEntrePla ="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="1">
+                        
+                            <div *ngIf="plaEntrePla.invalid && (plaEntrePla.dirty || plaEntrePla.touched)">
+                                <p-message styleClass="m-1" *ngIf="plaEntrePla.errors?.required"  severity="error" text="El marco de plantacion e/plantas es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="plaEntrePla.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="plaEntrePla.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                           <!-- Sistema de riego -->
+                           <div class="p-2">
+                            <label for="sistemaRiego" class="form-label">Sistema de riego</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="riego" id="sistemaRiego" value={{plantacion.sistemaRiego}} placeholder="Ingrese el sistema de riego" 
+                            [(ngModel)]="plantacion.sistemaRiego" #sistema="ngModel" pattern={{patronLetras}}  required minlength="3">
+                        
+                            <div *ngIf="sistema.invalid && (sistema.dirty || sistema.touched)">
+                                <p-message styleClass="m-1" *ngIf="sistema.errors?.required"  severity="error" text="El sistema de riego es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="sistema.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="sistema.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                           <!-- Sistema de trasplante -->
+                           <div class="p-2">
+                            <label for="sistemaTrasplante" class="form-label">Sistema de trasplante</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="trasplante" id="sistemaTrasplante"  value={{plantacion.sistemaTrasplante}}  placeholder="Ingrese el sistema de trasplante" 
+                            [(ngModel)]="plantacion.sistemaTrasplante" #trasplante="ngModel" pattern={{patronLetras}}  required minlength="3">
+                        
+                            <div *ngIf="trasplante.invalid && (trasplante.dirty || trasplante.touched)">
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.required"  severity="error" text="El sistema de trasplante es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                           <!-- Selector tipo cultivo -->
+                           <!-- <div class="p-2">
+                                          
+                            <label for="tipoCultivo" class="form-label">Seleccione el cultivo</label>
+                            <select class="form-select" name="cultivo" id="tipoCultivo"
+                            [(ngModel)]="plantacion.tipoCultivo" aria-label=".form-select-lg example" required>
+                            <option [value]="cultivo.idCultivo" *ngFor="let cultivo of listadoCultivo">
+                            
+                                {{ cultivo.nombre }}
+                                
+                            </option>
+                            
+                            </select>
+                         </div> -->
+                        
+                         <div class="p-2">
+                            <label for="cultivo" class="form-label">Cultivo</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="tipoCultivo" id="cultivo"  value = {{plantacion.nombreTipoCultivo.idCultivo}}  placeholder="Ingrese el tipo de cultivo" 
+                            [(ngModel)]="plantacion.nombreTipoCultivo.nombre" #trasplante="ngModel" pattern={{patronLetras}}  required minlength="3">
+                        
+                            <div *ngIf="trasplante.invalid && (trasplante.dirty || trasplante.touched)">
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.required"  severity="error" text="El tipo  de cultivo es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                          <!-- fin -->
+
+                           <!-- Cantidad plantines -->
+
+                           <div class="p-2">
+                            <label for="cantidadPlantines" class="form-label">Cantidad de plantines</label>
+                            <input type="number" class="p-inputtext form-control mt-2"  name="plantines" id="cantidadPlantines" value={{plantacion.cantidadPlantines}} placeholder="Ingrese la cantidad de plantines" 
+                            [(ngModel)]="plantacion.cantidadPlantines" #cantidadPla ="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="1">
+                        
+                            <div *ngIf="cantidadPla.invalid && (cantidadPla.dirty || cantidadPla.touched)">
+                                <p-message styleClass="m-1" *ngIf="cantidadPla.errors?.required"  severity="error" text="La cantidad de plantines es requerida"></p-message>
+                                <p-message styleClass="m-1" *ngIf="cantidadPla.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="cantidadPla.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                          <!-- Observacioón -->
+                          <div class="p-2">
+                            <label for="observacion" class="form-label">Observación</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="obserCultivo" id="observacion" value={{plantacion.observacion}} placeholder="Ingrese la observación" 
+                            [(ngModel)]="plantacion.observacion" #obser="ngModel" pattern={{patronLetras}}  required minlength="8">
+                        
+                            <div *ngIf="obser.invalid && (obser.dirty || obser.touched)">
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.required"  severity="error" text="La observación es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="obser.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                           <!-- Justificación -->
+                           <div class="p-2">
+                            <label for="justificacion" class="form-label">Justificación</label>
+                            <input type="text" class="p-inputtext form-control mt-2"  name="justi" id="justificacion" value={{plantacion.justificacion}} placeholder="Ingrese la justificación " 
+                            [(ngModel)]="plantacion.justificacion" #just="ngModel" pattern={{patronLetras}}  required minlength="8">
+                        
+                            <div *ngIf="just.invalid && (just.dirty || just.touched)">
+                                <p-message styleClass="m-1" *ngIf="just.errors?.required"  severity="error" text="La justificación es requerido"></p-message>
+                                <p-message styleClass="m-1" *ngIf="just.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="just.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                            </div>
+                        </div>
+
+                         <!-- fin -->
+
+                          <!-- botones -->
+                    <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

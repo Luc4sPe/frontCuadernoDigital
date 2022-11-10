@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ModificarPlantacionDto } from '../Core/dto/modificar-plantacion-dto';
 import { PlantacionDto } from '../Core/dto/plantacion-dto';
 import { Plantacion } from '../Core/modelo/plantacion';
 
@@ -28,6 +29,10 @@ export class PlantacionService {
   public datallePlantacion(id: number): Observable<Plantacion>{
     return this.httpCliente.get<Plantacion>(this.plantacionURL + `detallePlantacion/${id}`);
 
+  }
+
+  public actualizaPlantacion(id: number, editarPlantacion: ModificarPlantacionDto): Observable<any> {
+    return this.httpCliente.put(this.plantacionURL + `modificar/${id}`, editarPlantacion);
   }
 
 }

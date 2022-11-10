@@ -49,7 +49,7 @@ export class ListadoPlantacionComponent implements OnInit {
     await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        console.log(this.fincas);
+        
       },
       err =>{
         console.log(err);
@@ -65,7 +65,7 @@ export class ListadoPlantacionComponent implements OnInit {
       this.plantacionServi.listarPlantacionPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.listadoPlantacion = data;
-          console.log(this.listadoPlantacion);
+        
         },
         err =>{
 
