@@ -94,11 +94,11 @@
                          <!-- fin -->
 
                            <!-- Selector tipo cultivo -->
-                           <!-- <div class="p-2">
+                           <div class="p-2">
                                           
                             <label for="tipoCultivo" class="form-label">Seleccione el cultivo</label>
                             <select class="form-select" name="cultivo" id="tipoCultivo"
-                            [(ngModel)]="plantacion.tipoCultivo" aria-label=".form-select-lg example" required>
+                            [(ngModel)]="plantacion.nombreTipoCultivo.idCultivo" aria-label=".form-select-lg example" required>
                             <option [value]="cultivo.idCultivo" *ngFor="let cultivo of listadoCultivo">
                             
                                 {{ cultivo.nombre }}
@@ -106,20 +106,7 @@
                             </option>
                             
                             </select>
-                         </div> -->
-                        
-                         <div class="p-2">
-                            <label for="cultivo" class="form-label">Cultivo</label>
-                            <input type="text" class="p-inputtext form-control mt-2"  name="tipoCultivo" id="cultivo"  value = {{plantacion.nombreTipoCultivo.idCultivo}}  placeholder="Ingrese el tipo de cultivo" 
-                            [(ngModel)]="plantacion.nombreTipoCultivo.nombre" #trasplante="ngModel" pattern={{patronLetras}}  required minlength="3">
-                        
-                            <div *ngIf="trasplante.invalid && (trasplante.dirty || trasplante.touched)">
-                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.required"  severity="error" text="El tipo  de cultivo es requerido"></p-message>
-                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
-                                <p-message styleClass="m-1" *ngIf="trasplante.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
-                            </div>
-                        </div>
-
+                         </div>
                           <!-- fin -->
 
                            <!-- Cantidad plantines -->

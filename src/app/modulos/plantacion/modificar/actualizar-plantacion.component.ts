@@ -40,7 +40,7 @@ export class ActualizarPlantacionComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.obtenerPlantacion(id);
     this.listarCuadrosPorFinca();
-   // this.listarCultivos();
+    this.listarCultivos();
   }
 
   cargarItems(): void {
@@ -125,16 +125,16 @@ export class ActualizarPlantacionComponent implements OnInit {
    
   } 
 
-  // listarCultivos():void{
-  //   this.cultivoService.listarCultivo().subscribe(
-  //     data =>{
-  //       this.listadoCultivo = data;
-  //     },
-  //     err =>{
-  //       console.log(err);
-  //     }
-  //   )
-  // }
+   listarCultivos():void{
+     this.cultivoService.listarCultivo().subscribe(
+      data =>{
+        this.listadoCultivo = data;
+      },
+      err =>{
+        console.log(err);
+      }
+    )
+  }
 
   cerrar(): void {
     this.location.back();
