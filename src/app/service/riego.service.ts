@@ -17,23 +17,17 @@ export class RiegoService {
 
   constructor(private httpCliente: HttpClient) { }
 
-  public listar(): Observable<Riego[]>{
-    return this.httpCliente.get<Riego[]>(this.riegoURL + 'lista');
+  public crearRiego(riego: RiegoDto): Observable<any>{
+    return this.httpCliente.post<any>(this.riegoURL+'nuevoRiego',riego);
   }
 
-   public listarRiegoPorUsuario(nombreUsuario: string): Observable<Riego[]>{
-    return this.httpCliente.get<Riego[]>(this.riegoURL +  `riegoPorNombreUsuario/${nombreUsuario}`);
+  public listarRiegoPorFinca(idFinca: number): Observable<Riego[]>{
+    return this.httpCliente.get<[Riego]>(this.riegoURL+  `listadoRiegoDeUnaFinca/${idFinca}`);
   } 
 
-   public listadoRiegoDeUnUsuarioID(idUsuario: number): Observable<Riego[]>{
-    return this.httpCliente.get<Riego[]>(this.riegoURL +  `riegoPorUsuario/${idUsuario}`);
-  } 
 
-  public nuevo(nuevoRiego: RiegoDto): Observable<any>{
-    return this.httpCliente.post<any>(this.riegoURL+'nuevoRiego',nuevoRiego);
-  }
 
-  public datalle(id: number): Observable<Riego>{
+  public datalleRiego(id: number): Observable<Riego>{
     return this.httpCliente.get<Riego>(this.riegoURL + `detalle/${id}`);
 
   }
@@ -41,6 +35,8 @@ export class RiegoService {
   public actualizarRiego(id: number, editarRiego: EditarRiego ): Observable<any> {
     return this.httpCliente.put<any>(this.riegoURL + `update/${id}`, editarRiego);
   }
+
+ 
 
   
   

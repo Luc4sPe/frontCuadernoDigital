@@ -1,209 +1,122 @@
 <app-menu></app-menu> 
-<body style="background-color:gray;">
-    
- <div class="container">
-    
-    <div class="row ">
-		<div class="col-md-12 mt-2">
+<div class="container fadein animation-iteration-1 animation-duration-500">
 
-              <div class="container d-flex justify-content-center ">  
-                
-                     <div class="card-header">  
-                            <h3 class="text-center">Formulario</h3>
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-2">
 
-                              <!-- <img src="assets/imagen/nuevo.png" class="card-img-top" alt="...">   -->
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
 
-                            <div class="row" > 
+            <div class="row"> 
+                <!-- parte derecha -->
+                <div class="col-10-md-7">
+                      <div class="row"> 
+                          <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" > 
+                                <div class="card-header bg-primary text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Crear riego
+                                </div>
+                                <form #form = "ngForm" (ngSubmit)="crearRiego(form)" novalidate> 
+                                    <!-- Selector Finca -->
+                                    <div class="p-2">
+                                          
+                                        <label for="nomreFinca" class="form-label">Seleccione la finca</label>
+                                        <select class="form-select" name="finca" id="nomreFinca"
+                                        [(ngModel)]="riego.idFinca" aria-label=".form-select-lg example" required>
+                                        <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                                        
+                                            {{ finca.nombre }}
+                                            
+                                        </option>
+                                        
+                                        </select>
+                                     </div>
+                                      <!-- fin -->
 
-                                <div class="col-md-125">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="card shadow mb-lg-4">
-                                                <div class="card-header bg-primary text-white">
-                                                    <i class="bi bi-card-text me-1"></i>
-                                                    Nuevo Riego
-                                                </div>
+                                       <!-- Listado de los Cuadros -->
+                                       <div class="p-2">
+                                          
+                                        <label class="form-check-label" for="labor" > Seleccione el cuadro </label>
+                                       
+                                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="riego.idCuadro" inputId="riego"> 
+                                                </p-radioButton>
+                                                <label for="riego"> 
+                                                    {{cuadro.numeroCuadro}} 
+                                                   
 
-
-        
-                                                <div class="card-body">
-        
-                                                    <form #formRiego = "ngForm" (ngSubmit)= "nuevoRiego(formRiego)" novalidate> 
-        
-                                                                 <!--group duracionEnHoras -->
-                                                        <div class="form-group">
-                                                            <label for="form-label">Duracion en Horas</label> 
-                                                            <input type="text" class="form-control mt-2" name ="duracionEnHoras"id="duracionEnHoras" placeholder="Horas" 
-                                                            [(ngModel)]="duracionEnHoras" #dura = "ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$" required>  
-                                                             <i class="fa fa-check check-ok"></i>
-                                                            
-                                                            <div class="alert-danger rounded mt-2" *ngIf="dura.invalid && (dura.dirty || dura.touched)">
-                                                                <div *ngIf="dura.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    Horario es requerido
-                                                                </div>
-                                                                <div *ngIf="dura.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        formato requerido HH:MM 24h los segundos son opcionales 
-                                                                </div>
-                                                            </div>                                                             
-                                                        </div>
-
-                                                           <!--group MilimetrosAplicados -->
-                                                           <div class="form-group">
-                                                            <label for="form-label">Milimetros Aplicados</label>
-                                                            <input type="text" class="form-control mt-2" name ="milimetrosAplicados"id="milimetrosAplicados" placeholder="Milimetros" 
-                                                            [(ngModel)]="milimetrosAplicados" #mili = "ngModel" pattern="^[0-9 .]{2,15}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="mili.invalid && (mili.dirty || mili.touched)">
-                                                                <div *ngIf="mili.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    Los Milimetros Aplicados son requeridos
-                                                                </div>
-                                                                 <div *ngIf="mili.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten números
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-
-                                                        <!--group  NumeroDeCuadro Lista -->
-                                                        <div class="form-group">
-                                                            <label for="form-label"> Número de Cuadro</label>
-                                                            <input type="text" class="form-control mt-2" name =" numeroDeCuadro"id=" numeroDeCuadro" placeholder=" Número" 
-                                                            [(ngModel)]=" numeroDeCuadro" #num = "ngModel" pattern="^[0-9 .]{1,15}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="num.invalid && (num.dirty || num.touched)">
-                                                                <div *ngIf="num.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    El Número de Cuadro es requeridos
-                                                                </div>
-                                                                 <div *ngIf="num.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten números
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-
-                                                         <!--group Observacion del Productor -->
-                                                         <div class="form-group">
-                                                            <label for="form-label">Observacion</label>
-                                                            <input type="text" class="form-control mt-2" name ="observacionProductor"id="observacionProductor" placeholder="Observación" 
-                                                            [(ngModel)]="observacionProductor" #obs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="obs.invalid && (obs.dirty || obs.touched)">
-                                                                <div *ngIf="obs.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    La Observacion es requerida
-                                                                </div>
-                                                                <div *ngIf="obs.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten letras
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                         <!--group  Fecha de Aplicacion lo crea el sistema  -->
-                                                         <div class="form-group">
-                                                            <label for="form-label"> Fecha Aplicada</label>
-                                                            <input type="text" class="form-control mt-2" name =" semanaAplicada"id=" semanaAplicada" placeholder=" Número" 
-                                                            [(ngModel)]=" semanaAplicada" #sem = "ngModel" pattern="^[0-9 .]{1,15}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="sem.invalid && (sem.dirty || sem.touched)">
-                                                                <div *ngIf="sem.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    El N° de la semana es requerida
-                                                                </div>
-                                                                 <div *ngIf="sem.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten números
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-
-                                                         <!--group  semana desde el Transplante lo calcula el sistema -->
-                                                         <div class="form-group">
-                                                            <label for="form-label"> Semana desde el Transplante</label>
-                                                            <input type="text" class="form-control mt-2" name =" semanaTransplante"id=" semanaTransplante" placeholder=" Número" 
-                                                            [(ngModel)]=" semanaTransplante" #semTra = "ngModel" pattern="^[0-9 .]{1,15}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="semTra.invalid && (semTra.dirty || semTra.touched)">
-                                                                <div *ngIf="semTra.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    El N° de la semana es requerida
-                                                                </div>
-                                                                 <div *ngIf="semTra.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten números
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-
-                                                         <!--group Nombre de Usuario -->
-                                                         <!-- <div class="form-group">
-                                                            <label for="form-label">Nombre de Usuario</label>
-                                                            <input type="text" class="form-control mt-2" name ="nombreUsuario"id="nombreUsuario" placeholder="Nombre de Usuario" 
-                                                            [(ngModel)]="nombreUsuario" #NomUs = "ngModel" pattern="^[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC ]{2,254}" required>
-                                                            <i class="fa fa-check check-ok"></i>
-                                                            <div class="alert-danger rounded mt-2" *ngIf="NomUs.invalid && (NomUs.dirty || NomUs.touched)">
-                                                                <div *ngIf="NomUs.errors?.required">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                    El Nombre de Usuario es requerido
-                                                                </div>
-                                                                <div *ngIf="NomUs.errors?.pattern">
-                                                                    <i class="ms-1 bi-x-circle-fill"></i>
-                                                                        Solo se permiten letras
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-       
-                                                        <div class="card-footer text-center mt-3">
-                                                            <button class="btn btn-outline-success btn-block" [disabled]="!formRiego.valid" style="margin-left: 10px"  ><i class="far fa-save"></i> Guardar</button>
-                                                            <button (click)="volver()" class="btn btn-outline-info" style="margin-left: 10px"><i class="fas fa-undo-alt"></i> Volver</button>
-                                                          
-                                                
-                                                        </div>                                                               
-                                                        
-                                                        
-                                                    </form>
-
-                                                    
-        
-        
-                                                </div>
+                                                </label>
+                                               
                                             </div>
-                                        </div>
+                                   </div>
+                                  <!-- fin -->
+
+                                   <!-- Duración en horas -->
+                                   <div class="form-group p-2">
+                                    <label for="duracion" class="form-label">Duración en horas</label>
+                                    <input type="time" class="p-inputtext form-control mt-2"  name="duracionHoras" id="duracion" placeholder="Ingrese la hora" 
+                                    [(ngModel)]="riego.duracionEnHoras" #dura="ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$"  required>
+                                
+                                    <div *ngIf="dura.invalid && (dura.dirty || dura.touched)">
+                                        <p-message styleClass="m-1" *ngIf="dura.errors?.required"  severity="error" text="La duración es requerida"></p-message>
+                                        <!-- <p-message styleClass="m-1" *ngIf="dura.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message> -->
+                                        <p-message styleClass="m-1" *ngIf="dura.errors?.pattern"   severity="error" text=" Formato requerido HH:MM 24h los segundos son opcionales "></p-message>
                                     </div>
-
-
-
-
                                 </div>
 
+                                 <!-- fin -->
 
-                               
-        
+                                  <!-- Milimetros -->
+                                  <div class="form-group p-2">
+                                    <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
+                                    <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" placeholder="Ingrese los milimetros" 
+                                    [(ngModel)]="riego.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                
+                                    <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                                        <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                    </div>
+                                    
+                                </div>
+
+                                 <!-- fin -->
+
+                                   <!-- Observación -->
+                                   <div class="form-group p-2">
+                                    <label for="observacionProductor" class="form-label">Descripción</label>
+                                    <input type="text" class="p-inputtext form-control mt-2"  name="descripcion" id="observacionProductor" placeholder="Ingrese la descripción" 
+                                    [(ngModel)]="riego.observacionProductor" #desc ="ngModel"  pattern={{patronLetras}}   required minlength="8">
+                                
+                                    <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
+                                        <p-message styleClass="m-1" *ngIf="desc.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="desc.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                        <p-message styleClass="m-1" *ngIf="desc.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                    </div>
+                                    
+                                </div>
+
+                                 <!-- fin -->
+
+                                   <!-- botones -->
+                                <div class="card-footer mb-2">
+                                    <div class="d-flex justify-content-between">
+                                    <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                                    <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Regar" [disabled]="!form.valid"></button>
+                                    
+                                    </div>
+                                </div>
+                                 <!-- fin botones -->
+
+
+                                 
+                                </form>
                             </div>
-
-                    </div>  
-
-                
-
-               
-                
-             </div>   
+                          </div>
+                      </div>
+                </div>
+            </div>
         </div>
-    </div>  
-
-        
-       
-   
-    
- </div>
-
-    
-</body>    
-
-       
-
+    </div>
+</div>
     

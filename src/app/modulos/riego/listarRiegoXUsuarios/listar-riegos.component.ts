@@ -34,43 +34,12 @@ export class ListarRiegosComponent implements OnInit {
   ngOnInit(): void {
 
      
-    const nombreUsuairo = this.route.snapshot.params['nombreUsuario'];
-       
-    this.listar(nombreUsuairo);
-    this.roles=this.tokenService.getAuthorities();
-    this.isLoged=true;
-    this.roles.forEach(rol =>{
-      if(rol === 'ROLE_ADMIN'){
-        this.isAdmin=true;
-      } 
-
-      if(rol=== 'PRODUCTOR'){
-
-          this.isProductor=true;
-
-      }
-      
-    });
+   
 
     
 
   }
 
     
-  async listar(nombreUsuairo: string): Promise<void>{
-    await  this.riegoService.listarRiegoPorUsuario(nombreUsuairo).subscribe(
-      data => {
-        this.riegos=data;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
-  }
-
-  volver(): void {
-    this.router.navigate(['/']);
-  }
-
+ 
 }

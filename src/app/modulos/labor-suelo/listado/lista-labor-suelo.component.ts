@@ -83,4 +83,14 @@ export class ListaLaborSueloComponent implements OnInit {
   obtenerPlantacionFiltrados(table: Table): void {
     this.laborFiltrada = table.filteredValue != null ? table.filteredValue : this.listadoLabor;
   }
+
+  obtenerFiltros(table: Table): void {
+    let filtros : any = [];
+    filtros =  table.filters
+    filtros.id.forEach((f: { "value": any, "matchMode":any; }) =>{
+      console.log(f.value);
+      console.log(f.matchMode);
+      
+    })
+  }
 }

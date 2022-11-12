@@ -1,28 +1,27 @@
+import { Cuadro } from "./cuadro";
+import { Finca } from "./finca";
 import { Usuario } from "./usuario";
 
 export class Riego {
     id?: number;
     duracionEnHoras: Date;
-    fechaAplicacion: Date = new Date();
     milimetrosAplicados:number;
-    numeroDeCuadro: number;
-    observacionAsesor: string;
+    idCuadros: Cuadro;
     observacionProductor: string;
-    semanaAplicada: number;
-    semanaTransplante: number;
-    nombreUsuario: Usuario;
+    justificacionProductor: string;
+    finca: Finca;
+    fechaRiego: Date = new Date();
+    fechaModificacionRiego: Date = new Date();
 
-    constructor(duracionEnHoras: Date,milimetrosAplicados:number, numeroDeCuadro: number, observacionAsesor: string,
-        observacionProductor: string, semanaAplicada: number, semanaTransplante: number, nombreUsuario: Usuario){
+    constructor( duracionEnHoras: Date,milimetrosAplicados:number, idCuadros: Cuadro, observacionProductor: string, justificacionProductor: string,finca: Finca){
 
-            this.duracionEnHoras=duracionEnHoras;
-            this.milimetrosAplicados=milimetrosAplicados;
-            this.numeroDeCuadro=numeroDeCuadro;
-            this.observacionAsesor=observacionAsesor;
-            this.observacionProductor=observacionProductor;
-            this.semanaAplicada=semanaAplicada;
-            this.semanaTransplante=semanaTransplante;
-            this.nombreUsuario=nombreUsuario;
+        this.duracionEnHoras=duracionEnHoras;
+        this.milimetrosAplicados=milimetrosAplicados;
+        this.idCuadros=idCuadros;
+        this.observacionProductor=observacionProductor;
+        this.justificacionProductor=justificacionProductor;
+        this.finca=finca;
+         
     }
     
 }
