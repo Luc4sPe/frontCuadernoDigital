@@ -21,4 +21,13 @@ export class AgroquimicoService {
   public listarAgroquimico(): Observable<Agroquimico[]>{
     return this.httpCliente.get<Agroquimico[]>(this.agroURL +'listarAgroquimico');
   }
+
+  public datalle(id: number): Observable<Agroquimico>{
+    return this.httpCliente.get<Agroquimico>(this.agroURL + `detalleAgro/${id}`);
+
+  }
+
+  public actualizarAgroquimico(id: number, editarAgroquimico: AgroquimicoDto): Observable<any> {
+    return this.httpCliente.put(this.agroURL + `update/${id}`, editarAgroquimico);
+  }
 }

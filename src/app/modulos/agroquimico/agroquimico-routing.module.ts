@@ -4,6 +4,7 @@ import { CulGuardService as guarEncargadoAgri } from 'src/app/Core/guards/cul-gu
 import { Roles } from 'src/app/Core/enmus/roles';
 import { NuevoAgroquimicoComponent } from './nuevo/nuevo-agroquimico.component';
 import { ListarAgroquimicoComponent } from './listado/listar-agroquimico.component';
+import { ModificarAgroquimicoComponent } from './modificar/modificar-agroquimico.component';
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
 const ADMIN=Roles.ADMIN;
@@ -22,6 +23,12 @@ const routes: Routes = [
      canActivate:[guarEncargadoAgri],
      data:{rolesEsperados: [ADMIN,Encargado_Agricola]} 
     },
+
+    
+
+    {path: 'modificarAgroquimico/:id', component: ModificarAgroquimicoComponent, 
+    canActivate: [guarEncargadoAgri],
+    data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
 
 
      
