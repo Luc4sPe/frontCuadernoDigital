@@ -86,14 +86,28 @@
                 </ul>
           
              </li>
+
+             <li class="nav-item dropdown" *ngIf=" isAdmin || isEncargadoAgricola ">
+                     
+                <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-wine-bottle"></i>
+                    Agroquímicos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   
+                    <li><a class="dropdown-item" routerLink="/agroquimico/nuevoAgroquimico">Nuevo agroquímico</a></li>
+                    <li><a class="dropdown-item" routerLink="/cultivo/listado">Listado cultivo</a></li>
+                    
+                    
+                
+                </ul>
+          
+             </li>
             
              <!-- fin grupo menu encargado agricola -->
 
-             <!-- Verificar este menu -->
-            <li class="nav-item" *ngIf="isLogged && isAdmin || isEncargadoAgricola">
-                <a class="nav-link" routerLink=""><i class="fa-solid fa-wine-bottle"></i> Agroquímicos</a>
-            </li>
-            <!-- fin -->
+             
 
             <!-- Gurpo menu productor -->
 

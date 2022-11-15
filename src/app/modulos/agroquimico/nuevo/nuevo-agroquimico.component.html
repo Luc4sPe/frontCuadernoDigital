@@ -1,0 +1,180 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-500">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-2"> 
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+            <div class="row"> 
+                <div class="col-10-md-7"> 
+                    <div class="row"> 
+                        <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" >
+                                <div class="card-header bg-secondary  text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Crear agroquímico
+                                </div>
+
+                                <form #form = "ngForm" (ngSubmit)="crearAgroquimico(form)" novalidate>
+
+                                     <!-- Nombre comercial -->
+                                   <div class="form-group p-2">
+                                        <label for="nombreComercial" class="form-label">Nombre comercial</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="nombre" id="nombreComercial" placeholder="Ingrese el nombre comercial" 
+                                        [(ngModel)]="nuevoAgro.nombreComercial" #nom ="ngModel"  pattern={{patronLetras}}   required minlength="4">
+                                    
+                                        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)">
+                                            <p-message styleClass="m-1" *ngIf="nom.errors?.required"  severity="error" text="El nombre es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="nom.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="nom.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                        </div>
+                                
+                                    </div>
+
+                                <!-- fin -->
+
+                                   <!-- Formulación y Concentración -->
+                                   <div class="form-group p-2">
+                                        <label for="formulaYconcentracion" class="form-label">Formulación y concentración</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="formulacion" id="formulaYconcentracion" placeholder="Ingrese la formulación y concentración" 
+                                        [(ngModel)]="nuevoAgro.formulaYconcentracion" #form ="ngModel"  pattern={{patronLetras}}   required minlength="2">
+                                    
+                                        <div *ngIf="form.invalid && (form.dirty || form.touched)">
+                                            <p-message styleClass="m-1" *ngIf="form.errors?.required"  severity="error" text="La formulación y concentración es requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="form.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="form.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                        </div>
+                                
+                                     </div>
+
+                                    <!-- fin -->
+
+                                    <!--Principio Activo -->
+                                   <div class="form-group p-2">
+                                        <label for="principioActivo" class="form-label">Principio activo</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="principio" id="principioActivo" placeholder="Ingrese el principio activo" 
+                                        [(ngModel)]="nuevoAgro.principioActivo" #princi ="ngModel"  pattern={{patronLetras}}   required minlength="4">
+                                    
+                                        <div *ngIf="princi.invalid && (princi.dirty || princi.touched)">
+                                            <p-message styleClass="m-1" *ngIf="princi.errors?.required"  severity="error" text="El principio activo es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="princi.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="princi.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                        </div>
+                                
+                                    </div>
+
+                                <!-- fin -->
+
+                                <!--Tipo -->
+                                  <div class="form-group p-2">
+                                        <label for="tipo" class="form-label">Tipo</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="ti" id="tipo" placeholder="Ingrese el tipo" 
+                                        [(ngModel)]="nuevoAgro.tipo" #tip ="ngModel"  pattern={{patronLetras}}   required minlength="2">
+                                    
+                                        <div *ngIf="tip.invalid && (tip.dirty || tip.touched)">
+                                            <p-message styleClass="m-1" *ngIf="tip.errors?.required"  severity="error" text="El tipo es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="tip.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="tip.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                        </div>
+                                
+                                    </div>
+
+                                <!-- fin -->
+
+                                 <!-- Tiempo de carencia -->
+                                 <div class="form-group p-2">
+                                        <label for="tiempoDeCarencia" class="form-label">Tiempo de carencia</label>
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="tiempo" id="tiempoDeCarencia" placeholder="Ingrese el tiempo de carencia" 
+                                        [(ngModel)]="nuevoAgro.tiempoDeCarencia" #tiem ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                    
+                                        <div *ngIf="tiem.invalid && (tiem.dirty || tiem.touched)">
+                                            <p-message styleClass="m-1" *ngIf="tiem.errors?.required"  severity="error" text="El tiempo de carencia es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="tiem.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="tiem.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                        </div>
+                                    
+                                    </div>
+
+                                 <!-- fin -->
+
+                                  <!-- Dosis por hectaria -->
+                                  <div class="form-group p-2">
+                                        <label for="dosisPorHectaria" class="form-label">Dosis por hectarea</label>
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ingrese la dosis por hectarea" 
+                                        [(ngModel)]="nuevoAgro.dosisPorHectaria" #dosis ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                    
+                                        <div *ngIf="dosis.invalid && (dosis.dirty || dosis.touched)">
+                                            <p-message styleClass="m-1" *ngIf="dosis.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosis.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                        </div>
+                                    
+                                    </div>
+
+                                 <!-- fin -->
+
+                                   <!-- Dosis por Hl -->
+                                   <div class="form-group p-2">
+                                        <label for="dosisPorHl" class="form-label">Dosis por Hl</label>
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ingrese la dosis por Hl" 
+                                        [(ngModel)]="nuevoAgro.dosisPorHl" #dosisHl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                    
+                                        <div *ngIf="dosisHl.invalid && (dosisHl.dirty || dosisHl.touched)">
+                                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por Hl requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                        </div>
+                                    
+                                    </div>
+
+                                 <!-- fin -->
+
+                                   <!-- Volumen por hectarea -->
+                                   <div class="form-group p-2">
+                                        <label for="volumenPorHectaria" class="form-label">Volumen por hectarea</label>
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ingrese el volumen por hectarea" 
+                                        [(ngModel)]="nuevoAgro.volumenPorHectaria" #volu ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                    
+                                        <div *ngIf="volu.invalid && (volu.dirty || volu.touched)">
+                                            <p-message styleClass="m-1" *ngIf="volu.errors?.required"  severity="error" text="El volumen por hectarea es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="volu.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="volu.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                        </div>
+                                        
+                                    </div>
+
+                                 <!-- fin -->
+
+                                  <!-- Numero de lote -->
+                                  <div class="form-group p-2">
+                                        <label for="numLote" class="form-label">Número de lote</label>
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" placeholder="Ingrese el número de lote" 
+                                        [(ngModel)]="nuevoAgro.numLote" #numl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="3">
+                                    
+                                        <div *ngIf="numl.invalid && (numl.dirty || numl.touched)">
+                                            <p-message styleClass="m-1" *ngIf="numl.errors?.required"  severity="error" text="El número de lote es requerido"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="numl.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="numl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                        </div>
+                                    
+                                    </div>
+
+                                    <!-- fin -->
+
+                                    <!-- botones -->
+                                    <div class="card-footer mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <button pRipple pButton type="button" routerLink="/index" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" ></button>
+                                            <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Guardar" [disabled]="!form.valid"></button>    
+                                        </div>
+                                    </div>
+                                    <!-- fin -->
+ 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
