@@ -39,7 +39,7 @@ export class ActualizarPlantacionComponent implements OnInit {
     this.cargarItems();
     const id = this.activatedRoute.snapshot.params.id;
     this.obtenerPlantacion(id);
-    this.listarCuadrosPorFinca();
+   // this.listarCuadrosPorFinca();
     this.listarCultivos();
   }
 
@@ -111,19 +111,21 @@ export class ActualizarPlantacionComponent implements OnInit {
 
   }
 
-  listarCuadrosPorFinca(): void{
-      this.cuadroService.listarCuadrosPorFinca(2).subscribe(
-        data =>{
-          this.cuadros=data;
+  // listarCuadrosPorFinca(): void{
+  //   const id = this.activatedRoute.snapshot.params.id;
+  //   console.log(id);
+  //     this.cuadroService.listarCuadrosPorFinca(id).subscribe(
+  //       data =>{
+  //         this.cuadros=data;
          
-        },
-        err =>{
-          console.log(err);
-        }
-      )  
+  //       },
+  //       err =>{
+  //         console.log(err);
+  //       }
+  //     )  
   
    
-  } 
+  // } 
 
    listarCultivos():void{
      this.cultivoService.listarCultivo().subscribe(

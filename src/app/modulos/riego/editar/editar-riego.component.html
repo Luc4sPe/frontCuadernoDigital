@@ -1,5 +1,129 @@
 <app-menu></app-menu> 
-   
+ 
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Actualizar datos del riego
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionRiego(form)" novalidate>
+
+                      <!-- Duración en horas -->
+                      <div class="form-group p-2">
+                        <label for="duracion" class="form-label">Duración en horas</label>
+                        <input type="time" class="p-inputtext form-control mt-2"  name="duracionHoras" id="duracion" value = {{riego.duracionEnHoras}} placeholder="Ingrese la hora" 
+                        [(ngModel)]="riego.duracionEnHoras" #dura="ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$"  required>
+                    
+                        <div *ngIf="dura.invalid && (dura.dirty || dura.touched)">
+                            <p-message styleClass="m-1" *ngIf="dura.errors?.required"  severity="error" text="La duración es requerida"></p-message>
+                            <!-- <p-message styleClass="m-1" *ngIf="dura.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message> -->
+                            <p-message styleClass="m-1" *ngIf="dura.errors?.pattern"   severity="error" text=" Formato requerido HH:MM 24h los segundos son opcionales "></p-message>
+                        </div>
+                    </div>
+
+                     <!-- fin -->
+
+                      <!-- Milimetros -->
+                      <div class="form-group p-2">
+                            <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
+                            <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" value = {{riego.milimetrosAplicados}} placeholder="Ingrese los milimetros" 
+                            [(ngModel)]="riego.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                        
+                            <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                            </div>
+                        
+                        </div>
+
+                     <!-- fin -->
+
+                      <!-- Observación -->
+                      <div class="form-group p-2">
+                        <label for="observacionProductor" class="form-label">Descripción</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="descripcion" id="observacionProductor" value = {{riego.observacionProductor}} placeholder="Ingrese la descripción" 
+                        [(ngModel)]="riego.observacionProductor" #desc ="ngModel"  pattern={{patronLetras}}   required minlength="8">
+                    
+                        <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
+                            <p-message styleClass="m-1" *ngIf="desc.errors?.required"  severity="error" text="La descripción es requeridos"></p-message>
+                            <p-message styleClass="m-1" *ngIf="desc.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="desc.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    
+                    </div>
+
+                    <!-- fin -->
+
+                     <!-- Cuadro -->
+                     <!-- <div class="p-2">
+                        <label for="laborCuadro" class="form-label">Cuadro</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="cuadro" id="laborCuadro"  [value] =riego.idCuadros.idCuadro  placeholder="Ingrese la descripción" 
+                        [(ngModel)]="riego.idCuadro.numeroCuadro" #obser="ngModel"   required minlength="1">
+                    
+                        <div *ngIf="obser.invalid && (obser.dirty || obser.touched)">
+                            <p-message styleClass="m-1" *ngIf="obser.errors?.required"  severity="error" text="El cuadro es requerido"></p-message>
+                            <p-message styleClass="m-1" *ngIf="obser.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>  -->
+                            <!-- <p-message styleClass="m-1" *ngIf="obser.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
+                        <!-- </div>
+                    </div> -->
+
+                     <!-- fin-->
+
+                      <!-- Selector tipo cultivo -->
+                      <div class="p-2">
+                                          
+                        <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
+                        <select class="form-select" name="cuadro" id="idCuadr"
+                        [(ngModel)]="riego.idCuadro.idCuadro" aria-label=".form-select-lg example" required>
+                        <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
+                        
+                            {{ cuadro.numeroCuadro }}
+                            
+                        </option>
+                        
+                        </select>
+                     </div>
+                      <!-- fin -->
+
+
+                      <!-- Justificación -->
+                      <div class="form-group p-2">
+                        <label for="justificacionProductor" class="form-label">Justificación</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="justificación" id="justificacionProductor" value = {{riego.justificacionProductor}} placeholder="Ingrese la justificación" 
+                        [(ngModel)]="riego.justificacionProductor" #just ="ngModel"  pattern={{patronLetras}}   required minlength="8">
+                    
+                        <div *ngIf="just.invalid && (just.dirty || just.touched)">
+                            <p-message styleClass="m-1" *ngIf="just.errors?.required"  severity="error" text="La justificación es  requeridos"></p-message>
+                            <p-message styleClass="m-1" *ngIf="just.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="just.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                        </div>
+                    
+                    </div>
+
+                    <!-- fin -->
+
+                     <!-- botones -->
+                     <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+
+                         
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
           
    
        

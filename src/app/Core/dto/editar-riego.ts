@@ -5,21 +5,20 @@ export class EditarRiego {
 
     duracionEnHoras: Date;
     milimetrosAplicados:number;
-    idCuadros: number;
+    cuadro: number;
     observacionProductor: string;
     justificacionProductor: string;
-    finca: number;
-    fechaRiego: Date = new Date();
-    fechaModificacionRiego: Date = new Date();
-
-    constructor( duracionEnHoras: Date,milimetrosAplicados:number, idCuadros: number, observacionProductor: string, justificacionProductor: string,finca: number){
+    idFinca: number;
+   
+    constructor( duracionEnHoras: Date,milimetrosAplicados:number, cuadro: number, observacionProductor: string, justificacionProductor: string, idFinca: number){
 
         this.duracionEnHoras=duracionEnHoras;
         this.milimetrosAplicados=milimetrosAplicados;
-        this.idCuadros=idCuadros;
+        this.cuadro=cuadro;
         this.observacionProductor=observacionProductor;
         this.justificacionProductor=justificacionProductor;
-        this.finca=finca;
+        this.idFinca=idFinca;
+        
          
     }
 }

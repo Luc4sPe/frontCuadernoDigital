@@ -78,25 +78,25 @@
                                         <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                     </div>
                                     
-                                </div>
+                                    </div>
 
                                  <!-- fin -->
 
                                    <!-- Observación -->
                                    <div class="form-group p-2">
-                                    <label for="observacionProductor" class="form-label">Descripción</label>
-                                    <input type="text" class="p-inputtext form-control mt-2"  name="descripcion" id="observacionProductor" placeholder="Ingrese la descripción" 
-                                    [(ngModel)]="riego.observacionProductor" #desc ="ngModel"  pattern={{patronLetras}}   required minlength="8">
-                                
-                                    <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
-                                        <p-message styleClass="m-1" *ngIf="desc.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
-                                        <p-message styleClass="m-1" *ngIf="desc.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                                        <p-message styleClass="m-1" *ngIf="desc.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
-                                    </div>
+                                        <label for="observacionProductor" class="form-label">Descripción</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="descripcion" id="observacionProductor" placeholder="Ingrese la descripción" 
+                                        [(ngModel)]="riego.observacionProductor" #desc ="ngModel"  pattern={{patronLetras}}   required minlength="8">
                                     
-                                </div>
+                                        <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
+                                            <p-message styleClass="m-1" *ngIf="desc.errors?.required"  severity="error" text="La descripción es requeridos"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="desc.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="desc.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                        </div>
+                                    
+                                    </div>
 
-                                 <!-- fin -->
+                                    <!-- fin -->
 
                                    <!-- botones -->
                                 <div class="card-footer mb-2">
