@@ -24,8 +24,6 @@ const routes: Routes = [
      data:{rolesEsperados: [ADMIN,Encargado_Agricola]} 
     },
 
-    
-
     {path: 'modificarAgroquimico/:id', component: ModificarAgroquimicoComponent, 
     canActivate: [guarEncargadoAgri],
     data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},

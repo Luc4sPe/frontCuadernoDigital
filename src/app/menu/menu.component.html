@@ -163,6 +163,24 @@
                     </ul>
               
                 </li>
+
+
+                <li class="nav-item dropdown" *ngIf="isAdmin || isProductor">
+               
+                    
+                    <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        <i class="fa-solid fa-skull-crossbones"></i>
+                        Aplicación agroquímico
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/aplicacionAgroquimico/nuevaAplicacionAgro">Nueva aplicación</a></li>
+                        <li><a class="dropdown-item" routerLink="/aplicacionAgroquimico/listadoAplicacionAgroPorFinca">Listado</a></li>
+                    
+                    </ul>
+              
+                </li>
                 <!-- Fin grupo menu productor -->
 
             <!-- <li class="nav-item" *ngIf="isLogged && isEncargadoAgricola">

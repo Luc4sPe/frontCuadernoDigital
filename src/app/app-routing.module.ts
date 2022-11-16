@@ -65,6 +65,11 @@ const routes: Routes = [
     loadChildren:() => import('./modulos/agroquimico/agroquimico.module').then(a => a.AgroquimicoModule)
   },
 
+  {
+    path: 'aplicacionAgroquimico',
+    loadChildren:() => import('./modulos/aplicacion-agroquimico/aplicacion-agroquimico.module').then(apli => apli.AplicacionAgroquimicoModule)
+  },
+
   {path: '**', redirectTo: 'auth', pathMatch: 'full' }
 
 

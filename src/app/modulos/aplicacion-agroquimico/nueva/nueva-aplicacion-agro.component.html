@@ -1,0 +1,178 @@
+<app-menu></app-menu> 
+<div class="container fadein animation-iteration-1 animation-duration-500">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-2">
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+            <div class="row"> 
+                <!-- parte derecha -->
+                <div class="col-10-md-7">
+                      <div class="row"> 
+                          <div class="col-12"> 
+                                <div class="card shadow-sm mb-4" > 
+                                    <div class="card-header bg-secondary text-white">
+                                        <i class=" bi bi-card-text me-1"></i>
+                                        Nueva aplicación agroquímico 
+                                    </div>
+                                    <form #form = "ngForm" (ngSubmit)="crearAplicacion(form)" novalidate> 
+                                          <!-- Selector Finca -->
+                                    <div class="p-2">
+                                          
+                                        <label for="nomreFinca" class="form-label">Seleccione la finca</label>
+                                        <select class="form-select" name="finca" id="nomreFinca"
+                                            [(ngModel)]="aplicacionAgro.idFinca" aria-label=".form-select-lg example" required>
+                                            <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                                            
+                                                {{ finca.nombre }}
+                                                
+                                            </option>
+                                        
+                                        </select>
+                                     </div>
+                                      <!-- fin -->
+
+                                       <!-- Listado de los Cuadros -->
+                                       <div class="p-2">
+                                          
+                                        <label class="form-check-label" for="labor" > Seleccione el cuadro </label>
+                                       
+                                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="aplicacionAgro.idCuadro" inputId="riego"> 
+                                                </p-radioButton>
+                                                <label for="riego"> 
+                                                    {{cuadro.numeroCuadro}} 
+                                                   
+                                                </label>
+                                               
+                                            </div>
+                                        </div>
+                                        <!-- fin -->
+
+                                          <!-- Selector tipo agroquímico -->
+                                          <div class="p-2">
+                                          
+                                            <label for="aplicacion" class="form-label">Seleccione el agroquímico</label>
+                                            <select class="form-select" name="apliAgro" id="aplicacion"
+                                                [(ngModel)]="aplicacionAgro.idAgroquimico" aria-label=".form-select-lg example" required>
+                                                <option [value]="agroquimico.id" *ngFor="let agroquimico of listadoAgroquimico">
+                                                
+                                                    {{ agroquimico.nombreComercial }}
+                                                    
+                                                </option>
+                                            
+                                            </select>
+                                         </div>
+                                          <!-- fin -->
+
+                                             <!-- Dosis por hectarea -->
+                                            <div class="form-group p-2">
+                                                <label for="dosisPorHectaria" class="form-label">Dosis por hectarea(cm3)</label>
+                                                <input type="number" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ingrese la dosis" 
+                                                [(ngModel)]="aplicacionAgro.dosisPorHectaria" #do ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                            
+                                                <div *ngIf="do.invalid && (do.dirty || do.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="do.errors?.required"  severity="error" text="La dosis es requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="do.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="do.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                </div>
+                                            
+                                            </div>
+                                            <!-- fin -->
+
+                                               <!-- Dosis por Hl -->
+                                               <div class="form-group p-2">
+                                                <label for="dosisPorHl" class="form-label">Dosis por Hl(cm3)</label>
+                                                <input type="number" class="p-inputtext form-control mt-2"  name="dosisPorHl" id="dosisPorHl" placeholder="Ingrese la dosis" 
+                                                [(ngModel)]="aplicacionAgro.dosisPorHl" #dos ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                            
+                                                <div *ngIf="dos.invalid && (dos.dirty || dos.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.required"  severity="error" text="La dosis es requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                </div>
+                                            
+                                            </div>
+                                            <!-- fin -->
+
+                                             <!-- Dosis por Hl -->
+                                             <div class="form-group p-2">
+                                                <label for="volumenPorHectaria" class="form-label">Volumen por hectarea(lts)</label>
+                                                <input type="number" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ingrese el volumen" 
+                                                [(ngModel)]="aplicacionAgro.volumenPorHectaria" #vol ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                            
+                                                <div *ngIf="vol.invalid && (vol.dirty || vol.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.required"  severity="error" text="El volumen es requerido"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                </div>
+                                            
+                                            </div>
+                                            <!-- fin -->
+
+                                              <!-- Objetivo -->
+                                                <div class="form-group p-2">
+                                                    <label for="objetivo" class="form-label">Objetivo</label>
+                                                    <input type="text" class="p-inputtext form-control mt-2"  name="descripcion" id="objetivo" placeholder="Ingrese el objetivo" 
+                                                    [(ngModel)]="aplicacionAgro.objetivo" #desc ="ngModel"  pattern={{patronLetras}}   required minlength="4">
+                                                
+                                                    <div *ngIf="desc.invalid && (desc.dirty || desc.touched)">
+                                                        <p-message styleClass="m-1" *ngIf="desc.errors?.required"  severity="error" text="El objetivo es requerido"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="desc.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="desc.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                    </div>
+                                                
+                                                </div>
+
+                                                <!-- fin -->
+
+                                                  <!-- Observación -->
+                                                  <div class="form-group p-2">
+                                                    <label for="observaciones" class="form-label">Descripción</label>
+                                                    <input type="text" class="p-inputtext form-control mt-2"  name="descr" id="observaciones" placeholder="Ingrese la descripción" 
+                                                    [(ngModel)]="aplicacionAgro.observaciones" #descrip ="ngModel"  pattern={{patronLetras}}   required minlength="8">
+                                                
+                                                    <div *ngIf="descrip.invalid && (descrip.dirty || descrip.touched)">
+                                                        <p-message styleClass="m-1" *ngIf="descrip.errors?.required"  severity="error" text="La descripción es requeridos"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="descrip.errors?.minlength" severity="error" text="Debe tener al menos 8 caracteres"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="descrip.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                    </div>
+                                                
+                                                </div>
+
+                                                <!-- fin -->
+
+                                                  <!-- Plaga -->
+                                                  <div class="form-group p-2">
+                                                    <label for="plaga" class="form-label">Plaga</label>
+                                                    <input type="text" class="p-inputtext form-control mt-2"  name="plag" id="plaga" placeholder="Ingrese la plaga" 
+                                                    [(ngModel)]="aplicacionAgro.plaga" #pla ="ngModel"  pattern={{patronLetras}}   required minlength="4">
+                                                
+                                                    <div *ngIf="pla.invalid && (pla.dirty || pla.touched)">
+                                                        <p-message styleClass="m-1" *ngIf="pla.errors?.required"  severity="error" text="La plaga es requerida"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="pla.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                                        <p-message styleClass="m-1" *ngIf="pla.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
+                                                    </div>
+                                                
+                                                </div>
+
+                                                <!-- fin -->
+
+                                                <!-- botones -->
+                                                <div class="card-footer mb-2">
+                                                    <div class="d-flex justify-content-between">
+                                                    <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                                                    <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Aplicar" [disabled]="!form.valid"></button>
+                                                    
+                                                    </div>
+                                                </div>
+                                                 <!-- fin botones -->
+
+                                  
+                                    </form>
+                                </div>
+                          </div>
+                      </div>
+                </div>
+        </div>
+    </div>
+</div>
+           
