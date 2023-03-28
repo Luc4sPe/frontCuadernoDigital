@@ -15,7 +15,7 @@
                  <!-- botones -->
                  <ng-template pTemplate="caption">
                     <div class="d-flex justify-content-between">
-                        <button pRipple *ngIf="isEncargadoAgricola" pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nuevo cultivo" routerLink="/agroquimico/nuevoAgroquimico"></button>
+                        <button pRipple *ngIf="isEncargadoAgricola" pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nuevo agroquímico" routerLink="/agroquimico/nuevoAgroquimico"></button>
                         <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
                      </div>
                 </ng-template>
@@ -118,12 +118,12 @@
                         <td>{{agroquimico.fechaCreacionAgro | date:"short" }}</td>
 
                            <!--Boton Detalle -->
-                           <!-- <td class="text-center">
-                            <button pRipple  class="btn btn-outline-info" routerLink="/cultivo/detalle/{{cultivo.idCultivo}}" pTooltip="Detalle" tooltipPosition="top"
+                           <td class="text-center">
+                            <button pRipple  class="btn btn-outline-info" routerLink="/agroquimico/detalleAgro/{{agroquimico.id}}" pTooltip="Detalle" tooltipPosition="top"
                             icon="" >
                             <i class="fas fa-eye"></i>
                         </button>
-                        </td>  -->
+                        </td> 
                         <!-- find -->
 
                         <!--Boton Editar -->

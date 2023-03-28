@@ -15,12 +15,12 @@
 
 
                      <!-- botones nueva labor-->
-                 <ng-template pTemplate="caption">
+                 <!-- <ng-template pTemplate="caption">
                     <div class="d-flex justify-content-between">
                         <button pRipple  pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nueva plantaciń" routerLink="/laborSuelo/crearLabor"></button>
                         <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
                      </div>   
-                </ng-template>
+                </ng-template> -->
                 <!-- fin -->
 
                     <ng-template pTemplate="header">
@@ -28,11 +28,11 @@
                         
                         <tr>
                             <!--column Id-->
-                            <th class="text-center" pSortableColumn="id">
+                            <th class="text-center" pSortableColumn="idFinca">
                               <div class="p-d-flex p-jc-between p-ai-center">
                                 Id
-                                <p-sortIcon field="id"></p-sortIcon>
-                                <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                                <p-sortIcon field="idFinca"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="idFinca" display="menu" class="p-ml-auto"></p-columnFilter>
                               </div>
                             </th>
 
@@ -68,13 +68,13 @@
 
 
                              <!-- columna Numero de cuadros-->
-                            <!-- <th class="text-center" pSortableColumn="numeros" scope="col">
+                            <th class="text-center" pSortableColumn="numeros" scope="col">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                 Numero de cuadros
-                                <p-sortIcon field="fincas"></p-sortIcon> -->
+                                <p-sortIcon field="fincas"></p-sortIcon>
                                 <!-- <p-columnFilter type="text" field="numeros" display="menu" class="p-ml-auto"></p-columnFilter> -->
-                                <!-- </div>
-                            </th> -->
+                                </div>
+                            </th>
                              <!-- columna Superficie de cuadros-->
                              <!-- <th class="text-center" pSortableColumn="superficie" scope="col">
                                 <div class="p-d-flex p-jc-between p-ai-center">
@@ -123,9 +123,8 @@
 
                             <td><span class="p-column-title">Cuadros</span><ul *ngFor="let cuadros of finca.cuadros; let i = index; ">
                             
-                                <td>{{finca.cuadros[i].numeroCuadro}}-   </td>
-                                <td>{{finca.cuadros[i].idCuadro}}-   </td>
-                                <td>{{finca.cuadros[i].superficieHectarea}}   </td>
+                                <td>{{finca.cuadros[i].numeroCuadro}}</td>
+                               
                                  
                               </ul></td>
                             
@@ -135,14 +134,14 @@
                               <td><span class="p-column-title">Modificado</span>{{finca.fechaModificacionFinca | date:"short"}}</td>
                               
                                 <!--Boton Editar -->
-                        <!-- <td class="text-center">
-                            <button pRipple class="btn btn-outline-warning" 
-                            routerLink = "/index" pTooltip="Editar" tooltipPosition="top">
-                            <i class="fa-solid fa-pen-clip"></i></button> 
-                        </td> -->
-                       
-                        <!-- fin -->      
-                            </tr>
+                                <td class="text-center">
+                                    <button pRipple class="btn btn-outline-warning" 
+                                    routerLink="/riego/modificarRiego{{finca.idFinca}}" pTooltip="Editar" tooltipPosition="top">
+                                    <i class="fa-solid fa-pen-clip"></i></button> 
+                                </td>
+                                <!-- fin --> 
+                      
+                        </tr>
                          
 
                     </ng-template>

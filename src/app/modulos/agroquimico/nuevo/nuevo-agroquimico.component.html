@@ -147,7 +147,7 @@
                                   <!-- Numero de lote -->
                                   <div class="form-group p-2">
                                         <label for="numLote" class="form-label">Número de lote</label>
-                                        <input type="number" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" placeholder="Ingrese el número de lote" 
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" placeholder="Ingrese el número de lote" 
                                         [(ngModel)]="nuevoAgro.numLote" #numl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="3">
                                     
                                         <div *ngIf="numl.invalid && (numl.dirty || numl.touched)">

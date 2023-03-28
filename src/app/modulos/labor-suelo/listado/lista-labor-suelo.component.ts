@@ -35,6 +35,7 @@ export class ListaLaborSueloComponent implements OnInit {
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
     this.listadoPlantacionDeUnaFinca();
+    
   }
 
   cargarItems(): void {
@@ -49,6 +50,7 @@ export class ListaLaborSueloComponent implements OnInit {
     await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
+        
       },
       err =>{
         console.log(err);
@@ -62,8 +64,10 @@ export class ListaLaborSueloComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
+      
       this,this.laborService.listarLaborSueloPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
+         
           this.listadoLabor = data;
           console.log(this.listadoLabor);
         },
@@ -72,6 +76,7 @@ export class ListaLaborSueloComponent implements OnInit {
         }
         
       )
+     
      })
    
   } 

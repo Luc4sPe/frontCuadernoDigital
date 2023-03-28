@@ -5,6 +5,7 @@ import { Roles } from 'src/app/Core/enmus/roles';
 import { NuevoAgroquimicoComponent } from './nuevo/nuevo-agroquimico.component';
 import { ListarAgroquimicoComponent } from './listado/listar-agroquimico.component';
 import { ModificarAgroquimicoComponent } from './modificar/modificar-agroquimico.component';
+import { DetalleAgroquimicoComponent } from './detalle/detalle-agroquimico.component';
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
 const ADMIN=Roles.ADMIN;
@@ -23,6 +24,10 @@ const routes: Routes = [
      canActivate:[guarEncargadoAgri],
      data:{rolesEsperados: [ADMIN,Encargado_Agricola]} 
     },
+
+    {path: 'detalleAgro/:id', component: DetalleAgroquimicoComponent,
+    canActivate: [guarEncargadoAgri],
+    data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
 
     {path: 'modificarAgroquimico/:id', component: ModificarAgroquimicoComponent, 
     canActivate: [guarEncargadoAgri],

@@ -14,13 +14,15 @@ import { NuevoAgroquimicoComponent } from './nuevo/nuevo-agroquimico.component';
 import { ButtonModule } from 'primeng/button';
 import { ListarAgroquimicoComponent } from './listado/listar-agroquimico.component';
 import { ModificarAgroquimicoComponent } from './modificar/modificar-agroquimico.component';
+import { DetalleAgroquimicoComponent } from './detalle/detalle-agroquimico.component';
 
 
 @NgModule({
   declarations: [
     NuevoAgroquimicoComponent,
     ListarAgroquimicoComponent,
-    ModificarAgroquimicoComponent
+    ModificarAgroquimicoComponent,
+    DetalleAgroquimicoComponent
   ],
   imports: [
     CommonModule,

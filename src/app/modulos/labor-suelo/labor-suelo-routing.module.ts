@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarProductor } from 'src/app/Core/guards/cul-guard.service';
+import { DetalleLaborComponent } from './detalle/detalle-labor.component';
 import { ListaLaborSueloComponent } from './listado/lista-labor-suelo.component';
 import { ActualizarLaborComponent } from './modificar/actualizar-labor.component';
 import { LaborNuevaComponent } from './nueva/labor-nueva.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
       canActivate:[guarProductor],
       data:{rolesEsperados: [ADMIN,Productor]} 
       },
+
+      {path: 'detalleLabor/:id', component: DetalleLaborComponent,
+      canActivate: [guarProductor],
+      data: { rolesEsperados: [ADMIN,Productor] },},
       
       { path: 'modificarLabor/:id', 
       component: ActualizarLaborComponent, 

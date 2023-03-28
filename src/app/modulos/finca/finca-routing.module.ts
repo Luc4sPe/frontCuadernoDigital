@@ -4,6 +4,7 @@ import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarEncargadoAgricola } from 'src/app/Core/guards/cul-guard.service';
 import { EditarFincaComponent } from './editarFinca/editar-finca.component';
 import { ListaFincaComponent } from './listado/lista-finca.component';
+import { ListarFincaComponent } from './listar/listar-finca.component';
 import { FincaNuevaComponent } from './nueva/finca-nueva.component';
 
 
@@ -16,15 +17,15 @@ const routes: Routes = [
       children: [
 
         { path: 'listadoFinca',
-        component: ListaFincaComponent,
+        component: ListarFincaComponent,
         canActivate:[guarEncargadoAgricola],
-        data:{rolesEsperados: [Encargado_Agricola]} 
+        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} 
         },
 
         { path: 'crearFinca',
         component: FincaNuevaComponent,
         canActivate:[guarEncargadoAgricola],
-        data:{rolesEsperados: [Encargado_Agricola]} 
+        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} 
         },
         
         { path: 'modificar/:id',

@@ -3,6 +3,7 @@ import { Finca } from 'src/app/Core/modelo/finca';
 import { MenuItem } from 'primeng/api';
 import { FincaService } from 'src/app/service/finca.service';
 import { Table } from 'primeng/table';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-lista-finca',
@@ -10,16 +11,23 @@ import { Table } from 'primeng/table';
   styleUrls: ['./lista-finca.component.css']
 })
 export class ListaFincaComponent implements OnInit {
-  fincas:Finca []=[];
+  fincas:Finca [];
   msj: string;
   loading : boolean = true;
   fincasFiltradas: Finca [];
   home : MenuItem = {}
   items : MenuItem[] = [];
-  constructor(private fincaService: FincaService) { }
+  isEncargadoAgricola: boolean = false;
+  isAdmin: boolean = false;
+  constructor(
+    private fincaService: FincaService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
+
     this.cargarItems();
+    this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
+    this.isAdmin = this.tokenService.isAdmin();
     this.cargarFincas();
   }
 

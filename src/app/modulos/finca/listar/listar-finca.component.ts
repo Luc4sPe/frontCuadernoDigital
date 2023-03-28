@@ -1,51 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/service/token.service';
 import { MenuItem } from 'primeng/api/menuitem';
 import { Table } from 'primeng/table';
-import { Cultivo } from 'src/app/Core/modelo/cultivo';
-import { CultivoService } from 'src/app/service/cultivo.service';
-import { TokenService } from 'src/app/service/token.service';
-
+import { FincaService } from 'src/app/service/finca.service';
+import { Finca } from 'src/app/Core/modelo/finca';
 @Component({
-  selector: 'app-lista-cultivo',
-  templateUrl: './lista-cultivo.component.html',
-  styleUrls: ['./lista-cultivo.component.css']
+  selector: 'app-listar-finca',
+  templateUrl: './listar-finca.component.html',
+  styleUrls: ['./listar-finca.component.css']
 })
-export class ListaCultivoComponent implements OnInit {
-
-  home : MenuItem = {}
-  items : MenuItem[] = [];
-  msj: string;
-  loading : boolean = true;
-  cultivos:Cultivo[];
-  cultivosFiltrados:Cultivo[];
+export class ListarFincaComponent implements OnInit {
   isEncargadoAgricola: boolean = false;
   isProductor: boolean = false;
   isAdmin: boolean = false;
+  home : MenuItem = {}
+  items : MenuItem[] = [];
+  msj: string;
+  fincas:Finca[];
+  fincasFiltradas:Finca[];
+  loading : boolean = true;
   constructor(
-    private cultivoServi:CultivoService,
-    private tokenService:TokenService) { }
+    private tokenService:TokenService,
+    private fincaService:FincaService
+  ) { }
 
   ngOnInit(): void {
     this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
     this.isProductor = this.tokenService.isProductor();
     this.isAdmin = this.tokenService.isAdmin();
     this.cargarItems();
-    this.listarCultivo();
+    this.listarFinca();
   }
+
 
   cargarItems(): void {
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label: 'Cultivo', routerLink:'/index'},
+      {label: 'Finca', routerLink:'/index'},
       {label: 'Listado', disabled:true}
     ];
   }
 
-
-  listarCultivo():void{
-    this.cultivoServi.listarCultivo().subscribe(
+  listarFinca():void{
+    this.fincaService.listar().subscribe(
       data =>{
-        this.cultivos=data;
+        this.fincas=data;
         this.loading=false;
       },
       err => {
@@ -59,7 +58,7 @@ export class ListaCultivoComponent implements OnInit {
   }
 
   obtenerCultivosFiltrados(table: Table): void {
-    this.cultivosFiltrados = table.filteredValue != null ? table.filteredValue : this.cultivos;
+    this.fincasFiltradas = table.filteredValue != null ? table.filteredValue : this.fincas;
   }
 
   obtenerFiltros(table: Table): void {
@@ -71,5 +70,6 @@ export class ListaCultivoComponent implements OnInit {
       
     })
   }
+
 
 }

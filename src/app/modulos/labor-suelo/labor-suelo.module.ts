@@ -18,6 +18,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { ListaLaborSueloComponent } from './listado/lista-labor-suelo.component';
 import { ActualizarLaborComponent } from './modificar/actualizar-labor.component';
+import { DetalleLaborComponent } from './detalle/detalle-labor.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ActualizarLaborComponent } from './modificar/actualizar-labor.component
   
     LaborNuevaComponent,
        ListaLaborSueloComponent,
-       ActualizarLaborComponent
+       ActualizarLaborComponent,
+       DetalleLaborComponent
   ],
   imports: [
     CommonModule,

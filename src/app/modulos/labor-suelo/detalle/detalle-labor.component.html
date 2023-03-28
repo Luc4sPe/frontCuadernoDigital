@@ -1,0 +1,55 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-500">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-2"> 
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+            <div class="row"> 
+                <div class="col-10-md-7"> 
+                    <div class="row"> 
+                        <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" >
+
+                                <div class="card-header bg-secondary  text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Detalle labor de suelo
+                                </div>
+
+                                <form>
+                                    <ul class="list-group list-group-flush  ">
+                                        <li class="list-group-item"><b>ID: </b>{{laborSuelo.id}}</li>
+                                        <li class="list-group-item"><b>Cultivo anterior: </b>{{laborSuelo.cultivoAnterior}}</li>
+                                        <li class="list-group-item"><b>Nombre de la finca: </b>{{laborSuelo.finca.nombre}}</li>
+                                        <li class="list-group-item"><b>Cuadro: </b>{{laborSuelo.idCuadro.numeroCuadro}}</li>
+                                        <li class="list-group-item"><b>Labor cultural: </b>{{laborSuelo.labor}}</li>
+                                        <li class="list-group-item"><b>Herramienta implementada: </b>{{laborSuelo.herramientasUtilizadas}}</li>
+                                        <li class="list-group-item"><b>Descripción: </b>{{laborSuelo.observacion}}</li>
+                                       
+                                        <li class="list-group-item"><b>Fecha de creación: </b>{{laborSuelo.fechaLabor}}</li>
+                                        <li class="list-group-item"><b>Fecha de Modificación: </b>{{laborSuelo.fechaModificacionLabor}}</li>
+                                    
+                                     
+                                        <td></td>
+                                      
+                
+
+                                    </ul>
+                
+                
+                                    <div class="card-footer mb-2">
+                                        <div class="d-flex justify-content-between">
+                                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-undo" style="margin-left: 10px" label="Regresar" (click)="volver()"></button>
+                                          
+                                          
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

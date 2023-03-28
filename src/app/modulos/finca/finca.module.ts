@@ -35,6 +35,7 @@ import {StepsModule} from 'primeng/steps';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { ListaFincaComponent } from './listado/lista-finca.component';
+import { ListarFincaComponent } from './listar/listar-finca.component';
 
 
 
@@ -43,6 +44,7 @@ import { ListaFincaComponent } from './listado/lista-finca.component';
     FincaNuevaComponent,
     EditarFincaComponent,
     ListaFincaComponent,
+    ListarFincaComponent,
     
     
   ],

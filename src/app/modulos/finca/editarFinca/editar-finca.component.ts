@@ -56,7 +56,7 @@ export class EditarFincaComponent implements OnInit {
       }, 
        err => {
         Swal.fire('Error', err.error.mensaje, 'error');
-        this.router.navigate(["/index"]);
+        this.router.navigate(["/finca/listadoFinca"]);
       }
     
     ); 
