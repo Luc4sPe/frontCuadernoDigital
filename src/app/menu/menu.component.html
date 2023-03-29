@@ -51,6 +51,9 @@
                     </ul>
               
             </li>
+
+
+            
             
            
             <li class="nav-item dropdown" *ngIf="isAdmin || isEncargadoAgricola">
@@ -68,6 +71,33 @@
                 </ul>
           
              </li>
+
+             <li class="nav-item dropdown" *ngIf="isAdmin || isEncargadoAgricola">
+                     
+                <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user-secret"></i>
+                   Asesoria
+                
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                    <li><a class="dropdown-item" > </a></li>
+                 
+                <li>   <p-slideMenu [model]="item" [viewportHeight]="160" [menuWidth]="175"></p-slideMenu></li>
+
+               
+                </ul>
+
+
+                
+                
+          
+             </li>
+
+             
+               
+           
 
              <li class="nav-item dropdown" *ngIf=" isAdmin || isEncargadoAgricola ">
                      
@@ -91,7 +121,7 @@
                      
                 <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-wine-bottle"></i>
+                    <i class="fa-solid fa-skull-crossbones"></i>
                     Agroquímicos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -172,6 +202,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         
                         <i class="fa-solid fa-skull-crossbones"></i>
+                        
                         Aplicación agroquímico
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

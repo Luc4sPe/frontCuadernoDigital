@@ -38,6 +38,8 @@ export class MenuComponent implements OnInit {
   nombre:String = 'ROLE_PRODUCTOR';
   items: MenuItem[];
 
+  item: MenuItem[];
+
 
   
 
@@ -61,6 +63,7 @@ export class MenuComponent implements OnInit {
   this.isProductor = this.tokenService.isProductor();
   this.isGerente = this.tokenService.isGerente();
   this.cargarItems();
+  this.menuAsesoria();
   
     //  this.roles=this.tokenService.getAuthorities();
 
@@ -91,6 +94,8 @@ export class MenuComponent implements OnInit {
     
 
   }
+
+
   
 
   onLogOut(): void {
@@ -116,6 +121,53 @@ export class MenuComponent implements OnInit {
   
     ];
 } 
+
+menuAsesoria():void{
+  this.item = [
+    {
+      label: 'Asesoria',
+      icon: 'pi-chart-line',
+      items: [
+        {
+          label: 'Riego',
+          icon: 'fa-solid fa-faucet-drip',
+          items:[
+            {
+              label: 'Nueva asesoria',
+              routerLink:['']
+            },
+            {
+              label: 'Editar asesoria',
+              routerLink:['']
+            },
+            {
+              label: 'Listar',
+              routerLink: ['']
+            }
+          ]
+        },
+        {
+          label: 'Agroquimico',
+          icon: 'fa-solid fa-skull-crossbones',
+          items:[
+            {
+              label: 'Nueva asesoria',
+              routerLink:['']
+            },
+            {
+              label: 'Editar asesoria',
+              routerLink:['']
+            },
+            {
+              label: 'Listar',
+              routerLink: ['']
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 
 
 
