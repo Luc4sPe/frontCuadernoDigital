@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   nombreUsuario: string='';
   password: string='';
   roles: string[]=[];
-  msj: string='';
+  msj: string;
   hide:boolean = true;
   minuscula:any;
   conversion:any;

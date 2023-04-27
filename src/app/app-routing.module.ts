@@ -70,6 +70,14 @@ const routes: Routes = [
     loadChildren:() => import('./modulos/aplicacion-agroquimico/aplicacion-agroquimico.module').then(apli => apli.AplicacionAgroquimicoModule)
   },
 
+  {
+    path: 'asesoramientoRiego',
+    loadChildren:() => import('./modulos/asesoria-riego/asesoria-riego.module').then(ase => ase.AsesoriaRiegoModule)
+  },
+
+ 
+ 
+
   {path: '**', redirectTo: 'auth', pathMatch: 'full' }
 
 

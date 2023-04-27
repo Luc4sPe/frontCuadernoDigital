@@ -17,7 +17,8 @@ export const environment = {
   cuadroURL:'http://localhost:8080/cuadro/',
   laborSueloURL:'http://localhost:8080/laborSuelo/',
   agroquimicoURL:'http://localhost:8080/agroquimico/',
-  aplicacionAgroquimicoURL:'http://localhost:8080/aplicacionAgroquimico/'
+  aplicacionAgroquimicoURL:'http://localhost:8080/aplicacionAgroquimico/',
+  asesoriaRiegoURL:'http://localhost:8080/asesoramientoRiego/',
   
 
 };

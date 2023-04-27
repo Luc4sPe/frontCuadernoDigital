@@ -55,5 +55,9 @@ export class UsuarioService {
     return this.httpCliente.put<any>(`${this.usuarioURL}actualizarPerfil/${id}`, perfilUsuarioDto);
   }
 
+  public listarUsuarioPorRol(nombreRol: string): Observable<Usuario[]>{
+    return this.httpCliente.get<Usuario[]>(this.usuarioURL +  `usuariosPorNombreRol/${nombreRol}`);
+  } 
+
 
 }

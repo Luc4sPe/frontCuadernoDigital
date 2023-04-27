@@ -1,0 +1,130 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-500">
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-10 col-lg-2"> 
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+
+            <div class="row"> 
+
+                <div class="col-10-md-7"> 
+                    <div class="row"> 
+
+                        <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" >
+
+                                <div class="card-header bg-secondary  text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Generar nueva asesoria de riego
+                                </div>
+                                
+                                <form #form = "ngForm" (ngSubmit)="crearAsesoria(form)" novalidate>
+                                    <div class="card-body ">
+                                         <!-- Selector productor -->
+                                        <div class="p-2">
+                                          
+                                            <label for="nombreProductor" class="form-label">Productor</label>
+                                            <select class="form-select" name="productorNombreProductor" id="nombreProductor"
+                                            [(ngModel)]="nuevaAsesoria.nombreProductor" aria-label=".form-select-lg example" required>
+                                            <option [value]="productor.nombreUsuario" *ngFor="let productor of usuarios">
+                                                {{ productor.nombre }} - {{ productor.apellido }} 
+                                            </option>
+                                            
+                                        </select>
+                                        </div>
+                                         <!-- fin -->
+
+                                         <!-- Selector Finca -->
+                                         <div class="p-2">
+                                          
+                                            <label for="nomreFinca" class="form-label">Seleccione la finca</label>
+                                            <select class="form-select" name="finca" id="nomreFinca"
+                                            [(ngModel)]="nuevaAsesoria.idFinca" aria-label=".form-select-lg example" required>
+                                            <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                                            
+                                                {{ finca.nombre }}
+                                                
+                                            </option>
+                                            
+                                            </select>
+                                         </div>
+                                          <!-- fin -->
+
+                                          <!-- Listado de los Cuadros -->
+                                          <div class="p-2">
+                                            <label for="form-select-lg mb-3" class="form-label">Seleccione el o los cuadros</label>
+                                            <p-listbox  [options]="cuadros" [(ngModel)]="nuevaAsesoria.numerosDeCuadros" name="asesoria" [metaKeySelection]="false"
+                                            [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="idCuadro" 
+                                            [listStyle]="{'max-height':'250px'}" [style]="{'width':'50rem'}">
+                                                <ng-template let-cuadros pTemplate="item">
+                                                    <div class="cuadros-item">
+                                                      
+                                                        <div>{{cuadros.numeroCuadro}}</div>
+                                                        
+
+                                                    </div>
+                                                </ng-template>
+                                            </p-listbox> 
+                                          </div>
+                                          <!-- fin -->
+
+                                            <!-- Duración en horas -->
+                                            <div class="form-group p-2">
+                                                <label for="duracion" class="form-label">Duración en horas</label>
+                                                <input type="time" class="p-inputtext form-control mt-2"  name="duracionHoras" id="duracion" placeholder="Ingrese la hora" 
+                                                [(ngModel)]="nuevaAsesoria.duracionEnHoras" #dura="ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$"  required>
+                                            
+                                                <div *ngIf="dura.invalid && (dura.dirty || dura.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="dura.errors?.required"  severity="error" text="La duración es requerida"></p-message>
+                                                    <!-- <p-message styleClass="m-1" *ngIf="dura.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message> -->
+                                                    <p-message styleClass="m-1" *ngIf="dura.errors?.pattern"   severity="error" text=" Formato requerido HH:MM 24h los segundos son opcionales "></p-message>
+                                                </div>
+                                            </div>
+
+                                          <!-- fin -->
+                                           <!-- Milimetros -->
+                                           <div class="form-group p-2">
+                                                <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
+                                                <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" placeholder="Ingrese los milimetros" 
+                                                [(ngModel)]="nuevaAsesoria.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                            
+                                                <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                </div>
+                                            
+                                            </div>
+
+                                         <!-- fin -->
+
+                                          <!-- botones -->
+
+                                          <div class="card-footer mb-2">
+                                            <div class="d-flex justify-content-between">
+                                              <button pRipple pButton type="button" routerLink="/index" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" ></button>
+                                              <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Guardar" [disabled]="!form.valid"></button>
+                                              
+                                            </div>
+                                        </div>
+                                        <!-- fin -->
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    
+   
