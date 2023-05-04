@@ -7,14 +7,21 @@ import { ButtonModule } from 'primeng/button';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ListboxModule} from 'primeng/listbox';
 import { MessageModule } from 'primeng/message';
+import { ValidateEqualModule } from 'ng-validate-equal';
+import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
 import { AsesoriaRiegoRoutingModule } from './asesoria-riego-routing.module';
 import { NuevaAsesoriaComponent } from './nueva-asesoria/nueva-asesoria.component';
+import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
+import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
 
 
 
 @NgModule({
   declarations: [
-    NuevaAsesoriaComponent
+    NuevaAsesoriaComponent,
+    ModificarAsesoriaComponent,
+    ListarAsesoriaComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +32,10 @@ import { NuevaAsesoriaComponent } from './nueva-asesoria/nueva-asesoria.componen
     ButtonModule,
     MultiSelectModule,
     ListboxModule,
-    MessageModule
+    MessageModule,
+    ValidateEqualModule,
+    TableModule,
+    CardModule
   ]
 })
 export class AsesoriaRiegoModule { }
