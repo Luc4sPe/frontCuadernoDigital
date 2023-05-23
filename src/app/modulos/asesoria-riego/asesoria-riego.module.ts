@@ -10,6 +10,7 @@ import { MessageModule } from 'primeng/message';
 import { ValidateEqualModule } from 'ng-validate-equal';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
+import {RadioButtonModule} from 'primeng/radiobutton';
 import { AsesoriaRiegoRoutingModule } from './asesoria-riego-routing.module';
 import { NuevaAsesoriaComponent } from './nueva-asesoria/nueva-asesoria.component';
 import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
@@ -35,7 +36,8 @@ import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.compo
     MessageModule,
     ValidateEqualModule,
     TableModule,
-    CardModule
+    CardModule,
+    RadioButtonModule
   ]
 })
 export class AsesoriaRiegoModule { }

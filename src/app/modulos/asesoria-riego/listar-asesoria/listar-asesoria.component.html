@@ -55,16 +55,7 @@
                             </th>
                           <!-- fin -->
 
-                         <!--Numero de cuadros-->
-                         <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Numero de cuadros
-                                <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
-                                <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                          </th>
-
-                          <!-- fin -->
+                        
 
                            <!-- Nombre de finca -->
                            <th class="text-center" pSortableColumn="nombre">
@@ -75,6 +66,18 @@
                                 </div>
                             </th>
                             <!-- fin -->
+
+                             <!--Numero de cuadros-->
+                         <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                                <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                                <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+
+                          <!-- fin -->
+                          
                             <!-- columna nombre-->
                             <th class="text-center" pSortableColumn="nombre">
                                 <div class="p-d-flex p-jc-between p-ai-center">
@@ -123,12 +126,14 @@
                                         <td>{{asesoriaRiego.duracionEnHoras}}</td>
                                         <td>{{asesoriaRiego.milimetrosAplicados}}</td>
                                         
-                                        <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of asesoriaRiego.numerosDeCuadros; let i = index; ">
+                                        <!-- Se utiliza en una lista  
+                                            <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of asesoriaRiego.numerosDeCuadros; let i = index; ">
                
                                             <td>{{asesoriaRiego.numerosDeCuadros[i].numeroCuadro}}</td>
                                           
-                                          </ul></td>
+                                          </ul></td> -->
                                           <td>{{asesoriaRiego.finca.nombre}}</td>
+                                          <td>{{asesoriaRiego.cuadro.numeroCuadro}}</td>
                                           <td>{{asesoriaRiego.productor.nombre}}</td>
                                         <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td>
                                         <td>{{asesoriaRiego.fechaModificacionRiego | date:"short" }}</td>
@@ -136,11 +141,11 @@
                                         
                                          <!--Boton Editar -->
                                         <td class="text-center">
-                                        <button pRipple class="btn btn-outline-warning" 
-                                         routerLink="/asesoramientoRiego/editarAsesoriaRiego/{{asesoriaRiego.id}}" pTooltip="Editar" tooltipPosition="top">
-                                        <i class="fa-solid fa-pen-to-square"></i></button> 
-                                </td>
-                                <!-- fin -->
+                                            <button pRipple class="btn btn-outline-warning" 
+                                            routerLink="/asesoramientoRiego/editarAsesoriaRiego/{{asesoriaRiego.id}}" pTooltip="Editar" tooltipPosition="top">
+                                            <i class="fa-solid fa-pen-to-square"></i></button> 
+                                        </td>
+                                        <!-- fin -->
                             
                                 </tr>
                             </ng-template>   

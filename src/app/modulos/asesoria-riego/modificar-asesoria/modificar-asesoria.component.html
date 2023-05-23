@@ -1,1 +1,107 @@
-<p>modificar-asesoria works!</p>
+<app-menu></app-menu>
+<div class="container fadein animation-iteration-1 animation-duration-400">
+    <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-lg-4">
+                <div class="card-header  bg-secondary  text-white">
+                    <i class=" bi bi-card-text me-1"></i>
+                    Modificar datos de asesoria riego
+                </div>
+
+                <form #form = "ngForm" (ngSubmit) = "solitarModificacionAsesoria(form)" novalidate>
+                    
+                      <!-- Selector productor -->
+                      <div class="p-2">
+                                          
+                        <label for="dueñoProductor" class="form-label">Productor</label>
+                        <select class="form-select" name="productor" id="dueñoProductor"
+                        [(ngModel)]="asesoriaRiego.productor.nombreUsuario" aria-label=".form-select-lg example" required>
+                        <option [value]="productor.nombreUsuario" *ngFor="let productor of usuarios">
+                        
+                            {{ productor.nombre }}
+                            
+                        </option>
+                        
+                        </select>
+                     </div>
+
+                     
+                      <!-- fin -->
+
+                       <!-- Selector Finca -->
+                       <div class="p-2">
+                                          
+                        <label for="nomreFinca" class="form-label">Finca</label>
+                        <select class="form-select" name="finca" id="nomreFinca"
+                        [(ngModel)]="asesoriaRiego.finca.idFinca" aria-label=".form-select-lg example" required>
+                        <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                        
+                            {{ finca.nombre }}
+                            
+                        </option>
+                        
+                        </select>
+                     </div>
+                      <!-- fin -->
+
+                        <!-- Selector cuadro -->
+                        <div class="p-2">
+                                          
+                            <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
+                            <select class="form-select" name="cuadro" id="idCuadr"
+                            [(ngModel)]="asesoriaRiego.cuadro.idCuadro" aria-label=".form-select-lg example" required>
+                            <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
+                            
+                                {{ cuadro.numeroCuadro }}
+                                
+                            </option>
+                            
+                            </select>
+                         </div>
+                          <!-- fin -->
+
+                     <!-- Duración en horas -->
+                     <div class="form-group p-2">
+                        <label for="duracion" class="form-label">Duración en horas</label>
+                        <input type="time" class="p-inputtext form-control mt-2"  name="duracionHoras" id="duracion" value = {{asesoriaRiego.duracionEnHoras}} placeholder="Ingrese la hora" 
+                        [(ngModel)]="asesoriaRiego.duracionEnHoras" #dura="ngModel" pattern="^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])?$"  required>
+                    
+                        <div *ngIf="dura.invalid && (dura.dirty || dura.touched)">
+                            <p-message styleClass="m-1" *ngIf="dura.errors?.required"  severity="error" text="La duración es requerida"></p-message>
+                            <!-- <p-message styleClass="m-1" *ngIf="dura.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message> -->
+                            <p-message styleClass="m-1" *ngIf="dura.errors?.pattern"   severity="error" text=" Formato requerido HH:MM 24h los segundos son opcionales "></p-message>
+                        </div>
+                    </div>
+
+                     <!-- fin -->
+                      <!-- Milimetros -->
+                      <div class="form-group p-2">
+                        <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
+                        <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" value = {{asesoriaRiego.milimetrosAplicados}} placeholder="Ingrese los milimetros" 
+                        [(ngModel)]="asesoriaRiego.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                    
+                        <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                            <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                            <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                            <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                        </div>
+                    
+                    </div>
+
+                    <!-- fin -->
+                     <!-- botones -->
+                     <div class="card-footer mb-2">
+                        <div class="d-flex justify-content-between">
+                          <button pRipple pButton type="button" class="p-button-danger p-button-rounded p-button-text p-button-sm" icon="pi pi-thumbs-down" style="margin-left: 10px" label="Cancelar" (click)="cerrar()"></button>
+                          <button pButton class="p-button-success p-button-rounded p-button-raised p-button-sm" role="submit" icon="pi pi-thumbs-up" label="Modificar" [disabled]="!form.valid"></button>
+                          
+                        </div>
+                    </div>
+                    <!-- fin botones -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

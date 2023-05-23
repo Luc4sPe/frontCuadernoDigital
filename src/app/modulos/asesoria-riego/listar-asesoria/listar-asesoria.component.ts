@@ -28,11 +28,10 @@ export class ListarAsesoriaComponent implements OnInit {
   ngOnInit(): void {
 
     this.isEncargadoAgricola = this.tokenService.isEncargadoAgricola();
-    this.isProductor = this.tokenService.isProductor();
     this.isAdmin = this.tokenService.isAdmin();
     this.cargarItems();
     this.listarAsesoria();
-    console.log(this.listarAsesoria());
+
     
   }
 

@@ -7,17 +7,18 @@ export class AsesoriaRiego {
     id?: number;
     duracionEnHoras: Date;
     milimetrosAplicados:number;
-    numerosDeCuadros: Cuadro []=[];
     finca: Finca;
+    cuadro: Cuadro;
     productor: Usuario
     fechaRiego: Date = new Date();
     fechaModificacionRiego: Date = new Date();
     
-    constructor( duracionEnHoras: Date,milimetrosAplicados:number,finca: Finca,  productor: Usuario){
+    constructor( duracionEnHoras: Date,milimetrosAplicados:number,finca: Finca,cuadro: Cuadro,productor: Usuario){
 
         this.duracionEnHoras=duracionEnHoras;
         this.milimetrosAplicados=milimetrosAplicados;
         this.finca=finca;
+        this.cuadro=cuadro;
         this.productor=productor;
           
     }

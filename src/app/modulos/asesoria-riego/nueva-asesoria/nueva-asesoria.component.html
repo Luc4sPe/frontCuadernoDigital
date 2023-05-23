@@ -51,10 +51,10 @@
                                          </div>
                                           <!-- fin -->
 
-                                          <!-- Listado de los Cuadros -->
-                                          <div class="p-2">
+                                          <!-- Listado de los Cuadros se puede seleccionar 1 o más utilizado en una lista -->
+                                          <!-- <div class="p-2">
                                             <label for="form-select-lg mb-3" class="form-label">Seleccione el o los cuadros</label>
-                                            <p-listbox  [options]="cuadros" [(ngModel)]="nuevaAsesoria.numerosDeCuadros" name="asesoria" [metaKeySelection]="false"
+                                            <p-listbox  [options]="cuadros" [(ngModel)]="nuevaAsesoria.idCuadro" name="asesoria" [metaKeySelection]="false"
                                             [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="idCuadro" 
                                             [listStyle]="{'max-height':'250px'}" [style]="{'width':'50rem'}">
                                                 <ng-template let-cuadros pTemplate="item">
@@ -66,8 +66,26 @@
                                                     </div>
                                                 </ng-template>
                                             </p-listbox> 
-                                          </div>
+                                          </div> -->
                                           <!-- fin -->
+
+                                           <!-- Listado de los Cuadros solo permite seleccionar 1 cuadro -->
+                                       <div class="p-2">
+                                          
+                                        <label class="form-check-label" for="labor" > Cuadro </label>
+                                       
+                                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="nuevaAsesoria.idCuadro" inputId="riego"> 
+                                                </p-radioButton>
+                                                <label for="riego"> 
+                                                    {{cuadro.numeroCuadro}} 
+                                                   
+
+                                                </label>
+                                               
+                                            </div>
+                                   </div>
+                                  <!-- fin -->
 
                                             <!-- Duración en horas -->
                                             <div class="form-group p-2">
