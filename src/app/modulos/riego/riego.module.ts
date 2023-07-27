@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarRiegosComponent } from './listarRiegoXUsuarios/listar-riegos.component';
 import { MenuModule } from 'src/app/menu/menu.module';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { NuevoRAComponent } from './riegoAsesoria/nuevo-ra.component';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     RiegoNuevoComponent,
     EditarRiegoComponent,
     ListarRiegoComponent,
-    ListarRiegosComponent
+    ListarRiegosComponent,
+    NuevoRAComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ScrollTopModule,
     ButtonModule,
     CardModule,
-    RadioButtonModule
+    RadioButtonModule,
+    InputSwitchModule,
+    TagModule
 
     
   ]

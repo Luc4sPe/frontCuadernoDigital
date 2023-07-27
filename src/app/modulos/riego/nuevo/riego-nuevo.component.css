@@ -9,3 +9,8 @@
   input:valid ~ .check-ok {
     display: inline;
   }
+  
+  /* oculta el form */
+  #form,#card{
+    display: none;
+  }

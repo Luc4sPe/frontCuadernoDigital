@@ -29,7 +29,7 @@
                   currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
                   [filterDelay]="0">
 
-                    <!-- botones nueva labor-->
+                    <!-- botones nueva riogo-->
                     <ng-template pTemplate="caption">
                         <div class="d-flex justify-content-between">
                             <button pRipple *ngIf="isProductor" pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nuevo riego" routerLink="/riego/nuevoRiego"></button>
@@ -80,11 +80,11 @@
                             <!-- fin -->
 
                             <!-- Cuadro -->
-                            <th class="text-center" pSortableColumn="idCuadros">
+                            <th class="text-center" pSortableColumn="numerosDeCuadros">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     Cuadro
-                                <p-sortIcon field="idCuadros"></p-sortIcon>
-                                <p-columnFilter type="text" field="idCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                                <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                                <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
                                 </div>
                             </th>
                             <!-- fin -->
@@ -126,7 +126,7 @@
                             <td>{{riego.duracionEnHoras}}</td>
                             <td>{{riego.milimetrosAplicados}}</td>
                             <td>{{riego.observacionProductor}}</td>
-                            <td>{{riego.idCuadro.numeroCuadro}}</td>
+                            <td>{{riego.cuadro.numeroCuadro}}</td>
                             <td>{{riego.fechaRiego | date:"short" }}</td>
                             <td>{{riego.fechaModificacionRiego | date:"short" }}</td>
 

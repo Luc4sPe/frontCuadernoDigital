@@ -83,7 +83,7 @@ export class EditarRiegoComponent implements OnInit {
 
   actualizarRiego(form: NgForm):void{
     const id = this.activatedRoute.snapshot.params.id;
-    const modificarRiego = new EditarRiego(this.riego.duracionEnHoras,this.riego.milimetrosAplicados,this.riego.idCuadro.idCuadro,
+    const modificarRiego = new EditarRiego(this.riego.duracionEnHoras,this.riego.milimetrosAplicados,this.riego.cuadro.idCuadro,
       this.riego.observacionProductor,this.riego.justificacionProductor,this.riego.idFinca);
     console.log(modificarRiego);
     this.riegoService.actualizarRiego(id,modificarRiego).toPromise().then(

@@ -34,7 +34,7 @@
                                           
                         <label for="nomreFinca" class="form-label">Finca</label>
                         <select class="form-select" name="finca" id="nomreFinca"
-                        [(ngModel)]="asesoriaRiego.finca.idFinca" aria-label=".form-select-lg example" required>
+                        [(ngModel)]="asesoriaRiego.finca.nombre" aria-label=".form-select-lg example" required>
                         <option [value]="finca.idFinca" *ngFor="let finca of fincas">
                         
                             {{ finca.nombre }}
@@ -50,7 +50,7 @@
                                           
                             <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
                             <select class="form-select" name="cuadro" id="idCuadr"
-                            [(ngModel)]="asesoriaRiego.cuadro.idCuadro" aria-label=".form-select-lg example" required>
+                            [(ngModel)]="asesoriaRiego.cuadro.numeroCuadro" aria-label=".form-select-lg example" required>
                             <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
                             
                                 {{ cuadro.numeroCuadro }}
@@ -60,6 +60,25 @@
                             </select>
                          </div>
                           <!-- fin -->
+
+                           <!-- Listado de los Cuadros -->
+                           <div class="p-2">
+                                          
+                            <label class="form-check-label" for="labor" > Cuadro </label>
+                       
+                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                    <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="asesoriaRiego.cuadro.numeroCuadro" inputId="riego"> 
+                                    </p-radioButton>
+                                    <label for="riego"> 
+                                        {{cuadro.numeroCuadro}} 
+                                    
+
+                                    </label>
+                               
+                                </div>
+                        </div>
+                        <!-- fin lista cuadros -->
+                
 
                      <!-- Duración en horas -->
                      <div class="form-group p-2">

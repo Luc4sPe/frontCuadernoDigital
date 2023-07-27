@@ -155,7 +155,7 @@ export class ModificarAsesoriaComponent implements OnInit {
     })
   }
 
-  listarCuadrosPorFinca(): void{
+   listarCuadrosPorFinca(): void{
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
@@ -170,7 +170,7 @@ export class ModificarAsesoriaComponent implements OnInit {
       )  
     })
    
-  } 
+  }  
 
 
 }

@@ -179,7 +179,7 @@
               </button> 
 
                <button pRipple pButton class="p-button-danger p-button-rounded p-button-text p-button-raised"
-                icon="pi pi-trash" (click)="bajaUsuario(usuario.id)"
+               icon="pi pi-user-minus" (click)="bajaUsuario(usuario.id)"
                 *ngIf="usuario.estadoActivo == true && usuario.nombreUsuario!='admin'" pTooltip="Dar de Baja"
                 tooltipPosition="top">
                 

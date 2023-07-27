@@ -28,10 +28,23 @@ export class AsesoriaRiegoService {
   public listarAsesoria(): Observable<AsesoriaRiego[]>{
     return this.httpCliente.get<AsesoriaRiego[]>(this.aseRiegoURL +'listaAsesoria');
   }
+
+  public listarAsesoriaPorFinca(idFinca:number): Observable<AsesoriaRiego[]>{
+    return this.httpCliente.get<AsesoriaRiego[]>(this.aseRiegoURL +`listadoAsesoriaRiegoDeUnaFinca/${idFinca}`);
+  }
+
   
   public obtenerAsesoria(id: number): Observable<AsesoriaRiego>{
     return this.httpCliente.get<AsesoriaRiego>(this.aseRiegoURL + `detalle/${id}`);
 
+  }
+
+  public seAplico(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.aseRiegoURL+ `aplico/${id}`,id);
+  }
+
+  public cancelarAplicacion(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.aseRiegoURL + `canceloAplica/${id}`,id);
   }
   
   

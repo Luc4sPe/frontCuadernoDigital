@@ -74,12 +74,12 @@
 
                      <!-- fin-->
 
-                      <!-- Selector tipo cultivo -->
+                      <!-- Selector cuadro -->
                       <div class="p-2">
                                           
                         <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
                         <select class="form-select" name="cuadro" id="idCuadr"
-                        [(ngModel)]="riego.idCuadro.idCuadro" aria-label=".form-select-lg example" required>
+                        [(ngModel)]="riego.cuadro.idCuadro" aria-label=".form-select-lg example" required>
                         <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
                         
                             {{ cuadro.numeroCuadro }}
@@ -89,7 +89,6 @@
                         </select>
                      </div>
                       <!-- fin -->
-
 
                       <!-- Justificación -->
                       <div class="form-group p-2">

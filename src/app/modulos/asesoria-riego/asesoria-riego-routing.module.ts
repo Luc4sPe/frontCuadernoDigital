@@ -6,15 +6,19 @@ import { CulGuardService as guarEncargadoAgri } from 'src/app/Core/guards/cul-gu
 import { ModificarAsesoRiego } from 'src/app/Core/dto/modificar-aseso-riego';
 import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
 import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
+import { ListadoComponent } from './listadoPorFinca/listado.component';
 
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
+const Productor = Roles.PRODUCTOR;
 const ADMIN=Roles.ADMIN;
 const routes: Routes = [
 
   {
     path: '',
     children: [
+
+      
     
       { path: 'nuevaAsesoria',
        component: NuevaAsesoriaComponent,
@@ -25,6 +29,11 @@ const routes: Routes = [
        component: ListarAsesoriaComponent,
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
+
+       { path: 'listarAsesoriaPorFinca',
+       component: ListadoComponent,
+       canActivate:[guarEncargadoAgri],
+       data:{rolesEsperados: [ADMIN,Encargado_Agricola,Productor]} },
        
   
 
@@ -33,6 +42,7 @@ const routes: Routes = [
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
       
+       {path:'**', redirectTo:'listarAsesoriaPorFinca'}
      
     ],
   },

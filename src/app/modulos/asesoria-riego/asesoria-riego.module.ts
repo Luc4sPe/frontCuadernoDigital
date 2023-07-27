@@ -15,6 +15,7 @@ import { AsesoriaRiegoRoutingModule } from './asesoria-riego-routing.module';
 import { NuevaAsesoriaComponent } from './nueva-asesoria/nueva-asesoria.component';
 import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
 import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
+import { ListadoComponent } from './listadoPorFinca/listado.component';
 
 
 
@@ -22,7 +23,8 @@ import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.compo
   declarations: [
     NuevaAsesoriaComponent,
     ModificarAsesoriaComponent,
-    ListarAsesoriaComponent
+    ListarAsesoriaComponent,
+    ListadoComponent
   ],
   imports: [
     CommonModule,

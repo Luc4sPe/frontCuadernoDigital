@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit {
   this.isProductor = this.tokenService.isProductor();
   this.isGerente = this.tokenService.isGerente();
   this.cargarItems();
-  this.menuAsesoria();
+  
   
     //  this.roles=this.tokenService.getAuthorities();
 
@@ -122,7 +122,7 @@ export class MenuComponent implements OnInit {
     ];
 } 
 
-menuAsesoria():void{
+/* menuAsesoria():void{
   this.item = [
     {
       label: 'Asesoria',
@@ -168,7 +168,7 @@ menuAsesoria():void{
     }
   ]
 }
-
+ */
 
 
 }

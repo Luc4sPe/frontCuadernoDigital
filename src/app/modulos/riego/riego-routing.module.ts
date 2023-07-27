@@ -6,6 +6,7 @@ import { ListarRiegosComponent } from './listarRiegoXUsuarios/listar-riegos.comp
 import { RiegoNuevoComponent } from './nuevo/riego-nuevo.component';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarProductor } from 'src/app/Core/guards/cul-guard.service';
+import { NuevoRAComponent } from './riegoAsesoria/nuevo-ra.component';
 
 const Productor = Roles.PRODUCTOR;
 const ADMIN = Roles.ADMIN;
@@ -17,6 +18,12 @@ const routes: Routes = [
     [
       { path: 'nuevoRiego',
       component:RiegoNuevoComponent,
+      canActivate:[guarProductor],
+      data:{rolesEsperados: [Productor]} 
+      },
+
+      { path: 'nuevoRiegooo',
+      component:NuevoRAComponent,
       canActivate:[guarProductor],
       data:{rolesEsperados: [Productor]} 
       },
