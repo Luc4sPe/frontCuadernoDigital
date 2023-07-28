@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { IndexRoutingModule } from './index-routing.module';
 import { IndexComponent } from './index/index.component';
 import { MenuModule } from 'src/app/menu/menu.module';
+import { CardModule } from 'primeng/card';
+import { ChipModule } from 'primeng/chip';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +15,9 @@ import { MenuModule } from 'src/app/menu/menu.module';
   imports: [
     CommonModule,
     IndexRoutingModule,
-    MenuModule
+    MenuModule,
+    CardModule,
+    ChipModule
   ]
 })
 export class IndexModule { }

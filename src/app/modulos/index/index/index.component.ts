@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { TokenService } from '../../../service/token.service';
+import { AsesoriaRiegoService } from 'src/app/service/asesoria-riego.service';
 
 
 @Component({
@@ -25,13 +26,22 @@ export class IndexComponent implements OnInit {
   minuscula:any;
   conversion:any;
 
+  cantidadAsesoriaRiego: number = 0;
+  cantidadAsesoriaRiegoAplicada: number = 0;
+  cantidadAsesoriaNoAplicada: number = 0;
+
   
 
-  constructor(private tokenService: TokenService, private router: Router, 
-    private usuarioService: UsuarioService,) { }
+  constructor(
+    private tokenService: TokenService, 
+    private router: Router, 
+    private usuarioService: UsuarioService,
+    private asesoriaRiegoService: AsesoriaRiegoService
+    
+    ) { }
 
   ngOnInit(): void {
-
+   
     //obtengo la primera letra del nombre en mayuscula
     this.nombreUsuario = this.tokenService.getUserName()!.charAt(0).toLocaleUpperCase();
     //obtengo el nombre completo  variable minuscula
@@ -48,7 +58,15 @@ export class IndexComponent implements OnInit {
       this.isLogged = false;
       this.nombreUsuario = '';
     }
+    this.cargarTotalesAlInicio();
+    
   
+  }
+
+  public cargarTotalesAlInicio():void{
+    this.obtenerTotalesAsesoria();
+   
+   
   }
 
   public obtenerRolesDelUsuario():void{
@@ -59,4 +77,38 @@ export class IndexComponent implements OnInit {
     this.isProctor = this.tokenService.isProductor();
     this.isGerente = this.tokenService.isGerente();
   }
+
+  
+
+  public obtenerTotalesAsesoria(): void {
+    if(this.isEncargadoAgricola){
+      this.obtenerCantidadAsesoriaRiego();
+      this.obtenerCantidadAsesoriaRiegoAplicada();
+      this.obtenerCantidadAsesoriaRiegoNoAplicada();
+    }
+  }
+
+  public obtenerCantidadAsesoriaRiego():void{
+    this.asesoriaRiegoService.cantidadAsesoriaRiego().toPromise().then(data =>{
+        this.cantidadAsesoriaRiego = data;
+       
+    })
+  }
+
+
+  public obtenerCantidadAsesoriaRiegoAplicada(): void{
+    this.asesoriaRiegoService.cantidadAsesoriaRiegoAplicada().toPromise().then(data =>{
+      this.cantidadAsesoriaRiegoAplicada = data;
+
+    })
+  }
+
+  public obtenerCantidadAsesoriaRiegoNoAplicada(): void{
+    this.asesoriaRiegoService.cantidadAsesoriaRiegoNoAplicada().toPromise().then(data =>{
+      this.cantidadAsesoriaNoAplicada = data;
+
+    })
+  }
+  
+
 }

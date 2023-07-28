@@ -46,6 +46,20 @@ export class AsesoriaRiegoService {
   public cancelarAplicacion(id:number):Observable<any>{
     return this.httpCliente.put<any>(this.aseRiegoURL + `canceloAplica/${id}`,id);
   }
+
+  public cantidadAsesoriaRiego():Observable<number> {
+    return this.httpCliente.get<any>(`${this.aseRiegoURL}total`);
+  }
+
+  public cantidadAsesoriaRiegoAplicada():Observable<number> {
+    return this.httpCliente.get<any>(`${this.aseRiegoURL}total-Aplicados`);
+
+  }
+
+  public cantidadAsesoriaRiegoNoAplicada():Observable<number> {
+    return this.httpCliente.get<any>(`${this.aseRiegoURL}total-NoAplicados`);
+
+  }
   
   
 }

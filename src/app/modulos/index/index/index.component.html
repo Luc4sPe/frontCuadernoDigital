@@ -1,9 +1,11 @@
 <app-menu></app-menu> 
-<div class="container text-center">
+<div class="container fadein animation-iteration-1 animation-duration-500">
     
     <div *ngIf="isLogged; else loggedOut">
+
+        <p class="display-5 my-4">Bienvenido {{conversion}}</p>
         
-        <div id="Bienvenido"><b><h2>"Bienvenido {{conversion}}"</h2></b></div>
+        <!-- <div id="Bienvenido"><b><h2>"Bienvenido {{conversion}}"</h2></b></div> -->
 
         <h1 *ngIf="nombreUsuario" class="display-4"></h1> 
          <img  src="assets/imagen/agroandina.png"  alt="...">
@@ -12,6 +14,55 @@
     <ng-template #loggedOut><h2> No has iniciado sesión</h2>
          <img  src="assets/imagen/agroandina.png"  alt="...">
     </ng-template>
+
+    <div class="row">
+         <!-- inicio card asesoria riego-->
+
+         <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
+            <div class="card bg-primary bg-gradient shadow-sm text-white mb-4">
+                <div class="card-body">
+                    <h4>Asesoria riego  {{cantidadAsesoriaRiego}}</h4>
+                   
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                          
+                            <h6 class="badge rounded-pill bg-success shadow">Aplicadas {{cantidadAsesoriaRiegoAplicada}}</h6><br>
+                            <h6 class="badge rounded-pill bg-danger shadow">No aplicadas {{cantidadAsesoriaNoAplicada}}</h6>
+                        </div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-faucet-drip"></i> 
+
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" routerLink="/asesoramientoRiego/listaAsesoria"><i class="fa-solid fa-eye"></i> </a>
+                    <div class="small text-white"><i class="bi bi-arrow-right-circle"></i>Detalle</div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <div class="d-flex flex-row"> 
+        <div class="col col-sm-10 col-md-8 col-3">
+            
+                    
+                    <p-card styleClass="shadow-2 mb-4" header="Rol de acceso" card bg-primary bg-gradient>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <div>
+                                    <!-- <p-chip styleClass="m-2" *ngFor="let rol of roles">{{rol}} </p-chip> -->
+                                    <h6 class="badge rounded-pill bg-warning shadow m-1" *ngFor="let rol of roles" >{{rol}}  </h6><br>
+                                </div>
+                            </div>
+                        </div>
+                    </p-card>
+               
+        </div>
+    </div>
     
     
 </div>
+
