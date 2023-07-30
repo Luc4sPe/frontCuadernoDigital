@@ -29,6 +29,9 @@ export class IndexComponent implements OnInit {
   cantidadAsesoriaRiego: number = 0;
   cantidadAsesoriaRiegoAplicada: number = 0;
   cantidadAsesoriaNoAplicada: number = 0;
+  cantidadUsuarios: number = 0;
+  cantidadUsuariosActivos: number = 0;
+  cantidadUsuariosInactivos: number = 0;
 
   
 
@@ -63,11 +66,7 @@ export class IndexComponent implements OnInit {
   
   }
 
-  public cargarTotalesAlInicio():void{
-    this.obtenerTotalesAsesoria();
-   
-   
-  }
+  
 
   public obtenerRolesDelUsuario():void{
     this.roles = this.tokenService.getAuthorities();
@@ -78,7 +77,12 @@ export class IndexComponent implements OnInit {
     this.isGerente = this.tokenService.isGerente();
   }
 
-  
+  public cargarTotalesAlInicio():void{
+    this.obtenerTotalesAsesoria();
+    this.obtenerTotalesUsuarios();
+   
+   
+  } 
 
   public obtenerTotalesAsesoria(): void {
     if(this.isEncargadoAgricola){
@@ -109,6 +113,34 @@ export class IndexComponent implements OnInit {
 
     })
   }
+
+  public obtenerTotalesUsuarios(): void {
+    if(this.isAdmin){
+      this.obtenerCantidadUsuarios();
+      this.obtenerCantidadUsuariosActivos();
+      this.obtenerCantidadUsuariosInactivos();
+    }
+  }
+
+  public obtenerCantidadUsuarios():void{
+    this.usuarioService.cantidadUsuarios().toPromise().then(data =>{
+      this.cantidadUsuarios = data;
+    })
+  }
+
+  public obtenerCantidadUsuariosActivos(): void{
+    this.usuarioService.cantidadUsuariosActivos().toPromise().then(data =>{
+      this.cantidadUsuariosActivos=data;
+    })
+  }
+
+  public obtenerCantidadUsuariosInactivos(): void{
+    this.usuarioService.cantidadUsuarioInactivos().toPromise().then(data =>{
+      this.cantidadUsuariosInactivos=data;
+    })
+  }
+
+
   
 
 }

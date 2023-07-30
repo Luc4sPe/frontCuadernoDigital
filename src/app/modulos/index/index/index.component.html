@@ -15,9 +15,8 @@
          <img  src="assets/imagen/agroandina.png"  alt="...">
     </ng-template>
 
+    <!-- inicio card asesoria riego-->
     <div class="row">
-         <!-- inicio card asesoria riego-->
-
          <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
             <div class="card bg-primary bg-gradient shadow-sm text-white mb-4">
                 <div class="card-body">
@@ -43,7 +42,38 @@
             </div>
         </div>
     </div>
-   
+    <!-- fin card asesoria riego-->
+
+     <!-- inicio card usuarios-->
+     <div class="row">
+        <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
+           <div class="card bg-primary bg-gradient shadow-sm text-white mb-4">
+               <div class="card-body">
+                   <h4>Usuarios  {{cantidadUsuarios}}</h4>
+                  
+                   <div class="d-flex align-items-center justify-content-between">
+                       <div>
+                         
+                           <h6 class="badge rounded-pill bg-success shadow">Activos {{cantidadUsuariosActivos}}</h6><br>
+                           <h6 class="badge rounded-pill bg-danger shadow">Inactivos {{cantidadUsuariosInactivos}}</h6>
+                       </div>
+                       <span style="font-size: 32px;">
+                        <i class="fa-solid fa-users-between-lines"></i>
+
+                       </span>
+
+                   </div>
+               </div>
+               <div class="card-footer d-flex align-items-center justify-content-between">
+                   <a class="small text-white stretched-link" routerLink="/usuario"><i class="fa-solid fa-eye"></i> </a>
+                   <div class="small text-white"><i class="bi bi-arrow-right-circle"></i>Detalle</div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <!-- fin card asesoria riego-->
+
+    
 
     <div class="d-flex flex-row"> 
         <div class="col col-sm-10 col-md-8 col-3">

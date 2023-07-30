@@ -59,5 +59,19 @@ export class UsuarioService {
     return this.httpCliente.get<Usuario[]>(this.usuarioURL +  `usuariosPorNombreRol/${nombreRol}`);
   } 
 
+  public cantidadUsuarios():Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}total`);
+  }
+
+  public cantidadUsuariosActivos():Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}total-usuarioActivos`);
+
+  }
+
+  public cantidadUsuarioInactivos():Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}total-usuarioInactivos`);
+
+  }
+
 
 }
