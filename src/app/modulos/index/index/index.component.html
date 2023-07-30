@@ -74,7 +74,7 @@
    <!-- fin card usuarios-->
 
     <!-- inicio card Cultivo-->
-    <div class="col-lg-3 col-md-4 col-3 " *ngIf="isAdmin">
+    <div class="col-lg-3 col-md-4 col-3 " *ngIf="isAdmin || isEncargadoAgricola ">
         <div class="card border-2 bg-success shadow-sm text-white mb-4  ">
             <div class="card-body ">
                 <h3>cultivos</h3>
@@ -96,7 +96,7 @@
      <!-- fin card cultivo-->
 
       <!-- inicio card agroquímicos-->
-      <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
+      <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin || isEncargadoAgricola">
         <div class="card bg-warning shadow-sm mb-4">
             <div class="card-body">
                 <h3 class="strong">Agroquímicos</h3>
