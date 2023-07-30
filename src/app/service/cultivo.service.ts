@@ -45,5 +45,9 @@ export class CultivoService {
     return this.httpCliente.put(this.cultivoURL + `modificar/${id}`, editarCultivo);
   }
 
+  public cantidadCultivos():Observable<number> {
+    return this.httpCliente.get<any>(`${this.cultivoURL}total`);
+  }
+
   
 }

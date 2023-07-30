@@ -30,4 +30,9 @@ export class AgroquimicoService {
   public actualizarAgroquimico(id: number, editarAgroquimico: AgroquimicoDto): Observable<any> {
     return this.httpCliente.put(this.agroURL + `update/${id}`, editarAgroquimico);
   }
+
+  public cantidadAgroquimicos():Observable<number> {
+    return this.httpCliente.get<any>(`${this.agroURL}total`);
+  }
+
 }

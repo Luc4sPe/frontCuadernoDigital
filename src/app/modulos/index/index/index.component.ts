@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { TokenService } from '../../../service/token.service';
 import { AsesoriaRiegoService } from 'src/app/service/asesoria-riego.service';
+import { CultivoService } from 'src/app/service/cultivo.service';
+import { AgroquimicoService } from 'src/app/service/agroquimico.service';
 
 
 @Component({
@@ -32,14 +34,17 @@ export class IndexComponent implements OnInit {
   cantidadUsuarios: number = 0;
   cantidadUsuariosActivos: number = 0;
   cantidadUsuariosInactivos: number = 0;
+  cantidadCultivos: number = 0;
+  cantidadAgroquimicos: number = 0;
 
   
 
   constructor(
     private tokenService: TokenService, 
-    private router: Router, 
+    private cultivoService: CultivoService,
     private usuarioService: UsuarioService,
-    private asesoriaRiegoService: AsesoriaRiegoService
+    private asesoriaRiegoService: AsesoriaRiegoService,
+    private agroquimicoService: AgroquimicoService
     
     ) { }
 
@@ -80,6 +85,8 @@ export class IndexComponent implements OnInit {
   public cargarTotalesAlInicio():void{
     this.obtenerTotalesAsesoria();
     this.obtenerTotalesUsuarios();
+    this.obtenerCantidadCultivos();
+    this.obtenerCantidadAgroquimicos();
    
    
   } 
@@ -138,6 +145,24 @@ export class IndexComponent implements OnInit {
     this.usuarioService.cantidadUsuarioInactivos().toPromise().then(data =>{
       this.cantidadUsuariosInactivos=data;
     })
+  }
+
+  public obtenerCantidadCultivos():void{
+    if(this.isAdmin || this.isEncargadoAgricola){
+      this.cultivoService.cantidadCultivos().toPromise().then(data =>{
+        this.cantidadCultivos = data;
+      })
+    }
+    
+  }
+
+  public obtenerCantidadAgroquimicos():void{
+    if(this.isAdmin || this.isEncargadoAgricola){
+      this.agroquimicoService.cantidadAgroquimicos().toPromise().then(data =>{
+        this.cantidadAgroquimicos = data;
+      })
+    }
+    
   }
 
 

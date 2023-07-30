@@ -47,7 +47,7 @@
      <!-- inicio card usuarios-->
      <div class="row">
         <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
-           <div class="card bg-primary bg-gradient shadow-sm text-white mb-4">
+           <div class="card bg-info bg-gradient shadow-sm text-white mb-4">
                <div class="card-body">
                    <h4>Usuarios  {{cantidadUsuarios}}</h4>
                   
@@ -71,9 +71,48 @@
            </div>
        </div>
    </div>
-   <!-- fin card asesoria riego-->
+   <!-- fin card usuarios-->
 
-    
+    <!-- inicio card Cultivo-->
+    <div class="col-lg-3 col-md-4 col-3 " *ngIf="isAdmin">
+        <div class="card border-2 bg-success shadow-sm text-white mb-4  ">
+            <div class="card-body ">
+                <h3>cultivos</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3>{{cantidadCultivos}}</h3>
+                    <span style="font-size: 32px;">
+                        <i class="fa-solid fa-seedling" style="font-size:16px"></i>
+                        <i class="fa-solid fa-apple-whole" style="font-size:16px"></i>
+                        <i class="fa-solid fa-carrot"style="font-size:16px"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" routerLink="/jugadores/lista">Ver detalles</a>
+                <div class="small text-white"><i class="bi bi-arrow-right-circle"></i></div>
+            </div>
+        </div>
+    </div>
+     <!-- fin card cultivo-->
+
+      <!-- inicio card agroquímicos-->
+      <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
+        <div class="card bg-warning shadow-sm mb-4">
+            <div class="card-body">
+                <h3 class="strong">Agroquímicos</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3>{{cantidadAgroquimicos}}</h3>
+                    <span style="font-size: 32px"><i class="fa-solid fa-skull-crossbones"></i></span>
+                    
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-dark stretched-link" routerLink="/clubes/lista">Ver detalles</a>
+                <div class="small "><i class="bi bi-arrow-right-circle-fill"></i></div>
+            </div>
+        </div>
+    </div>
+      <!-- fin card asesoria riego-->
 
     <div class="d-flex flex-row"> 
         <div class="col col-sm-10 col-md-8 col-3">
