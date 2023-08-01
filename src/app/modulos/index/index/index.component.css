@@ -19,6 +19,9 @@ img {
       .card{
         border-radius: 10px;
         position: relative;
+        margin-top: -25px;
+       
+        top: -10%;
        
       
     }
@@ -37,14 +40,12 @@ img {
     }
 
 
-    #lucas{
-        margin-top: -140px;
-        margin-left: -500px;
-        left: 125%;
-        top: 600%;
+     .roles{
         position: relative;
-    }
-
+        top: -60px; 
+        left: 950px;
+    } 
+ 
 
     
     

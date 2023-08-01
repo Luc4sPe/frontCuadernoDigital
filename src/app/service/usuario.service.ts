@@ -73,5 +73,18 @@ export class UsuarioService {
 
   }
 
+  public cantidadProductor(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}total-productor/${nombre}`);
+  }
+
+  public cantidadProductorActivos(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}totalProductorActivo/${nombre}`);
+  }
+
+  public cantidadProductorInactivos(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.usuarioURL}totalProductorInactivos/${nombre}`);
+  }
+
+
 
 }

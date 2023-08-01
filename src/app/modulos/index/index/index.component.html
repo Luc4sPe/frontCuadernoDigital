@@ -17,11 +17,135 @@
      <!-- inicio dashboard -->
       <div class="row"> 
 
+          <!-- inicio card productor-->
+    
+          <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
+            <div class="card bg-secondary bg-gradient shadow-sm text-dark mb-4">
+                <div class=" text-white card-body">
+                    <h4>Productor  {{cantidadProductor}}</h4>
+                
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>  
+                            <h6 class="badge rounded-pill bg-success shadow">Activos {{cantidadProductorActivo}}</h6><br>
+                            <h6 class="badge rounded-pill bg-danger shadow">Inactivos {{cantidadProductorInactivo}}</h6>
+                        </div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-users-between-lines"></i>
+
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" routerLink="/usuario">Ver detalles </a>
+                    <div class="small text-white"><i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- fin card productor-->
+
+
+            <!-- inicio card usuarios-->
+        
+            <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
+                <div class="card bg-secondary bg-gradient shadow-sm text-dark mb-4">
+                    <div class="card-body text-white">
+                        <h4>Usuarios  {{cantidadUsuarios}}</h4>
+                    
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>  
+                                <h6 class="badge rounded-pill bg-success shadow">Activos {{cantidadUsuariosActivos}}</h6><br>
+                                <h6 class="badge rounded-pill bg-danger shadow">Inactivos {{cantidadUsuariosInactivos}}</h6>
+                            </div>
+                            <span style="font-size: 32px;">
+                                <i class="text-white fa-solid fa-users-between-lines text-white"></i>
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" routerLink="/usuario">Ver detalles </a>
+                        <div class="small text-white"><i class="fa-solid fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- fin card usuarios-->
+
+        <!-- inicio card Cultivo-->
+            <div class="col-lg-3 col-md-4 col-3 " *ngIf="isAdmin || isEncargadoAgricola ">
+                <div class="card border-2 bg-success bg-gradient shadow-sm text-white mb-4  ">
+                    <div class="card-body ">
+                        <h3>Cultivos</h3>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3>{{cantidadCultivos}}</h3>
+                            <span style="font-size: 32px;">
+                                <i class="fa-solid fa-seedling" style="font-size:16px"></i>
+                                <i class="fa-solid fa-apple-whole" style="font-size:16px"></i>
+                                <i class="fa-solid fa-carrot"style="font-size:16px"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" routerLink="/cultivo/listado">Ver detalles</a>
+                        <div class="small text-white"><i class="fa-solid fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+        <!-- fin card cultivo-->
+
+        <!-- inicio card agroquímicos-->
+    
+            <div class="col-lg-10 col-md-8 col-3" *ngIf="isAdmin || isEncargadoAgricola">
+                <div class="card bg-danger  bg-gradient shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="strong">Agroquímicos</h3>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3>{{cantidadAgroquimicos}}</h3>
+                                <span style="font-size: 32px"><i class="fa-solid fa-skull-crossbones"></i></span>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-dark stretched-link" routerLink="/agroquimico/listarAgroquimico">Ver detalles</a>
+                        <div class="small "><i class="fa-solid fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- fin card agroquímico-->
+
+             <!-- inicio card finca-->
+    
+             <div class="col-lg-10 col-md-8 col-3" *ngIf="isAdmin || isEncargadoAgricola">
+                <div class="card bg-dark text-secondary  bg-gradient shadow-sm mb-4">
+                    <div class="card-body text-white ">
+                        <h3 class="strong">Finca</h3>
+                        <div class="d-flex align-items-center justify-content-between text-white ">
+                            <h3>{{cantidadFinca}}</h3>
+                                <span style="font-size: 32px"><i class="fa-solid fa-house-chimney"></i></span>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white  stretched-link" routerLink="/agroquimico/listarAgroquimico">Ver detalles</a>
+                        <div class="small text-white "><i class="fa-solid fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- fin card finca-->
+
+            
+           
+
             <!-- inicio card asesoria riego-->
             <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
-                <div class="card bg-primary bg-gradient shadow-sm text-white mb-4">
+                <div class="card bg-info bg-gradient shadow-sm text-dark mb-4">
                     <div class="card-body">
-                        <h4>Asesoria riego  {{cantidadAsesoriaRiego}}</h4>
+                        <h4>Asesoría riego  {{cantidadAsesoriaRiego}}</h4>
                     
                         <div class="d-flex align-items-center justify-content-between">
                             <div>
@@ -37,122 +161,63 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" routerLink="/asesoramientoRiego/listaAsesoria"><i class="fa-solid fa-eye"></i> </a>
-                        <div class="small text-white"><i class="bi bi-arrow-right-circle"></i>Detalle</div>
+                        <a class="small text-dark stretched-link" routerLink="/asesoramientoRiego/listaAsesoria"> Ver detalles</a>
+                        <div class="small text-dark"><i class="fa-solid fa-eye"></i></div>
                     </div>
                 </div>
             </div>
         
         <!-- fin card asesoria riego-->
 
-            <!-- inicio card usuarios-->
-        
-            <div class="col-lg-3 col-md-4 col-3" *ngIf="isAdmin">
-                <div class="card bg-info bg-gradient shadow-sm text-white mb-4">
-                    <div class="card-body">
-                        <h4>Usuarios  {{cantidadUsuarios}}</h4>
-                    
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>  
-                                <h6 class="badge rounded-pill bg-success shadow">Activos {{cantidadUsuariosActivos}}</h6><br>
-                                <h6 class="badge rounded-pill bg-danger shadow">Inactivos {{cantidadUsuariosInactivos}}</h6>
-                            </div>
-                            <span style="font-size: 32px;">
-                                <i class="fa-solid fa-users-between-lines"></i>
-
-                            </span>
-
+        <!-- inicio card asesoria agroquímico-->
+        <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
+            <div class="card bg-secondary  bg-gradient shadow-sm text-white mb-4">
+                <div class="card-body">
+                    <h4>Asesoría agroquímico  {{cantidadAsesoriaRiego}}</h4>
+                
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                        
+                            <h6 class="badge rounded-pill bg-success shadow">Aplicadas {{cantidadAsesoriaRiegoAplicada}}</h6><br>
+                            <h6 class="badge rounded-pill bg-danger shadow">No aplicadas {{cantidadAsesoriaNoAplicada}}</h6>
                         </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" routerLink="/usuario"><i class="fa-solid fa-eye"></i> </a>
-                        <div class="small text-white"><i class="bi bi-arrow-right-circle"></i>Detalle</div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-wine-bottle"></i>
+
+                        </span>
+
                     </div>
                 </div>
-            </div>
-
-        <!-- fin card usuarios-->
-
-        <!-- inicio card Cultivo-->
-            <div class="col-lg-3 col-md-4 col-3 " *ngIf="isAdmin || isEncargadoAgricola ">
-                <div class="card border-2 bg-success shadow-sm text-white mb-4  ">
-                    <div class="card-body ">
-                        <h3>cultivos</h3>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h3>{{cantidadCultivos}}</h3>
-                            <span style="font-size: 32px;">
-                                <i class="fa-solid fa-seedling" style="font-size:16px"></i>
-                                <i class="fa-solid fa-apple-whole" style="font-size:16px"></i>
-                                <i class="fa-solid fa-carrot"style="font-size:16px"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" routerLink="/cultivo/listado">Ver detalles</a>
-                        <div class="small text-white"><i class="bi bi-arrow-right-circle"></i></div>
-                    </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" routerLink="/asesoramientoRiego/listaAsesoria"> Ver detalles</a>
+                    <div class="small text-white"><i class="fa-solid fa-eye"></i></div>
                 </div>
             </div>
-        <!-- fin card cultivo-->
-
-        <!-- inicio card agroquímicos-->
+        </div>
     
-            <div class="col-lg-10 col-md-8 col-3" *ngIf="isAdmin || isEncargadoAgricola">
-                <div class="card bg-warning shadow-sm mb-4">
-                    <div class="card-body">
-                        <h3 class="strong">Agroquímicos</h3>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h3>{{cantidadAgroquimicos}}</h3>
-                                <span style="font-size: 32px"><i class="fa-solid fa-skull-crossbones"></i></span>
-                            
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-dark stretched-link" routerLink="/agroquimico/listarAgroquimico">Ver detalles</a>
-                        <div class="small "><i class="bi bi-arrow-right-circle-fill"></i></div>
-                    </div>
-                </div>
-            </div>
+    <!-- fin card asesoria agroquímico-->
+
         
-            <!-- fin card agroquímico-->
-             <!-- inicio card finca-->
-    
-             <div class="col-lg-10 col-md-8 col-3" *ngIf="isAdmin || isEncargadoAgricola">
-                <div class="card bg-danger shadow-sm mb-4">
-                    <div class="card-body">
-                        <h3 class="strong">Finca</h3>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h3>{{cantidadFinca}}</h3>
-                                <span style="font-size: 32px"><i class="fa-solid fa-house-chimney"></i></span>
-                            
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-dark stretched-link" routerLink="/agroquimico/listarAgroquimico">Ver detalles</a>
-                        <div class="small "><i class="bi bi-arrow-right-circle-fill"></i></div>
-                    </div>
-                </div>
-            </div>
-        
-            <!-- fin card finca-->
        
       </div>
              <!-- inicio card Roles-->
-            <div class="row justify-content-center mt-3">
-                <div class=" col col-sm-10 col-md-8 col-3">
-                        <p-card styleClass="text-warning bg-secondary  shadow-2 mb-4" header="Rol de acceso" >
-                            <div class="row">
-                                <div class="col d-flex justify-content-center">
-                                    <div>
-                                        <!-- <p-chip styleClass="m-2" *ngFor="let rol of roles">{{rol}} </p-chip> -->
-                                        <h6 class="badge rounded-pill bg-warning shadow m-1" *ngFor="let rol of roles" >{{rol}}  </h6><br>
+             
+                    <div class="roles justify-content-center mt-3">
+                        <div class=" col col-sm-10 col-md-4 col-3">
+                                <p-card styleClass="text-dark  bg-gradient shadow-2 mb-4" header="Rol de acceso" >
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center">
+                                            <div>
+                                                <!-- <p-chip styleClass="m-2" *ngFor="let rol of roles">{{rol}} </p-chip> -->
+                                                <h6 class="badge rounded-pill bg-danger  shadow m-1" *ngFor="let rol of roles" >{{rol}}  </h6><br>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </p-card>
-                </div>
-                
-            </div>
+                                </p-card>
+                        </div>
+                        
+                    </div>
+            
 
             <!-- fin card Roles-->
 

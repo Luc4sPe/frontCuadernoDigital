@@ -38,6 +38,9 @@ export class IndexComponent implements OnInit {
   cantidadCultivos: number = 0;
   cantidadAgroquimicos: number = 0;
   cantidadFinca: number = 0;
+  cantidadProductor: number = 0;
+  cantidadProductorActivo: number = 0;
+  cantidadProductorInactivo: number = 0;
 
   
 
@@ -91,6 +94,7 @@ export class IndexComponent implements OnInit {
     this.obtenerCantidadCultivos();
     this.obtenerCantidadAgroquimicos();
     this.obtenerCantidadFinca();
+    this.obtenerTotalesProductor();
    
    
   } 
@@ -177,6 +181,34 @@ export class IndexComponent implements OnInit {
       })
     }
     
+  }
+
+
+  public obtenerTotalesProductor(): void {
+    if(this.isEncargadoAgricola){
+      this.obtenerCantidadProductor("ROLE_PRODUCTOR");
+      this.obtenerCantidadProductorActivos("ROLE_PRODUCTOR");
+      this.obtenerCantidadProductorInactivos("ROLE_PRODUCTOR");
+    }
+  }
+
+
+  public obtenerCantidadProductor( nombre: string):void{
+    this.usuarioService.cantidadProductor(nombre).toPromise().then(data =>{
+      this.cantidadProductor = data;
+    })
+  }
+
+  public obtenerCantidadProductorActivos( nombre: string):void{
+    this.usuarioService.cantidadProductorActivos(nombre).toPromise().then(data =>{
+      this.cantidadProductorActivo = data;
+    })
+  }
+
+  public obtenerCantidadProductorInactivos( nombre: string):void{
+    this.usuarioService.cantidadProductorInactivos(nombre).toPromise().then(data =>{
+      this.cantidadProductorInactivo = data;
+    })
   }
 
 
