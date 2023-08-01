@@ -1,9 +1,12 @@
 img {
-    margin-top: -23px;
-    margin-left: -125px;
-    left: 50%;
-    top: 30%;
-    position: absolute;
+    margin-top: -140px;
+    margin-left: -500px;
+    left: 125%;
+    top: 600%;
+    position: relative;
+    width: 150px;
+    height: 100px;
+    
     }
 
     #Bienvenido {
@@ -13,12 +16,35 @@ img {
         /* background: blue; */
       }
 
-
       .card{
         border-radius: 10px;
+        position: relative;
+       
+      
     }
+
+
+      
+
+     .p-card{
+        border-radius: 10px;
+       
+    } 
     
     .card-header{
         border-top-left-radius: 10px;
         border-top-right-radius: 10px
     }
+
+
+    #lucas{
+        margin-top: -140px;
+        margin-left: -500px;
+        left: 125%;
+        top: 600%;
+        position: relative;
+    }
+
+
+    
+    

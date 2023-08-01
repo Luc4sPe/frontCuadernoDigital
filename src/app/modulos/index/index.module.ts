@@ -6,6 +6,8 @@ import { IndexComponent } from './index/index.component';
 import { MenuModule } from 'src/app/menu/menu.module';
 import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ChipModule } from 'primeng/chip';
     IndexRoutingModule,
     MenuModule,
     CardModule,
-    ChipModule
+    ChipModule,
+    RouterModule
   ]
 })
 export class IndexModule { }

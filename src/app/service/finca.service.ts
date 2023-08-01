@@ -37,5 +37,9 @@ export class FincaService {
     return this.httpCliente.put(this.fincaURL + `modificar/${id}`, editarFinca);
   }
 
+  public cantidadFincas():Observable<number> {
+    return this.httpCliente.get<any>(`${this.fincaURL}CantidadDeFinca`);
+  }
+
   
 }

@@ -5,6 +5,7 @@ import { TokenService } from '../../../service/token.service';
 import { AsesoriaRiegoService } from 'src/app/service/asesoria-riego.service';
 import { CultivoService } from 'src/app/service/cultivo.service';
 import { AgroquimicoService } from 'src/app/service/agroquimico.service';
+import { FincaService } from 'src/app/service/finca.service';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class IndexComponent implements OnInit {
   cantidadUsuariosInactivos: number = 0;
   cantidadCultivos: number = 0;
   cantidadAgroquimicos: number = 0;
+  cantidadFinca: number = 0;
 
   
 
@@ -44,7 +46,8 @@ export class IndexComponent implements OnInit {
     private cultivoService: CultivoService,
     private usuarioService: UsuarioService,
     private asesoriaRiegoService: AsesoriaRiegoService,
-    private agroquimicoService: AgroquimicoService
+    private agroquimicoService: AgroquimicoService,
+    private fincaService: FincaService
     
     ) { }
 
@@ -87,6 +90,7 @@ export class IndexComponent implements OnInit {
     this.obtenerTotalesUsuarios();
     this.obtenerCantidadCultivos();
     this.obtenerCantidadAgroquimicos();
+    this.obtenerCantidadFinca();
    
    
   } 
@@ -164,6 +168,18 @@ export class IndexComponent implements OnInit {
     }
     
   }
+
+
+  public obtenerCantidadFinca():void{
+    if(this.isAdmin || this.isEncargadoAgricola){
+      this.fincaService.cantidadFincas().toPromise().then(data =>{
+        this.cantidadFinca = data;
+      })
+    }
+    
+  }
+
+
 
 
   
