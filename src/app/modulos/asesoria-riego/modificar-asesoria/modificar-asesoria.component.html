@@ -34,7 +34,7 @@
                                           
                         <label for="nomreFinca" class="form-label">Finca</label>
                         <select class="form-select" name="finca" id="nomreFinca"
-                        [(ngModel)]="asesoriaRiego.finca.nombre" aria-label=".form-select-lg example" required>
+                        [(ngModel)]="asesoriaRiego.finca.idFinca" aria-label=".form-select-lg example" required>
                         <option [value]="finca.idFinca" *ngFor="let finca of fincas">
                         
                             {{ finca.nombre }}

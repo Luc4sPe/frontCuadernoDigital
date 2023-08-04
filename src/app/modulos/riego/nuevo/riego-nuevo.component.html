@@ -24,13 +24,13 @@
                                         <div class="navbar">
                                            
                                           
-                                            <button (click)="mostrarForm()" pRipple *ngIf="isProductor" class="btn btn-outline-primary" id="botonRiego"  pTooltip="Nuevo Riego" tooltipPosition="right"> <i class="fa-solid fa-faucet-drip"></i></button> 
+                                            <button (click)="mostrarForm()" pRipple *ngIf="isProductor" class="btn btn-outline-primary" id="botonRiego"   tooltipPosition="right">Nuevo riego  <i class="fa-solid fa-faucet-drip"></i></button> 
                                           
                                         </div>
                                         <div class="navbar">
 
                                            
-                                            <button (click)="mostrarCard()" pRipple *ngIf="isProductor" class="btn btn-outline-info" id="botonAsesoria" pTooltip="Riego con asesoria" tooltipPosition="left"> <i class="bi bi-moisture"></i></button> 
+                                            <button (click)="mostrarCard()" pRipple *ngIf="isProductor" class="btn btn-outline-info" id="botonAsesoria"  tooltipPosition="left">Riego con asesoría <i class="bi bi-moisture"></i></button> 
                                         </div>
                                     
                                     
@@ -280,7 +280,7 @@
                                                               <td >{{asesoriaRiego.cuadro.numeroCuadro}}</td>
                                                               <!-- <td >{{asesoriaRiego.productor.nombre}}</td> -->
                                                             <!-- <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td> -->
-                                                            <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionRiego | date:"short" }}</td>
+                                                            <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionEstado | date:"short" }}</td>
                                                             <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
                                                             <td class="text-center">
                                                                 <p-tag [severity]="getSeverityByEstado(asesoriaRiego)" styleClass="uppercase" [rounded]="true">{{asesoriaRiego.asesoriaAplicada? "Aplicada": "NoAplicada" }}</p-tag>
