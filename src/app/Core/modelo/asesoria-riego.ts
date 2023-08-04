@@ -14,6 +14,7 @@ export class AsesoriaRiego {
     fechaModificacionRiego: Date = new Date();
     fechaModificacionEstado: Date = new Date();
     asesoriaAplicada: boolean = true;
+    fechaEstimadaAplicacionParsed: Date = new Date();
     
     constructor( duracionEnHoras: Date,milimetrosAplicados:number,finca: Finca,cuadro: Cuadro,productor: Usuario){
 

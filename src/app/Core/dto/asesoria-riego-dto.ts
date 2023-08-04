@@ -8,4 +8,5 @@ export class AsesoriaRiegoDto {
     idFinca:number;
     idCuadro: number;
     nombreProductor: string;
+    fechaEstimadaAplicacion: string;
 }

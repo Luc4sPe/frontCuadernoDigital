@@ -31,6 +31,7 @@ export class ListarAsesoriaComponent implements OnInit {
     this.isAdmin = this.tokenService.isAdmin();
     this.cargarItems();
     this.listarAsesoria();
+    console.log(this.listarAsesoria());
 
     
   }

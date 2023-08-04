@@ -16,6 +16,7 @@ import { NuevaAsesoriaComponent } from './nueva-asesoria/nueva-asesoria.componen
 import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
 import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
 import { ListadoComponent } from './listadoPorFinca/listado.component';
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -39,7 +40,8 @@ import { ListadoComponent } from './listadoPorFinca/listado.component';
     ValidateEqualModule,
     TableModule,
     CardModule,
-    RadioButtonModule
+    RadioButtonModule,
+    CalendarModule
   ]
 })
 export class AsesoriaRiegoModule { }

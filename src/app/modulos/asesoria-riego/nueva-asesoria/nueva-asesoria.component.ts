@@ -26,6 +26,8 @@ export class NuevaAsesoriaComponent implements OnInit {
   loading : boolean = true;
   fincas: Finca[];
   cuadros: Cuadro[];
+  fechaEstimada: Date = new Date();
+  fechaActual : Date = new Date();
   
 
   constructor(
@@ -53,6 +55,7 @@ export class NuevaAsesoriaComponent implements OnInit {
 
 
   crearAsesoria(form: NgForm): void{
+    this.nuevaAsesoria.fechaEstimadaAplicacion = this.fechaEstimada.toISOString().split("T")[0];
     Swal.fire({
       title:'¿Crear una nueva asesoria?',
       showCancelButton: true,

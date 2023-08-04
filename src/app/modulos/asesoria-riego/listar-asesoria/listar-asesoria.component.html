@@ -105,6 +105,16 @@
                             </th> 
                             <!-- fin -->
 
+                            <!-- -- columna fecha estimada de aplicación-->
+                            <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Estimada de aplicación                               
+                                    <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
+                                    <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th> 
+                            <!-- fin -->
+
                             <!-- Acciones -->
                                     
                             <th class="text-center" pSortableColumn="ver"> 
@@ -137,6 +147,7 @@
                                           <td>{{asesoriaRiego.productor.nombre}}</td>
                                         <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td>
                                         <td>{{asesoriaRiego.fechaModificacionRiego | date:"short" }}</td>
+                                        <td>{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
                                         
                                         
                                          <!--Boton Editar -->
