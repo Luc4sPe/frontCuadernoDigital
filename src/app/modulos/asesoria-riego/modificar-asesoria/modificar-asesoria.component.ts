@@ -13,6 +13,7 @@ import { FincaService } from 'src/app/service/finca.service';
 import { Finca } from 'src/app/Core/modelo/finca';
 import { CuadroService } from 'src/app/service/cuadro.service';
 import { Cuadro } from 'src/app/Core/modelo/cuadro';
+import { AsesoriaRiegoDto } from 'src/app/Core/dto/asesoria-riego-dto';
 @Component({
   selector: 'app-modificar-asesoria',
   templateUrl: './modificar-asesoria.component.html',
@@ -28,6 +29,9 @@ export class ModificarAsesoriaComponent implements OnInit {
   loading : boolean = true;
   fincas: Finca[]=[];
   cuadros: Cuadro[];
+  
+    modificarAsesoria = <ModificarAsesoRiego>{}
+
   constructor(
     private asesoriaService: AsesoriaRiegoService,
     private router: Router,
@@ -59,8 +63,10 @@ export class ModificarAsesoriaComponent implements OnInit {
 
   obtenerAsesoria(id:number):void{
     this.asesoriaService.obtenerAsesoria(id).toPromise().then(
-      data =>{
+      (data) =>{
         this.asesoriaRiego=data;
+        this.asesoriaRiego.fechaEstimadaAplicacionParsed = new Date (this.asesoriaRiego.fechaEstimadaAplicacionParsed);
+       
       }, 
        err => {
         Swal.fire('Error', err.error.mensaje, 'error');
@@ -74,6 +80,7 @@ export class ModificarAsesoriaComponent implements OnInit {
 
 
   solitarModificacionAsesoria(form: NgForm):void{
+   
     Swal.fire({
       title: '¿Deseas editar los datos de la asesoria?',
       icon: 'question',
@@ -91,10 +98,12 @@ export class ModificarAsesoriaComponent implements OnInit {
 
 
   actualizarAsesoria(form: NgForm):void{
-
+    
     const id = this.activatedRoute.snapshot.params.id;
     const modificarAsesoria = new ModificarAsesoRiego(this.asesoriaRiego.duracionEnHoras,this.asesoriaRiego.milimetrosAplicados,
-      this.asesoriaRiego.finca.idFinca,this.asesoriaRiego.cuadro.idCuadro,this.asesoriaRiego.productor.nombreUsuario);
+      this.asesoriaRiego.finca.idFinca,this.asesoriaRiego.cuadro.idCuadro,this.asesoriaRiego.productor.nombreUsuario,
+      this.asesoriaRiego.fechaEstimadaAplicacionParsed);
+      
     console.log(modificarAsesoria);
     this.asesoriaService.modificarAsesoriaRiego(id,modificarAsesoria).toPromise().then(
       data =>{

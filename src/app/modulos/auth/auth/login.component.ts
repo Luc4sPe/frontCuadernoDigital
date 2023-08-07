@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Error al iniciar sesión',
-          text: this.msj
+          text: err.error.mensaje
         })
         
         

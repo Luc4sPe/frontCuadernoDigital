@@ -96,17 +96,32 @@
                      <!-- fin -->
                       <!-- Milimetros -->
                       <div class="form-group p-2">
-                        <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
-                        <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" value = {{asesoriaRiego.milimetrosAplicados}} placeholder="Ingrese los milimetros" 
-                        [(ngModel)]="asesoriaRiego.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                            <label for="milimetrosAplicados" class="form-label">Milimetros aplicados</label>
+                            <input type="number" class="p-inputtext form-control mt-2"  name="milimetro" id="milimetrosAplicados" value = {{asesoriaRiego.milimetrosAplicados}} placeholder="Ingrese los milimetros" 
+                            [(ngModel)]="asesoriaRiego.milimetrosAplicados" #mili ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                        
+                            <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
+                                <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                            </div>
                     
-                        <div *ngIf="mili.invalid && (mili.dirty || mili.touched)">
-                            <p-message styleClass="m-1" *ngIf="mili.errors?.required"  severity="error" text="Los milimetros son requeridos"></p-message>
-                            <p-message styleClass="m-1" *ngIf="mili.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                            <p-message styleClass="m-1" *ngIf="mili.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                         </div>
-                    
-                    </div>
+
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <!--group FechaFecha estimdada de asesoría-->
+                                    <label class="m-2" for="fechaEstimadaAplicacionParsed">Fecha estimada de aplicación de asesoría</label><br/>
+                                    <p-calendar class="mt-2" inputId="basic" name="fechaEstimadaAplicacionParsed" [(ngModel)]="asesoriaRiego.fechaEstimadaAplicacionParsed"
+                                     [required]="true" yearRange="1930:2030" [showIcon]="true"></p-calendar>
+                                    <!--fin group Fecha estimdada de asesoría-->
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
 
                     <!-- fin -->
                      <!-- botones -->
