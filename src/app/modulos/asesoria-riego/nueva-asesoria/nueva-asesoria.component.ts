@@ -10,6 +10,7 @@ import { FincaService } from 'src/app/service/finca.service';
 import { Finca } from 'src/app/Core/modelo/finca';
 import { CuadroService } from 'src/app/service/cuadro.service';
 import { Cuadro } from 'src/app/Core/modelo/cuadro';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-nueva-asesoria',
   templateUrl: './nueva-asesoria.component.html',
@@ -34,7 +35,8 @@ export class NuevaAsesoriaComponent implements OnInit {
     private asesoriaService: AsesoriaRiegoService,
     private usuarioPorRol: UsuarioService,
     private fincaService: FincaService,
-    private cuadroService: CuadroService
+    private cuadroService: CuadroService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -83,6 +85,7 @@ export class NuevaAsesoriaComponent implements OnInit {
         });
 
         form.resetForm();
+        this.router.navigate(['asesoramientoRiego/listaAsesoria']);
       },
       err =>{
         this.msj = err.error.mensaje;

@@ -114,6 +114,7 @@ export class ModificarAsesoriaComponent implements OnInit {
           text:'Datos actualizados correctamente'
         });
        // form.resetForm();
+       this.router.navigate(['asesoramientoRiego/listaAsesoria']);
       }, 
       err => {
         this.msj = err.error.mensaje;

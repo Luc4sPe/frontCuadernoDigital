@@ -9,7 +9,7 @@ export class ModificarAsesoRiego {
     nombreProductor: string;
     fechaEstimadaAplicacion: string;
 
-    constructor( duracionEnHoras: Date,milimetrosAplicados:number,idFinca: number, idCuadro: number ,nombreProductor: string,fechaEstimadaAplicacion: string){
+    constructor( duracionEnHoras: Date,milimetrosAplicados:number,idFinca: number, idCuadro: number ,nombreProductor: string, fechaEstimadaAplicacion: string){
 
         this.duracionEnHoras=duracionEnHoras;
         this.milimetrosAplicados=milimetrosAplicados;
