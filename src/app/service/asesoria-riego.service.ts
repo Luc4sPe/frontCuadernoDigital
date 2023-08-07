@@ -60,6 +60,10 @@ export class AsesoriaRiegoService {
     return this.httpCliente.get<any>(`${this.aseRiegoURL}total-NoAplicados`);
 
   }
+
+  public cantidadAsesoriaRiegoByProductor(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.aseRiegoURL}total-asesoriaByProductor/${nombre}`);
+  }
   
   
 }
