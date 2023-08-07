@@ -10,9 +10,9 @@ export class AsesoriaRiego {
     finca: Finca;
     cuadro: Cuadro;
     productor: Usuario
-    fechaRiego: Date = new Date();
-    fechaModificacionRiego: Date = new Date();
-    fechaModificacionEstado: Date = new Date();
+    fechaAsesoriaRiego: Date = new Date();
+    fechaModificacionAsesoriaRiego: Date = new Date();
+    fechaAplicacionAsesoria: Date = new Date();
     asesoriaAplicada: boolean = true;
     fechaEstimadaAplicacionParsed: Date = new Date();
     

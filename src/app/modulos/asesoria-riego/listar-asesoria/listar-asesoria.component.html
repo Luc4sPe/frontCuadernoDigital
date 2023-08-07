@@ -89,18 +89,18 @@
                             <!-- fin -->
 
                            <!-- Fecha de riego-->
-                           <th class="text-center" pSortableColumn="fechaRiego">
+                           <th class="text-center" pSortableColumn="fechaAsesoriaRiego">
                                     Asesoría
-                                <p-sortIcon field="fechaRiego"></p-sortIcon>
-                                <p-columnFilter type="date" field="fechaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                                <p-sortIcon field="fechaAsesoriaRiego"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaAsesoriaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
                             </th>
                             <!-- fin -->
                              <!-- -- columna fecha actualizacion-->
-                             <th class="text-center" pSortableColumn="fechaModificacionRiego">
+                             <th class="text-center" pSortableColumn="fechaModificacionAsesoriaRiego">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     Modificación                               
-                                    <p-sortIcon field="fechaModificacionRiego"></p-sortIcon>
-                                    <p-columnFilter type="date" field="fechaModificacionRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    <p-sortIcon field="fechaModificacionAsesoriaRiego"></p-sortIcon>
+                                    <p-columnFilter type="date" field="fechaModificacionAsesoriaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
                                 </div>
                             </th> 
                             <!-- fin -->
@@ -116,11 +116,11 @@
                             <!-- fin -->
 
                              <!-- -- columna fecha modificación de estado-->
-                             <th class="text-center" pSortableColumn="fechaModificacionEstado">
+                             <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     Fecha aplicada                               
-                                    <p-sortIcon field="fechaModificacionEstado"></p-sortIcon>
-                                    <p-columnFilter type="date" field="fechaModificacionEstado" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                                    <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
                                 </div>
                             </th> 
                             <!-- fin -->
@@ -155,10 +155,10 @@
                                           <td>{{asesoriaRiego.finca.nombre}}</td>
                                           <td>{{asesoriaRiego.cuadro.numeroCuadro}}</td>
                                           <td>{{asesoriaRiego.productor.nombre}}</td>
-                                        <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td>
-                                        <td>{{asesoriaRiego.fechaModificacionRiego | date:"short" }}</td>
+                                        <td>{{asesoriaRiego.fechaAsesoriaRiego | date:"short" }}</td>
+                                        <td>{{asesoriaRiego.fechaModificacionAsesoriaRiego | date:"short" }}</td>
                                         <td>{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
-                                        <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionEstado | date:"short" }}</td>
+                                        <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:"short" }}</td>
                                         <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
                                         
                                          <!--Boton Editar -->
