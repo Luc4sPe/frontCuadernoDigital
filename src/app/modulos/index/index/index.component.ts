@@ -16,6 +16,7 @@ import { FincaService } from 'src/app/service/finca.service';
 export class IndexComponent implements OnInit {
 
   nombreUsuario: any = '' ;
+  nombreUsuarioProductor: any = '' ;
   isLogged = false;
 
  roles : string[] = [];
@@ -41,6 +42,9 @@ export class IndexComponent implements OnInit {
   cantidadProductor: number = 0;
   cantidadProductorActivo: number = 0;
   cantidadProductorInactivo: number = 0;
+  cantidadAsesoriaRiegoByProductor: number = 0;
+  cantidadAsesoriaRiegoAplicadaByProductor: number = 0;
+  cantidadAsesoriaRiegoNoAplicadaByProductor: number = 0;
 
   
 
@@ -72,6 +76,8 @@ export class IndexComponent implements OnInit {
       this.isLogged = false;
       this.nombreUsuario = '';
     }
+
+    
     this.cargarTotalesAlInicio();
     
   
@@ -95,6 +101,7 @@ export class IndexComponent implements OnInit {
     this.obtenerCantidadAgroquimicos();
     this.obtenerCantidadFinca();
     this.obtenerTotalesProductor();
+    this.obtenerTotalesAsesoriaRiegoByProductor();
    
    
   } 
@@ -211,6 +218,35 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  public obtenerTotalesAsesoriaRiegoByProductor(): void {
+    if(this.isProctor){
+      this.nombreUsuarioProductor = this.tokenService.getUserName();
+      this.obtenerCantidadAsesoriaByProductor(this.nombreUsuarioProductor);
+      this.obtenerCantidadAsesoriaAplicadaByProductor(this.nombreUsuarioProductor);
+      this.obtenerCantidadAsesoriaNoAplicadaByProductor(this.nombreUsuarioProductor);
+    }
+  }
+
+  public obtenerCantidadAsesoriaByProductor( nombre: string):void{
+   this.asesoriaRiegoService.cantidadAsesoriaRiegoByProductor(nombre).toPromise().then(data =>{
+      this.cantidadAsesoriaRiegoByProductor = data;
+   })
+  }
+
+  public obtenerCantidadAsesoriaAplicadaByProductor( nombre: string):void{
+    this.asesoriaRiegoService.cantidadAsesoriaRiegoAplicadaByProductor(nombre).toPromise().then(data =>{
+       this.cantidadAsesoriaRiegoAplicadaByProductor = data;
+    })
+   }
+
+   public obtenerCantidadAsesoriaNoAplicadaByProductor( nombre: string):void{
+    this.asesoriaRiegoService.cantidadAsesoriaRiegoNoAplicadaByProductor(nombre).toPromise().then(data =>{
+       this.cantidadAsesoriaRiegoNoAplicadaByProductor = data;
+    })
+   }
+
+
+  
 
 
 

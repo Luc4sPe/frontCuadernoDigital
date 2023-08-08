@@ -169,6 +169,34 @@
         
         <!-- fin card asesoria riego-->
 
+        <!-- inicio card asesoria riego por productor-->
+        <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+            <div class="card bg-info bg-gradient shadow-sm text-dark mb-4">
+                <div class="card-body">
+                    <h4>Asesoría riego  {{cantidadAsesoriaRiegoByProductor}}</h4>
+                
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                        
+                            <h6 class="badge rounded-pill bg-success shadow">Aplicadas {{cantidadAsesoriaRiegoAplicadaByProductor}}</h6><br>
+                            <h6 class="badge rounded-pill bg-danger shadow">No aplicadas {{cantidadAsesoriaRiegoNoAplicadaByProductor}}</h6>
+                        </div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-faucet-drip"></i> 
+
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-dark stretched-link" routerLink="/asesoramientoRiego/listaAsesoria"> Ver detalles</a>
+                    <div class="small text-dark"><i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- fin card asesoria riego por productor-->
+
         <!-- inicio card asesoria agroquímico-->
         <div class="col-lg-3 col-md-4 col-3" *ngIf="isEncargadoAgricola">
             <div class="card bg-secondary  bg-gradient shadow-sm text-white mb-4">
