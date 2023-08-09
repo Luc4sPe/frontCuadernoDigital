@@ -19,6 +19,7 @@ export const environment = {
   agroquimicoURL:'http://localhost:8080/agroquimico/',
   aplicacionAgroquimicoURL:'http://localhost:8080/aplicacionAgroquimico/',
   asesoriaRiegoURL:'http://localhost:8080/asesoramientoRiego/',
+  asesoriaAgroquimicoURL:'http://localhost:8080/asesoramientoAgroquimico/',
   
 
 };

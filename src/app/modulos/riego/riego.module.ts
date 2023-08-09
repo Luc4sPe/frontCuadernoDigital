@@ -23,6 +23,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
 
 
+
 @NgModule({
   declarations: [
     RiegoNuevoComponent,
@@ -49,7 +50,8 @@ import { TagModule } from 'primeng/tag';
     CardModule,
     RadioButtonModule,
     InputSwitchModule,
-    TagModule
+    TagModule,
+
 
     
   ]
