@@ -50,8 +50,8 @@ export class NuevaAsesoriaComponent implements OnInit {
   cargarItems(): void {
     this.home = {icon: 'pi pi-home', routerLink:'/index'};
     this.items = [
-      {label: 'Asesoria Riego'},
-      {label: 'Nueva asesoria', disabled:true}
+      {label: 'Asesoría Riego'},
+      {label: 'Nueva asesoría', disabled:true}
     ];
   }
 

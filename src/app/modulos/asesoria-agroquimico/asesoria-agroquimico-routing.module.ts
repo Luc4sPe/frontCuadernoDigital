@@ -4,6 +4,7 @@ import { Roles } from 'src/app/Core/enmus/roles';
 import { NuevaAsesoriaAgroComponent } from './nueva-asesoria-agro/nueva-asesoria-agro.component';
 import { CulGuardService as guarEncargadoAgri } from 'src/app/Core/guards/cul-guard.service';
 
+
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
 const Productor = Roles.PRODUCTOR;
 const ADMIN=Roles.ADMIN;
@@ -23,7 +24,7 @@ const routes: Routes = [
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
 
       
-       {path:'**', redirectTo:'listarAsesoriaPorFinca'}
+       {path:'**', redirectTo:''}
      
     ],
   },

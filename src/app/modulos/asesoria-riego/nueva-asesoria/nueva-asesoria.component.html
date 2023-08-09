@@ -70,22 +70,22 @@
                                           <!-- fin -->
 
                                            <!-- Listado de los Cuadros solo permite seleccionar 1 cuadro -->
-                                       <div class="p-2">
+                                            <div class="p-2">
                                           
-                                        <label class="form-check-label" for="labor" > Cuadro </label>
+                                             <label class="form-check-label" for="labor" > Cuadro </label>
                                        
-                                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
-                                                <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="nuevaAsesoria.idCuadro" inputId="riego"> 
-                                                </p-radioButton>
-                                                <label for="riego"> 
-                                                    {{cuadro.numeroCuadro}} 
-                                                   
+                                                <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                    <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="nuevaAsesoria.idCuadro" inputId="riego"> 
+                                                    </p-radioButton>
+                                                    <label for="riego"> 
+                                                        {{cuadro.numeroCuadro}} 
+                                                    
 
-                                                </label>
+                                                    </label>
                                                
+                                                </div>
                                             </div>
-                                   </div>
-                                  <!-- fin -->
+                                            <!-- fin -->
 
                                             <!-- Duración en horas -->
                                             <div class="form-group p-2">
