@@ -11,12 +11,16 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { MessageModule } from 'primeng/message';
 import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
 
 
 
 @NgModule({
   declarations: [
     NuevaAsesoriaAgroComponent,
+    ListadoAsesoriaComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +33,9 @@ import { CalendarModule } from 'primeng/calendar';
     MultiSelectModule,
     RadioButtonModule,
     MessageModule,
-    CalendarModule
+    CalendarModule,
+    TableModule,
+    CardModule,
   ]
 })
 export class AsesoriaAgroquimicoModule { }

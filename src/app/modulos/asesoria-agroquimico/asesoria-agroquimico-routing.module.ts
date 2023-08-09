@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { NuevaAsesoriaAgroComponent } from './nueva-asesoria-agro/nueva-asesoria-agro.component';
 import { CulGuardService as guarEncargadoAgri } from 'src/app/Core/guards/cul-guard.service';
+import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
 
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
@@ -20,6 +21,11 @@ const routes: Routes = [
     
       { path: 'nuevoAsesoriaAgroquimico',
        component: NuevaAsesoriaAgroComponent,
+       canActivate:[guarEncargadoAgri],
+       data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
+
+       { path: 'listaAsesoriaAgroquimico',
+       component: ListadoAsesoriaComponent,
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
 

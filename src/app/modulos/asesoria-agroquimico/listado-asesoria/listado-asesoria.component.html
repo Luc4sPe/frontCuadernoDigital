@@ -1,0 +1,205 @@
+<app-menu></app-menu> 
+
+<div class="card">
+    <div class="container fadein animation-iteration-1 animation-duration-500">
+        <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+        <div class="row d-flex justify-content-center">
+
+            <p-card styleClass="shadow-1 mb-4" header="">
+
+                <p-table #dt [value]="asesorias" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+                  <!-- botones -->
+                  <ng-template pTemplate="caption">
+                    <div class="d-flex justify-content-between">
+                        <button pRipple *ngIf="isEncargadoAgricola" pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nueva asesoría agroquímico" routerLink="/asesoramientoAgroquimico/nuevoAsesoriaAgroquimico"></button>
+                        <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
+                     </div>
+                </ng-template>
+
+                <!-- fin -->
+
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+
+                          <!-- Columna id -->
+                          <th class="text-center" pSortableColumn="id">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                              Id
+                              <p-sortIcon field="id"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+                        <!-- fin -->
+
+                         <!-- Agroquímico -->
+                         <th class="text-center" pSortableColumn="agroquimico">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Agroquímico
+                            <p-sortIcon field="agroquimico"></p-sortIcon>
+                            <p-columnFilter type="text" field="agroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Nombre de finca -->
+                         <th class="text-center" pSortableColumn="nombre">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Finca
+                                <p-sortIcon field="nombre"></p-sortIcon>
+                                <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Cuadro -->
+                         <th class="text-center" pSortableColumn="cuadro">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                            <p-sortIcon field="cuadro"></p-sortIcon>
+                            <p-columnFilter type="text" field="cuadro" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                           </th>
+                        <!-- fin -->
+
+                         <!-- dosisPorHectaria -->
+                         <th class="text-center" pSortableColumn="dosisPorHectaria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Dosis por hectarea
+                            <p-sortIcon field="dosisPorHectaria"></p-sortIcon>
+                            <p-columnFilter type="number" field="dosisPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- dosisPorHl -->
+                         <th class="text-center" pSortableColumn="dosisPorHl">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Dosis por por Hl
+                            <p-sortIcon field="dosisPorHl"></p-sortIcon>
+                            <p-columnFilter type="number" field="dosisPorHl" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- volumenPorHectaria -->
+                         <th class="text-center" pSortableColumn="volumenPorHectaria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Volumen por hectaria
+                            <p-sortIcon field="volumenPorHectaria"></p-sortIcon>
+                            <p-columnFilter type="number" field="volumenPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- objetivo -->
+                         <th class="text-center" pSortableColumn="objetivo">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Objetivo
+                            <p-sortIcon field="objetivo"></p-sortIcon>
+                            <p-columnFilter type="text" field="objetivo" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Plaga -->
+                         <th class="text-center" pSortableColumn="plaga">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Plaga
+                            <p-sortIcon field="plaga"></p-sortIcon>
+                            <p-columnFilter type="text" field="plaga" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Fecha asesoria-->
+                         <th class="text-center" pSortableColumn="fechaAsesoriaAgroquimico">
+                            Asesoría
+                        <p-sortIcon field="fechaAsesoriaAgroquimico"></p-sortIcon>
+                        <p-columnFilter type="date" field="fechaAsesoriaAgroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                    </th>
+                    <!-- fin -->
+
+                      <!-- -- columna fecha actualizacion-->
+                      <th class="text-center" pSortableColumn="fechaModificacionAsesoriaAgroquimico">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Modificación                               
+                            <p-sortIcon field="fechaModificacionAsesoriaAgroquimico"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaModificacionAsesoriaAgroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th> 
+                    <!-- fin -->
+
+                     <!-- -- columna fecha estimada de aplicación-->
+                     <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha estimada de aplicación                               
+                            <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th> 
+                    <!-- fin -->
+
+                     <!-- -- columna fecha modificación de estado aplicación-->
+                     <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha aplicada                               
+                            <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th> 
+                    <!-- fin -->
+
+                      <!-- Acciones -->
+                                    
+                      <th class="text-center" pSortableColumn="ver"> 
+                        <div class="p-d-flex p-jc-between p-ai-center"></div>
+                        Acciones
+                    </th>
+
+                    <th class="text-center" pSortableColumn="ver"> 
+                        <div class="p-d-flex p-jc-between p-ai-center"></div>
+                    </th>
+                    <!-- fin -->
+
+                    </tr>
+
+                </ng-template>
+
+                <ng-template pTemplate="body" let-asesoriaAgroquimico>
+                    <tr> 
+                        <td>{{asesoriaAgroquimico.id}}</td>
+                        <td>{{asesoriaAgroquimico.agroquimico.nombreComercial}}</td>
+                        <td>{{asesoriaAgroquimico.finca.nombre}}</td>
+                        <td>{{asesoriaAgroquimico.cuadro.numeroCuadro}}</td>
+                        <td>{{asesoriaAgroquimico.dosisPorHectaria}}</td>
+                        <td>{{asesoriaAgroquimico.dosisPorHl}}</td>
+                        <td>{{asesoriaAgroquimico.volumenPorHectaria}}</td>
+                        <td>{{asesoriaAgroquimico.objetivo}}</td>
+                        <td>{{asesoriaAgroquimico.plaga}}</td>
+                        <td>{{asesoriaAgroquimico.fechaAsesoriaAgroquimico | date:"dd/MM/YYYY" }}</td>
+                        <td>{{asesoriaAgroquimico.fechaModificacionAsesoriaAgroquimico | date:"short" }}</td>
+                        <td>{{asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                        <td *ngIf="asesoriaAgroquimico.asesoriaAplicada == true">{{asesoriaAgroquimico.fechaAplicacionAsesoria | date:"short" }}</td>
+                        <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
+
+                         <!--Boton Editar -->
+                         <td class="text-center">
+                            <button pRipple class="btn btn-outline-warning" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false"
+                            routerLink="/asesoramientoRiego/editarAsesoriaRiego/{{asesoriaAgroquimico.id}}" pTooltip="Editar" tooltipPosition="top">
+                            <i class="fa-solid fa-pen-to-square"></i></button> 
+                        </td>
+                        <!-- fin -->
+                    </tr>
+                </ng-template>
+
+                </p-table>
+
+            </p-card>
+        </div>
+    </div>
+</div>
