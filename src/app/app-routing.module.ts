@@ -75,6 +75,12 @@ const routes: Routes = [
     loadChildren:() => import('./modulos/asesoria-riego/asesoria-riego.module').then(ase => ase.AsesoriaRiegoModule)
   },
 
+  {
+    path: 'asesoramientoAgroquimico',
+    loadChildren:() => import('./modulos/asesoria-agroquimico/asesoria-agroquimico.module').then(aseAgro => aseAgro.AsesoriaAgroquimicoModule)
+    
+  },
+
  
  
 
