@@ -73,15 +73,15 @@ export class NuevaAsesoriaComponent implements OnInit {
   }
 
   soliciotacionCrearAsesoria(form: NgForm): void{
-     console.log(this.nuevaAsesoria);
     this.asesoriaService.crearAsesoriaRiego(this.nuevaAsesoria).subscribe(
       data=>{
-        console.log(this.nuevaAsesoria);
         this.msj=data.mensaje;
         Swal.fire({
           icon: 'success',
           title: this.msj,
           text: '',
+          
+       
         });
 
         form.resetForm();
@@ -135,7 +135,6 @@ export class NuevaAsesoriaComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      console.log(valor.value)
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.cuadros=data;
