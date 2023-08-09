@@ -182,7 +182,8 @@
                         <td>{{asesoriaAgroquimico.objetivo}}</td>
                         <td>{{asesoriaAgroquimico.plaga}}</td>
                         <td>{{asesoriaAgroquimico.fechaAsesoriaAgroquimico | date:"dd/MM/YYYY" }}</td>
-                        <td>{{asesoriaAgroquimico.fechaModificacionAsesoriaAgroquimico | date:"short" }}</td>
+                        <td *ngIf="asesoriaAgroquimico.fechaModificacionAsesoriaAgroquimico != null">{{asesoriaAgroquimico.fechaModificacionAsesoriaAgroquimico | date:"dd/MM/YYYY" }}</td>
+                        <td class="text-center" *ngIf="asesoriaAgroquimico.fechaModificacionAsesoriaAgroquimico === null"><i class="fa-solid fa-calendar-days"></i></td>
                         <td>{{asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
                         <td *ngIf="asesoriaAgroquimico.asesoriaAplicada == true">{{asesoriaAgroquimico.fechaAplicacionAsesoria | date:"short" }}</td>
                         <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
