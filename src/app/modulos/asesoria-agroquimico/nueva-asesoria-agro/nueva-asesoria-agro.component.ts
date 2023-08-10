@@ -95,7 +95,8 @@ export class NuevaAsesoriaAgroComponent implements OnInit {
         });
 
         form.resetForm();
-        //this.router.navigate(['asesoramientoRiego/listaAsesoria']);
+        this.router.navigate(['/asesoramientoAgroquimico/listaAsesoriaAgroquimico']);
+        
       },
       err =>{
         this.msj = err.error.mensaje;

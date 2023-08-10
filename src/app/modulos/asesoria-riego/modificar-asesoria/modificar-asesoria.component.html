@@ -45,23 +45,7 @@
                      </div>
                       <!-- fin -->
 
-                        <!-- Selector cuadro -->
-                        <div class="p-2">
-                                          
-                            <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
-                            <select class="form-select" name="cuadro" id="idCuadr"
-                            [(ngModel)]="asesoriaRiego.cuadro.numeroCuadro" aria-label=".form-select-lg example" required>
-                            <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
-                            
-                                {{ cuadro.numeroCuadro }}
-                                
-                            </option>
-                            
-                            </select>
-                         </div>
-                          <!-- fin -->
-
-                           <!-- Listado de los Cuadros -->
+                      <!-- Listado de los Cuadros -->
                            <div class="p-2">
                                           
                             <label class="form-check-label" for="labor" > Cuadro </label>
@@ -72,9 +56,7 @@
                                     <label for="riego"> 
                                         {{cuadro.numeroCuadro}} 
                                     
-
                                     </label>
-                               
                                 </div>
                         </div>
                         <!-- fin lista cuadros -->
@@ -107,7 +89,9 @@
                             </div>
                     
                         </div>
+                         <!-- fin -->
 
+                          <!-- Fecha -->
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
@@ -120,10 +104,8 @@
 
                             </div>
                         </div>
-
-                        
-
                     <!-- fin -->
+                    
                      <!-- botones -->
                      <div class="card-footer mb-2">
                         <div class="d-flex justify-content-between">

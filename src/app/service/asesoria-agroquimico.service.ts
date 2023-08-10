@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { AsesoriaAgroquimicoDto } from '../Core/dto/asesoria-agroquimico-dto';
 import { Observable } from 'rxjs';
 import { AsesoriaAgroquimico } from '../Core/modelo/asesoria-agroquimico';
+import { ModificarAgroquimicoDto } from '../Core/dto/modificar-agroquimico-dto';
+import { ModificarAsesoriaAgroquimicoDto } from '../Core/dto/modificar-asesoria-agroquimico-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,33 @@ export class AsesoriaAgroquimicoService {
   public listarAsesoria(): Observable<AsesoriaAgroquimico[]>{
     return this.httpCliente.get<AsesoriaAgroquimico[]>(this.asesoriaAgroquiURL +'listaAsesoriaAgroquimico');
   }
+
+  public cantidadAsesoriaAgro():Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total`);
+  }
+
+  public cantidadAsesoriaAgroAplicada():Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total-Aplicados`);
+
+  }
+
+
+  public cantidadAsesoriaAgroNoAplicada():Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total-NoAplicados`);
+
+  }
+
+  public obtenerAsesoria(id: number): Observable<AsesoriaAgroquimico>{
+    return this.httpCliente.get<AsesoriaAgroquimico>(this.asesoriaAgroquiURL + `detalle/${id}`);
+
+  }
+
+  public modificarAsesoriaAgro(id: number, modificar: ModificarAsesoriaAgroquimicoDto): Observable<any> {
+    return this.httpCliente.put(this.asesoriaAgroquiURL + `update/${id}`, modificar);
+  }
+
+
+
 
   
 

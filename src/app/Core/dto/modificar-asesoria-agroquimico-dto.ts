@@ -23,6 +23,7 @@ export class ModificarAsesoriaAgroquimicoDto {
             this.plaga=plaga;
             this.fechaEstimadaAplicacion=fechaEstimadaAplicacion;
             this.idFinca=idFinca;
+            this.nombreProductor=nombreProductor;
 
     }
 }

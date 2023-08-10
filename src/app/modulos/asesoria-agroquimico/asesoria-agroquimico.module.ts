@@ -11,9 +11,12 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { MessageModule } from 'primeng/message';
 import { CalendarModule } from 'primeng/calendar';
+import {ListboxModule} from 'primeng/listbox';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
+import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-asesoria-agro.component';
+
 
 
 
@@ -21,6 +24,8 @@ import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.co
   declarations: [
     NuevaAsesoriaAgroComponent,
     ListadoAsesoriaComponent,
+    EditarAsesoriaAgroComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -36,6 +41,7 @@ import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.co
     CalendarModule,
     TableModule,
     CardModule,
+    ListboxModule
   ]
 })
 export class AsesoriaAgroquimicoModule { }

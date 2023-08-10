@@ -6,6 +6,7 @@ import { AsesoriaRiegoService } from 'src/app/service/asesoria-riego.service';
 import { CultivoService } from 'src/app/service/cultivo.service';
 import { AgroquimicoService } from 'src/app/service/agroquimico.service';
 import { FincaService } from 'src/app/service/finca.service';
+import { AsesoriaAgroquimicoService } from 'src/app/service/asesoria-agroquimico.service';
 
 
 @Component({
@@ -45,6 +46,9 @@ export class IndexComponent implements OnInit {
   cantidadAsesoriaRiegoByProductor: number = 0;
   cantidadAsesoriaRiegoAplicadaByProductor: number = 0;
   cantidadAsesoriaRiegoNoAplicadaByProductor: number = 0;
+  cantidadAsesoriaAgroqui: number = 0;
+  cantidadAsesoAgroAplicada: number = 0;
+  cantidadAsesoAgroNoAplicada: number = 0;
 
   
 
@@ -54,7 +58,8 @@ export class IndexComponent implements OnInit {
     private usuarioService: UsuarioService,
     private asesoriaRiegoService: AsesoriaRiegoService,
     private agroquimicoService: AgroquimicoService,
-    private fincaService: FincaService
+    private fincaService: FincaService,
+    private asesoriaAgro: AsesoriaAgroquimicoService
     
     ) { }
 
@@ -111,6 +116,8 @@ export class IndexComponent implements OnInit {
       this.obtenerCantidadAsesoriaRiego();
       this.obtenerCantidadAsesoriaRiegoAplicada();
       this.obtenerCantidadAsesoriaRiegoNoAplicada();
+      this.obtenerCantidadAsesoriaAgro();
+      this.obtenerCantidadAsesoriaAgroAplicada();
     }
   }
 
@@ -245,6 +252,28 @@ export class IndexComponent implements OnInit {
     })
    }
 
+
+   public obtenerCantidadAsesoriaAgro():void{
+    this.asesoriaAgro.cantidadAsesoriaAgro().toPromise().then(data =>{
+        this.cantidadAsesoriaAgroqui = data;
+       
+    })
+  }
+
+  public obtenerCantidadAsesoriaAgroAplicada(): void{
+    this.asesoriaAgro.cantidadAsesoriaAgroAplicada().toPromise().then(data =>{
+      this.cantidadAsesoAgroAplicada = data;
+
+    })
+  }
+  
+
+  public obtenerCantidadAsesoriaAgroNoAplicada(): void{
+    this.asesoriaAgro.cantidadAsesoriaAgroNoAplicada().toPromise().then(data =>{
+      this.cantidadAsesoAgroNoAplicada = data;
+
+    })
+  }
 
   
 
