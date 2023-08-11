@@ -13,18 +13,20 @@ import { CardModule } from 'primeng/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuModule } from 'src/app/menu/menu.module';
 import {RadioButtonModule} from 'primeng/radiobutton';
-
 import { AplicacionAgroquimicoRoutingModule } from './aplicacion-agroquimico-routing.module';
 import { NuevaAplicacionAgroComponent } from './nueva/nueva-aplicacion-agro.component';
 import { ListadoAplicacionAgroComponent } from './listado/listado-aplicacion-agro.component';
 import { ModificarAplicacionComponent } from './modificar/modificar-aplicacion.component';
+import { TagModule } from 'primeng/tag';
+
 
 
 @NgModule({
   declarations: [
     NuevaAplicacionAgroComponent,
     ListadoAplicacionAgroComponent,
-    ModificarAplicacionComponent
+    ModificarAplicacionComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,10 @@ import { ModificarAplicacionComponent } from './modificar/modificar-aplicacion.c
     FormsModule,
     MenuModule,
     RadioButtonModule,
-    AplicacionAgroquimicoRoutingModule
+    AplicacionAgroquimicoRoutingModule,
+    TagModule
+   
+    
   ]
 })
 export class AplicacionAgroquimicoModule { }

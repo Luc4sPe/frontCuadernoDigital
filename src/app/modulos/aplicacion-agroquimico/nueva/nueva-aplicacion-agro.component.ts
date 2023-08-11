@@ -12,6 +12,9 @@ import { Finca } from 'src/app/Core/modelo/finca';
 import { Cuadro } from 'src/app/Core/modelo/cuadro';
 import { AgroquimicoService } from 'src/app/service/agroquimico.service';
 import { Agroquimico } from 'src/app/Core/modelo/agroquimico';
+import { AsesoriaAgroquimico } from 'src/app/Core/modelo/asesoria-agroquimico';
+import { AsesoriaAgroquimicoService } from 'src/app/service/asesoria-agroquimico.service';
+import { Table } from 'primeng/table';
 @Component({
   selector: 'app-nueva-aplicacion-agro',
   templateUrl: './nueva-aplicacion-agro.component.html',
@@ -28,21 +31,35 @@ export class NuevaAplicacionAgroComponent implements OnInit {
   fincas: Finca[];
   cuadros: Cuadro[];
   listadoAgroquimico: Agroquimico[];
+  //atributos para agregar la lista de asesoría de agroquímico
+
+  loading : boolean = true;
+  listadoAsesoria: AsesoriaAgroquimico[];
+  asesoriaFiltrados:AsesoriaAgroquimico[];
+  asesoriaAgro: AsesoriaAgroquimico | any;
+  anuncio : string = ''; 
+  isProductor: boolean = false;
+  isAdmin: boolean = false;
+
   constructor(
     private fincaService: FincaService,
     private tokenService: TokenService,
     private cuadroService:CuadroService,
     private aplicacionService: AplicacionAgroquimicoService,
     private location : Location,
-    private agroquimicoService: AgroquimicoService
+    private agroquimicoService: AgroquimicoService,
+    private asesoriaService: AsesoriaAgroquimicoService
   ) { }
 
   ngOnInit(): void {
     this.cargarItems();
+    this.isProductor=this.tokenService.isProductor();
+    this.isAdmin=this.tokenService.isAdmin();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
     this.listarCuadrosPorFinca();
     this.listarAgroquimicos();
+    this.listadoAsesoriaDeUnaFinca();
   }
 
   cargarItems(): void {
@@ -138,5 +155,90 @@ export class NuevaAplicacionAgroComponent implements OnInit {
   cerrar(): void {
     this.location.back();
   }
+
+
+  listadoAsesoriaDeUnaFinca(): void{
+    const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
+    console.log(valor);
+    valor.addEventListener('click',event =>{
+      event.preventDefault();
+      console.log(valor);
+      this.asesoriaService.listarAsesoriaPorFinca(<number><unknown>valor.value).subscribe(
+        data =>{
+          this.listadoAsesoria = data;
+          this.loading=false;
+        },
+        err =>{
+          console.log(err);
+        }
+        
+      )
+     })
+   
+  } 
+
+  getSeverityByEstado(asesoria : AsesoriaAgroquimico): string {
+    const serverityByEstado : {[key: string]: string} = {
+      true : 'success',
+      false: 'danger'
+    };
+    return serverityByEstado[`${asesoria.asesoriaAplicada}`];
+  }
+
+
+  aplico(id: number):void {
+    /*se solicita al backend la utilización de la asesoria */
+    this.asesoriaService.seAplico(id).subscribe(  
+      (data) => {
+        this.anuncio = data.mensaje;
+        
+        Swal.fire('Aplicada', this.anuncio, 'success');
+      
+        setInterval("location.reload()",3000);
+      }, 
+      (err) => {
+        this.anuncio = err.error.mensaje;
+        Swal.fire('Error al aplicar', this.anuncio, 'error')
+
+      })
+  }
+
+  mostrarForm(): void{
+    const botonRiego= document.getElementById('form') as HTMLButtonElement ;
+    botonRiego.style.display ='block';
+ 
+    const botonAsesoria= document.getElementById('card') as HTMLButtonElement ;
+    botonAsesoria.style.display ='none';
+   }
+
+   mostrarCard(): void{
+    const botonAsesoria= document.getElementById('card') as HTMLButtonElement ;
+    botonAsesoria.style.display ='block';
+
+    const botonRiego= document.getElementById('form') as HTMLButtonElement ;
+    botonRiego.style.display ='none';
+    
+  }
+
+  clear(table : Table){
+    table.clear();
+  }
+
+  obtenerAsesoriaFiltradas(table: Table): void {
+    this.asesoriaFiltrados = table.filteredValue != null ? table.filteredValue : this.listadoAsesoria;
+  }
+
+
+  obtenerFiltros(table: Table): void {
+    let filtros : any = [];
+    filtros =  table.filters
+    filtros.id.forEach((f: { "value": any, "matchMode":any; }) =>{
+      console.log(f.value);
+      console.log(f.matchMode);
+      
+    })
+  }
+
+ 
 
 }

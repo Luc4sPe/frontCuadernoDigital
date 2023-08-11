@@ -27,6 +27,10 @@ export class AsesoriaAgroquimicoService {
     return this.httpCliente.get<AsesoriaAgroquimico[]>(this.asesoriaAgroquiURL +'listaAsesoriaAgroquimico');
   }
 
+  public listarAsesoriaPorFinca(idFinca:number): Observable<AsesoriaAgroquimico[]>{
+    return this.httpCliente.get<AsesoriaAgroquimico[]>(this.asesoriaAgroquiURL +`listadoAsesoriaAgroDeUnaFinca/${idFinca}`);
+  }
+
   public cantidadAsesoriaAgro():Observable<number> {
     return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total`);
   }
@@ -49,6 +53,11 @@ export class AsesoriaAgroquimicoService {
 
   public modificarAsesoriaAgro(id: number, modificar: ModificarAsesoriaAgroquimicoDto): Observable<any> {
     return this.httpCliente.put(this.asesoriaAgroquiURL + `update/${id}`, modificar);
+  }
+
+
+  public seAplico(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.asesoriaAgroquiURL+ `aplico/${id}`,id);
   }
 
 

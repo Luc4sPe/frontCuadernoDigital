@@ -1,0 +1,4 @@
+ /* oculta el form */
+ #form,#card{
+    display: none;
+  }
