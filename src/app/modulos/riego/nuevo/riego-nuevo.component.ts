@@ -136,7 +136,6 @@ export class RiegoNuevoComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      console.log(valor.value);
       //this.laborSuelo.idFinca=<number><unknown>valor.value;
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
@@ -153,10 +152,8 @@ export class RiegoNuevoComponent implements OnInit {
 
   listadoAsesoriaDeUnaFinca(): void{
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
-    console.log(valor);
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      console.log(valor);
       this.asesoriaService.listarAsesoriaPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.listadoAsesoria = data;

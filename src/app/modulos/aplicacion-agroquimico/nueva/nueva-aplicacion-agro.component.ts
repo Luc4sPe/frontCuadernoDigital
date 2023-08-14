@@ -159,10 +159,8 @@ export class NuevaAplicacionAgroComponent implements OnInit {
 
   listadoAsesoriaDeUnaFinca(): void{
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
-    console.log(valor);
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      console.log(valor);
       this.asesoriaService.listarAsesoriaPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.listadoAsesoria = data;

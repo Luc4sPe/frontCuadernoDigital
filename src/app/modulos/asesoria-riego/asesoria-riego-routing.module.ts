@@ -7,6 +7,7 @@ import { ModificarAsesoRiego } from 'src/app/Core/dto/modificar-aseso-riego';
 import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-asesoria.component';
 import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
 import { ListadoComponent } from './listadoPorFinca/listado.component';
+import { ProductorListaAsesoriaRiegoComponent } from './productor-lista-asesoria-riego/productor-lista-asesoria-riego.component';
 
 
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
@@ -32,6 +33,11 @@ const routes: Routes = [
 
        { path: 'listarAsesoriaPorFinca',
        component: ListadoComponent,
+       canActivate:[guarEncargadoAgri],
+       data:{rolesEsperados: [ADMIN,Encargado_Agricola,Productor]} },
+
+       { path: 'listarAsesoriaPorProductor',
+       component: ProductorListaAsesoriaRiegoComponent,
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola,Productor]} },
        

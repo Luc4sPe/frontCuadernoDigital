@@ -8,6 +8,8 @@ import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-aseso
 
 
 
+
+
 const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
 const Productor = Roles.PRODUCTOR;
 const ADMIN=Roles.ADMIN;
@@ -30,11 +32,13 @@ const routes: Routes = [
        component: ListadoAsesoriaComponent,
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
-
+  
         { path: 'update/:id',
         component: EditarAsesoriaAgroComponent,
         canActivate:[guarEncargadoAgri],
         data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
+
+       
 
       
        {path:'**', redirectTo:''}

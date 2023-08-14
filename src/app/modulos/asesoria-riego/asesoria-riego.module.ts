@@ -17,6 +17,7 @@ import { ModificarAsesoriaComponent } from './modificar-asesoria/modificar-aseso
 import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.component';
 import { ListadoComponent } from './listadoPorFinca/listado.component';
 import { CalendarModule } from 'primeng/calendar';
+import { ProductorListaAsesoriaRiegoComponent } from './productor-lista-asesoria-riego/productor-lista-asesoria-riego.component';
 
 
 
@@ -25,7 +26,8 @@ import { CalendarModule } from 'primeng/calendar';
     NuevaAsesoriaComponent,
     ModificarAsesoriaComponent,
     ListarAsesoriaComponent,
-    ListadoComponent
+    ListadoComponent,
+    ProductorListaAsesoriaRiegoComponent
   ],
   imports: [
     CommonModule,

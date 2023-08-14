@@ -20,11 +20,15 @@ import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-aseso
 
 
 
+
+
 @NgModule({
   declarations: [
     NuevaAsesoriaAgroComponent,
     ListadoAsesoriaComponent,
     EditarAsesoriaAgroComponent,
+ 
+
    
   ],
   imports: [
