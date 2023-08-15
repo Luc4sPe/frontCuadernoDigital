@@ -17,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
 import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-asesoria-agro.component';
 import { ProductorListaAsesoriaAgroComponent } from './productor-lista-asesoria-agro/productor-lista-asesoria-agro.component';
+import { TagModule } from 'primeng/tag';
 
 
 
@@ -47,7 +48,8 @@ import { ProductorListaAsesoriaAgroComponent } from './productor-lista-asesoria-
     CalendarModule,
     TableModule,
     CardModule,
-    ListboxModule
+    ListboxModule,
+    TagModule
   ]
 })
 export class AsesoriaAgroquimicoModule { }

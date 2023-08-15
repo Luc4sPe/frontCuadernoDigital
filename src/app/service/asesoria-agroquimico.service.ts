@@ -60,6 +60,11 @@ export class AsesoriaAgroquimicoService {
     return this.httpCliente.put<any>(this.asesoriaAgroquiURL+ `aplico/${id}`,id);
   }
 
+  public cancelarAplicacion(id:number):Observable<any>{
+    return this.httpCliente.put<any>(this.asesoriaAgroquiURL + `canceloAplica/${id}`,id);
+  }
+
+
 
 
 
