@@ -46,6 +46,22 @@ export class AsesoriaAgroquimicoService {
 
   }
 
+  public cantidadAsesoriaAgroByProductor(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total-asesoriaAgroByProductor/${nombre}`);
+  }
+
+  public cantidadAsesoriaAgroAplicadaByProductor(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total-asesoriaAgroAplicadaByProductor/${nombre}`);
+  }
+
+  public cantidadAsesoriaAgroNoAplicadaByProductor(nombre: string):Observable<number> {
+    return this.httpCliente.get<any>(`${this.asesoriaAgroquiURL}total-asesoriaAgroNoAplicadaByProductor/${nombre}`);
+  }
+
+
+
+
+
   public obtenerAsesoria(id: number): Observable<AsesoriaAgroquimico>{
     return this.httpCliente.get<AsesoriaAgroquimico>(this.asesoriaAgroquiURL + `detalle/${id}`);
 

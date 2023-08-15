@@ -49,6 +49,9 @@ export class IndexComponent implements OnInit {
   cantidadAsesoriaAgroqui: number = 0;
   cantidadAsesoAgroAplicada: number = 0;
   cantidadAsesoAgroNoAplicada: number = 0;
+  cantidadAsesoriaAgroByProductor: number = 0;
+  cantidadAsesoriaAgroAplicadaByProductor: number = 0;
+  cantidadAsesoriaAgroNoAplicadaByProductor: number = 0;
 
   
 
@@ -107,6 +110,7 @@ export class IndexComponent implements OnInit {
     this.obtenerCantidadFinca();
     this.obtenerTotalesProductor();
     this.obtenerTotalesAsesoriaRiegoByProductor();
+    this.obtenerTotalesAsesoriaAgroquimicoByProductor();
    
    
   } 
@@ -274,6 +278,37 @@ export class IndexComponent implements OnInit {
 
     })
   }
+
+
+
+  public obtenerTotalesAsesoriaAgroquimicoByProductor(): void {
+    if(this.isProctor){
+      this.nombreUsuarioProductor = this.tokenService.getUserName();
+      this.obtenerCantidadAsesoriaAgroByProductor(this.nombreUsuarioProductor);
+      this.obtenerCantidadAsesoriaAgroApliByProductor(this.nombreUsuarioProductor);
+      this.obtenerCantidadAsesoriaAgroNoApliByProductor(this.nombreUsuarioProductor);
+    }
+  }
+
+  public obtenerCantidadAsesoriaAgroByProductor( nombre: string):void{
+    this.asesoriaAgro.cantidadAsesoriaAgroByProductor(nombre).toPromise().then(data =>{
+      this.cantidadAsesoriaAgroByProductor = data;
+    })
+   }
+
+   public obtenerCantidadAsesoriaAgroApliByProductor( nombre: string):void{
+    this.asesoriaAgro.cantidadAsesoriaAgroAplicadaByProductor(nombre).toPromise().then(data =>{
+      this.cantidadAsesoriaAgroAplicadaByProductor = data;
+    })
+   }
+
+   public obtenerCantidadAsesoriaAgroNoApliByProductor( nombre: string):void{
+    this.asesoriaAgro.cantidadAsesoriaAgroNoAplicadaByProductor(nombre).toPromise().then(data =>{
+      this.cantidadAsesoriaAgroNoAplicadaByProductor = data;
+    })
+   }
+
+  
 
   
 

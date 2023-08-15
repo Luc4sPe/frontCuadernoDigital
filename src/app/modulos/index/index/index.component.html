@@ -225,6 +225,35 @@
     
     <!-- fin card asesoria agroquímico-->
 
+     <!-- inicio card asesoria agroquímico por productor-->
+     <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+        <div class="card bg-secondary  bg-gradient shadow-sm text-white mb-4">
+            <div class="card-body">
+                <h4>Asesoría agroquímico  {{cantidadAsesoriaAgroByProductor}}</h4>
+            
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                    
+                        <h6 class="badge rounded-pill bg-success shadow">Aplicadas {{cantidadAsesoriaAgroAplicadaByProductor}}</h6><br>
+                        <h6 class="badge rounded-pill bg-danger shadow">No aplicadas {{cantidadAsesoriaAgroNoAplicadaByProductor}}</h6>
+                    </div>
+                    <span style="font-size: 32px;">
+                        <i class="fa-solid fa-wine-bottle"></i>
+
+                    </span>
+
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" routerLink="/asesoramientoAgroquimico/listaAsesoriaAgroProductor"> Ver detalles</a>
+                <div class="small text-white"><i class="fa-solid fa-eye"></i></div>
+            </div>
+        </div>
+    </div>
+
+<!-- fin card asesoria agroquímico-->
+
+
         
        
       </div>
