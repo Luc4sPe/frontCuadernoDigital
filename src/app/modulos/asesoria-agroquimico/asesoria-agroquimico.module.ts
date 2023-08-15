@@ -16,6 +16,7 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
 import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-asesoria-agro.component';
+import { ProductorListaAsesoriaAgroComponent } from './productor-lista-asesoria-agro/productor-lista-asesoria-agro.component';
 
 
 
@@ -27,6 +28,7 @@ import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-aseso
     NuevaAsesoriaAgroComponent,
     ListadoAsesoriaComponent,
     EditarAsesoriaAgroComponent,
+    ProductorListaAsesoriaAgroComponent,
  
 
    

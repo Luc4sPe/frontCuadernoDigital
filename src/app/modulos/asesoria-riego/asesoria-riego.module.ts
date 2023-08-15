@@ -18,6 +18,7 @@ import { ListarAsesoriaComponent } from './listar-asesoria/listar-asesoria.compo
 import { ListadoComponent } from './listadoPorFinca/listado.component';
 import { CalendarModule } from 'primeng/calendar';
 import { ProductorListaAsesoriaRiegoComponent } from './productor-lista-asesoria-riego/productor-lista-asesoria-riego.component';
+import { TagModule } from 'primeng/tag';
 
 
 
@@ -43,7 +44,8 @@ import { ProductorListaAsesoriaRiegoComponent } from './productor-lista-asesoria
     TableModule,
     CardModule,
     RadioButtonModule,
-    CalendarModule
+    CalendarModule,
+    TagModule
   ]
 })
 export class AsesoriaRiegoModule { }

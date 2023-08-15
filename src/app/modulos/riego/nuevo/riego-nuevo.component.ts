@@ -215,9 +215,9 @@ export class RiegoNuevoComponent implements OnInit {
   
 
    
-  
+  //metodos para ocultar el formulario dependiendo de que boton se presione es el formulario q aparece
 
-  mostrarForm(): void{
+  /* mostrarForm(): void{
    const botonRiego= document.getElementById('form') as HTMLButtonElement ;
    botonRiego.style.display ='block';
 
@@ -232,7 +232,7 @@ export class RiegoNuevoComponent implements OnInit {
       const botonRiego= document.getElementById('form') as HTMLButtonElement ;
       botonRiego.style.display ='none';
       
-    }
+    } */
    
 
 

@@ -5,6 +5,7 @@ import { NuevaAsesoriaAgroComponent } from './nueva-asesoria-agro/nueva-asesoria
 import { CulGuardService as guarEncargadoAgri } from 'src/app/Core/guards/cul-guard.service';
 import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.component';
 import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-asesoria-agro.component';
+import { ProductorListaAsesoriaAgroComponent } from './productor-lista-asesoria-agro/productor-lista-asesoria-agro.component';
 
 
 
@@ -32,6 +33,11 @@ const routes: Routes = [
        component: ListadoAsesoriaComponent,
        canActivate:[guarEncargadoAgri],
        data:{rolesEsperados: [ADMIN,Encargado_Agricola]} },
+
+       { path: 'listaAsesoriaAgroProductor',
+       component: ProductorListaAsesoriaAgroComponent,
+       canActivate:[guarEncargadoAgri],
+       data:{rolesEsperados: [ADMIN,Encargado_Agricola,Productor]} },
   
         { path: 'update/:id',
         component: EditarAsesoriaAgroComponent,

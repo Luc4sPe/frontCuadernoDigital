@@ -19,7 +19,7 @@
                                 </div>
 
                                   <!-- botones -->
-                                  <div class="card-footer mb-2">
+                                 <!--  <div class="card-footer mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="navbar">
                                            
@@ -35,7 +35,7 @@
                                     
                                     
                                     </div>
-                                </div>
+                                </div> -->
                                  <!-- fin botones -->
                                     
                                     <!-- Selector Finca -->
@@ -138,7 +138,7 @@
                                  
                                 </form>
 
-                                <div class="card" id="card">
+                               <!--  <div class="card" id="card">
                                     <div class="container fadein animation-iteration-1 animation-duration-500">
                                         
                                         <div class="row d-flex justify-content-center">
@@ -149,70 +149,70 @@
                                                 dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
                                                 [rowHover]="true" [paginator]="true"
                                                 currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                                                [filterDelay]="0">
+                                                [filterDelay]="0"> -->
                                 
                                                  <!-- botones -->
-                                                 <ng-template pTemplate="caption">
-                                                    <div class="d-flex justify-content-between">
+                                                <!--  <ng-template pTemplate="caption">
+                                                    <div class="d-flex justify-content-between"> -->
                                                         <!-- <button pRipple *ngIf="isEncargadoAgricola" pButton class="p-button-rounded p-button-sm me-1"  icon="bi bi-plus-circle" label="Nueva asesoria riego" routerLink="/asesoramientoRiego/nuevaAsesoria"></button> -->
-                                                        <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
+                                                       <!--  <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
                                                      </div>
-                                                </ng-template>
+                                                </ng-template> -->
                                 
                                                 <!-- fin -->
                                                 
-                                                <ng-template pTemplate="header">
-                                                    <tr class="text-center" >
+                                                <!-- <ng-template pTemplate="header">
+                                                    <tr class="text-center" > -->
                                                           <!-- Columna id -->
-                                                          <th class="text-center" pSortableColumn="id" >
+                                                          <!-- <th class="text-center" pSortableColumn="id" >
                                                             <div class="p-d-flex p-jc-between p-ai-center">
                                                               Id
                                                               <p-sortIcon field="id"></p-sortIcon>
                                                               <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto" ></p-columnFilter>
                                                             </div>
-                                                          </th>
+                                                          </th> -->
                                                         <!-- fin -->
                                 
                                                        <!-- duracionEnHoras -->
-                                                       <th class="text-center" pSortableColumn="duracionEnHoras">
+                                                      <!--  <th class="text-center" pSortableColumn="duracionEnHoras">
                                                             <div class="p-d-flex p-jc-between p-ai-center">
                                                                 Duración (hs)
                                                                 <p-sortIcon field="duracionEnHoras"></p-sortIcon>
                                                                 <p-columnFilter type="time" field="duracionEnHoras" display="menu" class="p-ml-auto"></p-columnFilter>
                                                             </div>
-                                                        </th>
+                                                        </th> -->
                                                         <!-- fin -->
                                 
                                                       <!-- Milimetros aplicados -->
-                                                        <th class="text-center" pSortableColumn="milimetrosAplicados">
+                                                       <!--  <th class="text-center" pSortableColumn="milimetrosAplicados">
                                                             <div class="p-d-flex p-jc-between p-ai-center">
                                                                 Milimetros aplicados
                                                                 <p-sortIcon field="milimetrosAplicados"></p-sortIcon>
                                                                 <p-columnFilter type="number" field="milimetrosAplicados" display="menu" class="p-ml-auto"></p-columnFilter>
                                                             </div>
-                                                        </th>
+                                                        </th> -->
                                                       <!-- fin -->
                                 
                                                     
                                 
                                                        <!-- Nombre de finca -->
-                                                       <th class="text-center" pSortableColumn="nombre">
+                                                       <!-- <th class="text-center" pSortableColumn="nombre">
                                                             <div class="p-d-flex p-jc-between p-ai-center">
                                                                 Finca
                                                                 <p-sortIcon field="nombre"></p-sortIcon>
                                                                 <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
                                                             </div>
-                                                        </th>
+                                                        </th> -->
                                                         <!-- fin -->
                                 
                                                          <!--Numero de cuadros-->
-                                                     <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                                                    <!--  <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
                                                         <div class="p-d-flex p-jc-between p-ai-center">
                                                             Cuadro
                                                             <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
                                                             <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
                                                         </div>
-                                                      </th>
+                                                      </th> -->
                                 
                                                       <!-- fin -->
                                                       
@@ -227,11 +227,11 @@
                                                         <!-- fin -->
                                 
                                                        <!-- Fecha de riego-->
-                                                       <th class="text-center" pSortableColumn="fechaRiego">
+                                                      <!--  <th class="text-center" pSortableColumn="fechaRiego">
                                                                 Fecha Aplicacion
                                                             <p-sortIcon field="fechaRiego"></p-sortIcon>
                                                             <p-columnFilter type="date" field="fechaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
-                                                        </th>
+                                                        </th> -->
                                                         <!-- fin -->
                                                          <!-- -- columna fecha actualizacion-->
                                                         <!--  <th class="text-center" pSortableColumn="fechaModificacionRiego">
@@ -243,24 +243,24 @@
                                                         </th>  -->
                                                         <!-- fin -->
                                                          <!-- columna estado-->
-                                                            <th class="text-center">
+                                                           <!--  <th class="text-center">
                                                             Estado
                                                             <p-columnFilter type="boolean" field="asesoriaAplicada" class="p-ml-auto"></p-columnFilter>
 
-                                                            </th>
+                                                            </th> -->
                                                                                 
                                                         <!-- Acciones -->
                                                                 
-                                                        <th class="text-center" pSortableColumn="ver"> 
+                                                       <!--  <th class="text-center" pSortableColumn="ver"> 
                                                             <div class="p-d-flex p-jc-between p-ai-center"></div>
                                                             Acciones
                                                         </th>
                                 
                                                         <th class="text-center" pSortableColumn="ver"> 
                                                             <div class="p-d-flex p-jc-between p-ai-center"></div>
-                                                        </th>
+                                                        </th> -->
                                                         <!-- fin -->
-                                                    </tr>
+                                                   <!--  </tr>
                                                 </ng-template>
                                 
                                 
@@ -268,7 +268,7 @@
                                                     <tr> 
                                                             <td id="tabla" >{{asesoriaRiego.id}}</td>
                                                             <td>{{asesoriaRiego.duracionEnHoras}}</td>
-                                                            <td>{{asesoriaRiego.milimetrosAplicados}}</td>
+                                                            <td>{{asesoriaRiego.milimetrosAplicados}}</td> -->
                                                             
                                                             <!-- Se utiliza en una lista  
                                                                 <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of asesoriaRiego.numerosDeCuadros; let i = index; ">
@@ -276,27 +276,27 @@
                                                                 <td>{{asesoriaRiego.numerosDeCuadros[i].numeroCuadro}}</td>
                                                               
                                                               </ul></td> -->
-                                                              <td>{{asesoriaRiego.finca.nombre}}</td>
-                                                              <td >{{asesoriaRiego.cuadro.numeroCuadro}}</td>
+                                                              <!-- <td>{{asesoriaRiego.finca.nombre}}</td>
+                                                              <td >{{asesoriaRiego.cuadro.numeroCuadro}}</td> -->
                                                               <!-- <td >{{asesoriaRiego.productor.nombre}}</td> -->
                                                             <!-- <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td> -->
-                                                            <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionEstado | date:"short" }}</td>
+                                                          <!--   <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionEstado | date:"short" }}</td>
                                                             <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
                                                             <td class="text-center">
                                                                 <p-tag [severity]="getSeverityByEstado(asesoriaRiego)" styleClass="uppercase" [rounded]="true">{{asesoriaRiego.asesoriaAplicada? "Aplicada": "NoAplicada" }}</p-tag>
                                                               </td>
                                                             
-                                                            <td class="text-center">
+                                                            <td class="text-center"> -->
                                                                 <!--Boton aplicar -->
 
-                                                                <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
+                                                              <!--   <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
                                                                 icon="pi pi-check-circle" (click)="aplico(asesoriaRiego.id)"
                                                                 *ngIf="asesoriaRiego.asesoriaAplicada == false" pTooltip="Aplicar"
                                                                 tooltipPosition="top">
                                                                 
-                                                                </button>
+                                                                </button> -->
                                                                 <!-- fin -->
-
+<!-- 
                                                                 <button pRipple pButton class="p-button-secondary p-button-rounded p-button-text p-button-raised"
                                                                 icon="pi pi-save"
  
@@ -319,7 +319,7 @@
                                             </p-card>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                           </div>

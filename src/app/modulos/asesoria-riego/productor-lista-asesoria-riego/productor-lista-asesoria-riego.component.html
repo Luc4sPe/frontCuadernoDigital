@@ -1,1 +1,213 @@
 <app-menu></app-menu> 
+<div class="card">
+    <div class="container fadein animation-iteration-1 animation-duration-500">
+        <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+        <div class="row d-flex justify-content-center">
+
+            <p-card styleClass="shadow-1 mb-4" header="">
+
+                 <!-- Selector Finca -->
+                 <div class="p-2">
+                                                    
+                    <label for="nomreFinca" class="form-label">Seleccione la finca</label>
+                    <select class="form-select" name="finca" id="nomreFinca"
+                    [(ngModel)]="asesiria.idFinca" aria-label=".form-select-lg example" required>
+                    <option [value]="finca.idFinca" *ngFor="let finca of fincas">
+                    
+                        {{ finca.nombre }}
+                        
+                    </option>
+                    
+                    </select>
+                </div>
+                <!-- fin selector finca -->
+             
+                 <!-- comienzo de la tabla -->
+                <p-table #dt [value]="listadoAsesoria" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                    dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                    [rowHover]="true" [paginator]="true"
+                    currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                    [filterDelay]="0">
+
+                      <!-- botones nueva riogo-->
+                      <ng-template pTemplate="caption">
+                            <div class="d-flex justify-content-between">
+                                <button pRipple *ngIf="isProductor" pButton class="p-button-rounded p-button-sm me-1" (click)="botonActualizar()" icon="bi bi-plus-circle" label="Nuevo riego" routerLink="/riego/nuevoRiego"></button>
+                                <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
+                            </div>   
+                      </ng-template>
+                    <!-- fin -->
+
+                    <ng-template pTemplate="header">
+                        <tr class="text-center" >
+                              <!-- Columna id -->
+                              <th class="text-center" pSortableColumn="id" >
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                  Id
+                                  <p-sortIcon field="id"></p-sortIcon>
+                                  <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto" ></p-columnFilter>
+                                </div>
+                              </th>
+                            <!-- fin -->
+    
+                           <!-- duracionEnHoras -->
+                           <th class="text-center" pSortableColumn="duracionEnHoras">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Duración (hs)
+                                    <p-sortIcon field="duracionEnHoras"></p-sortIcon>
+                                    <p-columnFilter type="time" field="duracionEnHoras" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+                            <!-- fin -->
+    
+                          <!-- Milimetros aplicados -->
+                            <th class="text-center" pSortableColumn="milimetrosAplicados">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Milimetros aplicados
+                                    <p-sortIcon field="milimetrosAplicados"></p-sortIcon>
+                                    <p-columnFilter type="number" field="milimetrosAplicados" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+                          <!-- fin -->
+    
+                        
+    
+                           <!-- Nombre de finca -->
+                           <th class="text-center" pSortableColumn="nombre">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Finca
+                                    <p-sortIcon field="nombre"></p-sortIcon>
+                                    <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+                            <!-- fin -->
+    
+                             <!--Numero de cuadros-->
+                         <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                                <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                                <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+    
+                          <!-- fin -->
+                          
+                            <!-- columna nombre-->
+                           <!--  <th class="text-center" pSortableColumn="nombre">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Productor
+                                    <p-sortIcon field="nombre"></p-sortIcon>
+                                    <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th> -->
+                            <!-- fin -->
+    
+                           <!-- -- columna fecha estimada de aplicación-->
+                           <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Estimada de aplicación                               
+                                <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                        <!-- fin -->
+
+                         <!-- -- columna fecha modificación de estado-->
+                         <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Fecha aplicada                               
+                                <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                        <!-- fin -->
+
+                            <!-- fin -->
+                             <!-- -- columna fecha actualizacion-->
+                            <!--  <th class="text-center" pSortableColumn="fechaModificacionRiego">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Modificación                               
+                                    <p-sortIcon field="fechaModificacionRiego"></p-sortIcon>
+                                    <p-columnFilter type="date" field="fechaModificacionRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>  -->
+                            <!-- fin -->
+                             <!-- columna estado-->
+                                <th class="text-center">
+                                Estado
+                                <p-columnFilter type="boolean" field="asesoriaAplicada" class="p-ml-auto"></p-columnFilter>
+
+                                </th>
+                                                    
+                            <!-- Acciones -->
+                                    
+                            <th class="text-center" pSortableColumn="ver"> 
+                                <div class="p-d-flex p-jc-between p-ai-center"></div>
+                                Acciones
+                            </th>
+    
+                            <th class="text-center" pSortableColumn="ver"> 
+                                <div class="p-d-flex p-jc-between p-ai-center"></div>
+                            </th>
+                            <!-- fin -->
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-asesoriaRiego >
+                        <tr> 
+                                <td id="tabla" >{{asesoriaRiego.id}}</td>
+                                <td>{{asesoriaRiego.duracionEnHoras}}</td>
+                                <td>{{asesoriaRiego.milimetrosAplicados}}</td>
+                                
+                                <!-- Se utiliza en una lista  
+                                    <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of asesoriaRiego.numerosDeCuadros; let i = index; ">
+       
+                                    <td>{{asesoriaRiego.numerosDeCuadros[i].numeroCuadro}}</td>
+                                  
+                                  </ul></td> -->
+                                  <td>{{asesoriaRiego.finca.nombre}}</td>
+                                  <td >{{asesoriaRiego.cuadro.numeroCuadro}}</td>
+                                  <!-- <td >{{asesoriaRiego.productor.nombre}}</td> -->
+                                <!-- <td>{{asesoriaRiego.fechaRiego | date:"short" }}</td> -->
+                               <!--  <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaModificacionEstado | date:"short" }}</td>
+                                <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td> -->
+
+                                <td>{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                                <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:"short" }}</td>
+                                <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
+                                
+                                <td class="text-center">
+                                    <p-tag [severity]="getSeverityByEstado(asesoriaRiego)" styleClass="uppercase" [rounded]="true">{{asesoriaRiego.asesoriaAplicada? "Aplicada": "NoAplicada" }}</p-tag>
+                                  </td>
+                                
+                                <td class="text-center">
+                                    <!--Boton aplicar -->
+
+                                    <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
+                                    icon="pi pi-check-circle" (click)="aplico(asesoriaRiego.id)"
+                                    *ngIf="asesoriaRiego.asesoriaAplicada == false" pTooltip="Aplicar"
+                                    tooltipPosition="top">
+                                    
+                                    </button>
+                                    <!-- fin -->
+
+                                    <button pRipple pButton class="p-button-secondary p-button-rounded p-button-text p-button-raised"
+                                    icon="pi pi-save"
+
+                                    *ngIf="asesoriaRiego.asesoriaAplicada == true"  pTooltip="Aplicado"
+                                    tooltipPosition="top">
+                                
+                                    </button>
+                                </td>
+                    
+                        </tr>
+                    </ng-template>   
+    
+
+                     
+                </p-table>
+            </p-card>
+        </div>
+    </div>
+</div>

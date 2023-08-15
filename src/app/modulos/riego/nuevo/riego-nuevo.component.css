@@ -12,7 +12,7 @@
     display: inline;
   }
   
-  /* oculta el form */
-  #form,#card{
+  /* oculta el formulario dependiendo de que boton se presione en la logica*/
+ /*  #form,#card{
     display: none;
-  }
+  } */
