@@ -14,7 +14,7 @@
                                         Nueva aplicación agroquímico 
                                     </div>
                                     <!-- botones -->
-                                    <div class="card-footer mb-2">
+                                   <!--  <div class="card-footer mb-2">
                                         <div class="d-flex justify-content-between">
                                             <div class="navbar">
                                                 <button (click)="mostrarForm()" pRipple *ngIf="isProductor" class="btn btn-outline-primary" id="botonRiego"   tooltipPosition="right">Nueva aplicación agroquímico  <i class="fa-solid fa-skull-crossbones"></i></button> 
@@ -25,7 +25,7 @@
                                         
                                         
                                         </div>
-                                    </div>
+                                    </div> -->
                                  <!-- fin botones -->
 
                                   <!-- Selector Finca -->
@@ -185,7 +185,7 @@
                                   
                                     </form>
 
-                                    <div class="card" id="card">
+                                   <!--  <div class="card" id="card">
                                         
                                        
                                         <div class="container fadein animation-iteration-1 animation-duration-500">
@@ -196,139 +196,139 @@
                                                     dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
                                                     [rowHover]="true" [paginator]="true"
                                                     currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                                                    [filterDelay]="0">
+                                                    [filterDelay]="0"> -->
 
                                                       <!-- botones -->
-                                                        <ng-template pTemplate="caption">
+                                                      <!--   <ng-template pTemplate="caption">
                                                             <div class="d-flex justify-content-between">
                                                 
                                                                 <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
                                                             </div>
-                                                        </ng-template>
+                                                        </ng-template -->>
                                 
                                                         <!-- fin -->
 
-                                                        <ng-template pTemplate="header">
-                                                            <tr class="text-center">
+                                                     <!--    <ng-template pTemplate="header">
+                                                            <tr class="text-center"> -->
 
                                                                  <!-- Columna id -->
-                                                                <th class="text-center" pSortableColumn="id">
+                                                               <!--  <th class="text-center" pSortableColumn="id">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                     Id
                                                                     <p-sortIcon field="id"></p-sortIcon>
                                                                     <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                  <!-- Agroquímico -->
-                                                                <th class="text-center" pSortableColumn="agroquimico">
+                                                              <!--   <th class="text-center" pSortableColumn="agroquimico">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Agroquímico
                                                                     <p-sortIcon field="agroquimico"></p-sortIcon>
                                                                     <p-columnFilter type="text" field="agroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                 <!-- Nombre de finca -->
-                                                                <th class="text-center" pSortableColumn="nombre">
+                                                              <!--   <th class="text-center" pSortableColumn="nombre">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Finca
                                                                         <p-sortIcon field="nombre"></p-sortIcon>
                                                                         <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                 <!-- Cuadro -->
-                                                                <th class="text-center" pSortableColumn="cuadro">
+                                                               <!--  <th class="text-center" pSortableColumn="cuadro">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Cuadro
                                                                     <p-sortIcon field="cuadro"></p-sortIcon>
                                                                     <p-columnFilter type="text" field="cuadro" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                  <!-- dosisPorHectaria -->
-                                                                <th class="text-center" pSortableColumn="dosisPorHectaria">
+                                                             <!--    <th class="text-center" pSortableColumn="dosisPorHectaria">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Dosis por hectarea
                                                                     <p-sortIcon field="dosisPorHectaria"></p-sortIcon>
                                                                     <p-columnFilter type="number" field="dosisPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                  <!-- dosisPorHl -->
-                                                                <th class="text-center" pSortableColumn="dosisPorHl">
+                                                               <!--  <th class="text-center" pSortableColumn="dosisPorHl">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Dosis por por Hl
                                                                     <p-sortIcon field="dosisPorHl"></p-sortIcon>
                                                                     <p-columnFilter type="number" field="dosisPorHl" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                 <!-- volumenPorHectaria -->
-                                                                <th class="text-center" pSortableColumn="volumenPorHectaria">
+                                                               <!--  <th class="text-center" pSortableColumn="volumenPorHectaria">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Volumen por hectaria
                                                                     <p-sortIcon field="volumenPorHectaria"></p-sortIcon>
                                                                     <p-columnFilter type="number" field="volumenPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                 <!-- objetivo -->
-                                                                <th class="text-center" pSortableColumn="objetivo">
+                                                              <!--   <th class="text-center" pSortableColumn="objetivo">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Objetivo
                                                                     <p-sortIcon field="objetivo"></p-sortIcon>
                                                                     <p-columnFilter type="text" field="objetivo" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                  <!-- Plaga -->
-                                                                <th class="text-center" pSortableColumn="plaga">
+                                                               <!--  <th class="text-center" pSortableColumn="plaga">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Plaga
                                                                     <p-sortIcon field="plaga"></p-sortIcon>
                                                                     <p-columnFilter type="text" field="plaga" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->
 
                                                                 <!-- -- columna fecha estimada de aplicación-->
-                                                                <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                                                               <!--  <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
                                                                     <div class="p-d-flex p-jc-between p-ai-center">
                                                                         Fecha estimada de aplicación                               
                                                                         <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
                                                                         <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
                                                                     </div>
-                                                                </th> 
+                                                                </th>  -->
                                                                 <!-- fin -->
 
                                                                  <!-- columna estado-->
-                                                                <th class="text-center">
+                                                                <!-- <th class="text-center">
                                                                     Estado
                                                                     <p-columnFilter type="boolean" field="asesoriaAplicada" class="p-ml-auto"></p-columnFilter>
         
-                                                                </th>                    
+                                                                </th>      -->               
                                                                 <!-- fin -->
 
                                                                 <!-- Acciones --> 
-                                                                <th class="text-center" pSortableColumn="ver"> 
+                                                                <!-- <th class="text-center" pSortableColumn="ver"> 
                                                                     <div class="p-d-flex p-jc-between p-ai-center"></div>
                                                                     Acciones
                                                                 </th>
                                                                 <th class="text-center" pSortableColumn="ver"> 
                                                                     <div class="p-d-flex p-jc-between p-ai-center"></div>
-                                                                </th>
+                                                                </th> -->
                                                                 <!-- fin -->                            
-                                                            </tr>
+                                                          <!--   </tr>
                                                         </ng-template>
 
                                                         <ng-template pTemplate="body" let-asesoriaAgroquimico>
@@ -352,18 +352,18 @@
                                                                     <p-tag [severity]="getSeverityByEstado(asesoriaAgroquimico)" styleClass="uppercase" [rounded]="true">{{asesoriaAgroquimico.asesoriaAplicada? "Aplicada": "NoAplicada" }}</p-tag>
                                                                   </td>
                                         
-                                                                <td class="text-center">
+                                                                <td class="text-center"> -->
                                                                     <!--Boton aplicar -->
     
-                                                                    <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
+                                                                 <!--    <button pRipple pButton class="p-button-success p-button-rounded p-button-text p-button-raised"
                                                                     icon="pi pi-check-circle" (click)="aplico(asesoriaAgroquimico.id)"
                                                                     *ngIf="asesoriaAgroquimico.asesoriaAplicada == false" pTooltip="Aplicar"
                                                                     tooltipPosition="top">
-                                                                    
-                                                                    </button>
+                                                                     -->
+                                                                    <!-- </button> -->
                                                                     <!-- fin -->
     
-                                                                    <button pRipple pButton class="p-button-secondary p-button-rounded p-button-text p-button-raised"
+                                               <!--                      <button pRipple pButton class="p-button-secondary p-button-rounded p-button-text p-button-raised"
                                                                     icon="pi pi-save"
      
                                                                     *ngIf="asesoriaAgroquimico.asesoriaAplicada == true"  pTooltip="Aplicado"
@@ -378,7 +378,7 @@
                                                     </p-table>
                                                 </p-card>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                           </div>

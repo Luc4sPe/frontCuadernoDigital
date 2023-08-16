@@ -201,7 +201,7 @@ export class NuevaAplicacionAgroComponent implements OnInit {
       })
   }
 
-  mostrarForm(): void{
+  /* mostrarForm(): void{
     const botonRiego= document.getElementById('form') as HTMLButtonElement ;
     botonRiego.style.display ='block';
  
@@ -217,7 +217,7 @@ export class NuevaAplicacionAgroComponent implements OnInit {
     botonRiego.style.display ='none';
     
   }
-
+ */
   clear(table : Table){
     table.clear();
   }
