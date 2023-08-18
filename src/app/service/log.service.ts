@@ -22,6 +22,6 @@ export class LogService {
   }
 
   public ListadoLogsPorNombreUsuario(nombreUsuario: string):Observable<Log[]>{
-    return this.httpCliente.get<Log[]>(`${this.logsURL}/actividad/${nombreUsuario}`);
+    return this.httpCliente.get<Log[]>(`${this.logsURL}actividad/${nombreUsuario}`);
   }
 }

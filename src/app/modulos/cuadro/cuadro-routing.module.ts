@@ -16,12 +16,12 @@ const routes: Routes = [
     { path: 'crearcuadro',
     component: NuevoCuadroComponent,
     canActivate:[guarEncargadoAgricola],
-    data:{rolesEsperados: [Encargado_Agricola]} 
+    data:{rolesEsperados: [Encargado_Agricola,ADMIN]} 
     },
 
     {path: 'modificarCuadro/:id', component: ModificarCuadroComponent, 
     canActivate: [guarEncargadoAgricola],
-    data: { rolesEsperados: [ADMIN,Encargado_Agricola] },},
+    data: { rolesEsperados: [ADMIN,Encargado_Agricola,ADMIN] },},
   ]
   
   }
