@@ -72,6 +72,9 @@
           
              </li>
 
+             
+
+
              <li class="nav-item dropdown" *ngIf="isEncargadoAgricola">
                      
                 <a class="nav-link  dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -130,6 +133,8 @@
             
              <!-- fin grupo menu encargado agricola -->
 
+
+                 
              
 
             <!-- Gurpo menu productor -->
@@ -230,7 +235,33 @@
                 <!-- <p-splitButton  label="{{nombreUsuario}}" icon="pi pi-user"  [model]="items" styleClass=" p-button-rounded p-button-info  p-button-sm "   ></p-splitButton> -->
             <!-- </li> -->
           
-            
+             <!-- menu Reportes -->
+             <li class="nav-item dropdown" *ngIf="isAdmin || isEncargadoAgricola">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Reportes
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/reportes/usuarios/actividad">Usuarios</a></li>
+                    <!-- <li class="dropend">
+                        <a *ngIf="isAdmin || isEncargadoTorneos" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Jugadores</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" routerLink="/reportes/jugadores/participaciones">Participaciones</a></li>
+                            <li><a class="dropdown-item" routerLink="/reportes/jugadores/efectividad">Efectividad</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropend">
+                        <a *ngIf="isAdmin || isEncargadoTorneos" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Clubes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" routerLink="/reportes/clubes/historial">Historial entre clubes</a></li>
+                            <li><a class="dropdown-item" routerLink="/reportes/clubes/fixture">Fixture</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li *ngIf="isAdmin || isEncargadoJugadores"><a class="dropdown-item" routerLink="/reportes/jugadores/participaciones">Jugadores</a></li> -->
+                    <!-- <li *ngIf="isAdmin || isEncargadoJugadores"><a class="dropdown-item" routerLink="/reportes/clubes">Clubes</a></li> -->
+                </ul>
+           </li>
+        <!-- fin de menus -->
             
 
            <!-- menu del usuario logueado -->
@@ -249,7 +280,9 @@
                 </ul>
             </li>
         </ul>
-        <!-- fin menu del usuario logueado-->            
+        <!-- fin menu del usuario logueado-->         
+        
+        
            
         </ul>
         </div>
