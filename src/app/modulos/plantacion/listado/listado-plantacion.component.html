@@ -144,6 +144,29 @@
 
                           <!-- fin -->
 
+                           <!-- columna fecha de plantación-->
+                           <th class="text-center" pSortableColumn="fechaCreacionPlantacion" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha plantación
+                            <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
+                            <p-columnFilter type="text" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+
+                          <!-- fin -->
+
+
+                           <!-- columna fecha de de cosecha-->
+                           <th class="text-center" pSortableColumn="fechaCosecha" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha estimada de cosecha
+                            <p-sortIcon field="fechaCosecha"></p-sortIcon>
+                            <p-columnFilter type="text" field="fechaCosecha" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+
+                          <!-- fin -->
+
                           <!-- columna fecha cracion-->
                           <!-- <th class="text-center" pSortableColumn="fechaCreacionPlantacion">
                             Creación
@@ -188,6 +211,10 @@
                       <td>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</td>
                     
                     </ul></td>
+
+                    <td>{{plantacion.fechaCreacionPlantacion | date:'dd/MM/YYYY'}}</td>
+
+                    <td>{{plantacion.fechaCosecha | date:'dd/MM/YYYY'}}</td>
                     
                      <!--Boton Detalle -->
                       <td class="text-center">

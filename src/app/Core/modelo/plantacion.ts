@@ -14,6 +14,7 @@ export class Plantacion {
     sistemaTrasplante: string;
     nombreTipoCultivo: Cultivo;
     cantidadPlantines: number;
+    fechaCosecha: Date;
 
     constructor(entreIleras: number, entrePlantas: number, observacion: string, justificacion: string,
          sistemaRiego: string, sistemaTrasplante: string, nombreTipoCultivo: Cultivo, cantidadPlantines: number){
