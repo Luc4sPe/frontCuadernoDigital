@@ -52,9 +52,9 @@
 
 
                                         <div class="p-2">
-                                            <label for="timpoCarencia" class="form-label">Tiempo de carencia en dias</label>
-                                            <input type="number" class="form-control p-inputtext"  name="timpoCarencia" id="timpoCarencia" placeholder="Ingrese el tiempo de carencia" 
-                                            [(ngModel)]="nuevoCultivo.timpoCarencia" #latitud="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2">
+                                            <label for="tiempoDeCultivo" class="form-label">Tiempo maduración de cultivo en dias</label>
+                                            <input type="number" class="form-control p-inputtext"  name="tiempoDeCultivo" id="tiempoDeCultivo" placeholder="Ingrese el tiempo de cultivo" 
+                                            [(ngModel)]="nuevoCultivo.tiempoDeCultivo" #latitud="ngModel" pattern="^[0-9 . -]{2,15}"  required minlength="2">
                                         
                                             <div *ngIf="latitud.invalid && (latitud.dirty || latitud.touched)">
                                                 <p-message styleClass="m-1" *ngIf="latitud.errors?.required"  severity="error" text="La latitud es requerida"></p-message>

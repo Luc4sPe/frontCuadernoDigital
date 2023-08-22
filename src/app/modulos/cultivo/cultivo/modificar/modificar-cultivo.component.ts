@@ -77,8 +77,8 @@ export class ModificarCultivoComponent implements OnInit {
 
   actualizarCultivo(form: NgForm){
     const id = this.activatedRoute.snapshot.params.id;
-    const cultivoModificar = new ModificarCultivoDto(this.cultivo.nombre,this.cultivo.remito,this.cultivo.timpoCarencia,this.cultivo.variedadCultivo,
-      this.cultivo.viveroProvedor);
+    const cultivoModificar = new ModificarCultivoDto(this.cultivo.nombre,this.cultivo.remito,this.cultivo.variedadCultivo,
+      this.cultivo.viveroProvedor,this.cultivo.tiempoDeCultivo);
     this.cultivoService.actualizarCultivo(id,cultivoModificar).toPromise().then(
       data =>{
         this.msj = data.mensaje;

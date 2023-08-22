@@ -57,10 +57,11 @@
                              <!-- fin -->
 
                               <!-- Columna tiempo de carencia -->
-                            <th class="text-center" pSortableColumn="timpoCarencia">
+                            <th class="text-center" pSortableColumn="tiempoDeCultivo">
                                 <div class="p-d-flex p-jc-between p-ai-center">
-                                  <p-sortIcon field="timpoCarencia"></p-sortIcon>
-                                  <p-columnFilter type="numeric" field="timpoCarencia" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    Tiempo maduración de cultivo en días
+                                  <p-sortIcon field="tiempoDeCultivo"></p-sortIcon>
+                                  <p-columnFilter type="numeric" field="tiempoDeCultivo" display="menu" class="p-ml-auto"></p-columnFilter>
                                 </div>
                               </th>
                             <!-- fin -->
@@ -119,7 +120,7 @@
                               <td>{{cultivo.idCultivo}}</td>
                               <td>{{cultivo.nombre}}</td>
                               <td>{{cultivo.remito}}</td>
-                              <td>{{cultivo.timpoCarencia}}</td>
+                              <td>{{cultivo.tiempoDeCultivo}}</td>
                               <td>{{cultivo.variedadCultivo}}</td>
                               <td>{{cultivo.viveroProvedor}}</td>
                               <td>{{cultivo.fechaCreacion | date:"short" }}</td>
