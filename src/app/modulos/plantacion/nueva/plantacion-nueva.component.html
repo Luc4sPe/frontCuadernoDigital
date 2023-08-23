@@ -36,7 +36,7 @@
                                               <!-- fin -->
 
                                               <!-- Listado de los Cuadros -->
-                                              <div class="p-2">
+                                              <!-- <div class="p-2">
                                                 <label for="form-select-lg mb-3" class="form-label">Seleccione el o los cuadros</label>
                                                 <p-listbox  [options]="cuadros" [(ngModel)]="plantacion.numerosDeCuadros" name="plantacion" [metaKeySelection]="false"
                                                 [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="numeroCuadro" 
@@ -50,9 +50,27 @@
                                                         </div>
                                                     </ng-template>
                                                 </p-listbox> 
-                                              </div>
+                                              </div> -->
 
                                               <!-- fin -->
+
+                                               <!-- Listado de los Cuadros -->
+                                       <div class="p-2">
+                                          
+                                        <label class="form-check-label" for="labor" > Cuadro </label>
+                                   
+                                          <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                                <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="plantacion.idCuadro" inputId="riego"> 
+                                                </p-radioButton>
+                                                <label for="riego"> 
+                                                    {{cuadro.numeroCuadro}} 
+                                                
+
+                                                </label>
+                                           
+                                            </div>
+                                    </div>
+                                    <!-- fin lista cuadros -->
                                             
                                              <!-- Marco Plantación e/Hileras -->
                                             <div class="p-2">

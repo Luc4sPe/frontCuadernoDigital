@@ -72,7 +72,7 @@ export class PlantacionNuevaComponent implements OnInit {
   }
 
   permisoPlantacion(form: NgForm): void{
-
+    console.log(this.plantacion);
     this.plantacionService.crearPlantacion(this.plantacion).subscribe(
       data =>{
         this.msj = data.mensaje;

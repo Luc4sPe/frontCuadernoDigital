@@ -1,6 +1,7 @@
 import { Agroquimico } from "./agroquimico";
 import { Cuadro } from "./cuadro";
 import { Finca } from "./finca";
+import { Plantacion } from "./plantacion";
 
 export class AplicacionAgroquimico {
     id?:number;
@@ -16,20 +17,21 @@ export class AplicacionAgroquimico {
     fechaDeAplicacion: Date = new Date();
     fechaModificacion: Date = new Date();
     finca:Finca;
+    plantacion: Plantacion;
 
     constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:number,dosisPorHl:number,volumenPorHectaria:number,objetivo:string,
         observaciones:string,justificacion:string,plaga:string,finca:Finca){
 
             this.agroquimico=agroquimico;
-            cuadro=cuadro;
-            dosisPorHectaria=dosisPorHectaria;
-            dosisPorHl=dosisPorHl;
-            volumenPorHectaria=volumenPorHectaria;
-            objetivo=objetivo;
-            observaciones=observaciones;
-            justificacion=justificacion;
-            plaga=plaga;
-            finca=finca;
+            this.cuadro=cuadro;
+            this.dosisPorHectaria=dosisPorHectaria;
+            this.dosisPorHl=dosisPorHl;
+            this.volumenPorHectaria=volumenPorHectaria;
+            this.objetivo=objetivo;
+            this.observaciones=observaciones;
+            this.justificacion=justificacion;
+            this.plaga=plaga;
+            this.finca=finca;
     }
 
 }

@@ -15,6 +15,8 @@ import { Agroquimico } from 'src/app/Core/modelo/agroquimico';
 import { AsesoriaAgroquimico } from 'src/app/Core/modelo/asesoria-agroquimico';
 import { AsesoriaAgroquimicoService } from 'src/app/service/asesoria-agroquimico.service';
 import { Table } from 'primeng/table';
+import { PlantacionService } from 'src/app/service/plantacion.service';
+import { Plantacion } from 'src/app/Core/modelo/plantacion';
 @Component({
   selector: 'app-nueva-aplicacion-agro',
   templateUrl: './nueva-aplicacion-agro.component.html',
@@ -27,9 +29,10 @@ export class NuevaAplicacionAgroComponent implements OnInit {
   msj:string;
   patronLetras: string = "^[a-z A-ZÀ-ÿ\u00f1\u00d1]*(\s*[a-z A-ZÀ-ÿ\u00f1\u00d1]*)*[a-z A-ZÀ-ÿ\u00f1\u00d1]+$"
   usuarioProductor:any;
-  aplicacionAgro:AplicacionAgroquimicoDto =new AplicacionAgroquimicoDto();
+  aplicacionAgro:AplicacionAgroquimicoDto = new AplicacionAgroquimicoDto;
   fincas: Finca[];
   cuadros: Cuadro[];
+  plantacion: Plantacion[];
   listadoAgroquimico: Agroquimico[];
   //atributos para agregar la lista de asesoría de agroquímico
 
@@ -48,18 +51,19 @@ export class NuevaAplicacionAgroComponent implements OnInit {
     private aplicacionService: AplicacionAgroquimicoService,
     private location : Location,
     private agroquimicoService: AgroquimicoService,
-    private asesoriaService: AsesoriaAgroquimicoService
+    private asesoriaService: AsesoriaAgroquimicoService,
+    private plantacionService: PlantacionService
   ) { }
 
   ngOnInit(): void {
     this.cargarItems();
-    this.isProductor=this.tokenService.isProductor();
-    this.isAdmin=this.tokenService.isAdmin();
+    /* this.isProductor=this.tokenService.isProductor();
+    this.isAdmin=this.tokenService.isAdmin(); */
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
     this.listarCuadrosPorFinca();
     this.listarAgroquimicos();
-    this.listadoAsesoriaDeUnaFinca();
+    /* this.listadoAsesoriaDeUnaFinca(); */
   }
 
   cargarItems(): void {
@@ -87,9 +91,8 @@ export class NuevaAplicacionAgroComponent implements OnInit {
   }
 
   permisoAplicacion(form: NgForm):void{
-
+    console.log(this.aplicacionAgro);
     this.aplicacionService.crearAplicacionAgro(this.aplicacionAgro).subscribe(
-      
       data =>{
         this.msj = data.mensaje;
         Swal.fire({

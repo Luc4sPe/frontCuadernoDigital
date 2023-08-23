@@ -205,12 +205,14 @@
                     <td>{{plantacion.entrePlantas}}</td>
                     <td>{{plantacion.sistemaRiego}}</td>
                     <td>{{plantacion.sistemaTrasplante}}</td>
+                    <td>{{plantacion.cuadro.numeroCuadro}}</td>
                     
+                   <!--  Se utiliza cuando es una lista
                     <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of plantacion.numerosDeCuadros; let i = index; ">
                
                       <td>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</td>
                     
-                    </ul></td>
+                    </ul></td> -->
 
                     <td>{{plantacion.fechaCreacionPlantacion | date:'dd/MM/YYYY'}}</td>
 

@@ -30,6 +30,22 @@
 
                       <!-- fin -->
 
+                        <!-- Selector cuadro -->
+                        <div class="p-2">
+                                          
+                            <label for="idCuadr" class="form-label">Seleccione el cuadro</label>
+                            <select class="form-select" name="cuadro" id="idCuadr"
+                            [(ngModel)]="plantacion.cuadro.idCuadro" aria-label=".form-select-lg example" required>
+                            <option [value]="cuadro.idCuadro" *ngFor="let cuadro of cuadros">
+                            
+                                {{ cuadro.numeroCuadro }}
+                                
+                            </option>
+                            
+                            </select>
+                         </div>
+                          <!-- fin -->
+
                     
                        <!-- Marco Plantación e/Hileras -->
                        <div class="p-2">

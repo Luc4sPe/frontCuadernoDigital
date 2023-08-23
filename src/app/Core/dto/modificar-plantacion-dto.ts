@@ -4,7 +4,7 @@ import { Cultivo } from "../modelo/cultivo";
 export class ModificarPlantacionDto {
     entreIleras: number;
     entrePlantas: number;
-    numerosDeCuadros: Cuadro [];
+    idCuadro: number;
     observacion: string;
     justificacion: string;
     sistemaRiego: string;
@@ -13,11 +13,12 @@ export class ModificarPlantacionDto {
     cantidadPlantines: number;
    
 
-    constructor(entreIleras: number, entrePlantas: number, observacion: string, justificacion: string,
+    constructor(entreIleras: number, entrePlantas: number,  idCuadro: number ,observacion: string, justificacion: string,
         sistemaRiego: string, sistemaTrasplante: string, tipoCultivo: number, cantidadPlantines: number){
 
            this.entreIleras=entreIleras;
            this.entrePlantas=entrePlantas;
+           this.idCuadro=idCuadro;
            this.observacion=observacion;
            this.justificacion=justificacion;
            this.sistemaRiego=sistemaRiego;

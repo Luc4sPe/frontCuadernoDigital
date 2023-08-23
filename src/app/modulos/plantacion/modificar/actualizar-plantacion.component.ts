@@ -85,7 +85,7 @@ export class ActualizarPlantacionComponent implements OnInit {
   actualizarPlantacion(form: NgForm):void{
 
     const id = this.activatedRoute.snapshot.params.id;
-    const modificarPlantacion = new ModificarPlantacionDto(this.plantacion.entreIleras,this.plantacion.entrePlantas,this.plantacion.observacion,
+    const modificarPlantacion = new ModificarPlantacionDto(this.plantacion.entreIleras,this.plantacion.entrePlantas,this.plantacion.cuadro.idCuadro,this.plantacion.observacion,
      this.plantacion.justificacion,this.plantacion.sistemaRiego,this.plantacion.sistemaTrasplante,this.plantacion.nombreTipoCultivo.idCultivo,this.plantacion.cantidadPlantines);
     console.log(modificarPlantacion);
     this.plantacionService.actualizaPlantacion(id,modificarPlantacion).toPromise().then(

@@ -7,7 +7,7 @@ export class Plantacion {
     entrePlantas: number;
     fechaCreacionPlantacion: Date = new Date();
     fechaModificacionPlantacion: Date = new Date();
-    numerosDeCuadros: Cuadro []=[];
+    cuadro: Cuadro;
     observacion: string;
     justificacion: string;
     sistemaRiego: string;
@@ -16,11 +16,12 @@ export class Plantacion {
     cantidadPlantines: number;
     fechaCosecha: Date;
 
-    constructor(entreIleras: number, entrePlantas: number, observacion: string, justificacion: string,
+    constructor(entreIleras: number, entrePlantas: number, cuadro: Cuadro,observacion: string, justificacion: string,
          sistemaRiego: string, sistemaTrasplante: string, nombreTipoCultivo: Cultivo, cantidadPlantines: number){
 
             this.entreIleras=entreIleras;
             this.entrePlantas=entrePlantas;
+            this.cuadro=cuadro;
             this.observacion=observacion;
             this.justificacion=justificacion;
             this.sistemaRiego=sistemaRiego;

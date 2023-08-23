@@ -17,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { ListadoPlantacionComponent } from './listado/listado-plantacion.component';
 import { ObtenerPlantacionComponent } from './detalle/obtener-plantacion.component';
 import { ActualizarPlantacionComponent } from './modificar/actualizar-plantacion.component';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 
 
@@ -42,7 +43,8 @@ import { ActualizarPlantacionComponent } from './modificar/actualizar-plantacion
     TableModule,
     ScrollTopModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    RadioButtonModule
     
   ]
 })

@@ -45,23 +45,23 @@
                                   <!-- fin -->
                                     <form #form = "ngForm" (ngSubmit)="crearAplicacion(form)" id="form" novalidate> 
                                          
-
-                                       <!-- Listado de los Cuadros -->
+                                         <!-- Listado de los Cuadros -->
                                        <div class="p-2">
                                           
-                                        <label class="form-check-label" for="labor" > Seleccione el cuadro </label>
-                                       
-                                              <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
+                                        <label class="form-check-label" for="labor" > Cuadro </label>
+                                   
+                                          <div class="field-radiobutton" *ngFor="let cuadro of cuadros">
                                                 <p-radioButton name="cuadro.numeroCuadro" value="{{cuadro.idCuadro}}" [(ngModel)]="aplicacionAgro.idCuadro" inputId="riego"> 
                                                 </p-radioButton>
                                                 <label for="riego"> 
                                                     {{cuadro.numeroCuadro}} 
-                                                   
+                                                
+
                                                 </label>
-                                               
+                                           
                                             </div>
-                                        </div>
-                                        <!-- fin -->
+                                    </div>
+                                    <!-- fin lista cuadros -->
 
                                           <!-- Selector tipo agroquímico -->
                                           <div class="p-2">
@@ -204,7 +204,7 @@
                                                 
                                                                 <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1"  icon="pi pi-filter-slash" label="Limpiar Filtros" (click)="clear(dt)"></button>
                                                             </div>
-                                                        </ng-template -->>
+                                                        </ng-template -->
                                 
                                                         <!-- fin -->
 
@@ -379,7 +379,7 @@
                                                 </p-card>
                                             </div>
                                         </div> -->
-                                    </div>
+                                   <!--  </div> -->
                                 </div>
                           </div>
                       </div>
