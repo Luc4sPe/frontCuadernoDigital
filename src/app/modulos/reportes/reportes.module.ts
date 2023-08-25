@@ -23,13 +23,17 @@ import { ChipModule } from 'primeng/chip';
 import { TagModule } from 'primeng/tag';
 import { RippleModule } from 'primeng/ripple';
 import { ActividadPorUsuariosComponent } from './usuarios/ActividadPorUsuarios/actividad-por-usuarios.component';
+import { AgroquimicosMasUtilizadosComponent } from './agroquimicos/agroquimicosMasUtilizados/agroquimicos-mas-utilizados.component';
+import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
 
 
 @NgModule({
   declarations: [
     ReportesDeActividadComponent,
     UsuariosMasActivosComponent,
-    ActividadPorUsuariosComponent
+    ActividadPorUsuariosComponent,
+    AgroquimicosMasUtilizadosComponent,
+    ReportesAgroquimicosComponent
   ],
   imports: [
     CommonModule,

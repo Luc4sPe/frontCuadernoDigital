@@ -24,6 +24,10 @@ export class AplicacionAgroquimicoService {
     return this.httpCliente.get<[AplicacionAgroquimico]>(this.AplicacionAgroURL+`listadoAplicacionAgroDeUnaFinca/${idFinca}`);
   } 
 
+  public listarAplicacionAgroquimico(): Observable<AplicacionAgroquimico[]>{
+    return this.httpCliente.get<AplicacionAgroquimico[]>(this.AplicacionAgroURL +'listarAplicacionAgroquimico');
+  }
+
   public datalle(id: number): Observable<AplicacionAgroquimico>{
     return this.httpCliente.get<AplicacionAgroquimico>(this.AplicacionAgroURL + `detalleAplicacionAgro/${id}`);
 

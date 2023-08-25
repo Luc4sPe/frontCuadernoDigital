@@ -12,6 +12,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {SpeedDialModule} from 'primeng/speeddial';
 import {ButtonModule} from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 
@@ -33,7 +34,8 @@ import {ButtonModule} from 'primeng/button';
         MenubarModule,
         SplitButtonModule,
         SpeedDialModule,
-        ButtonModule
+        ButtonModule,
+        ToastModule
         
         
         

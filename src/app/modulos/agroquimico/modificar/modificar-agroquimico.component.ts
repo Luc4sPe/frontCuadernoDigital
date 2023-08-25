@@ -78,7 +78,7 @@ export class ModificarAgroquimicoComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     const agroModificar = new ModificarAgroquimicoDto(this.agroquimico.nombreComercial,this.agroquimico.formulaYconcentracion,this.agroquimico.principioActivo,
       this.agroquimico.tipo,this.agroquimico.tiempoDeCarencia,this.agroquimico.dosisPorHectaria,this.agroquimico.dosisPorHl,
-      this.agroquimico.volumenPorHectaria,this.agroquimico.numLote);
+      this.agroquimico.volumenPorHectaria);
     this.agroService.actualizarAgroquimico(id,agroModificar).toPromise().then(
       data =>{
         this.msj = data.mensaje;

@@ -4,13 +4,13 @@ export class ModificarAgroquimicoDto {
     principioActivo: string;
     tipo: string;
     tiempoDeCarencia: number;
-    dosisPorHectaria: number;
-    dosisPorHl: number;
-    volumenPorHectaria: number;
-    numLote: number;
+    dosisPorHectaria: string;
+    dosisPorHl: string;
+    volumenPorHectaria: string;
+    
 
     constructor(nombreComercial: string,formulaYconcentracion: string,principioActivo: string,tipo: string,tiempoDeCarencia: number,
-        dosisPorHectaria: number,dosisPorHl: number,volumenPorHectaria: number, numLote: number ){
+        dosisPorHectaria: string,dosisPorHl: string,volumenPorHectaria: string,  ){
 
             this.nombreComercial=nombreComercial;
             this.formulaYconcentracion=formulaYconcentracion;
@@ -20,7 +20,7 @@ export class ModificarAgroquimicoDto {
             this.dosisPorHectaria=dosisPorHectaria;
             this.dosisPorHl=dosisPorHl;
             this.volumenPorHectaria=volumenPorHectaria;
-            this.numLote=numLote;
+           
 
     }
 }

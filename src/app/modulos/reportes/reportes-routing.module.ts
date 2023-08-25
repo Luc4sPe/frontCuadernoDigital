@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarUsuarios } from 'src/app/Core/guards/cul-guard.service';
 import { ReportesDeActividadComponent } from './usuarios/reportes/reportes-de-actividad.component';
+import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
 
 const ADMIN = Roles.ADMIN;
 const Productor = Roles.PRODUCTOR;
@@ -17,6 +18,19 @@ const routes: Routes = [
       {
         path: 'usuarios/actividad',
         component: ReportesDeActividadComponent,
+        canActivate: [guarUsuarios],
+        data: { rolesEsperados: [ADMIN] },
+      },
+    ]
+  },
+
+  {
+    path: '',
+    children: [
+     /*  { path: '', redirectTo: 'usuarios/actividad' }, */
+      {
+        path: 'agroquimico/masUtilizados',
+        component: ReportesAgroquimicosComponent,
         canActivate: [guarUsuarios],
         data: { rolesEsperados: [ADMIN] },
       },

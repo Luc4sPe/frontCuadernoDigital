@@ -67,7 +67,7 @@
                                 <!--Tipo -->
                                   <div class="form-group p-2">
                                         <label for="tipo" class="form-label">Tipo</label>
-                                        <input type="text" class="p-inputtext form-control mt-2"  name="ti" id="tipo" placeholder="Ingrese el tipo" 
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="ti" id="tipo" placeholder="Ej: Herbicidas, Insecticidas, Fungicidas, etc." 
                                         [(ngModel)]="nuevoAgro.tipo" #tip ="ngModel"  pattern={{patronLetras}}   required minlength="2">
                                     
                                         <div *ngIf="tip.invalid && (tip.dirty || tip.touched)">
@@ -83,7 +83,7 @@
                                  <!-- Tiempo de carencia -->
                                  <div class="form-group p-2">
                                         <label for="tiempoDeCarencia" class="form-label">Tiempo de carencia</label>
-                                        <input type="number" class="p-inputtext form-control mt-2"  name="tiempo" id="tiempoDeCarencia" placeholder="Ingrese el tiempo de carencia" 
+                                        <input type="number" class="p-inputtext form-control mt-2"  name="tiempo" id="tiempoDeCarencia" placeholder="Tiempo de carencia en días " 
                                         [(ngModel)]="nuevoAgro.tiempoDeCarencia" #tiem ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
                                     
                                         <div *ngIf="tiem.invalid && (tiem.dirty || tiem.touched)">
@@ -97,7 +97,7 @@
                                  <!-- fin -->
 
                                   <!-- Dosis por hectaria -->
-                                  <div class="form-group p-2">
+                                 <!--  <div class="form-group p-2">
                                         <label for="dosisPorHectaria" class="form-label">Dosis por hectarea (cm3)</label>
                                         <input type="number" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ingrese la dosis por hectarea" 
                                         [(ngModel)]="nuevoAgro.dosisPorHectaria" #dosis ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
@@ -108,12 +108,26 @@
                                             <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                         </div>
                                     
+                                    </div> -->
+
+
+                                    <div class="form-group p-2">
+                                        <label for="dosisPorHectaria" class="form-label">Dosis/ha</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ej: cc, g, Kg, etc." 
+                                        [(ngModel)]="nuevoAgro.dosisPorHectaria" #dosis ="ngModel"    required minlength="2">
+                                    
+                                        <div *ngIf="tip.invalid && (dosis.dirty || dosis.touched)">
+                                            <p-message styleClass="m-1" *ngIf="dosis.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosis.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                            <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
+                                        </div>
+                                
                                     </div>
 
                                  <!-- fin -->
 
                                    <!-- Dosis por Hl -->
-                                   <div class="form-group p-2">
+                                   <!-- <div class="form-group p-2">
                                         <label for="dosisPorHl" class="form-label">Dosis por Hl (cm3)</label>
                                         <input type="number" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ingrese la dosis por Hl" 
                                         [(ngModel)]="nuevoAgro.dosisPorHl" #dosisHl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
@@ -124,12 +138,25 @@
                                             <p-message styleClass="m-1" *ngIf="dosisHl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                         </div>
                                     
+                                    </div> -->
+
+                                    <div class="form-group p-2">
+                                        <label for="dosisPorHl" class="form-label">Dosis/hl</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ej: cc, g, Kg, etc." 
+                                        [(ngModel)]="nuevoAgro.dosisPorHl" #dosisHl ="ngModel"    required minlength="2">
+                                    
+                                        <div *ngIf="tip.invalid && (dosisHl.dirty || dosisHl.touched)">
+                                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                            <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
+                                        </div>
+                                
                                     </div>
 
                                  <!-- fin -->
 
                                    <!-- Volumen por hectarea -->
-                                   <div class="form-group p-2">
+                                   <!-- <div class="form-group p-2">
                                         <label for="volumenPorHectaria" class="form-label">Volumen por hectarea (L)</label>
                                         <input type="number" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ingrese el volumen por hectarea" 
                                         [(ngModel)]="nuevoAgro.volumenPorHectaria" #volu ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
@@ -141,11 +168,26 @@
                                         </div>
                                         
                                     </div>
+ -->
+                                    <div class="form-group p-2">
+                                        <label for="volumenPorHectaria" class="form-label">Vol/ha</label>
+                                        <input type="text" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ej: ml, L, etc." 
+                                        [(ngModel)]="nuevoAgro.volumenPorHectaria" #volumen ="ngModel"    required minlength="2">
+                                    
+                                        <div *ngIf="tip.invalid && (volumen.dirty || volumen.touched)">
+                                            <p-message styleClass="m-1" *ngIf="volumen.errors?.required"  severity="error" text="El volumen por hectarea requerida"></p-message>
+                                            <p-message styleClass="m-1" *ngIf="volumen.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                            <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
+                                        </div>
+                                
+                                    </div>
+
+                                    
 
                                  <!-- fin -->
 
                                   <!-- Numero de lote -->
-                                  <div class="form-group p-2">
+                                  <!-- <div class="form-group p-2">
                                         <label for="numLote" class="form-label">Número de lote</label>
                                         <input type="text" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" placeholder="Ingrese el número de lote" 
                                         [(ngModel)]="nuevoAgro.numLote" #numl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="3">
@@ -156,7 +198,7 @@
                                             <p-message styleClass="m-1" *ngIf="numl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
                                         </div>
                                     
-                                    </div>
+                                    </div> -->
 
                                     <!-- fin -->
 

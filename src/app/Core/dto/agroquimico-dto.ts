@@ -4,8 +4,8 @@ export class AgroquimicoDto {
     principioActivo: string;
     tipo: string;
     tiempoDeCarencia: number;
-    dosisPorHectaria: number;
-    dosisPorHl: number;
-    volumenPorHectaria: number;
-    numLote: number;
+    dosisPorHectaria: string;
+    dosisPorHl: string;
+    volumenPorHectaria: string;
+    
 }
