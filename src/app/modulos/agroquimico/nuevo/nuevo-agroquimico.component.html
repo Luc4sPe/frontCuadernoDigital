@@ -116,7 +116,7 @@
                                         <input type="text" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ej: cc, g, Kg, etc." 
                                         [(ngModel)]="nuevoAgro.dosisPorHectaria" #dosis ="ngModel"    required minlength="2">
                                     
-                                        <div *ngIf="tip.invalid && (dosis.dirty || dosis.touched)">
+                                        <div *ngIf="dosis.invalid && (dosis.dirty || dosis.touched)">
                                             <p-message styleClass="m-1" *ngIf="dosis.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
                                             <p-message styleClass="m-1" *ngIf="dosis.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                             <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
@@ -145,7 +145,7 @@
                                         <input type="text" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ej: cc, g, Kg, etc." 
                                         [(ngModel)]="nuevoAgro.dosisPorHl" #dosisHl ="ngModel"    required minlength="2">
                                     
-                                        <div *ngIf="tip.invalid && (dosisHl.dirty || dosisHl.touched)">
+                                        <div *ngIf="dosisHl.invalid && (dosisHl.dirty || dosisHl.touched)">
                                             <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
                                             <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                             <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
@@ -174,7 +174,7 @@
                                         <input type="text" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ej: ml, L, etc." 
                                         [(ngModel)]="nuevoAgro.volumenPorHectaria" #volumen ="ngModel"    required minlength="2">
                                     
-                                        <div *ngIf="tip.invalid && (volumen.dirty || volumen.touched)">
+                                        <div *ngIf="volumen.invalid && (volumen.dirty || volumen.touched)">
                                             <p-message styleClass="m-1" *ngIf="volumen.errors?.required"  severity="error" text="El volumen por hectarea requerida"></p-message>
                                             <p-message styleClass="m-1" *ngIf="volumen.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                                             <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->

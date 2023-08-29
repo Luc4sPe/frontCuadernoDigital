@@ -7,9 +7,9 @@ export class AplicacionAgroquimico {
     id?:number;
     agroquimico:Agroquimico;
     cuadro:Cuadro;
-    dosisPorHectaria:number;
-    dosisPorHl:number;
-    volumenPorHectaria:number;
+    dosisPorHectaria:string;
+    dosisPorHl:string;
+    volumenPorHectaria:string;
     objetivo:string;
     observaciones:string;
     justificacion:string;
@@ -19,7 +19,7 @@ export class AplicacionAgroquimico {
     finca:Finca;
     plantacion: Plantacion;
 
-    constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:number,dosisPorHl:number,volumenPorHectaria:number,objetivo:string,
+    constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:string,dosisPorHl:string,volumenPorHectaria:string,objetivo:string,
         observaciones:string,justificacion:string,plaga:string,finca:Finca){
 
             this.agroquimico=agroquimico;
