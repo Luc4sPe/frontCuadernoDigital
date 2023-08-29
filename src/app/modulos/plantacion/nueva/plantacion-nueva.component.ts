@@ -88,7 +88,7 @@ export class PlantacionNuevaComponent implements OnInit {
       this.msj = err.error.mensaje;
       Swal.fire({
         icon: 'error',
-        title:'Error al crear la finca',
+        title:'Error al crear la plantación',
         text: this.msj,
         
       });   
