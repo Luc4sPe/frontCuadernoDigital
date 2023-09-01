@@ -15,7 +15,7 @@
                         <!-- Nombre comercial -->
                         <div class="form-group p-2">
                             <label for="nombreComercial" class="form-label">Nombre comercial</label>
-                            <input type="text" class="p-inputtext form-control mt-2"  name="nombre" id="nombreComercial" value = {{agroquimico.nombreComercial}} placeholder="Ingrese el nombre comercial" 
+                            <input type="text" class="p-inputtext form-control mt-2" [disabled]="true" name="nombre" id="nombreComercial" value = {{agroquimico.nombreComercial}} placeholder="Ingrese el nombre comercial" 
                             [(ngModel)]="agroquimico.nombreComercial" #nom ="ngModel"  pattern={{patronLetras}}   required minlength="4">
                         
                             <div *ngIf="nom.invalid && (nom.dirty || nom.touched)">
@@ -94,13 +94,13 @@
 
                   <!-- Dosis por hectaria -->
                   <div class="form-group p-2">
-                    <label for="dosisPorHl" class="form-label">Dosis/hl</label>
-                    <input type="text" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ej: cc, g, Kg, etc." 
-                    [(ngModel)]="agroquimico.dosisPorHl" #dosisHl ="ngModel"    required minlength="2">
+                    <label for="dosisPorHectaria" class="form-label">Dosis/ha</label>
+                    <input type="text" class="p-inputtext form-control mt-2"  name="dosisPorHl" id="dosisPorHectaria" placeholder="Ej: cc, g, Kg, etc." 
+                    [(ngModel)]="agroquimico.dosisPorHectaria" #dosisPorHl ="ngModel"    required minlength="2">
                 
-                    <div *ngIf="tip.invalid && (dosisHl.dirty || dosisHl.touched)">
-                        <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
-                        <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                    <div *ngIf="dosisPorHl.invalid && (dosisPorHl.dirty || dosisPorHl.touched)">
+                        <p-message styleClass="m-1" *ngIf="dosisPorHl.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                        <p-message styleClass="m-1" *ngIf="dosisPorHl.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
                         <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
                     </div>
             
@@ -110,14 +110,14 @@
 
                    <!-- Dosis por Hl -->
                    <div class="form-group p-2">
-                        <label for="dosisPorHl" class="form-label">Dosis por Hl</label>
-                        <input type="number" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" value = {{agroquimico.dosisPorHl}} placeholder="Ingrese la dosis por Hl" 
-                        [(ngModel)]="agroquimico.dosisPorHl" #dosisHl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                        <label for="dosisPorHl" class="form-label">Dosis por hl</label>
+                        <input type="text" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" value = {{agroquimico.dosisPorHl}} placeholder="Ingrese la dosis por Hl" 
+                        [(ngModel)]="agroquimico.dosisPorHl" #dosisHl ="ngModel"  required minlength="1">
                     
                         <div *ngIf="dosisHl.invalid && (dosisHl.dirty || dosisHl.touched)">
                             <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por Hl requerida"></p-message>
                             <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                            <p-message styleClass="m-1" *ngIf="dosisHl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                           <!--  <p-message styleClass="m-1" *ngIf="dosisHl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message> -->
                         </div>
                     
                     </div>

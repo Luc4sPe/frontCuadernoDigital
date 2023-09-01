@@ -25,6 +25,7 @@ import { RippleModule } from 'primeng/ripple';
 import { ActividadPorUsuariosComponent } from './usuarios/ActividadPorUsuarios/actividad-por-usuarios.component';
 import { AgroquimicosMasUtilizadosComponent } from './agroquimicos/agroquimicosMasUtilizados/agroquimicos-mas-utilizados.component';
 import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-
     KeyFilterModule,
     ChipModule,
     TagModule,
-    RippleModule
+    RippleModule,
+    InputTextModule
     
 
   ]
