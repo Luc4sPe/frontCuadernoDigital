@@ -10,14 +10,14 @@
                         <p-message styleClass="m-1" *ngIf="rangoFechas[1] == null" severity="error" text="Debes seleccionar la fecha hasta"></p-message>
                     </div>
                     <div class="form-group">
-                        <label class="mt-2 mb-2">Nombre de usuario</label>
+                        <label for="nombre" class="mt-2 mb-2">Nombre de usuario</label>
                        
                         <div class="p-inputgroup ">
                             <span class="p-inputgroup-addon">
                               <i class="pi pi-user"></i>
                             </span>
-                            <input pInputText type="text"  #user=ngModel [(ngModel)]="userName" placeholder="Nombre de usuario" required>
-                            <button pRipple pButton icon="pi pi-search"  styleClass="p-button-warn" (click)="cargarDatosfiltrados()" [disabled]="userName=='' || rangoFechas[0]==null || rangoFechas[1]==null"></button>
+                            <input pInputText type="text" id="nombre"  #user=ngModel [(ngModel)]="userName" placeholder="Nombre de usuario" required>
+                            <button pRipple pButton icon="pi pi-search" styleClass="p-button-warn" (click)="cargarDatosfiltrados()" [disabled]="userName=='' || rangoFechas[0]==null || rangoFechas[1]==null"></button>
                         </div>
                       
                         <p-message styleClass="m-1" *ngIf="user.invalid && (user.dirty || user.touched)" severity="error" text="Debes ingresar el usuario"></p-message>
