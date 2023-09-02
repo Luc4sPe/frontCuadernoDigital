@@ -61,7 +61,7 @@ export class ActividadPorUsuariosComponent implements OnInit {
         this.loading = false;
         this.cargarGrafico();
       },err => {
-        Swal.fire('Error', err.error.message, 'error')
+        Swal.fire('Error, nombre de usuario incorrecto, visualice el nombre de usuario a filtrar en el grafico', err.error.message, 'error')
       }
     )
   }
