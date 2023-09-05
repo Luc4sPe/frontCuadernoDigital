@@ -122,6 +122,7 @@ export class IndexComponent implements OnInit {
       this.obtenerCantidadAsesoriaRiegoNoAplicada();
       this.obtenerCantidadAsesoriaAgro();
       this.obtenerCantidadAsesoriaAgroAplicada();
+      this.obtenerCantidadAsesoriaAgroNoAplicada();
     }
   }
 
