@@ -7,6 +7,7 @@ export class Log {
     logAccion :string
     descripcion: string
     objeto_id : number
+    macc: string
 
     constructor(id: number, usuario: Usuario, logAccion: string, descripcion: string, objeto_id: number){
         this.id = id;

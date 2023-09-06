@@ -51,6 +51,14 @@
     </ng-template>
       <ng-template pTemplate="header">
         <tr class="text-center">
+          <!-- columna mac-->
+          <th class="text-center text-sm" pSortableColumn="macc">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              Dirección mac
+              <p-sortIcon field="macc"></p-sortIcon>
+              <p-columnFilter type="text" field="macc" display="menu" class="p-ml-auto"></p-columnFilter>
+            </div>
+          </th>
             <!-- columna fecha-->
             <th class="text-center text-sm" pSortableColumn="fecha">
                 <div class="p-d-flex p-jc-between p-ai-center">
@@ -87,6 +95,8 @@
       </ng-template>
       <ng-template pTemplate="body" let-log>
         <tr>
+          <td class="text-center">{{log.macc}}</td>
+          <td class="text-center">{{log.fecha}}</td>
           <td class="text-center">{{log.fecha | date:'short'}}</td>
           <td class="text-center">{{log.logAccion}}</td>
           <td class="text-center">{{log.descripcion}}</td>
