@@ -34,6 +34,9 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "lodash"
+           ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -97,12 +100,18 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontCuadernoDigital:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "frontCuadernoDigital:build:production"
             },
             "development": {
               "browserTarget": "frontCuadernoDigital:build:development"
+            },
+            "staging": {
+              "browserTarget": "frontCuadernoDigital:build:staging"
             }
           },
           "defaultConfiguration": "development"
