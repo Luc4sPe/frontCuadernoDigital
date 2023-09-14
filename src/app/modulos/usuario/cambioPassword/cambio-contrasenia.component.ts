@@ -73,7 +73,7 @@ export class CambioContraseniaComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.showLoading();
+       Swal.showLoading(Swal.getDenyButton());
         this.solicitarCambioPassword(form);
       } 
     })
