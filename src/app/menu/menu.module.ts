@@ -35,7 +35,8 @@ import { TooltipModule } from 'primeng/tooltip';
         SplitButtonModule,
         SpeedDialModule,
         ButtonModule,
-        ToastModule
+        ToastModule,
+        TooltipModule
         
         
         

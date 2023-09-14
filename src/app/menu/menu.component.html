@@ -21,13 +21,13 @@
 
             <!-- menu usuario -->
             <li class="nav-item dropdown" *ngIf="isAdmin">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-users"></i>
                     Usuarios
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" routerLink="/usuario/nuevo">Nuevo usuario</a></li>
+                    <li><a class="dropdown-item" href="#" routerLink="/usuario/nuevo">Nuevo usuario</a></li>
                     <li><a class="dropdown-item" routerLink="/usuario">Lista usuarios</a></li>
                     <li><a class="dropdown-item" routerLink="/logs">Logs de usuarios</a></li>
                    
@@ -243,7 +243,7 @@
                     Reportes
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/reportes/usuarios/actividad">Usuarios</a></li>
+                    <li *ngIf="isAdmin"><a class="dropdown-item" href="#" routerLink="/reportes/usuarios/actividad">Usuarios</a></li>
                     <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/reportes/agroquimico/masUtilizados">Agroquímicos</a></li>
                     <!-- <li class="dropend">
                         <a *ngIf="isAdmin" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Agroquímicos</a>

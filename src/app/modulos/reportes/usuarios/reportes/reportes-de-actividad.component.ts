@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api/menuitem';
-/* import jsPDF from 'jspdf'; */
+import jsPDF from 'jspdf'; 
 import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-reportes-de-actividad',
@@ -26,7 +26,7 @@ export class ReportesDeActividadComponent implements OnInit {
     ];
   }
 
-  /*  downloadPDF() {
+   downloadPDF() {
     // Extraemos el
     const DATA = document.getElementById('pdf');
     const doc = new jsPDF('p', 'pt', 'a4');
@@ -50,7 +50,7 @@ export class ReportesDeActividadComponent implements OnInit {
       docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
     });
   }
- */
+
 
   
 
