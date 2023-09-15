@@ -1,6 +1,7 @@
 {
   "name": "front-cuaderno-digital",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,7 +23,7 @@
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@popperjs/core": "^2.11.8",
     "animate.css": "^4.1.1",
-    "bootstrap": "^5.3.1",
+    "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.10.5",
     "chart.js": "^4.4.0",
     "html2canvas": "^1.4.1",
@@ -37,7 +38,7 @@
     "primeng": "^16.3.1",
     "querystring": "^0.2.1",
     "rxjs": "^7.8.1",
-    "sweetalert2": "^11.7.27",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.6.2",
     "zone.js": "~0.13.1"
   },
@@ -55,5 +56,4 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": ">=4.9.3 and <5.2.0"
   }
- 
 }
