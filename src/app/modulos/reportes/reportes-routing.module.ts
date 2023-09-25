@@ -32,7 +32,7 @@ const routes: Routes = [
         path: 'agroquimico/masUtilizados',
         component: ReportesAgroquimicosComponent,
         canActivate: [guarUsuarios],
-        data: { rolesEsperados: [ADMIN] },
+        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },
       },
     ]
   }
