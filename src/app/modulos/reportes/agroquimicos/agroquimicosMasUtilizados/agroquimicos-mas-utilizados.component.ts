@@ -66,7 +66,7 @@ export class AgroquimicosMasUtilizadosComponent implements OnInit {
       datasets : [
         {
           label : 'Agroquímicos más utilizados',
-          backgroundColor : this.paletaDeColores[6],
+          backgroundColor : this.paletaDeColores[11],
           data : cantidad
         }
       ]
@@ -118,7 +118,7 @@ export class AgroquimicosMasUtilizadosComponent implements OnInit {
       datasets : [
         {
           label : 'Agroquímicos más utilizados',
-          backgroundColor : this.paletaDeColores[7],
+          backgroundColor : this.paletaDeColores[11],
           data : cantidad
         }
       ]

@@ -75,7 +75,7 @@ export class UsuariosMasActivosComponent implements OnInit {
     }    
   }
 
-  cargarGraficoConFiltro(): void {
+   cargarGraficoConFiltro(): void {
 
     this.rangoFechas = this.FechaDesdeHastaService.getFechaDesdeHasta(this.rangoFechas[0], this.rangoFechas[1]);
     const fechaDesde = this.rangoFechas[0];
@@ -122,3 +122,4 @@ export class UsuariosMasActivosComponent implements OnInit {
 
 
 }
+ 

@@ -8,7 +8,7 @@ import { Usuario } from '../Core/modelo/usuario';
 })
 export class ChartService {
 
-  paletaDeColores = ['#003f5c','#f95d6a','#00c8cd','#2f4b7c', '#665191','#a05195', '#d45087', '#ff7c43', '#ffa600','#1c9be8', '#00b4eb', '#00d696', '#85dc56', '#e8d71f'];
+  paletaDeColores = ['#003f5c','#f95d6a','#00c8cd','#2f4b7c', '#665191','#a05195', '#d45087', '#ff7c43', '#ffa600','#1c9be8', '#00b4eb', '#00d696', '#85dc56', '#e8d71f','#98864f'];
 
   constructor(private usuariosService : UsuarioService) { }
 
@@ -30,6 +30,19 @@ export class ChartService {
   }
 
   public formatearPieChart(labels: string[], datos:any) : any{
+    const chart = {
+      labels: labels,
+      datasets: [
+          {
+              data: datos,
+              backgroundColor: this.paletaDeColores
+          }
+      ]
+    };
+    return chart;
+  }
+
+  public formatearPolarArea(labels: string[], datos:any) : any{
     const chart = {
       labels: labels,
       datasets: [

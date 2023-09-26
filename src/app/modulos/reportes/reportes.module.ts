@@ -26,6 +26,7 @@ import { ActividadPorUsuariosComponent } from './usuarios/ActividadPorUsuarios/a
 import { AgroquimicosMasUtilizadosComponent } from './agroquimicos/agroquimicosMasUtilizados/agroquimicos-mas-utilizados.component';
 import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMasUsadosPorProductor/agroqui-mas-usados-por-productor.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { InputTextModule } from 'primeng/inputtext';
     UsuariosMasActivosComponent,
     ActividadPorUsuariosComponent,
     AgroquimicosMasUtilizadosComponent,
-    ReportesAgroquimicosComponent
+    ReportesAgroquimicosComponent,
+    AgroquiMasUsadosPorProductorComponent
   ],
   imports: [
     CommonModule,
