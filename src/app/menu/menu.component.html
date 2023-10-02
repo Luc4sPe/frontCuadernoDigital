@@ -244,9 +244,9 @@
                     Reportes
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li *ngIf="isAdmin  || isEncargadoAgricola"><a class="dropdown-item" href="#" routerLink="/reportes/usuarios/actividad">Usuarios</a></li>
+                    <li *ngIf="isAdmin"><a class="dropdown-item" href="#" routerLink="/reportes/usuarios/actividad">Usuarios</a></li>
                     <li *ngIf="isAdmin || isEncargadoAgricola"><a class="dropdown-item" routerLink="/reportes/agroquimico/masUtilizados">Agroquímicos</a></li>
-                     <li *ngIf="isAdmin || isEncargadoAgricola"><a class="dropdown-item" routerLink="/reportes/agroquimico/masUtilizados">Cuaderno</a></li>
+                     <li *ngIf="isAdmin || isEncargadoAgricola"><a class="dropdown-item" routerLink="/reportes/informe/asesorias">Asesorias</a></li>
                     <!-- <li class="dropend">
                         <a *ngIf="isAdmin" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Agroquímicos</a>
                         <ul class="dropdown-menu">
