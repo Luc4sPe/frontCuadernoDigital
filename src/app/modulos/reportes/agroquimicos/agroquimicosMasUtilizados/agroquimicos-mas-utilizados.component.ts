@@ -68,8 +68,10 @@ export class AgroquimicosMasUtilizadosComponent implements OnInit {
           label : 'Agroquímicos más utilizados',
           backgroundColor : this.paletaDeColores[11],
           data : cantidad
-        }
-      ]
+        },
+       
+      ],
+      
     }
     this.options = {
       indexAxis: 'x',
