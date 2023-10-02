@@ -33,6 +33,7 @@ export class ActividadPorUsuariosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   cargarLogsDeUsuario(): void {
