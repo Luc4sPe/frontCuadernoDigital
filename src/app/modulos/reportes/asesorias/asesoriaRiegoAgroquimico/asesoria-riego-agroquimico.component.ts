@@ -1,6 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { AsesoriaAgroquimico } from 'src/app/Core/modelo/asesoria-agroquimico';
-import { AsesoriaRiego } from 'src/app/Core/modelo/asesoria-riego';
 import { AsesoriaAgroquimicoService } from 'src/app/service/asesoria-agroquimico.service';
 import { AsesoriaRiegoService } from 'src/app/service/asesoria-riego.service';
 import { FechaDesdeHastaService } from 'src/app/service/fecha-desde-hasta-service';
@@ -12,29 +10,23 @@ import { FechaDesdeHastaService } from 'src/app/service/fecha-desde-hasta-servic
 })
 export class AsesoriaRiegoAgroquimicoComponent implements OnInit{
 
-  rangoFechas : Date[]  = [new Date(), new Date()];
  
-  
   datos : any
-  options : any
-  asesoriaRiego : AsesoriaRiego [] = [];
-  asesoriaAgroquimico : AsesoriaAgroquimico [] = []; 
+  options : any 
   paletaDeColores = ['#003f5c','#2f4b7c', '#665191','#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600','#1c9be8', '#00b4eb', '#00c8cd', '#00d696', '#85dc56', '#e8d71f']
   cardSubtitulo : string = '';
-
   cantidadAsesoriaRiegoAplicada: number = 0;
   cantidadAsesoriaNoRiegoAplicada: number = 0;
   cantidadAsesoAgroAplicada: number = 0;
   cantidadAsesoAgroNoAplicada: number = 0;
 
   constructor(
-    private FechaDesdeHastaService : FechaDesdeHastaService,
     private asesoriariegoService : AsesoriaRiegoService,
     private asesoriaAgroService : AsesoriaAgroquimicoService    
   ) { }
 
   ngOnInit(): void {
-    this.rangoFechas = this.FechaDesdeHastaService.getFechaDesdeHasta(this.rangoFechas[0], this.rangoFechas[1]);
+    
     this.cargarAlInicio();
   }
 
@@ -75,8 +67,6 @@ export class AsesoriaRiegoAgroquimicoComponent implements OnInit{
   }
 
    cargarGraficoo(): void {
-    //obtengo labels y datos del grafico
-   
     //grafico
     this.datos = {
       labels: ['Aplicada', 'No aplicada'],
@@ -86,9 +76,7 @@ export class AsesoriaRiegoAgroquimicoComponent implements OnInit{
           data :[this.cantidadAsesoriaRiegoAplicada,this.cantidadAsesoriaNoRiegoAplicada],
           backgroundColor : this.paletaDeColores[8],
           borderColor : ['black'],
-          borderWidth: 1
-         
-
+          borderWidth: 1 
           
         },
         {
@@ -97,7 +85,6 @@ export class AsesoriaRiegoAgroquimicoComponent implements OnInit{
           backgroundColor : this.paletaDeColores[12],
           borderColor : ['black'],
           borderWidth: 1
-          
           
         }
       ],
@@ -109,6 +96,8 @@ export class AsesoriaRiegoAgroquimicoComponent implements OnInit{
       aspectRatio: 0.8,
     }    
   }
+
+ 
  
 
  
