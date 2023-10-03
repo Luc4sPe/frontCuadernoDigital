@@ -4,6 +4,9 @@ import { Roles } from 'src/app/Core/enmus/roles';
 import { CulGuardService as guarUsuarios } from 'src/app/Core/guards/cul-guard.service';
 import { ReportesDeActividadComponent } from './usuarios/reportes/reportes-de-actividad.component';
 import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
+import { InformesComponent } from './asesorias/informesAsesorias/informes.component';
+import { AsesoriaRiegoAgroquimicoComponent } from './asesorias/asesoriaRiegoAgroquimico/asesoria-riego-agroquimico.component';
+
 
 const ADMIN = Roles.ADMIN;
 const Productor = Roles.PRODUCTOR;
@@ -31,6 +34,18 @@ const routes: Routes = [
       {
         path: 'agroquimico/masUtilizados',
         component: ReportesAgroquimicosComponent,
+        canActivate: [guarUsuarios],
+        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },
+      },
+    ]
+  },
+  {
+    path: '',
+    children: [
+     /*  { path: '', redirectTo: 'usuarios/actividad' }, */
+      {
+        path: 'informe/asesorias',
+        component: InformesComponent,
         canActivate: [guarUsuarios],
         data: { rolesEsperados: [ADMIN,Encargado_Agricola] },
       },

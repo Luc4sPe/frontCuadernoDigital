@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/app/menu/menu.module';
 import { ReportesRoutingModule } from './reportes-routing.module';
@@ -27,7 +27,8 @@ import { AgroquimicosMasUtilizadosComponent } from './agroquimicos/agroquimicosM
 import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMasUsadosPorProductor/agroqui-mas-usados-por-productor.component';
-
+import { AsesoriaRiegoAgroquimicoComponent } from './asesorias/asesoriaRiegoAgroquimico/asesoria-riego-agroquimico.component';
+import { InformesComponent } from './asesorias/informesAsesorias/informes.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMas
     ActividadPorUsuariosComponent,
     AgroquimicosMasUtilizadosComponent,
     ReportesAgroquimicosComponent,
-    AgroquiMasUsadosPorProductorComponent
+    AgroquiMasUsadosPorProductorComponent,
+    AsesoriaRiegoAgroquimicoComponent,
+    InformesComponent
   ],
   imports: [
     CommonModule,
@@ -60,6 +63,7 @@ import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMas
     InputTextModule
     
 
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class ReportesModule { }
