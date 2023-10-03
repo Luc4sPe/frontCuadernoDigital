@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/app/menu/menu.module';
 import { ReportesRoutingModule } from './reportes-routing.module';
@@ -29,6 +29,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMasUsadosPorProductor/agroqui-mas-usados-por-productor.component';
 import { AsesoriaRiegoAgroquimicoComponent } from './asesorias/asesoriaRiegoAgroquimico/asesoria-riego-agroquimico.component';
 import { InformesComponent } from './asesorias/informesAsesorias/informes.component';
+import { AsesoriaRiegoAgroPorProductorComponent } from './asesorias/asesoriaRiegoAgroPorProductor/asesoria-riego-agro-por-productor.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { InformesComponent } from './asesorias/informesAsesorias/informes.compon
     ReportesAgroquimicosComponent,
     AgroquiMasUsadosPorProductorComponent,
     AsesoriaRiegoAgroquimicoComponent,
-    InformesComponent
+    InformesComponent,
+    AsesoriaRiegoAgroPorProductorComponent
   ],
   imports: [
     CommonModule,
@@ -64,6 +66,6 @@ import { InformesComponent } from './asesorias/informesAsesorias/informes.compon
     
 
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: []
 })
 export class ReportesModule { }
