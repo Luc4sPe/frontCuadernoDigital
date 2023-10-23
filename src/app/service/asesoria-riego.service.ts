@@ -33,6 +33,10 @@ export class AsesoriaRiegoService {
     return this.httpCliente.get<AsesoriaRiego[]>(this.aseRiegoURL +`listadoAsesoriaRiegoDeUnaFinca/${idFinca}`);
   }
 
+  public listarAsesoriaPorProductor(nombre:string): Observable<AsesoriaRiego[]>{
+    return this.httpCliente.get<AsesoriaRiego[]>(this.aseRiegoURL +`listadoAsesoriaRiegoDeUnProductor/${nombre}`);
+  }
+
   
   public obtenerAsesoria(id: number): Observable<AsesoriaRiego>{
     return this.httpCliente.get<AsesoriaRiego>(this.aseRiegoURL + `detalle/${id}`);

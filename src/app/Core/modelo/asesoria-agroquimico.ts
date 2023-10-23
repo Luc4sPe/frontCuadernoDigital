@@ -20,6 +20,7 @@ export class AsesoriaAgroquimico {
     finca:Finca;
     productor: Usuario;
     asesoriaAplicada: boolean = true;
+    nombreEncargado: string;
 
 
     constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:number,dosisPorHl:number,volumenPorHectaria:number,objetivo:string,
