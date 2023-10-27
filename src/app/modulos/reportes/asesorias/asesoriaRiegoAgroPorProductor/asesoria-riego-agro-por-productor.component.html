@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="row mt-4" *ngIf="!loading">
-    <p-card styleClass="shadow-1 mb-4" header="Listado asesoría de riego" subheader={{subtituloGrafico}}>
+    <p-card styleClass="shadow-1 mb-4" header="Listado asesoría de riego" subheader={{subTituloTabla}}>
         <p-table #dt [value]="asesoriaRiego" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
             [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading" [rowHover]="true"
             [paginator]="true"
@@ -91,6 +91,24 @@
                     </th>
                   <!-- fin -->
 
+                  <!-- Fecha estimada-->
+                    <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                        Fecha estimada
+                        <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
+                        <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
+                     </th>
+                  <!-- fin -->
+              
+                <!-- -- Fecha aplicada-->
+                    <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha aplicada                               
+                            <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th> 
+                <!-- fin -->
+
                    <!-- Encargado agrícola -->
                    <th class="text-center" pSortableColumn="nombreEncargado">
                     <div class="p-d-flex p-jc-between p-ai-center">
@@ -110,6 +128,12 @@
                     <td class="text-center">{{asesoriaRiego.cuadro.numeroCuadro}}</td>
                     <td class="text-center">{{asesoriaRiego.duracionEnHoras}}</td>
                     <td class="text-center">{{asesoriaRiego.milimetrosAplicados}}</td>
+                    <td class="text-center">{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                    <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:'dd/MM/YYYY'  }}</td>
+                    <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
+                    <td class="text-center expired" *ngIf="asesoriaRiego.asesoriaAplicada  == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
+                    
+                    
                     <td class="text-center">{{asesoriaRiego.nombreEncargado}}</td>
                 </tr>
             </ng-template>   
@@ -119,7 +143,7 @@
     <p-scrollTop></p-scrollTop>    
 </div>
 <div class="row mt-4" *ngIf="!loading">
-    <p-card styleClass="shadow-1 mb-4" header="Listado asesoría de agroquímico" subheader={{subtituloGrafico}}>
+    <p-card styleClass="shadow-1 mb-4" header="Listado asesoría de agroquímico" subheader= {{subTituloTabla}}>
         <p-table #dt [value]="asesoriaAgro" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
             [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading" [rowHover]="true"
             [paginator]="true"
@@ -219,7 +243,7 @@
                     </th>
                     <!-- fin -->
 
-                     <!-- Fecha asesoria-->
+                     <!-- Fecha estimada-->
                      <th class="text-center" pSortableColumn="fechaAsesoriaAgroquimico">
                         Fecha estimada
                     <p-sortIcon field="fechaAsesoriaAgroquimico"></p-sortIcon>
@@ -229,7 +253,7 @@
 
                  
               
-                 <!-- -- columna fecha modificación de estado aplicación-->
+                 <!-- -- Fecha aplicada-->
                  <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Fecha aplicada                               
@@ -244,7 +268,7 @@
                  <!-- Encargado agrícola -->
                    <th class="text-center" pSortableColumn="nombreEncargado">
                     <div class="p-d-flex p-jc-between p-ai-center">
-                        Encargado agrícola
+                        Encargado agrícola 
                         <p-sortIcon field="nombreEncargado"></p-sortIcon>
                         <p-columnFilter type="number" field="nombreEncargado" display="menu" class="p-ml-auto"></p-columnFilter>
                     </div>
@@ -265,13 +289,23 @@
                     <td class="text-center">{{asesoriaAgroquimico.objetivo}}</td>
                     <td class="text-center">{{asesoriaAgroquimico.plaga}}</td>
                     <td class="text-center">{{asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
-                    <td *ngIf="asesoriaAgroquimico.asesoriaAplicada == true">{{asesoriaAgroquimico.fechaAplicacionAsesoria | date:"short" }}</td>
-                    <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
-
+                    <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == true" >{{asesoriaAgroquimico.fechaAplicacionAsesoria | date:'dd/MM/YYYY' }}</td>
+                    <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false && (asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY') > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
+                    <td class="text-center expired" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false && (asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY') < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
                     <td class="text-center">{{asesoriaAgroquimico.nombreEncargado}}</td>
+                   
+                    
+                  
+                 
+
+                   
+                   
                 </tr>
+               
             </ng-template>
-            
+
+           
+       
         </p-table>
     </p-card>
 </div>

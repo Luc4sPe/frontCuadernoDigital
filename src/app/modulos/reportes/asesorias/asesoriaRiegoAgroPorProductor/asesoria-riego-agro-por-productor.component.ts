@@ -26,7 +26,11 @@ export class AsesoriaRiegoAgroPorProductorComponent implements OnInit {
   asesoriaRiego: AsesoriaRiego []=[];
   loading : boolean = true;
   tituloTabla : string = '';
+  subTituloTabla: string ='';
+
   asesoriaAgro: AsesoriaAgroquimico []=[];
+   //optengo fecha y hora actual del sistema
+  fechaHoy: Date = new Date();
 
 
   constructor(
@@ -34,8 +38,12 @@ export class AsesoriaRiegoAgroPorProductorComponent implements OnInit {
     private asesoriaAgroService : AsesoriaAgroquimicoService    
   ) { }
   ngOnInit(): void {
-    
-   
+    //optengo fecha y hora actual del sistema
+   /*  let dateFechaHoy: Date = new Date();
+    this.fechaHoy=dateFechaHoy;
+    console.log(this.fechaHoy); */
+  
+     
   }
 
   cargarDatos(): void{
@@ -111,7 +119,7 @@ export class AsesoriaRiegoAgroPorProductorComponent implements OnInit {
   listadoAsesoriaRiego(): void{
     this.asesoriaRiegoService.listarAsesoriaPorProductor(this.nombre).toPromise().then(data =>{
       this.tituloTabla="Listado asesorías de riego"
-      this.tituloGrafico;
+      this.subTituloTabla ='Productor '+this.nombre;
       this.asesoriaRiego=data;
       this.loading = false;
     })
@@ -121,12 +129,20 @@ export class AsesoriaRiegoAgroPorProductorComponent implements OnInit {
   listadoAsesoriaAgriquimico(): void{
     this.asesoriaAgroService.listarAsesoriAgroPorProductor(this.nombre).toPromise().then(data =>{
       this.tituloTabla='Listado de asesorías de agroquímico';
-      this.tituloGrafico;
+      this.subTituloTabla ='Productor '+this.nombre;
       this.asesoriaAgro=data;
       this.loading = false;
      
     })
    
+  }
+
+  getSeverityByEstado(asesoriaAgro : AsesoriaAgroquimico): string {
+    const serverityByEstado : {[key: string]: string} = {
+      true : 'success',
+      false: 'danger'
+    };
+    return serverityByEstado[`${asesoriaAgro.asesoriaAplicada}`];
   }
 
   clear(table : Table) {
