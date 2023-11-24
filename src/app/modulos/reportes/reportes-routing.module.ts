@@ -6,6 +6,7 @@ import { ReportesDeActividadComponent } from './usuarios/reportes/reportes-de-ac
 import { ReportesAgroquimicosComponent } from './agroquimicos/informes/reportes-agroquimicos.component';
 import { InformesComponent } from './asesorias/informesAsesorias/informes.component';
 import { AsesoriaRiegoAgroquimicoComponent } from './asesorias/asesoriaRiegoAgroquimico/asesoria-riego-agroquimico.component';
+import { CuadernoDigiComponent } from './Cuaderno/cuaderno-digi.component';
 
 
 const ADMIN = Roles.ADMIN;
@@ -46,6 +47,18 @@ const routes: Routes = [
       {
         path: 'informe/asesorias',
         component: InformesComponent,
+        canActivate: [guarUsuarios],
+        data: { rolesEsperados: [ADMIN,Encargado_Agricola] },
+      },
+    ]
+  },
+  {
+    path: '',
+    children: [
+     /*  { path: '', redirectTo: 'usuarios/actividad' }, */
+      {
+        path: 'cuadernoDigital',
+        component: CuadernoDigiComponent,
         canActivate: [guarUsuarios],
         data: { rolesEsperados: [ADMIN,Encargado_Agricola] },
       },

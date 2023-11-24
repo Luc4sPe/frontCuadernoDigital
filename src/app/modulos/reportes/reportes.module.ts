@@ -30,6 +30,10 @@ import { AgroquiMasUsadosPorProductorComponent } from './agroquimicos/agroquiMas
 import { AsesoriaRiegoAgroquimicoComponent } from './asesorias/asesoriaRiegoAgroquimico/asesoria-riego-agroquimico.component';
 import { InformesComponent } from './asesorias/informesAsesorias/informes.component';
 import { AsesoriaRiegoAgroPorProductorComponent } from './asesorias/asesoriaRiegoAgroPorProductor/asesoria-riego-agro-por-productor.component';
+import { CuadernoDigiComponent } from './Cuaderno/cuaderno-digi.component';
+
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { AsesoriaRiegoAgroPorProductorComponent } from './asesorias/asesoriaRieg
     AgroquiMasUsadosPorProductorComponent,
     AsesoriaRiegoAgroquimicoComponent,
     InformesComponent,
-    AsesoriaRiegoAgroPorProductorComponent
+    AsesoriaRiegoAgroPorProductorComponent,
+    CuadernoDigiComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +67,9 @@ import { AsesoriaRiegoAgroPorProductorComponent } from './asesorias/asesoriaRieg
     ChipModule,
     TagModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    AutoCompleteModule,
+    CheckboxModule
     
 
   ],

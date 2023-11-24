@@ -1,0 +1,921 @@
+<app-menu></app-menu> 
+
+<div class="container fadein animation-iteration-1 animation-duration-500">
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-10 col-lg-2"> 
+            <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
+
+            <div class="row"> 
+
+                <div class="col-10-md-7"> 
+                    <div class="row"> 
+
+                        <div class="col-12"> 
+                            <div class="card shadow-sm mb-4" >
+
+                                <div class="card-header bg-secondary  text-white">
+                                    <i class=" bi bi-card-text me-1"></i>
+                                    Cuaderno digital
+                                </div>
+
+                                  <!-- Selector productor -->
+                                  <div class="p-2">
+                                          
+                                    <label for="nombreProductor" class="form-label">Productor</label>
+                                    <select class="form-select" name="productorNombreProductor" id="nombreProductor"
+                                    [(ngModel)]="nombreUsuario" aria-label=".form-select-lg example" required>
+                                    <option [value]="productor.nombreUsuario" *ngFor="let productor of usuarios">
+                                        {{ productor.nombre }} - {{ productor.apellido }} 
+                                    </option>
+                                    
+                                    </select>
+                                </div>
+                                 <!-- fin -->                       
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+             <!-- tabla finca -->
+            <div class="row mt-4" *ngIf="!loading">
+                <p-card styleClass="shadow-1 mb-4" header="Listado fincas" subheader={{subTituloTabla}}>
+                    <p-table #dt [value]="fincas" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
+                        [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading" [rowHover]="true"
+                        [paginator]="true"
+                        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                        [filterDelay]="0" id="miTabla">
+                      
+                        
+
+                        <ng-template pTemplate="header">
+                            <tr class="text-center">
+
+
+                                 <!--column Id-->
+                            <th class="text-center" pSortableColumn="idFinca">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                  Id
+                                  <p-sortIcon field="idFinca"></p-sortIcon>
+                                  <p-columnFilter type="numeric" field="idFinca" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                              </th>
+                               
+    
+    
+                                 <!-- Columna nombre de finca -->
+                                <th class="text-center" pSortableColumn="nombre">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                    Nombre de finca
+                                    <p-sortIcon field="nombre"></p-sortIcon>
+                                    <p-columnFilter type="text" field="nombre" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <!-- fin -->
+    
+                                <!-- Columna dirección -->
+                                <th class="text-center" pSortableColumn="direccion">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                    Dirección
+                                    <p-sortIcon field="direccion"></p-sortIcon>
+                                    <p-columnFilter type="text" field="direccion" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <!-- fin -->
+    
+                                  <!-- Column nombre productor-->
+                                  <th class="text-center" pSortableColumn="productor">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                    Nombre productor
+                                    <p-sortIcon field="productor"></p-sortIcon>
+                                    <p-columnFilter type="text" field="productor" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <!-- fin -->
+    
+                        
+    
+                                <!-- Column cuadros-->
+                                <th class="text-center" pSortableColumn="cuadros">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                    Numero de cuadros
+                                    <p-sortIcon field="cuadros"></p-sortIcon>
+                                    <p-columnFilter type="text" field="cuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <!-- fin -->
+
+                                <th class="text-center"  scope="col" >Cuaderno de campo</th>
+
+                                 
+                                
+                     
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="body" let-finca>
+                            <tr>
+                                <td class="text-center" id="nomreFinca"><span class="p-column-title">Id</span>{{finca.idFinca}} </td>
+                                <td class="text-center">{{finca.nombre}}</td>
+                                <td class="text-center">{{finca.direccion}}</td>
+                                <td class="text-center">{{finca.productor.nombre}}</td>
+                                <td class="text-center"><span class="p-column-title">Cuadros</span><ul *ngFor="let cuadros of finca.cuadros; let i = index; ">
+                                <td class="text-center">{{finca.cuadros[i].numeroCuadro}}</td>         
+                                  </ul></td>
+                                
+                                  <!--Boton Detalle -->
+                                <td class="text-center">
+                                <button pRipple pButton  icon="pi pi-search" pTooltip="Buscar" tooltipPosition="top" (click)="generarCuaderno(finca.idFinca)"  ></button>
+                                </td>
+                               
+                                 
+                            </tr>
+                        </ng-template>
+                        
+
+                    </p-table>
+                </p-card>
+                                                
+
+        </div>
+         <!-- fin tabla finca -->
+
+         <!-- tabla aplicación de agroquímicos -->
+
+         <div class="row mt-4" *ngIf="!loading">
+
+             <!-- tabla -->
+             <p-card styleClass="shadow-1 mb-4" header="Listado aplicación de agroquímico" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoAplicacionAgro" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+                
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+
+                         <!-- Columna id -->
+                         <th class="text-center" pSortableColumn="id">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Id
+                            <p-sortIcon field="id"></p-sortIcon>
+                            <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Agroquímico -->
+                         <th class="text-center" pSortableColumn="agroquimico">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Agroquímico
+                            <p-sortIcon field="agroquimico"></p-sortIcon>
+                            <p-columnFilter type="text" field="agroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                          <!-- Cuadro -->
+                          <th class="text-center" pSortableColumn="cuadro">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                            <p-sortIcon field="cuadro"></p-sortIcon>
+                            <p-columnFilter type="text" field="cuadro" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                           </th>
+                        <!-- fin -->
+
+                         <!-- dosisPorHectaria -->
+                         <th class="text-center" pSortableColumn="dosisPorHectaria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Dosis por hectarea
+                            <p-sortIcon field="dosisPorHectaria"></p-sortIcon>
+                            <p-columnFilter type="number" field="dosisPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- objetivo -->
+                        <th class="text-center" pSortableColumn="objetivo">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Objetivo
+                            <p-sortIcon field="objetivo"></p-sortIcon>
+                            <p-columnFilter type="text" field="objetivo" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- Plaga -->
+                         <th class="text-center" pSortableColumn="plaga">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Plaga
+                            <p-sortIcon field="plaga"></p-sortIcon>
+                            <p-columnFilter type="text" field="plaga" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                           <!-- Fecha de aplicación-->
+                           <th class="text-center" pSortableColumn="fechaDeAplicacion">
+                            Aplicación
+                            <p-sortIcon field="fechaDeAplicacion"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaDeAplicacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </th>
+                        <!-- fin -->
+
+                      
+                    </tr>
+
+                </ng-template>
+
+                <ng-template pTemplate="body" let-aplicacionAgroquimico>
+                    <tr>
+                    <td class="text-center">{{aplicacionAgroquimico.id}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.agroquimico.nombreComercial}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.cuadro.numeroCuadro}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.dosisPorHectaria}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.objetivo}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.plaga}}</td>
+                    <td class="text-center">{{aplicacionAgroquimico.fechaDeAplicacion | date:"short" }}</td>
+                   
+                   
+                </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                      <td class="text-center" colspan="8">No se encontraron registros.</td>
+                    </tr>
+                  </ng-template>
+
+                </p-table>
+             </p-card>
+
+         </div>
+
+         <!-- fin tabla aplicación de agroquímicos -->
+
+         <!-- tabla asesoría de agroquímicos -->
+
+         <div class="row mt-4" *ngIf="!loading">
+              <!-- tabla -->
+              <p-card styleClass="shadow-1 mb-4" header="Listado asesorías de agroquímicos" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoAsesoria" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+                <ng-template pTemplate="header">
+                    <tr class="text-center">    
+                         <!-- Cuadro -->
+                         <th class="text-center" pSortableColumn="cuadro">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                            <p-sortIcon field="cuadro"></p-sortIcon>
+                            <p-columnFilter type="text" field="cuadro" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                           </th>
+                        <!-- fin -->
+    
+                         <!-- Agroquímico -->
+                         <th class="text-center" pSortableColumn="agroquimico">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Agroquímico
+                            <p-sortIcon field="agroquimico"></p-sortIcon>
+                            <p-columnFilter type="text" field="agroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- dosisPorHectaria -->
+                         <th class="text-center" pSortableColumn="dosisPorHectaria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Dosis por hectarea
+                            <p-sortIcon field="dosisPorHectaria"></p-sortIcon>
+                            <p-columnFilter type="number" field="dosisPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- dosisPorHl -->
+                         <th class="text-center" pSortableColumn="dosisPorHl">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Dosis por por Hl
+                            <p-sortIcon field="dosisPorHl"></p-sortIcon>
+                            <p-columnFilter type="number" field="dosisPorHl" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- volumenPorHectaria -->
+                         <th class="text-center" pSortableColumn="volumenPorHectaria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Volumen por hectaria
+                            <p-sortIcon field="volumenPorHectaria"></p-sortIcon>
+                            <p-columnFilter type="number" field="volumenPorHectaria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- objetivo -->
+                         <th class="text-center" pSortableColumn="objetivo">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Objetivo
+                            <p-sortIcon field="objetivo"></p-sortIcon>
+                            <p-columnFilter type="text" field="objetivo" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- Plaga -->
+                         <th class="text-center" pSortableColumn="plaga">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Plaga
+                            <p-sortIcon field="plaga"></p-sortIcon>
+                            <p-columnFilter type="text" field="plaga" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                         <!-- Fecha estimada-->
+                         <th class="text-center" pSortableColumn="fechaAsesoriaAgroquimico">
+                            Fecha estimada
+                        <p-sortIcon field="fechaAsesoriaAgroquimico"></p-sortIcon>
+                        <p-columnFilter type="date" field="fechaAsesoriaAgroquimico" display="menu" class="p-ml-auto"></p-columnFilter>
+                    </th>
+                    <!-- fin -->
+    
+                     
+                  
+                     <!-- -- Fecha aplicada-->
+                     <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha aplicada                               
+                            <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th> 
+                    <!-- fin -->
+    
+    
+    
+                     <!-- Encargado agrícola -->
+                       <th class="text-center" pSortableColumn="nombreEncargado">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Encargado agrícola 
+                            <p-sortIcon field="nombreEncargado"></p-sortIcon>
+                            <p-columnFilter type="number" field="nombreEncargado" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                  <!-- fin -->
+                    </tr>
+    
+                </ng-template>
+    
+                <ng-template pTemplate="body" let-asesoriaAgroquimico>
+                    <tr> 
+                        <td class="text-center">{{asesoriaAgroquimico.cuadro.numeroCuadro}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.agroquimico.nombreComercial}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.dosisPorHectaria}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.dosisPorHl}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.volumenPorHectaria}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.objetivo}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.plaga}}</td>
+                        <td class="text-center">{{asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                        <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == true" >{{asesoriaAgroquimico.fechaAplicacionAsesoria | date:'dd/MM/YYYY' }}</td>
+                        <td class="text-center" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false && (asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY') > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
+                        <td class="text-center expired" *ngIf="asesoriaAgroquimico.asesoriaAplicada == false && (asesoriaAgroquimico.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY') < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
+                        <td class="text-center">{{asesoriaAgroquimico.nombreEncargado}}</td>
+                       
+                    </tr>
+                   
+                </ng-template>
+
+                </p-table>
+              </p-card>
+         </div>
+
+           <!-- fin tabla asesoría de agroquímicos -->
+
+         <!-- tabla labor suelo -->
+         <div class="row mt-4" *ngIf="!loading">
+             <!-- tabla -->
+             <p-card styleClass="shadow-1 mb-4" header="Listado labor suelo" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoLabor" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+                         <!-- Columna id -->
+                         <th class="text-center" pSortableColumn="id">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                              Id
+                              <p-sortIcon field="id"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+                        <!-- fin -->
+
+                           <!-- Columna cultivo anterior -->
+                           <th class="text-center" pSortableColumn="cultivoAnterior">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                Cultivo anterior
+                                <p-sortIcon field="cultivoAnterior"></p-sortIcon>
+                                <p-columnFilter type="text" field="cultivoAnterior" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>
+                            <!-- fin -->
+
+                           <!-- Columna labor cultural -->
+                           <th class="text-center" pSortableColumn="labor">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Labor cultural
+                            <p-sortIcon field="labor"></p-sortIcon>
+                            <p-columnFilter type="text" field="labor" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                         <!-- fin -->
+
+                          <!-- Herramienta implementada -->
+                          <th class="text-center" pSortableColumn="herramientasUtilizadas">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Herramienta implementada
+                            <p-sortIcon field="herramientasUtilizadas"></p-sortIcon>
+                            <p-columnFilter type="text" field="herramientasUtilizadas" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                         <!-- fin -->
+
+                         
+                          <!-- columna Numero de cuadros-->
+                          <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Numero de cuadros
+                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                          </th>
+
+                          <!-- fin -->
+                           <!-- columna fecha cracion-->
+                           <th class="text-center" pSortableColumn="fechaLabor">
+                            Creación
+                            <p-sortIcon field="fechaLabor"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaLabor" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </th>
+                        <!-- fin -->
+
+                         <!-- -- columna fecha actualizacion-->
+                         <th class="text-center" pSortableColumn="fechaModificacionLabor">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Modificación                               
+                                <p-sortIcon field="fechaModificacionLabor"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaModificacionLabor" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                        <!-- fin -->
+
+                          
+                    </tr>
+
+                </ng-template>
+
+                <ng-template pTemplate="body" let-laborSuelo>
+
+                    <tr>
+                        <td class="text-center">{{laborSuelo.id}}</td>
+                        <td class="text-center">{{laborSuelo.idCuadro.cultivoAnterior}}</td>
+                        <td class="text-center">{{laborSuelo.labor}}</td>
+                        <td class="text-center">{{laborSuelo.herramientasUtilizadas}}</td>
+                        <td class="text-center"> {{laborSuelo.idCuadro.numeroCuadro}}</td>
+                        <td class="text-center">{{laborSuelo.fechaLabor | date:"short" }}</td>
+                        <td class="text-center">{{laborSuelo.fechaModificacionLabor | date:"short" }}</td>
+
+                        
+                    </tr>
+
+                </ng-template>
+
+              
+
+                </p-table>
+             </p-card>
+         </div>
+           <!-- fin tabla labor suelo -->
+
+         <!--tabla plantación -->
+        <div class="row mt-4" *ngIf="!loading">
+
+              <!-- tabla -->
+              <p-card styleClass="shadow-1 mb-4" header="Listado de plantación" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoPlantacion" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+               
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+
+                        <!-- Columna id -->
+                        <th class="text-center" pSortableColumn="idPlantacion">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Id
+                                <p-sortIcon field="idPlantacion"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="idPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+                        <!-- fin -->
+
+                        <!-- Columna cultivo -->
+                        <th class="text-center" pSortableColumn="nombreTipoCultivo">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Cultivo
+                            <p-sortIcon field="nombreTipoCultivo"></p-sortIcon>
+                            <p-columnFilter type="text" field="nombreTipoCultivo" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+
+                        <!-- Columna entre hileras -->
+                        <th class="text-center" pSortableColumn="entreIleras">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Marco plantación e/h
+                                <p-sortIcon field="entreIleras"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="entreIleras" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+                        <!-- fin -->
+
+                        <!-- Columna entre plantas -->
+                        <th class="text-center" pSortableColumn="entrePlantas">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Marco plantación e/p
+                                <p-sortIcon field="entrePlantas"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="entrePlantas" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+                        <!-- fin -->
+
+                        <!-- Columna sistema de riego -->
+                        <th class="text-center" pSortableColumn="sistemaRiego">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Sistema de riego
+                            <p-sortIcon field="sistemaRiego"></p-sortIcon>
+                            <p-columnFilter type="text" field="sistemaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                            <!-- Columna sistema de trasplante -->
+                            <th class="text-center" pSortableColumn="sistemaTrasplante">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Sistema de Trasplante
+                            <p-sortIcon field="sistemaTrasplante"></p-sortIcon>
+                            <p-columnFilter type="text" field="sistemaTrasplante" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                            
+                            <!-- Columna cantidad plantines -->
+                            <!-- <th class="text-center" pSortableColumn="cantidadPlantines">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cantidad plantines
+                                <p-sortIcon field="cantidadPlantines"></p-sortIcon>
+                                <p-columnFilter type="numeric" field="cantidadPlantines" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th> -->
+                        <!-- fin -->
+
+                            <!-- Columna observación -->
+                            <!-- <th class="text-center" pSortableColumn="observacion">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Observación
+                            <p-sortIcon field="observacion"></p-sortIcon>
+                            <p-columnFilter type="text" field="observacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> -->
+                        <!-- fin -->
+
+                            <!-- Columna justificación -->
+                            <!-- <th class="text-center" pSortableColumn="justificacion">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Justificación de modificación
+                            <p-sortIcon field="justificacion"></p-sortIcon>
+                            <p-columnFilter type="text" field="justificacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> -->
+                        <!-- fin -->
+
+                            <!-- columna Numero de cuadros-->
+                            <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Numero de cuadros
+                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+
+                            <!-- fin -->
+
+                            <!-- columna fecha de plantación-->
+                            <th class="text-center" pSortableColumn="fechaCreacionPlantacion" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha plantación
+                            <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
+                            <p-columnFilter type="text" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+
+                            <!-- fin -->
+
+
+                            <!-- columna fecha de de cosecha-->
+                            <th class="text-center" pSortableColumn="fechaCosecha" scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha estimada de cosecha
+                            <p-sortIcon field="fechaCosecha"></p-sortIcon>
+                            <p-columnFilter type="text" field="fechaCosecha" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                            </th>
+
+                            <!-- fin -->
+
+                            <!-- columna fecha cracion-->
+                            <!-- <th class="text-center" pSortableColumn="fechaCreacionPlantacion">
+                            Creación
+                            <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </th> -->
+                        <!-- -- columna fecha actualizacion-->
+                            <!-- <th class="text-center" pSortableColumn="fechaModificacionPlantacion">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Modificación                               
+                                    <p-sortIcon field="fechaModificacionPlantacion"></p-sortIcon>
+                                    <p-columnFilter type="date" field="fechaModificacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                                </div>
+                            </th>  -->
+                            <!-- fin -->
+
+                           
+                    </tr>
+
+                </ng-template>
+
+                <ng-template pTemplate="body" let-plantacion>
+                    
+                    <tr class="text-center">
+                    <td class="text-center">{{plantacion.idPlantacion}}</td>
+                    <td class="text-center">{{plantacion.nombreTipoCultivo.nombre}}</td>
+                    <td class="text-center">{{plantacion.entreIleras}}</td>
+                    <td class="text-center">{{plantacion.entrePlantas}}</td>
+                    <td class="text-center">{{plantacion.sistemaRiego}}</td>
+                    <td class="text-center">{{plantacion.sistemaTrasplante}}</td>
+                    <td class="text-center">{{plantacion.cuadro.numeroCuadro}}</td>
+                    
+                    <!--  Se utiliza cuando es una lista
+                    <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of plantacion.numerosDeCuadros; let i = index; ">
+                
+                        <td>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</td>
+                    
+                    </ul></td> -->
+
+                    <td class="text-center">{{plantacion.fechaCreacionPlantacion | date:'dd/MM/YYYY'}}</td>
+
+                    <td class="text-center cosecha ">{{plantacion.fechaCosecha | date:'dd/MM/YYYY'}}</td>
+                    
+                  
+
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                    <td class="text-center" colspan="8">No se encontraron registros.</td>
+                    </tr>
+                </ng-template>
+
+                </p-table>
+
+            </p-card>
+
+        </div>
+          <!-- fin tabla plantación -->
+
+           <!-- tabla riego -->
+           <div class="row mt-4" *ngIf="!loading">
+             <!-- tabla -->
+             <p-card styleClass="shadow-1 mb-4" header="Listado de riego" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+                        <!-- Columna id -->
+                        <th class="text-center" pSortableColumn="id">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Id
+                            <p-sortIcon field="id"></p-sortIcon>
+                            <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- duracionEnHoras -->
+                        <th class="text-center" pSortableColumn="duracionEnHoras">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                            Duración (hs)
+                            <p-sortIcon field="duracionEnHoras"></p-sortIcon>
+                            <p-columnFilter type="time" field="duracionEnHoras" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- Milimetros aplicados -->
+                        <th class="text-center" pSortableColumn="milimetrosAplicados">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Milimetros aplicados
+                            <p-sortIcon field="milimetrosAplicados"></p-sortIcon>
+                            <p-columnFilter type="number" field="milimetrosAplicados" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+                        <!-- Descripción -->
+                        <th class="text-center" pSortableColumn="observacionProductor">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Descripción
+                            <p-sortIcon field="observacionProductor"></p-sortIcon>
+                            <p-columnFilter type="text" field="observacionProductor" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- Cuadro -->
+                        <th class="text-center" pSortableColumn="numerosDeCuadros">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Cuadro
+                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- Fecha de riego-->
+                        <th class="text-center" pSortableColumn="fechaRiego">
+                            Riego
+                            <p-sortIcon field="fechaRiego"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </th>
+                        <!-- fin -->
+
+                        <!-- -- columna fecha actualizacion-->
+                        <th class="text-center" pSortableColumn="fechaModificacionRiego">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Modificación                               
+                                <p-sortIcon field="fechaModificacionRiego"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaModificacionRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                        <!-- fin -->
+                       
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-riego>
+                    <tr>
+                        <td class="text-center">{{riego.id}}</td>
+                        <td class="text-center">{{riego.duracionEnHoras}}</td>
+                        <td class="text-center">{{riego.milimetrosAplicados}}</td>
+                        <td class="text-center">{{riego.observacionProductor}}</td>
+                        <td class="text-center">{{riego.cuadro.numeroCuadro}}</td>
+                        <td class="text-center">{{riego.fechaRiego | date:"short" }}</td>
+                        <td class="text-center">{{riego.fechaModificacionRiego | date:"short" }}</td>
+
+                        
+                    </tr>
+                </ng-template>
+
+                </p-table>
+             </p-card>
+           </div>
+
+           <!-- fin tabla riego -->
+
+           <!-- tabla asesoría riego -->
+            
+            <div class="row mt-4" *ngIf="!loading">
+                 <!-- tabla -->
+             <p-card styleClass="shadow-1 mb-4" header="Listado asesorás de riego" subheader={{subTituloTabla}}>
+                <p-table #dt [value]="listadoAsesoriaRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+                [rowHover]="true" [paginator]="true"
+                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+                [filterDelay]="0">
+
+                <ng-template pTemplate="header">
+                    <tr class="text-center">
+    
+                      
+                     <!--Numero de cuadros-->
+                    <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Cuadro
+                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+    
+                  <!-- fin -->
+    
+                  <!-- duracionEnHoras -->
+                          <th class="text-center" pSortableColumn="duracionEnHoras">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Duración (hs)
+                                <p-sortIcon field="duracionEnHoras"></p-sortIcon>
+                                <p-columnFilter type="time" field="duracionEnHoras" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                        <!-- fin -->
+    
+                      <!-- Milimetros aplicados -->
+                        <th class="text-center" pSortableColumn="milimetrosAplicados">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Milimetros aplicados
+                                <p-sortIcon field="milimetrosAplicados"></p-sortIcon>
+                                <p-columnFilter type="number" field="milimetrosAplicados" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                      <!-- fin -->
+    
+                      <!-- Fecha estimada-->
+                        <th class="text-center" pSortableColumn="fechaEstimadaAplicacionParsed">
+                            Fecha estimada
+                            <p-sortIcon field="fechaEstimadaAplicacionParsed"></p-sortIcon>
+                            <p-columnFilter type="date" field="fechaEstimadaAplicacionParsed" display="menu" class="p-ml-auto"></p-columnFilter>
+                         </th>
+                      <!-- fin -->
+                  
+                    <!-- -- Fecha aplicada-->
+                        <th class="text-center" pSortableColumn="fechaAplicacionAsesoria">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Fecha aplicada                               
+                                <p-sortIcon field="fechaAplicacionAsesoria"></p-sortIcon>
+                                <p-columnFilter type="date" field="fechaAplicacionAsesoria" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th> 
+                    <!-- fin -->
+    
+                       <!-- Encargado agrícola -->
+                       <th class="text-center" pSortableColumn="nombreEncargado">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Encargado agrícola
+                            <p-sortIcon field="nombreEncargado"></p-sortIcon>
+                            <p-columnFilter type="number" field="nombreEncargado" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                  <!-- fin -->
+                    </tr>
+                    
+                </ng-template>
+    
+                <ng-template pTemplate="body" let-asesoriaRiego>
+                    <tr>  
+                       
+                        <td class="text-center">{{asesoriaRiego.cuadro.numeroCuadro}}</td>
+                        <td class="text-center">{{asesoriaRiego.duracionEnHoras}}</td>
+                        <td class="text-center">{{asesoriaRiego.milimetrosAplicados}}</td>
+                        <td class="text-center">{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:'dd/MM/YYYY'  }}</td>
+                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
+                        <td class="text-center expired" *ngIf="asesoriaRiego.asesoriaAplicada  == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
+                        
+                        
+                        <td class="text-center">{{asesoriaRiego.nombreEncargado}}</td>
+                    </tr>
+                </ng-template>   
+
+                </p-table>
+             </p-card>
+            </div>
+           <!-- fin tabla  asesoría riego -->
+
+    
+
+
+
+    </div>
+
+</div>
+    
+

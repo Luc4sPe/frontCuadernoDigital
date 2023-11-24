@@ -9,6 +9,7 @@ import { PlantacionNuevaComponent } from './nueva/plantacion-nueva.component';
 
 const Productor = Roles.PRODUCTOR;
 const ADMIN = Roles.ADMIN;
+const Encargado_Agricola = Roles.ENCARGADO_AGRICOLA;
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
       { path: 'listadoPlantacionPorCultivo',
       component:ListadoPlantacionComponent,
       canActivate:[guarProductor],
-      data:{rolesEsperados: [ADMIN,Productor]} 
+      data:{rolesEsperados: [ADMIN,Productor,Encargado_Agricola]} 
       },
 
       {path: 'detallePlantacion/:id', component: ObtenerPlantacionComponent,
