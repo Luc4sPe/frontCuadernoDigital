@@ -143,6 +143,317 @@
         </div>
          <!-- fin tabla finca -->
 
+          <!--tabla plantación -->
+        <div class="row mt-4" *ngIf="!loading">
+
+            <!-- tabla -->
+            <p-card styleClass="shadow-1 mb-4" header="Listado de plantación" subheader={{subTituloTabla}}>
+              <p-table #dt [value]="listadoPlantacion" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+              dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+              [rowHover]="true" [paginator]="true"
+              currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+              [filterDelay]="0">
+
+             
+              <ng-template pTemplate="header">
+                  <tr class="text-center">
+
+                      <!-- Columna id -->
+                      <th class="text-center" pSortableColumn="idPlantacion">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                              Id
+                              <p-sortIcon field="idPlantacion"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="idPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+                      <!-- fin -->
+
+                      <!-- Columna cultivo -->
+                      <th class="text-center" pSortableColumn="nombreTipoCultivo">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Cultivo
+                          <p-sortIcon field="nombreTipoCultivo"></p-sortIcon>
+                          <p-columnFilter type="text" field="nombreTipoCultivo" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <!-- fin -->
+
+
+                      <!-- Columna entre hileras -->
+                      <th class="text-center" pSortableColumn="entreIleras">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                              Marco plantación e/h
+                              <p-sortIcon field="entreIleras"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="entreIleras" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+                      <!-- fin -->
+
+                      <!-- Columna entre plantas -->
+                      <th class="text-center" pSortableColumn="entrePlantas">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                              Marco plantación e/p
+                              <p-sortIcon field="entrePlantas"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="entrePlantas" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+                      <!-- fin -->
+
+                      <!-- Columna sistema de riego -->
+                      <th class="text-center" pSortableColumn="sistemaRiego">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Sistema de riego
+                          <p-sortIcon field="sistemaRiego"></p-sortIcon>
+                          <p-columnFilter type="text" field="sistemaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <!-- fin -->
+
+                          <!-- Columna sistema de trasplante -->
+                          <th class="text-center" pSortableColumn="sistemaTrasplante">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Sistema de Trasplante
+                          <p-sortIcon field="sistemaTrasplante"></p-sortIcon>
+                          <p-columnFilter type="text" field="sistemaTrasplante" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <!-- fin -->
+
+                          
+                          <!-- Columna cantidad plantines -->
+                          <!-- <th class="text-center" pSortableColumn="cantidadPlantines">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                              Cantidad plantines
+                              <p-sortIcon field="cantidadPlantines"></p-sortIcon>
+                              <p-columnFilter type="numeric" field="cantidadPlantines" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th> -->
+                      <!-- fin -->
+
+                          <!-- Columna observación -->
+                          <!-- <th class="text-center" pSortableColumn="observacion">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Observación
+                          <p-sortIcon field="observacion"></p-sortIcon>
+                          <p-columnFilter type="text" field="observacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                      </th> -->
+                      <!-- fin -->
+
+                          <!-- Columna justificación -->
+                          <!-- <th class="text-center" pSortableColumn="justificacion">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Justificación de modificación
+                          <p-sortIcon field="justificacion"></p-sortIcon>
+                          <p-columnFilter type="text" field="justificacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                      </th> -->
+                      <!-- fin -->
+
+                          <!-- columna Numero de cuadros-->
+                          <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Numero de cuadros
+                          <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                          <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+
+                          <!-- fin -->
+
+                          <!-- columna fecha de plantación-->
+                          <th class="text-center" pSortableColumn="fechaCreacionPlantacion" scope="col">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Fecha plantación
+                          <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
+                          <p-columnFilter type="text" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+
+                          <!-- fin -->
+
+
+                          <!-- columna fecha de de cosecha-->
+                          <th class="text-center" pSortableColumn="fechaCosecha" scope="col">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                          Fecha estimada de cosecha
+                          <p-sortIcon field="fechaCosecha"></p-sortIcon>
+                          <p-columnFilter type="text" field="fechaCosecha" display="menu" class="p-ml-auto"></p-columnFilter>
+                          </div>
+                          </th>
+
+                          <!-- fin -->
+
+                          <!-- columna fecha cracion-->
+                          <!-- <th class="text-center" pSortableColumn="fechaCreacionPlantacion">
+                          Creación
+                          <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
+                          <p-columnFilter type="date" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                      </th> -->
+                      <!-- -- columna fecha actualizacion-->
+                          <!-- <th class="text-center" pSortableColumn="fechaModificacionPlantacion">
+                              <div class="p-d-flex p-jc-between p-ai-center">
+                                  Modificación                               
+                                  <p-sortIcon field="fechaModificacionPlantacion"></p-sortIcon>
+                                  <p-columnFilter type="date" field="fechaModificacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
+                              </div>
+                          </th>  -->
+                          <!-- fin -->
+
+                         
+                  </tr>
+
+              </ng-template>
+
+              <ng-template pTemplate="body" let-plantacion>
+                  
+                  <tr class="text-center">
+                  <td class="text-center">{{plantacion.idPlantacion}}</td>
+                  <td class="text-center">{{plantacion.nombreTipoCultivo.nombre}}</td>
+                  <td class="text-center">{{plantacion.entreIleras}}</td>
+                  <td class="text-center">{{plantacion.entrePlantas}}</td>
+                  <td class="text-center">{{plantacion.sistemaRiego}}</td>
+                  <td class="text-center">{{plantacion.sistemaTrasplante}}</td>
+                  <td class="text-center">{{plantacion.cuadro.numeroCuadro}}</td>
+                  
+                  <!--  Se utiliza cuando es una lista
+                  <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of plantacion.numerosDeCuadros; let i = index; ">
+              
+                      <td>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</td>
+                  
+                  </ul></td> -->
+
+                  <td class="text-center">{{plantacion.fechaCreacionPlantacion | date:'dd/MM/YYYY'}}</td>
+
+                  <td class="text-center cosecha ">{{plantacion.fechaCosecha | date:'dd/MM/YYYY'}}</td>
+                  
+                
+
+              </ng-template>
+
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                  <td class="text-center" colspan="8">No se encontraron registros.</td>
+                  </tr>
+              </ng-template>
+
+              </p-table>
+
+          </p-card>
+
+      </div>
+        <!-- fin tabla plantación -->
+
+        <!-- tabla labor suelo -->
+        <div class="row mt-4" *ngIf="!loading">
+            <!-- tabla -->
+            <p-card styleClass="shadow-1 mb-4" header="Listado labor suelo" subheader={{subTituloTabla}}>
+               <p-table #dt [value]="listadoLabor" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+               dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+               [rowHover]="true" [paginator]="true"
+               currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+               [filterDelay]="0">
+
+               <ng-template pTemplate="header">
+                   <tr class="text-center">
+                        <!-- Columna id -->
+                        <th class="text-center" pSortableColumn="id">
+                           <div class="p-d-flex p-jc-between p-ai-center">
+                             Id
+                             <p-sortIcon field="id"></p-sortIcon>
+                             <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
+                           </div>
+                         </th>
+                       <!-- fin -->
+
+                          <!-- Columna cultivo anterior -->
+                          <th class="text-center" pSortableColumn="cultivoAnterior">
+                               <div class="p-d-flex p-jc-between p-ai-center">
+                               Cultivo anterior
+                               <p-sortIcon field="cultivoAnterior"></p-sortIcon>
+                               <p-columnFilter type="text" field="cultivoAnterior" display="menu" class="p-ml-auto"></p-columnFilter>
+                               </div>
+                           </th>
+                           <!-- fin -->
+
+                          <!-- Columna labor cultural -->
+                          <th class="text-center" pSortableColumn="labor">
+                           <div class="p-d-flex p-jc-between p-ai-center">
+                               Labor cultural
+                           <p-sortIcon field="labor"></p-sortIcon>
+                           <p-columnFilter type="text" field="labor" display="menu" class="p-ml-auto"></p-columnFilter>
+                           </div>
+                       </th>
+                        <!-- fin -->
+
+                         <!-- Herramienta implementada -->
+                         <th class="text-center" pSortableColumn="herramientasUtilizadas">
+                           <div class="p-d-flex p-jc-between p-ai-center">
+                               Herramienta implementada
+                           <p-sortIcon field="herramientasUtilizadas"></p-sortIcon>
+                           <p-columnFilter type="text" field="herramientasUtilizadas" display="menu" class="p-ml-auto"></p-columnFilter>
+                           </div>
+                       </th>
+                        <!-- fin -->
+
+                        
+                         <!-- columna Numero de cuadros-->
+                         <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
+                           <div class="p-d-flex p-jc-between p-ai-center">
+                           Numero de cuadros
+                           <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
+                           <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
+                           </div>
+                         </th>
+
+                         <!-- fin -->
+                          <!-- columna fecha cracion-->
+                          <th class="text-center" pSortableColumn="fechaLabor">
+                           Creación
+                           <p-sortIcon field="fechaLabor"></p-sortIcon>
+                           <p-columnFilter type="date" field="fechaLabor" display="menu" class="p-ml-auto"></p-columnFilter>
+                       </th>
+                       <!-- fin -->
+
+                        <!-- -- columna fecha actualizacion-->
+                        <th class="text-center" pSortableColumn="fechaModificacionLabor">
+                           <div class="p-d-flex p-jc-between p-ai-center">
+                               Modificación                               
+                               <p-sortIcon field="fechaModificacionLabor"></p-sortIcon>
+                               <p-columnFilter type="date" field="fechaModificacionLabor" display="menu" class="p-ml-auto"></p-columnFilter>
+                           </div>
+                       </th> 
+                       <!-- fin -->
+
+                         
+                   </tr>
+
+               </ng-template>
+
+               <ng-template pTemplate="body" let-laborSuelo>
+
+                   <tr>
+                       <td class="text-center">{{laborSuelo.id}}</td>
+                       <td class="text-center">{{laborSuelo.idCuadro.cultivoAnterior}}</td>
+                       <td class="text-center">{{laborSuelo.labor}}</td>
+                       <td class="text-center">{{laborSuelo.herramientasUtilizadas}}</td>
+                       <td class="text-center"> {{laborSuelo.idCuadro.numeroCuadro}}</td>
+                       <td class="text-center">{{laborSuelo.fechaLabor | date:"short" }}</td>
+                       <td class="text-center">{{laborSuelo.fechaModificacionLabor | date:"short" }}</td>
+
+                       
+                   </tr>
+
+               </ng-template>
+
+             
+
+               </p-table>
+            </p-card>
+        </div>
+          <!-- fin tabla labor suelo -->
+
+
          <!-- tabla aplicación de agroquímicos -->
 
          <div class="row mt-4" *ngIf="!loading">
@@ -400,316 +711,9 @@
 
            <!-- fin tabla asesoría de agroquímicos -->
 
-         <!-- tabla labor suelo -->
-         <div class="row mt-4" *ngIf="!loading">
-             <!-- tabla -->
-             <p-card styleClass="shadow-1 mb-4" header="Listado labor suelo" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoLabor" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
+         
 
-                <ng-template pTemplate="header">
-                    <tr class="text-center">
-                         <!-- Columna id -->
-                         <th class="text-center" pSortableColumn="id">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                              Id
-                              <p-sortIcon field="id"></p-sortIcon>
-                              <p-columnFilter type="numeric" field="id" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                          </th>
-                        <!-- fin -->
-
-                           <!-- Columna cultivo anterior -->
-                           <th class="text-center" pSortableColumn="cultivoAnterior">
-                                <div class="p-d-flex p-jc-between p-ai-center">
-                                Cultivo anterior
-                                <p-sortIcon field="cultivoAnterior"></p-sortIcon>
-                                <p-columnFilter type="text" field="cultivoAnterior" display="menu" class="p-ml-auto"></p-columnFilter>
-                                </div>
-                            </th>
-                            <!-- fin -->
-
-                           <!-- Columna labor cultural -->
-                           <th class="text-center" pSortableColumn="labor">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Labor cultural
-                            <p-sortIcon field="labor"></p-sortIcon>
-                            <p-columnFilter type="text" field="labor" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                         <!-- fin -->
-
-                          <!-- Herramienta implementada -->
-                          <th class="text-center" pSortableColumn="herramientasUtilizadas">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Herramienta implementada
-                            <p-sortIcon field="herramientasUtilizadas"></p-sortIcon>
-                            <p-columnFilter type="text" field="herramientasUtilizadas" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                         <!-- fin -->
-
-                         
-                          <!-- columna Numero de cuadros-->
-                          <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Numero de cuadros
-                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
-                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                          </th>
-
-                          <!-- fin -->
-                           <!-- columna fecha cracion-->
-                           <th class="text-center" pSortableColumn="fechaLabor">
-                            Creación
-                            <p-sortIcon field="fechaLabor"></p-sortIcon>
-                            <p-columnFilter type="date" field="fechaLabor" display="menu" class="p-ml-auto"></p-columnFilter>
-                        </th>
-                        <!-- fin -->
-
-                         <!-- -- columna fecha actualizacion-->
-                         <th class="text-center" pSortableColumn="fechaModificacionLabor">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Modificación                               
-                                <p-sortIcon field="fechaModificacionLabor"></p-sortIcon>
-                                <p-columnFilter type="date" field="fechaModificacionLabor" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th> 
-                        <!-- fin -->
-
-                          
-                    </tr>
-
-                </ng-template>
-
-                <ng-template pTemplate="body" let-laborSuelo>
-
-                    <tr>
-                        <td class="text-center">{{laborSuelo.id}}</td>
-                        <td class="text-center">{{laborSuelo.idCuadro.cultivoAnterior}}</td>
-                        <td class="text-center">{{laborSuelo.labor}}</td>
-                        <td class="text-center">{{laborSuelo.herramientasUtilizadas}}</td>
-                        <td class="text-center"> {{laborSuelo.idCuadro.numeroCuadro}}</td>
-                        <td class="text-center">{{laborSuelo.fechaLabor | date:"short" }}</td>
-                        <td class="text-center">{{laborSuelo.fechaModificacionLabor | date:"short" }}</td>
-
-                        
-                    </tr>
-
-                </ng-template>
-
-              
-
-                </p-table>
-             </p-card>
-         </div>
-           <!-- fin tabla labor suelo -->
-
-         <!--tabla plantación -->
-        <div class="row mt-4" *ngIf="!loading">
-
-              <!-- tabla -->
-              <p-card styleClass="shadow-1 mb-4" header="Listado de plantación" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoPlantacion" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
-
-               
-                <ng-template pTemplate="header">
-                    <tr class="text-center">
-
-                        <!-- Columna id -->
-                        <th class="text-center" pSortableColumn="idPlantacion">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Id
-                                <p-sortIcon field="idPlantacion"></p-sortIcon>
-                                <p-columnFilter type="numeric" field="idPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-                        <!-- fin -->
-
-                        <!-- Columna cultivo -->
-                        <th class="text-center" pSortableColumn="nombreTipoCultivo">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Cultivo
-                            <p-sortIcon field="nombreTipoCultivo"></p-sortIcon>
-                            <p-columnFilter type="text" field="nombreTipoCultivo" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                        <!-- fin -->
-
-
-                        <!-- Columna entre hileras -->
-                        <th class="text-center" pSortableColumn="entreIleras">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Marco plantación e/h
-                                <p-sortIcon field="entreIleras"></p-sortIcon>
-                                <p-columnFilter type="numeric" field="entreIleras" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-                        <!-- fin -->
-
-                        <!-- Columna entre plantas -->
-                        <th class="text-center" pSortableColumn="entrePlantas">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Marco plantación e/p
-                                <p-sortIcon field="entrePlantas"></p-sortIcon>
-                                <p-columnFilter type="numeric" field="entrePlantas" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-                        <!-- fin -->
-
-                        <!-- Columna sistema de riego -->
-                        <th class="text-center" pSortableColumn="sistemaRiego">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Sistema de riego
-                            <p-sortIcon field="sistemaRiego"></p-sortIcon>
-                            <p-columnFilter type="text" field="sistemaRiego" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                        <!-- fin -->
-
-                            <!-- Columna sistema de trasplante -->
-                            <th class="text-center" pSortableColumn="sistemaTrasplante">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Sistema de Trasplante
-                            <p-sortIcon field="sistemaTrasplante"></p-sortIcon>
-                            <p-columnFilter type="text" field="sistemaTrasplante" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                        <!-- fin -->
-
-                            
-                            <!-- Columna cantidad plantines -->
-                            <!-- <th class="text-center" pSortableColumn="cantidadPlantines">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                Cantidad plantines
-                                <p-sortIcon field="cantidadPlantines"></p-sortIcon>
-                                <p-columnFilter type="numeric" field="cantidadPlantines" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th> -->
-                        <!-- fin -->
-
-                            <!-- Columna observación -->
-                            <!-- <th class="text-center" pSortableColumn="observacion">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Observación
-                            <p-sortIcon field="observacion"></p-sortIcon>
-                            <p-columnFilter type="text" field="observacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th> -->
-                        <!-- fin -->
-
-                            <!-- Columna justificación -->
-                            <!-- <th class="text-center" pSortableColumn="justificacion">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Justificación de modificación
-                            <p-sortIcon field="justificacion"></p-sortIcon>
-                            <p-columnFilter type="text" field="justificacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                        </th> -->
-                        <!-- fin -->
-
-                            <!-- columna Numero de cuadros-->
-                            <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Numero de cuadros
-                            <p-sortIcon field="numerosDeCuadros"></p-sortIcon>
-                            <p-columnFilter type="text" field="numerosDeCuadros" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-
-                            <!-- fin -->
-
-                            <!-- columna fecha de plantación-->
-                            <th class="text-center" pSortableColumn="fechaCreacionPlantacion" scope="col">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Fecha plantación
-                            <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
-                            <p-columnFilter type="text" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-
-                            <!-- fin -->
-
-
-                            <!-- columna fecha de de cosecha-->
-                            <th class="text-center" pSortableColumn="fechaCosecha" scope="col">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                            Fecha estimada de cosecha
-                            <p-sortIcon field="fechaCosecha"></p-sortIcon>
-                            <p-columnFilter type="text" field="fechaCosecha" display="menu" class="p-ml-auto"></p-columnFilter>
-                            </div>
-                            </th>
-
-                            <!-- fin -->
-
-                            <!-- columna fecha cracion-->
-                            <!-- <th class="text-center" pSortableColumn="fechaCreacionPlantacion">
-                            Creación
-                            <p-sortIcon field="fechaCreacionPlantacion"></p-sortIcon>
-                            <p-columnFilter type="date" field="fechaCreacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                        </th> -->
-                        <!-- -- columna fecha actualizacion-->
-                            <!-- <th class="text-center" pSortableColumn="fechaModificacionPlantacion">
-                                <div class="p-d-flex p-jc-between p-ai-center">
-                                    Modificación                               
-                                    <p-sortIcon field="fechaModificacionPlantacion"></p-sortIcon>
-                                    <p-columnFilter type="date" field="fechaModificacionPlantacion" display="menu" class="p-ml-auto"></p-columnFilter>
-                                </div>
-                            </th>  -->
-                            <!-- fin -->
-
-                           
-                    </tr>
-
-                </ng-template>
-
-                <ng-template pTemplate="body" let-plantacion>
-                    
-                    <tr class="text-center">
-                    <td class="text-center">{{plantacion.idPlantacion}}</td>
-                    <td class="text-center">{{plantacion.nombreTipoCultivo.nombre}}</td>
-                    <td class="text-center">{{plantacion.entreIleras}}</td>
-                    <td class="text-center">{{plantacion.entrePlantas}}</td>
-                    <td class="text-center">{{plantacion.sistemaRiego}}</td>
-                    <td class="text-center">{{plantacion.sistemaTrasplante}}</td>
-                    <td class="text-center">{{plantacion.cuadro.numeroCuadro}}</td>
-                    
-                    <!--  Se utiliza cuando es una lista
-                    <td><span class="p-column-title">Cuadros</span><ul *ngFor="let numerosDeCuadros of plantacion.numerosDeCuadros; let i = index; ">
-                
-                        <td>{{plantacion.numerosDeCuadros[i].numeroCuadro}}</td>
-                    
-                    </ul></td> -->
-
-                    <td class="text-center">{{plantacion.fechaCreacionPlantacion | date:'dd/MM/YYYY'}}</td>
-
-                    <td class="text-center cosecha ">{{plantacion.fechaCosecha | date:'dd/MM/YYYY'}}</td>
-                    
-                  
-
-                </ng-template>
-
-                <ng-template pTemplate="emptymessage">
-                    <tr>
-                    <td class="text-center" colspan="8">No se encontraron registros.</td>
-                    </tr>
-                </ng-template>
-
-                </p-table>
-
-            </p-card>
-
-        </div>
-          <!-- fin tabla plantación -->
-
+        
            <!-- tabla riego -->
            <div class="row mt-4" *ngIf="!loading">
              <!-- tabla -->
