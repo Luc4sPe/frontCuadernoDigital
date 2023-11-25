@@ -124,6 +124,15 @@
                                 </div>
                             </th> 
                             <!-- fin -->
+                              <!-- Encargado agrícola -->
+                       <th class="text-center" pSortableColumn="nombreEncargado">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Encargado agrícola
+                            <p-sortIcon field="nombreEncargado"></p-sortIcon>
+                            <p-columnFilter type="number" field="nombreEncargado" display="menu" class="p-ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                  <!-- fin -->
 
                             <!-- Acciones -->
                                     
@@ -156,11 +165,17 @@
                                           <td>{{asesoriaRiego.cuadro.numeroCuadro}}</td>
                                           <td>{{asesoriaRiego.productor.nombre}}</td>
                                         <td>{{asesoriaRiego.fechaAsesoriaRiego | date:"short" }}</td>
-                                        <td>{{asesoriaRiego.fechaModificacionAsesoriaRiego | date:"short" }}</td>
+                                      
+                                        <td *ngIf="asesoriaRiego.fechaModificacionAsesoriaRiego != null">{{asesoriaRiego.fechaModificacionAsesoriaRiego | date:"dd/MM/YYYY" }}</td>
+                                        <td class="text-center" *ngIf="asesoriaRiego.fechaModificacionAsesoriaRiego === null"><i class="fa-solid fa-calendar-days"></i></td>     
                                         <td>{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
-                                        <td *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:"short" }}</td>
-                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false"><i class="fa-solid fa-calendar-days"></i></td>
+                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:'dd/MM/YYYY'  }}</td>
+                                       
+                                       
+                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
+                                        <td class="text-center expired" *ngIf="asesoriaRiego.asesoriaAplicada  == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
                                         
+                                        <td class="text-center">{{asesoriaRiego.nombreEncargado}}</td>
                                          <!--Boton Editar -->
                                         <td class="text-center">
                                             <button pRipple class="btn btn-outline-warning" *ngIf="asesoriaRiego.asesoriaAplicada == false"

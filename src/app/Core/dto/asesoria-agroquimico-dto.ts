@@ -2,9 +2,9 @@ export class AsesoriaAgroquimicoDto {
 
     idAgroquimico: number;
     idCuadro:number;
-    dosisPorHectaria:number;
-    dosisPorHl:number;
-    volumenPorHectaria:number;
+    dosisPorHectaria:string;
+    dosisPorHl:string;
+    volumenPorHectaria:string;
     objetivo: string;
     plaga:string;
     fechaEstimadaAplicacion:string;

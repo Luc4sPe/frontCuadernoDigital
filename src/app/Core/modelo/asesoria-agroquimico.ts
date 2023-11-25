@@ -8,9 +8,9 @@ export class AsesoriaAgroquimico {
     id?:number;
     agroquimico:Agroquimico;
     cuadro:Cuadro;
-    dosisPorHectaria:number;
-    dosisPorHl:number;
-    volumenPorHectaria:number;
+    dosisPorHectaria:string;
+    dosisPorHl:string;
+    volumenPorHectaria:string;
     objetivo:string;
     plaga:string;
     fechaAsesoriaAgroquimico: Date = new Date();
@@ -23,7 +23,7 @@ export class AsesoriaAgroquimico {
     nombreEncargado: string;
 
 
-    constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:number,dosisPorHl:number,volumenPorHectaria:number,objetivo:string,
+    constructor(agroquimico:Agroquimico,cuadro:Cuadro,dosisPorHectaria:string,dosisPorHl:string,volumenPorHectaria:string,objetivo:string,
         plaga:string,finca:Finca,productor: Usuario){
 
             this.agroquimico=agroquimico;

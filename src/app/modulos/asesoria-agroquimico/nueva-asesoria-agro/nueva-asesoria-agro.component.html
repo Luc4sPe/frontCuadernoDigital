@@ -85,46 +85,50 @@
 
                                              <!-- Dosis por hectarea -->
                                              <div class="form-group p-2">
-                                                <label for="dosisPorHectaria" class="form-label">Dosis por hectarea(cm3)</label>
-                                                <input type="number" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ingrese la dosis" 
-                                                [(ngModel)]="nuevaAsesoria.dosisPorHectaria" #do ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
-                                            
-                                                <div *ngIf="do.invalid && (do.dirty || do.touched)">
-                                                    <p-message styleClass="m-1" *ngIf="do.errors?.required"  severity="error" text="La dosis es requerida"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="do.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="do.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                <label for="dosisPorHectaria" class="form-label">Dosis/ha</label>
+                                                 
+                                                <input type="text" class="p-inputtext form-control mt-2"  name="dosis" id="dosisPorHectaria" placeholder="Ej: cc, g, Kg, etc." 
+                                                [(ngModel)]="nuevaAsesoria.dosisPorHectaria" #dosis ="ngModel"    required minlength="2">
+                                           
+                                                <div *ngIf="dosis.invalid && (dosis.dirty || dosis.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="dosis.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="dosis.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                                    <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
                                                 </div>
-                                            
+                                               
+                                        
                                             </div>
                                             <!-- fin -->
 
-                                             <!-- Dosis por Hl -->
-                                             <div class="form-group p-2">
-                                                <label for="dosisPorHl" class="form-label">Dosis por Hl(cm3)</label>
-                                                <input type="number" class="p-inputtext form-control mt-2"  name="dosisPorHl" id="dosisPorHl" placeholder="Ingrese la dosis" 
-                                                [(ngModel)]="nuevaAsesoria.dosisPorHl" #dos ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                
+
+                                              <!-- Dosis por Hl -->
+                                              <div class="form-group p-2">
+                                                <label for="dosisPorHl" class="form-label">Dosis/hl</label>
+                                                <input type="text" class="p-inputtext form-control mt-2"  name="dosisHl" id="dosisPorHl" placeholder="Ej: cc, g, Kg, etc." 
+                                                [(ngModel)]="nuevaAsesoria.dosisPorHl" #dosisHl ="ngModel"    required minlength="2">
                                             
-                                                <div *ngIf="dos.invalid && (dos.dirty || dos.touched)">
-                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.required"  severity="error" text="La dosis es requerida"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="dos.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                <div *ngIf="dosisHl.invalid && (dosisHl.dirty || dosisHl.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="dosisHl.errors?.required"  severity="error" text="La dosis por hectarea requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="dosisHl.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                                    <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
                                                 </div>
-                                            
+                                        
                                             </div>
                                             <!-- fin -->
 
-                                             <!-- Dosis por Hl -->
+                                             <!-- Volumen por hectarea -->
                                              <div class="form-group p-2">
-                                                <label for="volumenPorHectaria" class="form-label">Volumen por hectarea(lts)</label>
-                                                <input type="number" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ingrese el volumen" 
-                                                [(ngModel)]="nuevaAsesoria.volumenPorHectaria" #vol ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="1">
+                                                <label for="volumenPorHectaria" class="form-label">Vol/ha</label>
+                                                <input type="text" class="p-inputtext form-control mt-2"  name="volumen" id="volumenPorHectaria" placeholder="Ej: ml, L, etc." 
+                                                [(ngModel)]="nuevaAsesoria.volumenPorHectaria" #volumen ="ngModel"    required minlength="2">
                                             
-                                                <div *ngIf="vol.invalid && (vol.dirty || vol.touched)">
-                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.required"  severity="error" text="El volumen es requerido"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.minlength" severity="error" text="Debe tener al menos 1 caracteres"></p-message>
-                                                    <p-message styleClass="m-1" *ngIf="vol.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
+                                                <div *ngIf="volumen.invalid && (volumen.dirty || volumen.touched)">
+                                                    <p-message styleClass="m-1" *ngIf="volumen.errors?.required"  severity="error" text="El volumen por hectarea requerida"></p-message>
+                                                    <p-message styleClass="m-1" *ngIf="volumen.errors?.minlength" severity="error" text="Debe tener al menos 2 caracteres"></p-message>
+                                                    <!-- <p-message styleClass="m-1" *ngIf="dosis.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message> -->
                                                 </div>
-                                            
+                                        
                                             </div>
                                             <!-- fin -->
 

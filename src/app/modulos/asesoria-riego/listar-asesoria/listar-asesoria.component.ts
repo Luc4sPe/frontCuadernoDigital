@@ -19,6 +19,9 @@ export class ListarAsesoriaComponent implements OnInit {
   isEncargadoAgricola: boolean = false;
   isProductor: boolean = false;
   isAdmin: boolean = false;
+   //optengo fecha y hora actual del sistema
+   fechaHoy: Date = new Date();
+ 
 
   constructor(
     private tokenService: TokenService,

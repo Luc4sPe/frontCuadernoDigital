@@ -2,16 +2,16 @@ export class ModificarAsesoriaAgroquimicoDto {
 
     idAgroquimico: number;
     idCuadro:number;
-    dosisPorHectaria:number;
-    dosisPorHl:number;
-    volumenPorHectaria:number;
+    dosisPorHectaria:string;
+    dosisPorHl:string;
+    volumenPorHectaria:string;
     objetivo: string;
     plaga:string;
     fechaEstimadaAplicacion:string;
     idFinca: number;
     nombreProductor:string;
 
-    constructor(idAgroquimico: number,idCuadro:number, dosisPorHectaria:number, dosisPorHl:number, volumenPorHectaria:number, objetivo: string,
+    constructor(idAgroquimico: number,idCuadro:number, dosisPorHectaria:string, dosisPorHl:string, volumenPorHectaria:string, objetivo: string,
         plaga:string,fechaEstimadaAplicacion:string, idFinca: number,nombreProductor:string){
 
             this.idAgroquimico=idAgroquimico;
