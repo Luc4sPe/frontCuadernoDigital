@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
@@ -28,6 +30,10 @@ export class ListaComponent implements OnInit {
   usuariosFiltrados: Usuario[] = [];
   home : MenuItem = {}
   items : MenuItem[] = [];
+
+  cols : any[] = [];
+  exportColumns : any[] = [];
+  cardSubtitulo : string = '';
 
 
   constructor(private usuarioServ: UsuarioService,
@@ -148,12 +154,30 @@ export class ListaComponent implements OnInit {
     table.clear();
   }
 
-  exportarPdf(table : Table){
+  /* exportarPdf(table : Table){
     this.obtenerUsuariosFiltrados(table);
     this.usuariosFiltrados = this.usuarios;
     this.obtenerFiltros(table);
+    
 
   }
+ */
+  exportarPdf(table : Table){
+    this.obtenerUsuariosFiltrados(table);
+    this.generarColumnas();
+    import("jspdf").then(jsPDF => {
+      import("jspdf-autotable").then(x => {
+          var doc : any = new jsPDF.default('p','pt');
+          doc.text("Usuarios del sistama",40,30);
+          
+          doc.autoTable(this.exportColumns, this.usuariosFiltrados);
+          doc.save('Usuarios.pdf');
+      })
+    }) 
+  }
+
+ 
+  
 
   exportarExcel(table: Table){
     this.obtenerUsuariosFiltrados(table);
@@ -177,6 +201,45 @@ export class ListaComponent implements OnInit {
 
   }
 
+  generarColumnas(): void {
+    this.cols = [ 
+      {field: "id", header: "ID"},
+      {field: "apellido", header:"Apellido"},
+      {field: "nombre", header:"Nombre"},
+      {field: "dni", header:"DNI"},
+      {field: "nombreUsuario", header:"Nombre Usuario"},
+      {field: "email", header:"Email"},
+    ]
   
+    this.exportColumns = this.cols.map(col => ({title:col.header, dataKey: col.field}));
+  }
+
+ 
+
+  exportExcel(table: Table): void {
+    this.obtenerUsuariosFiltrados(table);
+    import("xlsx").then(xlsx => {
+        const worksheet = xlsx.utils.json_to_sheet(this.usuariosFiltrados);
+        const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+        this.saveAsExcelFile(excelBuffer, "this.usuariosFiltrados");
+    });
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+  let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  let EXCEL_EXTENSION = '.xlsx';
+  const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+  });
+  FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+}
+
+
 
 }
+
+
+  
+
+

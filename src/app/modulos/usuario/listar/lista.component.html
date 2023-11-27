@@ -11,8 +11,12 @@
         
         <ng-template pTemplate="caption">
           <div class="d-flex justify-content-between">
-            
-           </div>
+
+            <button pButton class="p-button-danger p-button-sm me-1"  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf(dt)"></button>
+           <!--  <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel(dt)" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button> -->
+
+          </div>
+
         </ng-template>
 
         <ng-template pTemplate="header">
