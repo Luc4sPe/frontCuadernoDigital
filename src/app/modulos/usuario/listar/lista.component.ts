@@ -168,7 +168,8 @@ export class ListaComponent implements OnInit {
     import("jspdf").then(jsPDF => {
       import("jspdf-autotable").then(x => {
           var doc : any = new jsPDF.default('p','pt');
-        /*   doc.text("${new Date().toISOString()}_Usuarios del sistama",40,30); */
+         /* tamaño del texto 
+          doc.setFontSize(20); */
           doc.text(`Usuarios del sistema`,40,30);
           doc.text(`Fecha: ${new Date().toLocaleDateString()}`,450,30);
           doc.autoTable(this.exportColumns, this.usuariosFiltrados);
