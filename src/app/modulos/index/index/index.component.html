@@ -169,6 +169,125 @@
         
         <!-- fin card asesoria riego-->
 
+         <!-- inicio riego por productor-->
+            <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+                <div class="card bg-secondary  bg-gradient shadow-sm text-white mb-4">
+                    <div class="card-body">
+                        <h4>Riego</h4>
+                    
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>   
+                            
+                                <h6 class="badge rounded-pill bg-secondary  shadow">Nuevo riego</h6><br>
+                                <h6 class="badge rounded-pill bg-secondary  shadow">Listar riego</h6>
+                            </div>
+                            <span style="font-size: 32px;">
+                                <i class="fa-solid fa-faucet-drip"></i> 
+
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-light stretched-link" routerLink="/riego/listadoRiegoPorFinca"> Ver detalles</a>
+                        <div class="small text-light"><i class="fa-solid fa-eye"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fin card riego por productor-->
+
+          <!-- inicio card plantacion por productor-->
+          <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+            <div class="card border-2 bg-success bg-gradient shadow-sm text-white mb-4">
+                <div class="card-body">
+                    <h4>Plantación </h4>
+                
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                        
+                            <h6 class="badge rounded-pill bg-secondary  shadow">Nueva plantación </h6><br>
+                            <h6 class="badge rounded-pill bg-secondary  shadow">Listar plantación </h6>
+                        </div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-leaf"></i>
+
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-dark stretched-link" routerLink="/plantacion/listadoPlantacionPorCultivo"> Ver detalles</a>
+                    <div class="small text-dark"><i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- fin card plantacion por productor-->
+
+     <!-- inicio aplicación de agroquímico por productor-->
+        <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+            <div class="card bg-danger  bg-gradient shadow-sm mb-4">
+                <div class="card-body">
+                    <h4>Apli agroquímico</h4>
+                
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>   
+                        
+                            <h6 class="badge rounded-pill bg-secondary  shadow">Nueva aplicación de agroquímico</h6><br>
+                            <h6 class="badge rounded-pill bg-secondary  shadow">Listar aplicación de agroquímico</h6>
+                        </div>
+                        <span style="font-size: 32px;">
+                            <i class="fa-solid fa-skull-crossbones"></i>
+
+                        </span>
+
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-dark stretched-link" routerLink="/aplicacionAgroquimico/listadoAplicacionAgroPorFinca"> Ver detalles</a>
+                    <div class="small text-dark"><i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- fin card aplicación de agroquímic por productor-->
+
+
+     <!-- inicio card labor de suelo por productor-->
+     <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
+        <div class="card bg-dark text-light bg-gradient shadow-sm mb-4">
+           
+            <div class="card-body">
+                <h4>Labor de suelo </h4>
+            
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                    
+                        <h6 class="badge rounded-pill bg-secondary  shadow">Nueva labor </h6><br>
+                        <h6 class="badge rounded-pill bg-secondary  shadow">Listar labor </h6>
+                    </div>
+                    <span style="font-size: 32px;">
+                        <i class="fa-solid fa-person-digging"></i>
+
+                    </span>
+
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-light stretched-link" routerLink="/laborSuelo/listadoLaborSueloPorFinca"> Ver detalles</a>
+                <div class="small text-light"><i class="fa-solid fa-eye"></i></div>
+            </div>
+        </div>
+    </div>
+
+<!-- fin card labor de suelo por productor-->
+
+
+
+ 
+
         <!-- inicio card asesoria riego por productor-->
         <div class="col-lg-3 col-md-4 col-3" *ngIf="isProctor">
             <div class="card bg-info bg-gradient shadow-sm text-dark mb-4">
