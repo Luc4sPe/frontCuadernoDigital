@@ -4,6 +4,7 @@ import { Finca } from 'src/app/Core/modelo/finca';
 import { Plantacion } from 'src/app/Core/modelo/plantacion';
 import { PlantacionService } from 'src/app/service/plantacion.service';
 import { LaborSuelo } from 'src/app/Core/modelo/labor-suelo';
+import { FechaDesdeHastaService } from 'src/app/service/fecha-desde-hasta-service';
 
 import { Usuario } from 'src/app/Core/modelo/usuario';
 import { FincaService } from 'src/app/service/finca.service';
@@ -47,6 +48,7 @@ export class CuadernoDigiComponent implements OnInit{
   riegoFiltrado:Riego[];
   listadoAsesoriaRiego: AsesoriaRiego[];
   asesoriaRiegoFiltrados:AsesoriaRiego[];
+  rangoFechas : Date[] = [new Date(), new Date()];
 
   //optengo fecha y hora actual del sistema
   fechaHoy: Date = new Date();
@@ -63,6 +65,7 @@ export class CuadernoDigiComponent implements OnInit{
     private asesoriaAgroService:AsesoriaAgroquimicoService,
     private riegoService: RiegoService,
     private asesoriaRiegoService:AsesoriaRiegoService,
+    private fechaDesdeHastaService : FechaDesdeHastaService,
 
     
     
@@ -116,10 +119,14 @@ export class CuadernoDigiComponent implements OnInit{
 
  
   generarCuaderno(id: number): void{
+    const fechas : Date[] = this.fechaDesdeHastaService.getFechaDesdeHasta(this.rangoFechas[0], this.rangoFechas[1]);
+
+    const fechaDesde : Date = fechas[0];
+    const fechaHasta : Date = fechas[1];
    
       this.plantacionServi.listarPlantacionPorFinca(id).subscribe(
-        data =>{
-          this.listadoPlantacion = data;
+        data =>{     
+          this.listadoPlantacion = data.filter(plan => new Date(plan.fechaCreacionPlantacion) >= fechaDesde && new Date(plan.fechaCreacionPlantacion) <= fechaHasta);
           this.loading = false;
         
         },
@@ -134,7 +141,7 @@ export class CuadernoDigiComponent implements OnInit{
       this,this.laborService.listarLaborSueloPorFinca(id).subscribe(
         data =>{
          
-          this.listadoLabor = data;
+          this.listadoLabor = data.filter(labor => new Date(labor.fechaLabor) >= fechaDesde && new Date(labor.fechaLabor) <= fechaHasta);
           this.loading = false;
         
         },
@@ -146,7 +153,7 @@ export class CuadernoDigiComponent implements OnInit{
 
       this.aplicacioonService.listarAplicacionAgroPorFinca(id).subscribe(
         data =>{
-          this.listadoAplicacionAgro = data;
+          this.listadoAplicacionAgro = data.filter(apliAgro => new Date(apliAgro.fechaDeAplicacion) >= fechaDesde && new Date(apliAgro.fechaDeAplicacion) <= fechaHasta);
           this.loading = false;
         },
         err =>{
@@ -157,7 +164,7 @@ export class CuadernoDigiComponent implements OnInit{
 
       this.asesoriaAgroService.listarAsesoriaPorFinca(id).subscribe(
         data =>{
-          this.listadoAsesoria = data;
+          this.listadoAsesoria = data.filter(aseAgo => new Date(aseAgo.fechaAsesoriaAgroquimico) >= fechaDesde && new Date(aseAgo.fechaAsesoriaAgroquimico) <= fechaHasta);
           this.loading=false;
         },
         err =>{
@@ -168,7 +175,7 @@ export class CuadernoDigiComponent implements OnInit{
 
       this.riegoService.listarRiegoPorFinca(id).subscribe(
         data =>{
-          this.listadoRiego = data;
+          this.listadoRiego = data.filter(riego => new Date(riego.fechaRiego) >= fechaDesde && new Date(riego.fechaRiego) <= fechaHasta);
           this.loading=false;
         },
         err =>{
@@ -179,17 +186,20 @@ export class CuadernoDigiComponent implements OnInit{
 
       this.asesoriaRiegoService.listarAsesoriaPorFinca(id).subscribe(
         data =>{
-          this.listadoAsesoriaRiego = data;
+          this.listadoAsesoriaRiego = data.filter(aseRiego => new Date(aseRiego.fechaAsesoriaRiego) >= fechaDesde && new Date(aseRiego.fechaAsesoriaRiego) <= fechaHasta);
           this.loading=false;
         },
         err =>{
-          console.log(err);
+          Swal.fire('Error, fecha de campaña incorrecta', err.error.message, 'error')
         }
         
       )
      
    
   } 
+
+
+ 
 
   getSeverityByEstado(asesoria : AsesoriaAgroquimico): string {
     const serverityByEstado : {[key: string]: string} = {

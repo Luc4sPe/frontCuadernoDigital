@@ -18,6 +18,38 @@
                                     <i class=" bi bi-card-text me-1"></i>
                                     Cuaderno digital
                                 </div>
+                                  <!-- Fecha de campaña -->
+                                  <div class="card-header bg-primary text-white"><i class="pi pi-chart-pie me-1"></i>Campaña de cosecha</div>
+                                    <div class="card-body justify-content-center">
+                                      <div class="justify-content-center">
+                                          <div class="form-group ml-1">
+                                              <label class="mt-2 mb-2">Fecha desde y fecha hasta</label><br/>
+                                              <p-calendar  [(ngModel)]="rangoFechas" styleClass="w-100"  [showIcon]="true" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+                                              <p-message styleClass="m-1" *ngIf="rangoFechas[1] == null" severity="error" text="Debes seleccionar la fecha hasta"></p-message>
+                                          </div>
+
+                                             <!-- Selector productor -->
+                                  <div class="p-2">
+                                          
+                                    <label for="nombreProductor" class="form-label">Productor</label>
+                                    <select class="form-select" name="productorNombreProductor" id="nombreProductor"
+                                    [(ngModel)]="nombreUsuario" aria-label=".form-select-lg example" required>
+                                    <option [value]="productor.nombreUsuario" *ngFor="let productor of usuarios">
+                                        {{ productor.nombre }} - {{ productor.apellido }} 
+                                    </option>
+                                    
+                                    </select>
+                                </div>
+                                 <!-- fin -->                       
+
+                                         
+                                      
+                                        </div>
+                                    </div>
+                                </div>
+                             
+
+                                 <!-- fin  Fecha de campaña -->
 
                                   <!-- Selector productor -->
                                   <div class="p-2">
