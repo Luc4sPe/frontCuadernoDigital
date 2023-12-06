@@ -23,7 +23,8 @@
         </div>
     </div>
     <div class="col-md-8">
-        <p-card styleClass="shadow-sm" header="Agroquímicos más utilizados" subheader={{cardSubtitulo}}>
+        <button pButton class="p-button-danger p-button-sm me-1 "  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf()" ></button>
+        <p-card id="pdf" styleClass="shadow-sm" header="Agroquímicos más utilizados" subheader={{cardSubtitulo}}>
             <p-chart type="bar" [data]="data" [options]="options"  height="26vh"></p-chart>
         </p-card>
     </div>

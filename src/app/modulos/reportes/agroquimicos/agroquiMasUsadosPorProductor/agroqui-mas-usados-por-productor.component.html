@@ -10,7 +10,7 @@
                         <p-message styleClass="m-1" *ngIf="rangoFechas[1] == null" severity="error" text="Debes seleccionar la fecha hasta"></p-message>
                     </div>
                     <div class="form-group">
-                        <label for="nombre" class="mt-2 mb-2">Nombre de finca</label>
+                        <label for="nombre" class="mt-2 mb-2">Nombre del productor</label>
                        
                         <div class="p-inputgroup ">
                             <span class="p-inputgroup-addon">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="col-md-8">
-      <p-card  styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
+      <p-card id="grafico1" styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
         <p-chart type="polarArea" [data]="data" height="26vh" width="100%"></p-chart>
       </p-card>
     </div>
@@ -45,6 +45,7 @@
         <ng-template pTemplate="caption">
             <div class="p-d-flex">
                 <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1" label="Limpiar Filtros" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+                <button pButton class="p-button-danger p-button-sm me-1 "  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf(dt)" ></button>
             </div>
         </ng-template>
 
@@ -112,12 +113,12 @@
         </ng-template>
         <ng-template pTemplate="body" let-aplicacionAgroquimico>
             <tr>
-                <td>{{aplicacionAgroquimico.agroquimico.nombreComercial}}</td>
-                        <td>{{aplicacionAgroquimico.cuadro.numeroCuadro}}</td>
-                        <td>{{aplicacionAgroquimico.dosisPorHectaria}}</td>
-                        <td>{{aplicacionAgroquimico.objetivo}}</td>
-                        <td>{{aplicacionAgroquimico.plaga}}</td>
-                        <td>{{aplicacionAgroquimico.fechaDeAplicacion | date:"short" }}</td>
+                <td class="text-center">{{aplicacionAgroquimico.agroquimico.nombreComercial}}</td>
+                        <td class="text-center">{{aplicacionAgroquimico.cuadro.numeroCuadro}}</td>
+                        <td class="text-center">{{aplicacionAgroquimico.dosisPorHectaria}}</td>
+                        <td class="text-center">{{aplicacionAgroquimico.objetivo}}</td>
+                        <td class="text-center">{{aplicacionAgroquimico.plaga}}</td>
+                        <td class="text-center">{{aplicacionAgroquimico.fechaDeAplicacion | date:"short" }}</td>
             </tr>
         </ng-template>
 
