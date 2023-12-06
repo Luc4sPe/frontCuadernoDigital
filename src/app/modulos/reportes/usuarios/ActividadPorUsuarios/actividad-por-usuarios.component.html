@@ -8,6 +8,7 @@
                         <label class="mt-2 mb-2">Fecha desde y fecha hasta</label><br/>
                         <p-calendar  [(ngModel)]="rangoFechas" styleClass="w-100"  [showIcon]="true" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
                         <p-message styleClass="m-1" *ngIf="rangoFechas[1] == null" severity="error" text="Debes seleccionar la fecha hasta"></p-message>
+                        
                     </div>
                     <div class="form-group">
                         <label for="nombre" class="mt-2 mb-2">Nombre de usuario</label>
@@ -32,7 +33,7 @@
         </div>
     </div>
     <div class="col-md-8">
-      <p-card styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
+      <p-card id="grafico" styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
         <p-chart type="pie" [data]="data" height="26vh" width="100%"></p-chart>
       </p-card>
     </div>
@@ -47,7 +48,8 @@
       <ng-template pTemplate="caption">
         <div class="p-d-flex">
             <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1" label="Limpiar Filtros" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
-        </div>
+            <button pButton class="p-button-danger p-button-sm me-1"  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top"  (click)="exportarPdf(dt)" ></button>
+           </div>
     </ng-template>
       <ng-template pTemplate="header">
         <tr class="text-center">
