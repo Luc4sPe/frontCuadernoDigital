@@ -1,6 +1,7 @@
 <div class="row d-flex justify-content-center">
     <div class="col-md-8">
-        <p-card styleClass="shadow-sm" header="Asesorias" subheader={{cardSubtitulo}}>
+        <button pButton class="p-button-danger p-button-sm me-1 "  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf()"></button>
+        <p-card id="pdfAgro" styleClass="shadow-sm" header="Asesorias" subheader={{cardSubtitulo}}>
             <p-chart type="bar" [data]="datos" [options]="options"   height="40vh"  weight="10vw"></p-chart>
         </p-card>
     </div>

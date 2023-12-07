@@ -29,11 +29,13 @@
         </div>
     </div>
     <div class="col-md-8">
-      <p-card styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
+        
+      <p-card id="graficoAse" styleClass="shadow-1" header={{tituloGrafico}} subheader={{subtituloGrafico}}>
         <p-chart type="bar" [data]="datos" height="26vh" width="100%"></p-chart>
       </p-card>
     </div>
 </div>
+<button pButton class="p-button-danger p-button-sm me-1 "  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf()"></button>
 <div class="row mt-4" *ngIf="!loading">
     <p-card styleClass="shadow-1 mb-4" header="Listado asesoría de riego" subheader={{subTituloTabla}}>
         <p-table #dt [value]="asesoriaRiego" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
@@ -153,6 +155,7 @@
             <ng-template pTemplate="caption">
                 <div class="p-d-flex">
                     <button pRipple pButton class="p-button-sm p-button-outlined p-button-rounded me-1" label="Limpiar Filtros" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+                    
                 </div>
             </ng-template>
 
