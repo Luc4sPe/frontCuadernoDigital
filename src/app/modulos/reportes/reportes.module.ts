@@ -4,7 +4,7 @@ import { MenuModule } from 'src/app/menu/menu.module';
 import { ReportesRoutingModule } from './reportes-routing.module';
 import { ReportesDeActividadComponent } from './usuarios/reportes/reportes-de-actividad.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { UsuariosMasActivosComponent } from './usuarios/usuariosMasActivos/usuarios-mas-activos.component';
+import { UsuariosMasActivosComponent } from './usuarios/usuariosMasActivos/UsuariosMasActivosComponent';
 
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
