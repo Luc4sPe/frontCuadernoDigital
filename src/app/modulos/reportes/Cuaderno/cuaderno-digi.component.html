@@ -5,7 +5,6 @@
 
         <div class="col-10 col-lg-2"> 
             <p-breadcrumb class="m-2" [model]="items" [home]="home"></p-breadcrumb>
-
             <div class="row"> 
 
                 <div class="col-10-md-7"> 
@@ -39,7 +38,9 @@
                                     </option>
                                     
                                     </select>
+                                    
                                 </div>
+                                <button pButton class="p-button-danger p-button-sm me-1 "  icon="pi pi-file-pdf" pTooltip="Exportar a PDF" tooltipPosition="top" (click)="exportarPdf()" ></button>
                                  <!-- fin -->                       
 
                                          
@@ -51,20 +52,7 @@
 
                                  <!-- fin  Fecha de campaña -->
 
-                                  <!-- Selector productor -->
-                                  <div class="p-2">
-                                          
-                                    <label for="nombreProductor" class="form-label">Productor</label>
-                                    <select class="form-select" name="productorNombreProductor" id="nombreProductor"
-                                    [(ngModel)]="nombreUsuario" aria-label=".form-select-lg example" required>
-                                    <option [value]="productor.nombreUsuario" *ngFor="let productor of usuarios">
-                                        {{ productor.nombre }} - {{ productor.apellido }} 
-                                    </option>
-                                    
-                                    </select>
-                                </div>
-                                 <!-- fin -->                       
-
+                                 
                             </div>
                         </div>
                     </div>
@@ -72,14 +60,18 @@
 
 
             </div>
+       
+
+
+        
              <!-- tabla finca -->
-            <div class="row mt-4" *ngIf="!loading">
-                <p-card styleClass="shadow-1 mb-4" header="Listado fincas" subheader={{subTituloTabla}}>
-                    <p-table #dt [value]="fincas" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
-                        [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading" [rowHover]="true"
-                        [paginator]="true"
-                        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                        [filterDelay]="0" id="miTabla">
+<div class="row mt-4" *ngIf="!loading">
+    <p-card styleClass="shadow-1 mb-4" header="Listado fincas" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="fincas" styleClass="p-datatable-sm p-datatable-striped" dataKey="id" [rows]="5"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading" [rowHover]="true"
+        [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0" id="miTabla">
                       
                         
 
@@ -168,23 +160,23 @@
                         </ng-template>
                         
 
-                    </p-table>
-                </p-card>
+        </p-table>
+ </p-card>
                                                 
 
-        </div>
+</div>
          <!-- fin tabla finca -->
 
           <!--tabla plantación -->
-        <div class="row mt-4" *ngIf="!loading">
+<div class="row mt-4" *ngIf="!loading">
 
             <!-- tabla -->
-            <p-card styleClass="shadow-1 mb-4" header="Listado de plantación" subheader={{subTituloTabla}}>
-              <p-table #dt [value]="listadoPlantacion" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-              dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-              [rowHover]="true" [paginator]="true"
-              currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-              [filterDelay]="0">
+    <p-card styleClass="shadow-1 mb-4" header="Listado de plantación" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoPlantacion" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0">
 
              
               <ng-template pTemplate="header">
@@ -369,22 +361,22 @@
                   </tr>
               </ng-template>
 
-              </p-table>
+        </p-table>
 
-          </p-card>
+    </p-card>
 
-      </div>
+</div>
         <!-- fin tabla plantación -->
 
         <!-- tabla labor suelo -->
-        <div class="row mt-4" *ngIf="!loading">
+<div class="row mt-4" *ngIf="!loading">
             <!-- tabla -->
-            <p-card styleClass="shadow-1 mb-4" header="Listado labor suelo" subheader={{subTituloTabla}}>
-               <p-table #dt [value]="listadoLabor" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-               dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-               [rowHover]="true" [paginator]="true"
-               currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-               [filterDelay]="0">
+    <p-card styleClass="shadow-1 mb-4" header="Listado labor suelo" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoLabor" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0">
 
                <ng-template pTemplate="header">
                    <tr class="text-center">
@@ -480,23 +472,23 @@
 
              
 
-               </p-table>
-            </p-card>
-        </div>
+        </p-table>
+    </p-card>
+</div>
           <!-- fin tabla labor suelo -->
 
 
          <!-- tabla aplicación de agroquímicos -->
 
-         <div class="row mt-4" *ngIf="!loading">
+<div class="row mt-4" *ngIf="!loading">
 
              <!-- tabla -->
-             <p-card styleClass="shadow-1 mb-4" header="Listado aplicación de agroquímico" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoAplicacionAgro" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
+    <p-card styleClass="shadow-1 mb-4" header="Listado aplicación de agroquímico" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoAplicacionAgro" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0">
                 
                 <ng-template pTemplate="header">
                     <tr class="text-center">
@@ -593,23 +585,23 @@
                     </tr>
                   </ng-template>
 
-                </p-table>
-             </p-card>
+         </p-table>
+    </p-card>
 
-         </div>
+</div>
 
          <!-- fin tabla aplicación de agroquímicos -->
 
          <!-- tabla asesoría de agroquímicos -->
 
-         <div class="row mt-4" *ngIf="!loading">
-              <!-- tabla -->
-              <p-card styleClass="shadow-1 mb-4" header="Listado asesorías de agroquímicos" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoAsesoria" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
+<div class="row mt-4" *ngIf="!loading">
+    <!-- tabla -->
+    <p-card styleClass="shadow-1 mb-4" header="Listado asesorías de agroquímicos" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoAsesoria" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+         [filterDelay]="0">
 
                 <ng-template pTemplate="header">
                     <tr class="text-center">    
@@ -737,9 +729,9 @@
                    
                 </ng-template>
 
-                </p-table>
-              </p-card>
-         </div>
+         </p-table>
+     </p-card>
+ </div>
 
            <!-- fin tabla asesoría de agroquímicos -->
 
@@ -747,14 +739,14 @@
 
         
            <!-- tabla riego -->
-           <div class="row mt-4" *ngIf="!loading">
+<div class="row mt-4" *ngIf="!loading">
              <!-- tabla -->
-             <p-card styleClass="shadow-1 mb-4" header="Listado de riego" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
+    <p-card styleClass="shadow-1 mb-4" header="Listado de riego" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+        dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+        [rowHover]="true" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+        [filterDelay]="0">
 
                 <ng-template pTemplate="header">
                     <tr class="text-center">
@@ -842,27 +834,25 @@
                     </tr>
                 </ng-template>
 
-                </p-table>
-             </p-card>
-           </div>
+        </p-table>
+   </p-card>
+ </div>
 
            <!-- fin tabla riego -->
 
            <!-- tabla asesoría riego -->
             
-            <div class="row mt-4" *ngIf="!loading">
-                 <!-- tabla -->
-             <p-card styleClass="shadow-1 mb-4" header="Listado asesorás de riego" subheader={{subTituloTabla}}>
-                <p-table #dt [value]="listadoAsesoriaRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
-                dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
-                [rowHover]="true" [paginator]="true"
-                currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
-                [filterDelay]="0">
+ <div class="row mt-4" *ngIf="!loading">
+        <!-- tabla -->
+     <p-card styleClass="shadow-1 mb-4" header="Listado asesorás de riego" subheader={{subTituloTabla}}>
+        <p-table #dt [value]="listadoAsesoriaRiego" responsiveLayout="stack" styleClass="p-datatable-striped p-datatable-sm"
+         dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15]" [loading]="loading"
+         [rowHover]="true" [paginator]="true"
+         currentPageReportTemplate="Mostrando {first} de {last} de un total de {totalRecords} registros"
+         [filterDelay]="0">
 
-                <ng-template pTemplate="header">
-                    <tr class="text-center">
-    
-                      
+        <ng-template pTemplate="header">
+         <tr class="text-center">    
                      <!--Numero de cuadros-->
                     <th class="text-center" pSortableColumn="numerosDeCuadros" scope="col">
                         <div class="p-d-flex p-jc-between p-ai-center">
@@ -941,17 +931,16 @@
                     </tr>
                 </ng-template>   
 
-                </p-table>
-             </p-card>
-            </div>
+        </p-table>
+     </p-card>
+</div>
            <!-- fin tabla  asesoría riego -->
 
     
 
-
+        </div>
 
     </div>
 
-</div>
-    
+   
 
