@@ -393,7 +393,7 @@ this.listadoAsesoria.map(function (aseA) {
           margin: { top: 10, right: 24,  left: 24 },
           didDrawPage: function(columnas1){
             doc.setFontSize(10);
-             doc.text("Página " + columnas1.pageNumber + " de " + doc.internal.getNumberOfPages(), columnas1.settings.margin.left, doc.internal.pageSize.height - 10);
+             doc.text("Página " + doc.internal.getNumberOfPages(), columnas1.settings.margin.left, doc.internal.pageSize.height - 10);
             doc.addImage(ima,280,15,50,25);
             doc.setFontSize(10);
             doc.text(`Fecha: ${new Date().toLocaleDateString()}`,480,30);
