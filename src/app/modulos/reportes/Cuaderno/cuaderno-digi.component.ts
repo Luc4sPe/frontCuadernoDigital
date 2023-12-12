@@ -482,7 +482,7 @@ this.listadoAsesoria.map(function (aseA) {
               new Date(p.fechaCreacionPlantacion).toLocaleDateString(),
               new Date(p.fechaCosecha).toLocaleDateString()
             ]),
-            "Listado plantación", 200
+            "Listado de plantación", 200
             
           );
 
@@ -511,7 +511,7 @@ this.listadoAsesoria.map(function (aseA) {
               a.plaga,
               new Date(a.fechaDeAplicacion).toLocaleDateString()
             ]),
-            "Listado Aplicación agroquímico", doc.autoTable.previous.finalY + 50
+            "Listado aplicación de agroquímico", doc.autoTable.previous.finalY + 50
           );
 
           agregarTabla(
