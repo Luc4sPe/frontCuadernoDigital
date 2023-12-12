@@ -428,8 +428,9 @@ this.listadoAsesoria.map(function (aseA) {
           margin: { top: 10, right: 24,  left: 24 },
           didDrawPage: function(columnaPla){
             doc.setFontSize(10);
-             doc.text("Página " + columnaPla.pageNumber + " de " + doc.internal.getNumberOfPages(), columnaPla.settings.margin.left, doc.internal.pageSize.height - 10);
-            doc.addImage(ima,280,15,50,25);
+             doc.text("Página " + doc.internal.getNumberOfPages(), columnaPla.settings.margin.left, doc.internal.pageSize.height - 10);
+            
+             doc.addImage(ima,280,15,50,25);
             doc.setFontSize(10);
             doc.text(`Fecha: ${new Date().toLocaleDateString()}`,480,30);
         }, columnStyles: {
