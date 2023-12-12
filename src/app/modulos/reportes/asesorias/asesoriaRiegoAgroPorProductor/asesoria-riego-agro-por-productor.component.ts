@@ -309,7 +309,7 @@ listadoAsesoriaAgriquimico(): void{
             new Date(aseR.fechaEstimadaAplicacionParsed).toLocaleDateString(),
             aseR.fechaAplicacionAsesoria ?  new Date(aseR.fechaAplicacionAsesoria).toLocaleDateString() : "No aplicada",
           ]),
-          "Listado asesoría riego",380
+          "Listado asesoría de riego",380
         );
 
          agregarTabla(
