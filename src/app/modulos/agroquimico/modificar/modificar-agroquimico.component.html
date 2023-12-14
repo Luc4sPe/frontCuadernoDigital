@@ -153,20 +153,19 @@
 
                  <!-- fin -->
 
-                  <!-- Numero de lote -->
-                <!--   <div class="form-group p-2">
-                        <label for="numLote" class="form-label">Número de lote</label>
-                        <input type="number" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" value = {{agroquimico.numLote}} placeholder="Ingrese el número de lote" 
-                        [(ngModel)]="agroquimico.numLote" #numl ="ngModel" pattern="^[0-9 . -]{2,15}"   required minlength="3">
-                    
-                        <div *ngIf="numl.invalid && (numl.dirty || numl.touched)">
-                            <p-message styleClass="m-1" *ngIf="numl.errors?.required"  severity="error" text="El número de lote es requerido"></p-message>
-                            <p-message styleClass="m-1" *ngIf="numl.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
-                            <p-message styleClass="m-1" *ngIf="numl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message>
-                        </div>
-                    
-                    </div> -->
-
+                   <!-- Numero de lote -->
+                   <div class="form-group p-2">
+                    <label for="numLote" class="form-label">Número de lote</label>
+                    <input type="text" class="p-inputtext form-control mt-2"  name="numLo" id="numLote" placeholder="Ingrese el número de lote" 
+                    [(ngModel)]="agroquimico.numLote" #numl ="ngModel"   required minlength="3">
+                
+                    <div *ngIf="numl.invalid && (numl.dirty || numl.touched)">
+                        <p-message styleClass="m-1" *ngIf="numl.errors?.required"  severity="error" text="El número de lote es requerido"></p-message>
+                        <p-message styleClass="m-1" *ngIf="numl.errors?.minlength" severity="error" text="Debe tener al menos 3 caracteres"></p-message>
+                        <!-- <p-message styleClass="m-1" *ngIf="numl.errors?.pattern"   severity="error" text="Solo se permiten núeros"></p-message> -->
+                    </div>
+                
+                </div> 
                     <!-- fin -->
 
                     <!-- botones -->

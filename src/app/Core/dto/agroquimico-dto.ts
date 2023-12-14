@@ -7,5 +7,6 @@ export class AgroquimicoDto {
     dosisPorHectaria: string;
     dosisPorHl: string;
     volumenPorHectaria: string;
+    numLote: string;
     
 }
