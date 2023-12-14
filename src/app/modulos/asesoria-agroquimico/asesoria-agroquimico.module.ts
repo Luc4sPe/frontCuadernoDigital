@@ -18,6 +18,7 @@ import { ListadoAsesoriaComponent } from './listado-asesoria/listado-asesoria.co
 import { EditarAsesoriaAgroComponent } from './editar-asesoria-agro/editar-asesoria-agro.component';
 import { ProductorListaAsesoriaAgroComponent } from './productor-lista-asesoria-agro/productor-lista-asesoria-agro.component';
 import { TagModule } from 'primeng/tag';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -49,7 +50,8 @@ import { TagModule } from 'primeng/tag';
     TableModule,
     CardModule,
     ListboxModule,
-    TagModule
+    TagModule,
+    DatePipe
   ]
 })
 export class AsesoriaAgroquimicoModule { }
