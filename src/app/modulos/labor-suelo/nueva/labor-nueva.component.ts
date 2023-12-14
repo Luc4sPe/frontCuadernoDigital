@@ -70,6 +70,7 @@ export class LaborNuevaComponent implements OnInit {
   //   this.laborSuelo.idCuadro=<number><unknown>valor.value
     console.log(this.laborSuelo.idCuadro);
   // })
+    console.log(this.laborSuelo);
     this.laborService.crearLabor(this.laborSuelo).subscribe(
       
       data =>{
@@ -111,12 +112,12 @@ export class LaborNuevaComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      console.log(valor.value);
+      //console.log(valor.value);
       //this.laborSuelo.idFinca=<number><unknown>valor.value;
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.cuadros=data;
-         
+          console.log(this.cuadros.map(a => a.idCuadro));
         },
         err =>{
           console.log(err);

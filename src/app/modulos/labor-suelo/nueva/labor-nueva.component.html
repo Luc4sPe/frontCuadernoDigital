@@ -20,13 +20,13 @@
 
                                  <!-- Cualtivo anterior -->
                                  <div class="p-2">
-                                    <label for="cultivoAnterior" class="form-label">Cultivo anterior se carga una vez por cuadro</label>
+                                    <label for="cultivoAnterior" class="form-label">Cultivo anterior</label>
                                     <input type="text" class="form-control p-inputtext"  name="cultivo" id="cultivoAnterior" placeholder="Ingrese el cultivo anterior" 
                                     [(ngModel)]="laborSuelo.cultivoAnterior" #cultivo="ngModel" pattern={{patronLetras}}  required minlength="4">
                                 
                                     <div *ngIf="cultivo.invalid && (cultivo.dirty || cultivo.touched)">
-                                        <!-- <p-message styleClass="m-1" *ngIf="cultivo.errors?.required"  severity="error" text="La descripción es requerida"></p-message> -->
-                                        <p-message styleClass="m-1" *ngIf="cultivo.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message>
+                                         <p-message styleClass="m-1" *ngIf="cultivo.errors?.required"  severity="error" text="La descripción es requerida"></p-message>
+                                         <p-message styleClass="m-1" *ngIf="cultivo.errors?.minlength" severity="error" text="Debe tener al menos 4 caracteres"></p-message> 
                                         <p-message styleClass="m-1" *ngIf="cultivo.errors?.pattern"   severity="error" text="Solo se permiten letras"></p-message>
                                     </div>
                                 </div>

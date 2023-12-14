@@ -12,3 +12,5 @@ export class LaborSueloDto {
     cultivoAnterior: string;
     
 }
+
+
