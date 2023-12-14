@@ -5,7 +5,7 @@ import { ReportesRoutingModule } from './reportes-routing.module';
 import { ReportesDeActividadComponent } from './usuarios/reportes/reportes-de-actividad.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { UsuariosMasActivosComponent } from './usuarios/usuariosMasActivos/UsuariosMasActivosComponent';
-
+import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
@@ -69,7 +69,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     RippleModule,
     InputTextModule,
     AutoCompleteModule,
-    CheckboxModule
+    CheckboxModule,
+    DatePipe,
     
 
   ],
