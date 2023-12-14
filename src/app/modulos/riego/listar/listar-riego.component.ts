@@ -20,7 +20,7 @@ export class ListarRiegoComponent implements OnInit {
   items : MenuItem[] = [];
   fincas: Finca[];
   usuarioProductor:any;
-  loading : boolean = false;
+  loading : boolean = true;
   isProductor: boolean = false;
   listadoRiego: Riego[];
   riegoFiltrado:Riego[];
@@ -69,6 +69,7 @@ export class ListarRiegoComponent implements OnInit {
       this.riegoService.listarRiegoPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.listadoRiego = data;
+          this.loading=false;
           //console.log(this.listadoLabor);
         },
         err =>{
@@ -97,5 +98,10 @@ export class ListarRiegoComponent implements OnInit {
       
     })
   }
+
+  refrescar():void{
+    window.location.reload();
+  }
+
   
 }
