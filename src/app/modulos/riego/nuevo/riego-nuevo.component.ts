@@ -54,13 +54,13 @@ export class RiegoNuevoComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-   
+   this.recargarComponente();
     this.cargarItems();
     this.isProductor=this.tokenService.isProductor();
     this.isAdmin=this.tokenService.isAdmin();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listarCuadrosPorFinca();
+    //this.listarCuadrosPorFinca();
     this.listadoAsesoriaDeUnaFinca();
     
     
@@ -118,11 +118,11 @@ export class RiegoNuevoComponent implements OnInit {
   }
 
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+   listarFincasPorNombre(nombreUsuairo: string): void{
+     this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        //console.log(this.fincas);
+        this.listarCuadrosPorFinca();
       },
       err =>{
         console.log(err);
@@ -136,7 +136,6 @@ export class RiegoNuevoComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      //this.laborSuelo.idFinca=<number><unknown>valor.value;
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.cuadros=data;
@@ -167,6 +166,9 @@ export class RiegoNuevoComponent implements OnInit {
      })
    
   } 
+  recargarComponente() {
+    this.router.navigate(['/riego/nuevoRiego']);
+  }
 
   getSeverityByEstado(asesoria : AsesoriaRiego): string {
     const serverityByEstado : {[key: string]: string} = {

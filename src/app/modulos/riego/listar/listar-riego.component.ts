@@ -37,7 +37,7 @@ export class ListarRiegoComponent implements OnInit {
     this.isProductor=this.tokenService.isProductor();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listadoRiegoDeUnaFinca();
+  
   
   }
 
@@ -50,10 +50,11 @@ export class ListarRiegoComponent implements OnInit {
   }
 
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+   listarFincasPorNombre(nombreUsuairo: string): void{
+    this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
+        this.listadoRiegoDeUnaFinca();
       },
       err =>{
         console.log(err);
