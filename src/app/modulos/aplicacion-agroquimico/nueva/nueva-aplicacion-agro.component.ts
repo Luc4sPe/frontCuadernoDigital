@@ -61,7 +61,6 @@ export class NuevaAplicacionAgroComponent implements OnInit {
     this.isAdmin=this.tokenService.isAdmin(); */
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listarCuadrosPorFinca();
     this.listarAgroquimicos();
     /* this.listadoAsesoriaDeUnaFinca(); */
   }
@@ -115,10 +114,11 @@ export class NuevaAplicacionAgroComponent implements OnInit {
     )
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string):void{
+     this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
+        this.listarCuadrosPorFinca(); // Llamar al método para listar cuadros después de obtener las fincas
       },
       err =>{
         console.log(err);
