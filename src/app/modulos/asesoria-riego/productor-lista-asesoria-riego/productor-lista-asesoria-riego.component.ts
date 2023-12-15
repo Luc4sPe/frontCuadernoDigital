@@ -42,7 +42,7 @@ export class ProductorListaAsesoriaRiegoComponent implements OnInit {
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
     this.isProductor=this.tokenService.isProductor();
-    this.listadoAsesoriaDeUnaFinca();
+   
    
   }
 
@@ -54,11 +54,11 @@ export class ProductorListaAsesoriaRiegoComponent implements OnInit {
     ];
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string): void{
+    this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        //console.log(this.fincas);
+        this.listadoAsesoriaDeUnaFinca();
       },
       err =>{
         console.log(err);
@@ -129,9 +129,9 @@ export class ProductorListaAsesoriaRiegoComponent implements OnInit {
 
   }
 
-  botonActualizar(): void{
+  /* botonActualizar(): void{
     setInterval("location.reload()",300);
-  }
+  } */
 
   
 
