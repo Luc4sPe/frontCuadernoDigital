@@ -26,6 +26,7 @@ export class ListarAsesoriaComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private asesoriaService:AsesoriaRiegoService
+    
   ) { }
 
   ngOnInit(): void {
@@ -48,17 +49,29 @@ export class ListarAsesoriaComponent implements OnInit {
     ];
   }
 
+  
+
   listarAsesoria():void{
+   
     this.asesoriaService.listarAsesoria().subscribe(
       data =>{
         this.asesorias=data
+        
         this.loading=false;
+       
       },
       err => {
         console.log(err.error.mensaje);
       }
     )
   }
+  
+  verificarVencimiento(asesoria: any): boolean {
+    const fechaHoy = new Date();
+    const fechaEstimada = new Date(asesoria.fechaEstimadaAplicacionParsed);
+    return asesoria.asesoriaAplicada === false && fechaEstimada > fechaHoy;
+  }
+
 
   clear(table : Table){
     table.clear();

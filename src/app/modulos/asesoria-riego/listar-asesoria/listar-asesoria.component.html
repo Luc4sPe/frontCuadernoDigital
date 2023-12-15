@@ -168,21 +168,23 @@
                                       
                                         <td *ngIf="asesoriaRiego.fechaModificacionAsesoriaRiego != null">{{asesoriaRiego.fechaModificacionAsesoriaRiego | date:"dd/MM/YYYY" }}</td>
                                         <td class="text-center" *ngIf="asesoriaRiego.fechaModificacionAsesoriaRiego === null"><i class="fa-solid fa-calendar-days"></i></td>     
-                                        <td>{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
-                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == true">{{asesoriaRiego.fechaAplicacionAsesoria | date:'dd/MM/YYYY'  }}</td>
-                                       
-                                       
-                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) > (fechaHoy | date:'dd/MM/YYYY')  "><i class="fa-solid fa-calendar-days"></i></td> 
-                                        <td class="text-center expired" *ngIf="asesoriaRiego.asesoriaAplicada  == false && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) < (fechaHoy | date:'dd/MM/YYYY')  ">Vencida</td> 
+                                        <td class="text-center">{{asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY'  }}</td>
+                                        <td class="text-center" *ngIf="asesoriaRiego.asesoriaAplicada === true">{{asesoriaRiego.fechaAplicacionAsesoria | date:'dd/MM/YYYY'  }}</td>
+                                        <td class="text-center" *ngIf="(asesoriaRiego.asesoriaAplicada === false) && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) >= (fechaHoy | date:'dd/MM/YYYY') "><i class="fa-solid fa-calendar-days"></i></td> 
+<!--                                         <td class="text-center" *ngIf="(asesoriaRiego.asesoriaAplicada == false) && (asesoriaRiego.fechaEstimadaAplicacionParsed | date:'dd/MM/YYYY' ) < (fechaHoy | date:'dd/MM/YYYY') ">Vencida</td>  -->
+                                        <td class="text-center expired" *ngIf="asesoriaRiego.asesoriaAplicada === false && (fechaHoy | date: 'dd/MM/yyyy' ) > (asesoriaRiego.fechaEstimadaAplicacionParsed | date: 'dd/MM/yyyy' )">Vencida</td>
                                         
                                         <td class="text-center">{{asesoriaRiego.nombreEncargado}}</td>
                                          <!--Boton Editar -->
                                         <td class="text-center">
-                                            <button pRipple class="btn btn-outline-warning" *ngIf="asesoriaRiego.asesoriaAplicada == false"
+                                            <button pRipple class="btn btn-outline-warning" *ngIf="verificarVencimiento(asesoriaRiego)"
                                             routerLink="/asesoramientoRiego/editarAsesoriaRiego/{{asesoriaRiego.id}}" pTooltip="Editar" tooltipPosition="top">
-                                            <i class="fa-solid fa-pen-to-square"></i></button> 
+                                            <i class="fa-solid fa-pen-to-square"></i></button>  
+                                               
                                         </td>
                                         <!-- fin -->
+
+                                       
                             
                                 </tr>
                             </ng-template>   
