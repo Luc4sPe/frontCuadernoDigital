@@ -47,10 +47,10 @@ export class ActualizarPerfilComponent implements OnInit {
     this.location.back();
   }
 
-  actualizarPerfil(form: NgForm):void{
+  actualizarPerfil():void{
+    const perfilActualizar = new PerfilUsuarioDto(this.usuario.nombre,this.usuario.apellido,this.usuario.dni,this.usuario.nombreUsuario, this.usuario.email,this.usuario.telefono);
     Swal.fire({
       title: '¿Deseas editar tus datos?',
-      // text:' Deberás iniciar sesión nuevamente luego de actualizar tu información',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: `Guardar`,
@@ -58,23 +58,23 @@ export class ActualizarPerfilComponent implements OnInit {
     }).then((result) => {
     
       if (result.isConfirmed) {
-        this.solicitudActualizacionPerfil(form);
+        this.solicitudActualizacionPerfil(this.usuario.id, perfilActualizar);
       } 
     })
     
   }
-  solicitudActualizacionPerfil(form: NgForm){
-    const perfilActualizar = new PerfilUsuarioDto(this.usuario.nombre,this.usuario.apellido,this.usuario.dni,this.usuario.nombreUsuario, this.usuario.email,this.usuario.telefono);
-    this.usuarioService.actualizarPerfil(this.usuario.id, perfilActualizar).subscribe(
+  solicitudActualizacionPerfil(id: number,perfilActualizar: PerfilUsuarioDto ){
+   
+    this.usuarioService.actualizarPerfil(id, perfilActualizar).subscribe(
       data => {
         this.msj = data.mensaje;
-        Swal.fire({
-          icon: 'success',
-          title:this.msj,
-          text:'Datos actualizados correctamente'
+        Swal.fire('Datos guardados correctamente', 'Debes iniciar sesión nuevamente', 'success').then((result) => {
+          if(result.isConfirmed || result.dismiss === Swal.DismissReason.esc){
+            this.tokenService.logOut();
+          }
         });
-        form.resetForm();
-        this.router.navigate(['/index']);
+        //form.resetForm();
+        //this.router.navigate(['/index']);
         
       }, 
       err => {
