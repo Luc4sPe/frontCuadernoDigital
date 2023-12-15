@@ -116,11 +116,11 @@
                             <td>{{finca.productor.nombre}}</td>
                             <td><span class="p-column-title">Cuadros</span><ul *ngFor="let cuadros of finca.cuadros; let i = index; ">
                                 <td>{{finca.cuadros[i].numeroCuadro}}</td> 
-                                <td>{{finca.cuadros[i].idCuadro}}</td> 
+                               
                                     <!--Boton Editar -->
                                 <td class="text-center">
                                     <button  class="btn btn-outline-warning" 
-                                    routerLink="cuadro/modificarCuadro/{{finca.cuadros.idCuadro}}" pTooltip="Editar" tooltipPosition="top">
+                                    routerLink="/cuadro/modificarCuadro/{{finca.cuadros[i].idCuadro}}" pTooltip="Editar" tooltipPosition="top">
                                     <i class="fa-solid fa-pen-to-square"></i></button> 
                                 </td>
                                 <!-- fin -->
