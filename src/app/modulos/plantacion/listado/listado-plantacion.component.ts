@@ -20,7 +20,7 @@ export class ListadoPlantacionComponent implements OnInit {
   listadoPlantacion: Plantacion[];
   plantacionFiltrada:Plantacion[];
   usuarioProductor:any;
-  loading : boolean = false;
+  loading : boolean = true;
   isProductor: boolean = false;
 
   constructor(
@@ -34,7 +34,7 @@ export class ListadoPlantacionComponent implements OnInit {
     this.isProductor=this.tokenService.isProductor();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listadoPlantacionDeUnaFinca();
+  
   }
 
   cargarItems(): void {
@@ -45,10 +45,11 @@ export class ListadoPlantacionComponent implements OnInit {
     ];
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string): void{
+     this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
+        this.listadoPlantacionDeUnaFinca();
         
       },
       err =>{
@@ -65,6 +66,7 @@ export class ListadoPlantacionComponent implements OnInit {
       this.plantacionServi.listarPlantacionPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.listadoPlantacion = data;
+          this.loading=false;
         
         },
         err =>{

@@ -42,7 +42,6 @@ export class PlantacionNuevaComponent implements OnInit {
     this.cargarItems();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listarCuadrosPorFinca();
     this.listarCultivos();
    
   }
@@ -96,11 +95,11 @@ export class PlantacionNuevaComponent implements OnInit {
     )
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string):void{
+    this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        //console.log(this.fincas);
+        this.listarCuadrosPorFinca();
       },
       err =>{
         console.log(err);
