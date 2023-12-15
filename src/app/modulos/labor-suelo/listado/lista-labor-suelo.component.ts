@@ -18,7 +18,7 @@ export class ListaLaborSueloComponent implements OnInit {
   items : MenuItem[] = [];
   fincas: Finca[];
   usuarioProductor:any;
-  loading : boolean = false;
+  loading : boolean = true;
   isProductor: boolean = false;
   listadoLabor: LaborSuelo[];
   laborFiltrada:LaborSuelo[];
@@ -34,7 +34,7 @@ export class ListaLaborSueloComponent implements OnInit {
     this.isProductor=this.tokenService.isProductor();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listadoPlantacionDeUnaFinca();
+   
     
   }
 
@@ -46,11 +46,11 @@ export class ListaLaborSueloComponent implements OnInit {
     ];
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string): void{
+    this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        
+        this.listadoPlantacionDeUnaFinca();
       },
       err =>{
         console.log(err);
@@ -64,12 +64,10 @@ export class ListaLaborSueloComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      
       this,this.laborService.listarLaborSueloPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
-         
           this.listadoLabor = data;
-          console.log(this.listadoLabor);
+          this.loading=false;
         },
         err =>{
           console.log(err);

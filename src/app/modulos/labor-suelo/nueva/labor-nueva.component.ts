@@ -36,7 +36,7 @@ export class LaborNuevaComponent implements OnInit {
     this.cargarItems();
     this.usuarioProductor=this.tokenService.getUserName();
     this.listarFincasPorNombre(this.usuarioProductor);
-    this.listarCuadrosPorFinca();
+   
   }
 
   cargarItems(): void {
@@ -95,11 +95,11 @@ export class LaborNuevaComponent implements OnInit {
     )
   }
 
-  async listarFincasPorNombre(nombreUsuairo: string): Promise<void>{
-    await this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
+  listarFincasPorNombre(nombreUsuairo: string): void{
+    this.fincaService.listarFincaPorUsuario(nombreUsuairo).subscribe(
       data =>{
         this.fincas= data;
-        //console.log(this.fincas);
+        this.listarCuadrosPorFinca();
       },
       err =>{
         console.log(err);
@@ -112,12 +112,10 @@ export class LaborNuevaComponent implements OnInit {
     const valor = document.querySelector('#nomreFinca') as HTMLSelectElement;
     valor.addEventListener('click',event =>{
       event.preventDefault();
-      //console.log(valor.value);
-      //this.laborSuelo.idFinca=<number><unknown>valor.value;
+     
       this.cuadroService.listarCuadrosPorFinca(<number><unknown>valor.value).subscribe(
         data =>{
           this.cuadros=data;
-          console.log(this.cuadros.map(a => a.idCuadro));
         },
         err =>{
           console.log(err);
