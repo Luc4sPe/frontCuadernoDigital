@@ -21,7 +21,8 @@ const routes: Routes = [
 
     {path: 'modificarCuadro/:id', component: ModificarCuadroComponent, 
     canActivate: [guarEncargadoAgricola],
-    data: { rolesEsperados: [ADMIN,Encargado_Agricola,ADMIN] },},
+    data: { rolesEsperados: [ADMIN,Encargado_Agricola] }
+  },
   ]
   
   }
